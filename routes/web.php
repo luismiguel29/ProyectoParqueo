@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ParkingSpaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,6 @@ Route::get('/', function () {
 Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');
 });
+
+
+Route::resource('/sites', ParkingSpaceController::class);

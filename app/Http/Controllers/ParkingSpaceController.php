@@ -15,7 +15,7 @@ class ParkingSpaceController extends Controller
     public function index()
     {
         $listSites = ParkingSpace::all();
-        
+        return view('listSite', compact('listSites'));
     }
 
     /**

@@ -81,6 +81,8 @@ class ParkingSpaceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $site = ParkingSpace::findOrFail($id);
+        $site->delete();
+        return redirect()->route('sites.index');
     }
 }

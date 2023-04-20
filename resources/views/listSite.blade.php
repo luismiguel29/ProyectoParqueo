@@ -7,13 +7,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/listSite.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 <body>
     <div class="container">
         <div class="title">
             <img src="/img/logoP.png" alt="minilogo">
-            <div>Lista de sitios</div>
+            <span>Lista de sitios</span>
         </div>
         
         <div class="row">
@@ -36,8 +37,18 @@
                                 <td>{{$site->numero_espacio}}</td>
                                 <td>
                                     <div class="imgAction">
-                                        <img src="/img/imgEdit.png" alt="">
-                                        <img src="/img/imgDelete.png" alt="">
+                                        <div class="bicon icon--blue">
+                                            <i class="fa-solid fa-pen-to-square icon--white"></i>
+                                        </div>
+                                        
+                                        <form action="{{route('sites.destroy', $site->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bicon icon--red">
+                                                <i class="fa-solid fa-trash-can icon--white"></i>
+                                            </button>
+                                        </form>
+                                        
                                     </div>
                                 </td>
                             </tr>

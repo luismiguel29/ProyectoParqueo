@@ -95,10 +95,11 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
               <div class=" py-3 mb-3 border-bottom">
-               <H1>TITULO DE PRUEBA</H1>
+                <H1>TITULO DE PRUEBA</H1>
                 <!--BODY INIT-->
                 
-   
+                @yield('content')
+                
                 <!--BODY END-->
               </div>
             

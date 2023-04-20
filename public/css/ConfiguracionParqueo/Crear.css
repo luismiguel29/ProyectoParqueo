@@ -1,0 +1,41 @@
+card{
+    border: 1px solid #606060;
+}
+
+/* .btn-fluid{
+    width: 100%;
+} */
+.btn-primary-pk{
+   
+        color: #fff;
+        background-color: #0256CE;
+        border-color: #0256CE;
+
+}
+
+.btn-primary-pk:hover{
+   
+    color: #fff;
+    background-color: #0256CE;
+    border-color: #0256CE;
+    filter: grayscale(0.5);
+}
+
+.btn-danger-dg{
+   
+    color: #fff;
+    background-color: #FF3346;
+    border-color: #FF3346;
+}
+
+.btn-danger-dg:hover{
+   
+    color: #fff;
+    background-color: #FF3346;
+    border-color: #FF3346;
+    filter: grayscale(0.5);
+}
+
+.border-top-pk{
+    border-top: 4px solid  #0256CE;
+}

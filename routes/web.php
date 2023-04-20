@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PruebaController;
+Use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,9 @@ Route::get('/', function () {
 
 Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');
+});
+
+Route::controller(CrearSitioController::class)->group(function(){
+    Route::get('/ConfiguracionParqueo/crear', 'index');
+    
 });

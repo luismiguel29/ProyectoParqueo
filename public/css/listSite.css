@@ -7,9 +7,10 @@
 }
 
 :root{
-    --color-red: red;
-    --color-blue: blue;
-    --color-white: white;
+    --color-dark: #222222;
+    --color-red: #FF3346;
+    --color-blue: #0256CE;
+    --color-white: #FFFFFF;
 }
 button{
     border: none;
@@ -19,11 +20,12 @@ button{
     display: flex;
     align-items: center;
     /*align-content: center;*/
+    margin-bottom: 15px;
 }
 
-.title img{
+.title div{
     object-fit: contain;
-    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .title span{
@@ -32,7 +34,7 @@ button{
     font-size: 20px;
     line-height: 20px;
     text-align: center;
-    color: #222222;
+    color: var(--color-dark);
 }
 
 .imgAction{
@@ -43,6 +45,11 @@ button{
 .bicon{
     padding: 0px 3px;
     border-radius: 2px;
+}
+
+.icon--dark{
+    background-color: var(--color-dark);
+    padding: 0px 6px;
 }
 
 .icon--blue{

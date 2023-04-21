@@ -70,7 +70,10 @@ class ParkingSpaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $site = ParkingSpace::findOrFail($id);
+        $site->numero_espacio = $request->input('nEspacio');
+        $site->save();
+        return redirect()->route('sites.index');
     }
 
     /**

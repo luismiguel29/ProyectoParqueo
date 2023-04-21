@@ -38,9 +38,10 @@
                                         <td>{{$site->numero_espacio}}</td>
                                         <td>
                                             <div class="imgAction">
-                                                <div class="bicon icon--blue">
+
+                                                <button type="submit" class="bicon icon--blue" data-bs-toggle="modal" data-bs-target="#modal-update-{{$site->id}}">
                                                     <i class="fa-solid fa-pen-to-square icon--white"></i>
-                                                </div>
+                                                </button>
                                                 
                                                 <button type="submit" class="bicon icon--red" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$site->id}}">
                                                     <i class="fa-solid fa-trash-can icon--white"></i>
@@ -49,6 +50,7 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    @include('updateSite')
                                     @include('deleteSite')
                                 @endforeach
                             </tbody>

@@ -12,4 +12,6 @@ class ParkingSpace extends Model
     protected $fillable=[
         'numero_espacio', 'estado'
     ];
+
+    public $timestamps = false;
 }

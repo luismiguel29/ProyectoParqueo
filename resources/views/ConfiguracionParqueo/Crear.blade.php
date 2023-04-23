@@ -16,16 +16,18 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    @extends('welcome')
+    @section('content')
 
     <div class="container py-3">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 border-grl">
                 <div class="container pb-3">
                     <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                     <span class="h3 ">Creación de sitios</span>
                 </div>
 
-                <div class="card card-outline  border-top-pk   shadow">
+                <div class="card card-outline border-top-pk   shadow">
                     <div class="card-header">
                          <h5>Ingrese todos los campos</h5>
                     </div>
@@ -59,7 +61,7 @@
                                 <textarea name="observacion" required id="" cols="30" rows="5" class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="row row-gap-3 pt-4">
+                        <div class="row row-gap-3 pt-4 btn-grl">
                             <div class="col-md-6">
                                 <button type="submit" href="" class="btn btn-primary-pk btn-block w-100">Registrar</button>
                             </div>
@@ -77,7 +79,7 @@
 
         </div>
     </div>
-
+    @endsection
 </body>
 
 </html>

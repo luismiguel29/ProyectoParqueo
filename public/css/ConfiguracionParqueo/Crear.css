@@ -5,7 +5,7 @@ card{
 /* .btn-fluid{
     width: 100%;
 } */
-.btn-primary-pk{
+.btn-grl .btn-primary-pk{
    
         color: #fff;
         background-color: #0256CE;
@@ -13,7 +13,7 @@ card{
 
 }
 
-.btn-primary-pk:hover{
+.btn-grl .btn-primary-pk:hover{
    
     color: #fff;
     background-color: #0256CE;
@@ -21,14 +21,14 @@ card{
     filter: grayscale(0.5);
 }
 
-.btn-danger-dg{
+.btn-grl .btn-danger-dg{
    
     color: #fff;
     background-color: #FF3346;
     border-color: #FF3346;
 }
 
-.btn-danger-dg:hover{
+.btn-grl .btn-danger-dg:hover{
    
     color: #fff;
     background-color: #FF3346;
@@ -36,6 +36,6 @@ card{
     filter: grayscale(0.5);
 }
 
-.border-top-pk{
+.border-grl .border-top-pk{
     border-top: 4px solid  #0256CE;
 }

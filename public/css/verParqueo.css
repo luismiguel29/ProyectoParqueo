@@ -1,0 +1,15 @@
+
+.grl-site .row .car{
+    width: 70px;
+    padding: 0;
+}
+
+.grl-site .row .car .car-content{
+    height: 100px;
+}
+body{
+    background-color: black;
+}
+.grl-site .border-top-pk{
+    border-top: 4px solid  #0256CE;
+}

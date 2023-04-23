@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PruebaController;
 Use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
+Use App\Http\Controllers\VerParqueoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,7 @@ Route::controller(PruebaController::class)->group(function(){
 */
 
 Route::resource('/crear', CrearSitioController::class);
+
+Route::controller(VerParqueoController::class)->group(function(){
+    Route::get('/VerParqueo', 'index');
+});

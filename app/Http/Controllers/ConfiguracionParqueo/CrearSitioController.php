@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\ConfiguracionParqueo;
 
+use App\Models\ConfiguracionParqueo\CrearSitio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PSpell\Config;
 
 class CrearSitioController extends Controller
 {
@@ -13,18 +15,19 @@ class CrearSitioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('ConfiguracionParqueo/crear');
+    { 
+        $datos = CrearSitio::all();
+        return view('/ConfiguracionParqueo/Crear', compact('datos')); 
     }
 
-    /**
+    /**     
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +38,14 @@ class CrearSitioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $crear = new CrearSitio;
+      
+        $crear->numero_espacio=$request->input('nroespacio');
+       // $crear->estado=$request->input('zona');
+        $crear->observacion=$request->input('observacion');
+        $crear->save();
+        return redirect('/ConfiguracionParqueo/Crear');
+      
     }
 
     /**

@@ -24,7 +24,10 @@ Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');
 });
 
-Route::controller(CrearSitioController::class)->group(function(){
+/*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
     
 });
+*/
+
+Route::resource('/crear', CrearSitioController::class);

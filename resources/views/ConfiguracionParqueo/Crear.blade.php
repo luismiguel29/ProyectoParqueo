@@ -27,22 +27,24 @@
 
                 <div class="card card-outline  border-top-pk   shadow">
                     <div class="card-header">
-                        <h5>Ingrese todos los campos</h5>
+                         <h5>Ingrese todos los campos</h5>
                     </div>
                     <!--APARTIR DE AQUI ES EL BODY-->
-                    <div class="card-body" style="display: block;">
-
+                    <form action="{{route('crear.store')}}" method="post" class="card-body" style="display: block;">
+                        <!--'ConfiguracionParqueo/crear.store'-->
+                        @csrf
+                        @method('post')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form group">
                                     <label for="">Nro espacio</label>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="nroespacio" required >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form group">
                                     <label for="">Zona</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="zona" id="" class="form-control" required>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                     </select>
@@ -54,20 +56,21 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="">Observaciones</label>
-                                <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
+                                <textarea name="observacion" required id="" cols="30" rows="5" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="row row-gap-3 pt-4">
                             <div class="col-md-6">
-                                <a href="" class="btn btn-primary-pk btn-block w-100">Registrar</a>
+                                <button type="submit" href="" class="btn btn-primary-pk btn-block w-100">Registrar</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-danger-dg btn-block w-100">
+                                <button type="reset" class="btn btn-danger-dg btn-block w-100">
                                     Cancelar
                                 </button>
+                               
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
             </div>

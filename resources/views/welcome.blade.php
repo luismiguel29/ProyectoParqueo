@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        
         <!-- Fonts -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <link  rel="stylesheet" href="{{asset('css/template.css')}}">
@@ -13,11 +13,11 @@
 
       </head>
     <body>
-    
+
         <header class="navbar navbar-sky sticky-top bg-dark flex-md-nowrap p-0 shadow">
           <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
             <img src="/img/logo.png" alt="">
-        
+          
           </a>
           <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -95,15 +95,15 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
               <div class=" py-3 mb-3 border-bottom">
-               <H1>TITULO DE PRUEBA</H1>
                 <!--BODY INIT-->
                 
-   
+                @yield('content')
+                
                 <!--BODY END-->
               </div>
             
             </main>
-    
+            
           </div>
         </div>
             <script type="module" src="./js/main.js"></script>

@@ -1,0 +1,133 @@
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+
+
+.form-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            position: relative;
+        }
+
+.form-container::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: #0256CE;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rounded {
+    border-radius: 5px;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 20px;
+}
+
+i.fas.fa-user {
+    color: 222222;
+    margin-right: 10px;
+}
+
+.form-label {
+    font-size: 14px;
+    color: #666666;
+}
+
+.form-control {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.form-select {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #0256CE;
+    border: 1px solid #007bff;
+    color: #ffffff;
+
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border: 1px solid #0069d9;
+    color: #ffffff;
+
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    border: 1px solid #7b7878;
+    color: #575757;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border: 1px solid #5a6268;
+    color: #ffffff;
+}
+/*botones*/
+.me-2 {
+    margin-right: 2.5rem!important;
+
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+    margin-top: 20px;
+
+}
+
+/* Estilos personalizados */
+.thin-border {
+    border-width: 1px !important;
+}
+
+.small-alert {
+    padding: 4px 8px !important;
+    font-size: 0.8rem !important;
+}
+
+.label[for=first_name], label[for=last_name], label[for=username],label[for=email], label[for=phone],
+label[for=password], label[for=confirm-password],label[for="user-type"]{
+    font-weight: bold;
+    color: #555;
+    font-size: 16px;
+}

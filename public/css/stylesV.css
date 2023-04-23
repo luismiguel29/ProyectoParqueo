@@ -1,0 +1,99 @@
+/* Agregar márgenes a la tabla y centrarla */
+.table {
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  /* Cambiar el color de fondo de las filas impares */
+  .table tbody tr:nth-of-type(odd) {
+    background-color: #F2F2F2;
+  }
+
+  /* Cambiar el color del texto y del fondo del encabezado de la tabla */
+  .table thead th {
+    background-color: white;
+    color: rgb(0, 0, 0);
+  }
+
+  /* Cambiar el color del texto del botón de accion */
+  .btn i {
+    margin-right: 1px;
+
+
+  }
+
+
+  /* Cambiar los colores de los botones de acción al pasar el mouse sobre ellos */
+  .btn-primary:hover, .btn-primary:focus {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
+  .btn-danger:hover, .btn-danger:focus {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  /* Agregar un efecto de sombra a los botones de acción */
+  .btn i {
+    transition: all 0.2s ease-in-out;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .btn-primary:hover i, .btn-primary:focus i {
+    text-shadow: none;
+  }
+
+  .btn-primary{
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-right: 30px;
+  }
+
+  .btn-danger:hover i, .btn-danger:focus i {
+    text-shadow: none;
+  }
+
+  .blue-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background-color: #0256CE;
+}
+  .table-responsive {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    position: relative;
+}
+
+ .table-responsive::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #0256CE;
+}
+
+
+/* iconos */
+i.fas.fa-user {
+    color: 222222;
+    margin: auto;
+}
+
+/* Estilos personalizados */
+.thin-border {
+    border-width: 1px !important;
+}
+
+.btn-custom-width {
+    width: 48%; /* Ajusta este valor según la cantidad de espacio que desees entre los botones */
+}
+

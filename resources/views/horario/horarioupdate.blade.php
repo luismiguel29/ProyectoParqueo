@@ -21,18 +21,18 @@
                     <span class="h3 ">Creación de horarios</span>
                 </div>
 
-                <form action="{{ route('horario.store') }}" method="post" >
+                <form action="" method="post" >
                     @csrf
                     <div class="card card-outline  border-top-pk   shadow">
                         <div class="row overflow-hidden">
                             <div class="col p-3">
                                 <label class="p-2" for="">Hora de inicio</label>
-                                <input class="form-control" type="time" name="h_apertura">
+                                <input class="form-control" type="time" name="h_apertura" value="{{ $datos->h_apertura }}">
                             </div>
                     
                             <div class="col p-3">
                                 <label class="p-2" for="">Hora de cierre</label>
-                                <input class="form-control" type="time" name="h_cierre">
+                                <input class="form-control" type="time" name="h_cierre" value="{{ $datos->h_cierre }}">
                             </div>
                             <div class="col p-3">
                                 <label class="p-2" for="">Día</label>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="btn-group">
                             <div class="col d-grid p-3">
-                                <button type="submit" class="btn btn-primary" style="background: #0009B5">Guardar</button>
+                                <button type="submit" class="btn btn-primary" style="background: #0009B5">Actualizar</button>
                             </div>
                             <div class="col d-grid p-3">
                                 <a href="{{ route('lista') }}" class="btn btn-danger" style="background: #FF3346">Cancelar</a>

@@ -1,3 +1,6 @@
+@extends('welcome')
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/luiscss/horario.css') }}">
 </head>
 
@@ -22,9 +20,7 @@
                     <span class="h3 ">Gestión de horarios</span>
                 </div>
                 <div class="col p-3 text-end" >
-                    <form action="{{ route('') }}">
-                        <button class="btn btn-primary btn-lg">Agregar</button>
-                    </form>
+                    <a href="\horario" class="btn btn-primary "><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Agregar</a>
                 </div>
 
                 <div class="card card-outline  border-top-pk   shadow">
@@ -39,16 +35,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($horario as $item)
                             <tr>
-                                <td>1</td>
-                                <td>hola</td>
-                                <td>hola</td>
-                                <td scope='row'>hola</td>
-                                <td scope='row' class="text-center">
-                                    <i class="fa-solid fa-pen-to-square fa-xl" type='button' style="color: #0009B5"></i>
-                                    <i class="fa-solid fa-trash-can fa-xl" type='button' style="color: #FF3346"></i>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->h_apertura }}</td>
+                                <td>{{ $item->h_cierre }}</td>
+                                <td scope='row'>{{ $item->dia }}</td>
+                                <td scope='row' class="row text-center" style="margin: 0 auto">                                    
+                                    <form class="col" action="{{ route('horarioupdate', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('get')
+                                        <button type="submit" class="fa-solid fa-pen-to-square fa-xl" type='button' style="color: #0009B5; border: none"></button>
+                                    </form>
+                                    <form class="col" action="{{ route('eliminarhorario', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="fa-solid fa-trash-can fa-xl" type='button' style="color: #FF3346; border: none"></button>
+                                    </form>
                                 </td>
                             </tr>
+                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
@@ -60,3 +67,6 @@
 </body>
 
 </html>
+
+    
+@endsection

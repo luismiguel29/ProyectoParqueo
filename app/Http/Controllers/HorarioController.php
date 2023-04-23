@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Horario;
 use Illuminate\Http\Request;
 
 class HorarioController extends Controller
@@ -14,6 +15,16 @@ class HorarioController extends Controller
     public function index()
     {
         return view('horario.horario');
+    }
+
+    public function horarioupdate($id){
+        $datos = Horario::where('id', $id)->get();
+        return view('horario.horarioupdate', compact('datos'));
+    }
+
+    public function lista(){
+        $horario = Horario::all();
+        return view('horario.listahorario', compact('horario'));
     }
 
     /**
@@ -34,7 +45,18 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newhorario = new Horario();
+        $newhorario->h_apertura = $request->input('h_apertura');
+        $newhorario->h_cierre = $request->input('h_cierre');
+        $newhorario->dia = $request->input('dia');
+        $newhorario->save();
+
+        $horario = Horario::all();
+        
+        /* return view('horario.listahorario', compact('horario')); */
+
+        return redirect()->route('lista');
+
     }
 
     /**
@@ -68,7 +90,12 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $edithorario = Horario::where('id', $id)->get();
+        $edithorario->h_apertura = $request->input('h_apertura');
+        $edithorario->h_cierre = $request->input('h_cierre');
+        $edithorario->dia = $request->input('dia');
+        $edithorario->save();
+        return redirect()->route('lista');
     }
 
     /**
@@ -79,6 +106,7 @@ class HorarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delhorario = Horario::where('id', $id)->delete();
+        return redirect()->route('lista');
     }
 }

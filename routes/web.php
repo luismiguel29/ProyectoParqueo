@@ -32,10 +32,13 @@ Route::controller(LoginController::class)->group(function(){
 });
 
 Route::resource('horario', HorarioController::class);
+/* Route::get('lista', [HorarioController::class, 'lista'])->name('lista');
+Route::delete('eliminarhorario\{id}', [HorarioController::class, 'destroy'])->name('eliminarhorario'); */
 Route::controller(HorarioController::class)->group(function(){
-    
+    Route::get('lista', 'lista')->name('lista');
+    Route::delete('eliminarhorario/{id}', 'destroy')->name('eliminarhorario');
+    Route::put('editarhorario/{id}', 'update')->name('editarhorario');
+    Route::get('horarioupdate/{id}', 'horarioupdate')->name('horarioupdate');
 });
 
-Route::get('/plantilla', function () {return view('plantilla');});
-Route::get('/horario', function () {return view('horario.horario');});
-Route::get('/listahorario', function () {return view('horario.listahorario');});
+

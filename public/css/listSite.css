@@ -63,3 +63,8 @@ button{
 .icon--white{
     color: var(--color-white);
 }
+
+.parkingSite .border-top-pk{
+    border-top: 4px solid  #0256CE;
+    padding: 40px;
+}

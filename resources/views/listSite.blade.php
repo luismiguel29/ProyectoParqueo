@@ -10,52 +10,61 @@
 @extends('welcome')
 @section('content')
     <section>
-        <div class="container">
+        <div class="container parkingSite">
+            <!--
             <div class="title">
                 <div class="bicon icon--dark">
                     <i class="fa-solid fa-p icon--white"></i>
                 </div>
                 <span>Lista de sitios</span>
             </div>
+            -->
+            <div class="container pb-3">
+                <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                <span class="h3 ">Lista de sitios</span>
+            </div>
             
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-condensed" style="width: 100%">
-                            <thead>
-                            <!--<thead class="text-center">-->
-                                <tr>
-                                    <th>N°</th>
-                                    <th>N° espacio</th>
-                                    <th>Ación</th>
-                                </tr>
-                            </thead>
-                            
-                            <tbody>
-                                @foreach($listSites as $site)
+            <div class="card card-outline  border-top-pk   shadow">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-condensed" style="width: 100%">
+                                <thead>
+                                <!--<thead class="text-center">-->
                                     <tr>
-                                        <td>{{$site->id}}</td>
-                                        <td>{{$site->numero_espacio}}</td>
-                                        <td>
-                                            <div class="imgAction">
-                                                <button type="submit" class="bicon icon--blue" data-bs-toggle="modal" data-bs-target="#modal-update-{{$site->id}}">
-                                                    <i class="fa-solid fa-pen-to-square icon--white"></i>
-                                                </button>
-                                                
-                                                <button type="submit" class="bicon icon--red" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$site->id}}">
-                                                    <i class="fa-solid fa-trash-can icon--white"></i>
-                                                </button>
-                                            </div>
-                                        </td>
+                                        <th>N°</th>
+                                        <th>N° espacio</th>
+                                        <th>Ación</th>
                                     </tr>
-                                    @include('updateSite')
-                                    @include('deleteSite')
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                
+                                <tbody>
+                                    @foreach($listSites as $site)
+                                        <tr>
+                                            <td>{{$site->id}}</td>
+                                            <td>{{$site->numero_espacio}}</td>
+                                            <td>
+                                                <div class="imgAction">
+                                                    <button type="submit" class="bicon icon--blue" data-bs-toggle="modal" data-bs-target="#modal-update-{{$site->id}}">
+                                                        <i class="fa-solid fa-pen-to-square icon--white"></i>
+                                                    </button>
+                                                    
+                                                    <button type="submit" class="bicon icon--red" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$site->id}}">
+                                                        <i class="fa-solid fa-trash-can icon--white"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @include('updateSite')
+                                        @include('deleteSite')
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
 @endsection

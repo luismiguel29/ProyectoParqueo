@@ -3,8 +3,13 @@
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
+<<<<<<< HEAD
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\AdmInfoClientes\ClienteController;
+=======
+Use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
+Use App\Http\Controllers\VerParqueoController;
+>>>>>>> feature/parkingView
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +49,7 @@ Route::controller(PruebaController::class)->group(function(){
 
 Route::resource('/crear', CrearSitioController::class);
 
+<<<<<<< HEAD
 Route::resource('/login', LoginController::class);
 Route::controller(LoginController::class)->group(function(){
     Route::get('/loginhorario', 'store');
@@ -60,3 +66,8 @@ Route::controller(HorarioController::class)->group(function(){
 });
 
 
+=======
+Route::controller(VerParqueoController::class)->group(function(){
+    Route::get('/VerParqueo', 'index');
+});
+>>>>>>> feature/parkingView

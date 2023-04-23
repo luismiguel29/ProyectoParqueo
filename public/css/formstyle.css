@@ -1,0 +1,18 @@
+h1.title{
+    position: absolute;
+    width: 137px;
+    height: 20px;
+    left: 373px;
+    top: 108px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+
+    text-align: center;
+     color: #222222;
+
+}

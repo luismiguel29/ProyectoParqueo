@@ -3,6 +3,7 @@
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*Usuario Cliente*/
+Route::get('/inicio', function () {
+    return view('Cliente.ClienteForm');
+})->name('Cliente.ClienteForm');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout.welcome');
 });
 
+Route::post('/formulario',[ClienteController::class,'store'])->name('Cliente.guardar');
+Route::get('/lista',[ClienteController::class,'index'])->name('Cliente.lista');
+Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.verform');
+Route::delete('/elimardato',[ClienteController::class,'destroy'])->name('Cliente.eliminar');
+Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Cliente.editardato');
 
 Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');

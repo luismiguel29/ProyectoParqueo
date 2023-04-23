@@ -7,6 +7,7 @@ use App\Http\Controllers\VerParqueoController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ParkingSpaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');
 });
 
+
+Route::resource('/sites', ParkingSpaceController::class);
 /*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
     

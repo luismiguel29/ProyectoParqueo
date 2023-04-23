@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --color-dark: #222222;
+    --color-red: #FF3346;
+    --color-blue: #0256CE;
+    --color-white: #FFFFFF;
+}
+button{
+    border: none;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    /*align-content: center;*/
+    margin-bottom: 15px;
+}
+
+.title div{
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.title span{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--color-dark);
+}
+
+.imgAction{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bicon{
+    padding: 0px 3px;
+    border-radius: 2px;
+}
+
+.icon--dark{
+    background-color: var(--color-dark);
+    padding: 0px 6px;
+}
+
+.icon--blue{
+    background-color: var(--color-blue);
+}
+
+.icon--red{
+    background-color: var(--color-red);
+}
+
+.icon--white{
+    color: var(--color-white);
+}
+
+.parkingSite .border-top-pk{
+    border-top: 4px solid  #0256CE;
+    padding: 40px;
+}

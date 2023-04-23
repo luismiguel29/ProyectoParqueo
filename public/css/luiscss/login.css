@@ -1,0 +1,38 @@
+ 
+.border-top-pk{
+    border-top: 4px solid  #0256CE;
+}
+
+  .cardtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+
+  .card-title {
+    font-size: 0.83em;
+    font-weight: bolder;
+    padding-left: 20px;
+  }
+
+  .fa-solid {
+    padding: 5px;
+  }
+
+  .logo {  
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    padding-top: 5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: white;
+    background: #0256CE;
+  }
+  

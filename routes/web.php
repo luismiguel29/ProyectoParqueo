@@ -3,11 +3,8 @@
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
-<<<<<<< HEAD
-Use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
-=======
+use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\AdmInfoClientes\ClienteController;
->>>>>>> b55f2a9591018460ec050ff698ea877106e750dd
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +36,6 @@ Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');
 });
 
-<<<<<<< HEAD
 /*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
     
@@ -47,7 +43,6 @@ Route::controller(PruebaController::class)->group(function(){
 */
 
 Route::resource('/crear', CrearSitioController::class);
-=======
 
 Route::resource('/login', LoginController::class);
 Route::controller(LoginController::class)->group(function(){
@@ -65,4 +60,3 @@ Route::controller(HorarioController::class)->group(function(){
 });
 
 
->>>>>>> b55f2a9591018460ec050ff698ea877106e750dd

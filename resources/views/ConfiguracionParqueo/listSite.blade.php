@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/listSite.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ConfiguracionParqueo/listSite.css') }}">
 </head>
 
 @extends('welcome')
@@ -55,8 +55,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        @include('updateSite')
-                                        @include('deleteSite')
+                                        @include('ConfiguracionParqueo.updateSite')
+                                        @include('ConfiguracionParqueo.deleteSite')
                                     @endforeach
                                 </tbody>
                             </table>

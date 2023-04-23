@@ -10,7 +10,7 @@ class ParkingSpaceController extends Controller
     public function index()
     {
         $listSites = ParkingSpace::all();
-        return view('listSite', compact('listSites'));
+        return view('ConfiguracionParqueo.listSite', compact('listSites'));
     }
 
     public function update(Request $request, $id)

@@ -50,36 +50,45 @@
                                                         class="fa-solid fa-pen-to-square icon--white"></i></a>
                                             </div>
 
-                                            <form class="d-inline-block offset-sm-1"
-                                                action="{{ route('eliminarhorario', $item->id) }}" method="POST">
-                                                @csrf
-                                                @method('delete')
+                                            <div class="d-inline-block offset-sm-1">
                                                 <button type="button" class="bicon icon--red" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal">
+                                                    data-bs-target="#exampleModal-{{ $item->id }}">
                                                     <i class="fa-solid fa-trash-can icon--white"></i>
                                                 </button>
+                                            </div>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal"
-                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">¡Atención!</h1>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">Esta seguro de eliminar el horario?</div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-primary-pk"
-                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                <button type="submit" class="btn btn-danger-dg" style="">Eliminar</button>
-                                                            </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal-{{ $item->id }}"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Atención!
+                                                            </h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">Esta seguro de eliminar el horario?</div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary-pk"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            
+
+                                                            <form action="{{ route('eliminarhorario', $item->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-danger-dg"
+                                                                style="">Eliminar</button>
+                                                            </form>
+
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                            </form>
+
 
                                         </td>
                                     </tr>

@@ -53,13 +53,13 @@
               <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
+                    <a class="nav-link active" aria-current="page" href="/VerParqueo">  
                       <i class="fa-solid fa-house pe-2"></i>
                       Inicio
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('vistaRegister') }}">
                       <span data-feather="file"></span>
                       <i class="fa-solid fa-users pe-2"></i>
                       
@@ -81,6 +81,15 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="{{ route('lista') }}">
+                      <span data-feather="bar-chart-2"></span>
+                      <i class="fa-solid fa-clock pe-2"></i>
+                      Horario
+                      <i></i>
+                        
+                    </a>
+                  </li>
+                  {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>
                       <i class="fa-solid fa-sliders pe-2"></i>
@@ -88,7 +97,7 @@
                       <i></i>
                         
                     </a>
-                  </li>
+                  </li> --}}
                   
                 </ul>
               </div>

@@ -27,20 +27,25 @@ Route::get('/inicio', function () {
 })->name('Cliente.ClienteForm');
 
 Route::get('/', function () {
-    return view('layout.welcome');
+    return view('welcome');
 });
 
 
+//Rutas vilma
+
 Route::post('/formulario',[ClienteController::class,'store'])->name('Cliente.guardar');
-Route::get('/lista',[ClienteController::class,'index'])->name('Cliente.lista');
+Route::get('/listacliente',[ClienteController::class,'index'])->name('Cliente.listacliente');
 Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.verform');
 Route::delete('/elimardato',[ClienteController::class,'destroy'])->name('Cliente.eliminar');
 Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Cliente.editardato');
 
-Route::controller(PruebaController::class)->group(function(){
-    Route::get('/vistaejemplo', 'index');
-});
 
+
+
+
+
+
+//Rutas andrea
 
 Route::resource('/sites', ParkingSpaceController::class);
 /*Route::controller(CrearSitioController::class)->group(function(){
@@ -48,8 +53,18 @@ Route::resource('/sites', ParkingSpaceController::class);
 
 });
 */
-
 Route::resource('/crear', CrearSitioController::class);
+
+
+
+
+
+
+
+//Rutas luis
+Route::controller(PruebaController::class)->group(function(){
+    Route::get('/vistaejemplo', 'index');
+});
 
 Route::resource('/login', LoginController::class);
 Route::controller(LoginController::class)->group(function(){
@@ -57,8 +72,6 @@ Route::controller(LoginController::class)->group(function(){
 });
 
 Route::resource('horario', HorarioController::class);
-/* Route::get('lista', [HorarioController::class, 'lista'])->name('lista');
-Route::delete('eliminarhorario\{id}', [HorarioController::class, 'destroy'])->name('eliminarhorario'); */
 Route::controller(HorarioController::class)->group(function(){
     Route::get('lista', 'lista')->name('lista');
     Route::delete('eliminarhorario/{id}', 'destroy')->name('eliminarhorario');
@@ -69,11 +82,25 @@ Route::controller(HorarioController::class)->group(function(){
 
 
 
+
+
+
+
+
+//rutas yohana
 Route::controller(VerParqueoController::class)->group(function(){
-    Route::get('/VerParqueo', 'index');
+    Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
 
-//rutasked
+
+
+
+
+
+
+
+
+//rutas kevin
 Route::get('/crear-cuenta', [RegisterController::class,'index'])->name('crearUser');
 Route::post('/crear-cuenta', [RegisterController::class,'store'])->name('crearUser');
 

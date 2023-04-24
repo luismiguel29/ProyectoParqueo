@@ -16,7 +16,7 @@ body {
             position: relative;
         }
 
-.form-container::before {
+.form-container::before{
             content: "";
             position: absolute;
             top: 0;
@@ -92,7 +92,7 @@ i.fas.fa-user {
 
 .btn-secondary {
     background-color: #FFFFFF;
-    border: 1px solid #6c757d;
+    border: 1px solid #7b7878;
     color: #575757;
 }
 
@@ -125,4 +125,9 @@ i.fas.fa-user {
     font-size: 0.8rem !important;
 }
 
-
+.label[for=first_name], label[for=last_name], label[for=username],label[for=email], label[for=phone],
+label[for=password], label[for=confirm-password],label[for="user-type"]{
+    font-weight: bold;
+    color: #555;
+    font-size: 16px;
+}

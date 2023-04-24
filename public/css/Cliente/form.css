@@ -1,0 +1,34 @@
+.border-top-pk{
+    border-top: 4px solid  #0256CE !important;
+  }
+  
+  .btn-primary-pk{
+     
+    color: #fff !important;
+    background-color: #0256CE !important;
+    border-color: #0256CE !important;
+  
+  }
+  
+  .btn-primary-pk:hover{
+  
+  color: #fff !important;
+  background-color: #0256CE !important;
+  border-color: #0256CE !important;
+  filter: grayscale(0.5) !important;
+  }
+  
+  .btn-danger-dg{
+  
+  color: #fff !important;
+  background-color: #FF3346 !important;
+  border-color: #FF3346 !important;
+  }
+  
+  .btn-danger-dg:hover{
+  
+  color: #fff !important;
+  background-color: #FF3346 !important;
+  border-color: #FF3346 !important;
+  filter: grayscale(0.5) !important;
+  }

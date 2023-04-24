@@ -10,6 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ asset('css/luiscss/login.css') }}">
         <link rel="stylesheet" href="{{ asset('css/luiscss/horario.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/luiscss/boton.css') }}">
     </head>
 
     <body>
@@ -73,12 +74,12 @@
                             </div>
                             <div class="btn-group">
                                 <div class="col d-grid p-3">
-                                    <button type="submit" class="btn btn-primary"
-                                        style="background: #0009B5">Guardar</button>
+                                    <button type="submit" class="btn btn-primary-pk"
+                                        >Guardar</button>
                                 </div>
                                 <div class="col d-grid p-3">
-                                    <a href="{{ route('lista') }}" class="btn btn-danger"
-                                        style="background: #FF3346">Cancelar</a>
+                                    <a href="{{ route('lista') }}" class="btn btn-danger-dg"
+                                        >Cancelar</a>
                                 </div>
                             </div>
                         </div>

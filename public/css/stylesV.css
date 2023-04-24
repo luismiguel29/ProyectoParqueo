@@ -6,7 +6,7 @@
 
   /* Cambiar el color de fondo de las filas impares */
   .table tbody tr:nth-of-type(odd) {
-    background-color: #ffffff;
+    background-color: #F2F2F2;
   }
 
   /* Cambiar el color del texto y del fondo del encabezado de la tabla */
@@ -15,10 +15,13 @@
     color: rgb(0, 0, 0);
   }
 
-  /* Cambiar el color del texto del botón de acción */
+  /* Cambiar el color del texto del botón de accion */
   .btn i {
-    margin-right: 5px;
+    margin-right: 1px;
+
+
   }
+
 
   /* Cambiar los colores de los botones de acción al pasar el mouse sobre ellos */
   .btn-primary:hover, .btn-primary:focus {
@@ -82,7 +85,7 @@
 /* iconos */
 i.fas.fa-user {
     color: 222222;
-    margin-right: 10px;
+    margin: auto;
 }
 
 /* Estilos personalizados */
@@ -90,5 +93,7 @@ i.fas.fa-user {
     border-width: 1px !important;
 }
 
-
+.btn-custom-width {
+    width: 48%; /* Ajusta este valor según la cantidad de espacio que desees entre los botones */
+}
 

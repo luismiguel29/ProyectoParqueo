@@ -17,7 +17,7 @@
 }
  body {
 	 font-size: 0.875rem;
-    
+
 }
  .feather {
 	 width: 16px;
@@ -106,4 +106,54 @@
 }
 .menu-header .nav-link.active {
     color: #f5f5f5;
+}
+
+
+.btn-secondary {
+    background-color: #ffffff;
+    border: 1px solid #797b78;
+    color: #575757;
+    margin-left: 10px;
+}
+
+.btn-group-sm>.btn, .btn-sm {
+    --bs-btn-padding-y: 0.01rem;
+    --bs-btn-padding-x: 0.2rem;
+    --bs-btn-font-size: 0.999rem;;
+    --bs-btn-border-radius: var(--bs-border-radius-sm);
+}
+
+.btn-custom-width {
+    width: 100%; /* Ajusta este valor según la cantidad de espacio que desees entre los botones */
+}
+
+.btn-primary-pk{
+
+    color: #fff;
+    background-color: #0256CE;
+    border-color: #0256CE;
+
+}
+
+.btn-primary-pk:hover{
+
+color: #fff;
+background-color: #0256CE;
+border-color: #0256CE;
+filter: grayscale(0.5);
+}
+
+.btn-danger-dg{
+
+color: #fff;
+background-color: #FF3346;
+border-color: #FF3346;
+}
+
+.btn-danger-dg:hover{
+
+color: #fff;
+background-color: #FF3346;
+border-color: #FF3346;
+filter: grayscale(0.5);
 }

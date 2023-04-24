@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class VistaRegisterController extends Controller
 {
     public function index() {
-        $usuarios = User::select('id', 'tipo', 'nombre', 'apellido', 'telefono', 'correo')->get();
+        $usuarios = user::select('id', 'tipo', 'nombre', 'apellido', 'telefono', 'correo')->get();
 
         return view('registro.visualizarUsr',['usuarios' => $usuarios]);
 
@@ -54,7 +54,8 @@ class VistaRegisterController extends Controller
     // Reiniciar el ID de la tabla de usuarios
     //$this->resetId();
 
-    return redirect()->route('vistaRegister')->with('success', 'Usuario eliminado correctamente');
+    return redirect()->route('vistaRegister');
+    // ->with('success', 'Usuario eliminado correctamente')
     }
 
     // public function resetId() {

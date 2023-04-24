@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        User::create([
+        user::create([
             'tipo'=>$request->user_type,
             'nombre'=>Str::slug($request->nombre),//strMinusculas,
             'apellido'=>$request->apellido,
@@ -40,7 +40,7 @@ class RegisterController extends Controller
             // 'contraseña'=>Hash::make($request->password)//aumentarBd
         ]);
 
-        return redirect()->route('crearUser')->with('success', 'Usuario guardado correctamente');
+        return redirect()->route('crearUser')->with('success', 'Usuario guardado correctamente')->with('showModal', true);
 
     }
 }

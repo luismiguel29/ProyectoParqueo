@@ -16,7 +16,8 @@ class ParkingSpaceController extends Controller
     public function update(Request $request, $id)
     {
         $site = ParkingSpace::findOrFail($id);
-        $site->numero_espacio = $request->input('nEspacio');
+        $site->sitio = $request->input('nSitio');
+        $site->descripcion = $request->input('nDescripcion');
         $site->save();
         return redirect()->route('sites.index');
     }

@@ -12,29 +12,13 @@
     --color-blue: #0256CE;
     --color-white: #FFFFFF;
 }
-button{
+
+a{
+    text-decoration: none;
+}
+
+.parkingSite button{
     border: none;
-}
-
-.title{
-    display: flex;
-    align-items: center;
-    /*align-content: center;*/
-    margin-bottom: 15px;
-}
-
-.title div{
-    object-fit: contain;
-    margin-right: 10px;
-}
-
-.title span{
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 20px;
-    text-align: center;
-    color: var(--color-dark);
 }
 
 .imgAction{
@@ -66,5 +50,5 @@ button{
 
 .parkingSite .border-top-pk{
     border-top: 4px solid  #0256CE;
-    padding: 40px;
+    padding: 30px;
 }

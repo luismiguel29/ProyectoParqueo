@@ -11,17 +11,18 @@
 @section('content')
     <section>
         <div class="container parkingSite">
-            <!--
-            <div class="title">
-                <div class="bicon icon--dark">
-                    <i class="fa-solid fa-p icon--white"></i>
+            <div class="row">
+                <div class="col pb-3">
+                    <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                    <span class="h3">Lista de sitios</span>
                 </div>
-                <span>Lista de sitios</span>
-            </div>
-            -->
-            <div class="container pb-3">
-                <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                <span class="h3 ">Lista de sitios</span>
+                
+                <div class="col text-end">
+                    <a href="\crear" class="btn btn-primary">
+                        <i class="fa-sharp fa-solid fa-plus"></i>
+                        <span>Agregar</span>
+                    </a>
+                </div>
             </div>
             
             <div class="card card-outline  border-top-pk   shadow">

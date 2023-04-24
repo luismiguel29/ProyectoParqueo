@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConfiguracionParqueo\CrearSitio;
 use Illuminate\Http\Request;
+
 
 class VerParqueoController extends Controller
 {
@@ -13,7 +15,9 @@ class VerParqueoController extends Controller
      */
     public function index()
     {
-        return view('VerParqueo');
+        $datos = CrearSitio::all();
+        return view('/ConfiguracionParqueo/VerParqueo', compact('datos')); 
+
     }
 
     /**

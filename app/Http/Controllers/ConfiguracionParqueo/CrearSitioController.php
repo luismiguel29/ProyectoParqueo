@@ -40,9 +40,10 @@ class CrearSitioController extends Controller
     {
         $crear = new CrearSitio;
       
-        $crear->numero_espacio=$request->input('nroespacio');
-       // $crear->estado=$request->input('zona');
-        $crear->observacion=$request->input('observacion');
+        $crear->sitio=$request->input('nroespacio');
+       // $crear->zona=$request->input('zona');
+        $crear->descripcion=$request->input('observacion');
+        // $crear->estado=$request->input('estado');
         $crear->save();
         return back();
       

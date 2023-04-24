@@ -1,0 +1,98 @@
+/* Agregar márgenes a la tabla y centrarla */
+.table {
+    margin: auto !important;
+    margin-top: 20px !important;
+  }
+
+  /* Cambiar el color de fondo de las filas impares */
+  .table tbody tr:nth-of-type(odd) {
+    background-color: #F2F2F2 !important;
+  }
+
+  /* Cambiar el color del texto y del fondo del encabezado de la tabla */
+  .table thead th {
+    background-color: white !important;
+    color: rgb(0, 0, 0) !important;
+  }
+
+  /* Cambiar el color del texto del botón de accion */
+  .btn i {
+    margin-right: 1px !important;
+
+
+  }
+
+
+  /* Cambiar los colores de los botones de acción al pasar el mouse sobre ellos */
+  .btn-primary:hover, .btn-primary:focus {
+    background-color: #0069d9 !important;
+    border-color: #0062cc !important;
+  }
+
+  .btn-danger:hover, .btn-danger:focus {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+  }
+
+  /* Agregar un efecto de sombra a los botones de acción */
+  .btn i {
+    transition: all 0.2s ease-in-out !important;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .btn-primary:hover i, .btn-primary:focus i {
+    text-shadow: none !important;
+  }
+
+  .btn-primary{
+    color: #fff !important;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    margin-right: 30px !important;
+  }
+
+  .btn-danger:hover i, .btn-danger:focus i {
+    text-shadow: none !important;
+  }
+
+  .blue-line {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 5px !important;
+    background-color: #0256CE !important;
+}
+  .table-responsive {
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    padding: 30px !important;
+    position: relative !important;
+}
+
+ .table-responsive::before {
+    content: "";
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 5px !important;
+    background-color: #0256CE !important;
+}
+
+
+/* iconos */
+i.fas.fa-user {
+    color: 222222 !important;
+    margin-right: 10px !important;
+}
+
+/* Estilos personalizados */
+.thin-border {
+    border-width: 1px !important;
+}
+
+.btn-custom-width {
+    width: 48%; /* Ajusta este valor según la cantidad de espacio que desees entre los botones */
+}

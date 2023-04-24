@@ -12,7 +12,6 @@
         <link  rel="stylesheet" href="{{asset('css/template.css')}}">
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-       
     </head>
     <body>
     
@@ -26,23 +25,26 @@
           </button>
           <div class="navbar-nav">
             <div class="menu-header">
+              <div class="container">
                 <ul class="nav flex-row">
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">  
-                      Notificación
+                      <i class="fa-solid fa-bell"></i>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">  
-                      Usario
+                      <i class="fa-solid fa-user"></i>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
-                      Cerrar sesión
+                    <a class="nav-link active" aria-current="page" href="#"> 
+                      <i class="fa-solid fa-power-off"></i> 
                     </a>
                   </li>
                 </ul>
+            </div>
+
           </div>
         </header>
         
@@ -53,18 +55,21 @@
                 <ul class="nav flex-column">
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">  
+                      <i class="fa-solid fa-house pe-2"></i>
                       Inicio
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="file"></span>
+                      <i class="fa-solid fa-users pe-2"></i>
                       Usuarios
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('Cliente.lista')}}">
                       <span data-feather="shopping-cart"></span>
+                      <i class="fa-solid fa-user pe-2"></i>
                       Cliente
 
                     </a>
@@ -72,12 +77,14 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="users"></span>
+                      <i class="fa-solid fa-square-parking pe-2"></i>
                       Parqueo
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>
+                      <i class="fa-solid fa-sliders pe-2"></i>
                       Configuración
                     </a>
                   </li>

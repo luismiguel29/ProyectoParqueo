@@ -27,7 +27,7 @@ Route::get('/inicio', function () {
 })->name('Cliente.ClienteForm');
 
 Route::get('/', function () {
-    return view('layout.welcome');
+    return view('welcome');
 });
 
 
@@ -89,7 +89,7 @@ Route::controller(HorarioController::class)->group(function(){
 
 //rutas yohana
 Route::controller(VerParqueoController::class)->group(function(){
-    Route::get('/VerParqueo', 'index');
+    Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
 
 

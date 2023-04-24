@@ -53,7 +53,7 @@
               <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/VerParqueo">  
+                    <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">  
                       <i class="fa-solid fa-house pe-2"></i>
                       Inicio
                     </a>

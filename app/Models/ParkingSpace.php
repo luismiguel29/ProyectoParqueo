@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ParkingSpace extends Model
 {
-    protected $table="espacios_parqueo";
+    protected $table="parqueo";
     protected $primaryKey="id";
     protected $fillable=[
-        'numero_espacio', 'estado'
+        'sitio', 'zona', 'descripcion', 'estado'
     ];
 
     public $timestamps = false;

@@ -12,12 +12,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">N° espacio</label>
-                        <input type="text" class="form-control" name="" value="{{$site->id}}">
+                        <label for="nSitio" class="form-label">N° espacio</label>
+                        <input type="text" class="form-control" name="nSitio" value="{{$site->sitio}}">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" name="nEspacio" value="{{$site->numero_espacio}}">
+                        <label for="nDescripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" name="nDescripcion" value="{{$site->descripcion}}">
                     </div>
                     <div class="mb-3">
                         <label for="disabledSelect" class="form-label">Zona</label>

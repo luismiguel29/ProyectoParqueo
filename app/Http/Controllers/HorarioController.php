@@ -45,6 +45,15 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'h_apertura' => 'required',
+            'h_cierre' => 'required|after:h_apertura',
+            'dia' => 'required',
+        ],[
+            'h_cierre.after' => 'Hora de cierre debe ser mayor que hora de inicio'
+        ]);
+
         $newhorario = new Horario();
         $newhorario->h_apertura = $request->input('h_apertura');
         $newhorario->h_cierre = $request->input('h_cierre');
@@ -90,7 +99,16 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $edithorario = Horario::where('id', $id)->get();
+
+        $request->validate([
+            'h_apertura' => 'required',
+            'h_cierre' => 'required|after:h_apertura',
+            'dia' => 'required',
+        ],[
+            'h_cierre.after' => 'Hora de cierre debe ser mayor que hora de inicio'
+        ]);
+
+        $edithorario = Horario::find($id);
         $edithorario->h_apertura = $request->input('h_apertura');
         $edithorario->h_cierre = $request->input('h_cierre');
         $edithorario->dia = $request->input('dia');
@@ -106,7 +124,7 @@ class HorarioController extends Controller
      */
     public function destroy($id)
     {
-        $delhorario = Horario::where('id', $id)->delete();
+        $delhorario = Horario::find($id)->delete();
         return redirect()->route('lista');
     }
 }

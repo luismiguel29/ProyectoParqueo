@@ -25,6 +25,7 @@ Route::get('/', function () {
     return view('layout.welcome');
 });
 
+
 Route::post('/formulario',[ClienteController::class,'store'])->name('Cliente.guardar');
 Route::get('/lista',[ClienteController::class,'index'])->name('Cliente.lista');
 Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.verform');
@@ -50,5 +51,9 @@ Route::controller(HorarioController::class)->group(function(){
     Route::put('editarhorario/{id}', 'update')->name('editarhorario');
     Route::get('horarioupdate/{id}', 'horarioupdate')->name('horarioupdate');
 });
+
+
+
+
 
 

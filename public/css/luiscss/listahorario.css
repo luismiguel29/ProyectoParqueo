@@ -1,0 +1,24 @@
+button{
+    border: none;
+}
+
+.bicon{
+    padding: 0px 3px;
+    border-radius: 2px;
+}
+
+.icon--blue{
+    background-color: #0009B5;
+}
+
+.icon--red{
+    background-color: #FF3346;
+}
+
+.icon--white{
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #F2F2F2;
+  }

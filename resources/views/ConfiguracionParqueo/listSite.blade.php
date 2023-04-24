@@ -42,7 +42,7 @@
                                     @foreach($listSites as $site)
                                         <tr>
                                             <td>{{$site->id}}</td>
-                                            <td>{{$site->numero_espacio}}</td>
+                                            <td>{{$site->sitio}}</td>
                                             <td>
                                                 <div class="imgAction">
                                                     <button type="submit" class="bicon icon--blue" data-bs-toggle="modal" data-bs-target="#modal-update-{{$site->id}}">

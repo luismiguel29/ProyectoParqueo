@@ -22,7 +22,7 @@ class RegisterController extends Controller
         //dd($request->get('username'));
         $this->validate($request,[
             'nombre' => 'required|alpha|max:30',
-            'apellido' => 'required|alpha|max:30',
+            'apellido' => 'required|regex:/^[\pL\s]+$/u|max:30',
             'usuario' => 'required|unique:usercustom|min:3|max:20',
             'correo' => 'required|unique:usercustom|email|max:60',
             'telefono' => 'required|numeric',

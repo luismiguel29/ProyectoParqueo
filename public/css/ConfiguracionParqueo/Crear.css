@@ -5,7 +5,7 @@ card{
 /* .btn-fluid{
     width: 100%;
 } */
-.btn-grl .btn-primary-pk{
+.btn-primary-pk{
    
         color: #fff;
         background-color: #0256CE;
@@ -13,7 +13,7 @@ card{
 
 }
 
-.btn-grl .btn-primary-pk:hover{
+.btn-primary-pk:hover{
    
     color: #fff;
     background-color: #0256CE;
@@ -21,14 +21,14 @@ card{
     filter: grayscale(0.5);
 }
 
-.btn-grl .btn-danger-dg{
+.btn-danger-dg{
    
     color: #fff;
     background-color: #FF3346;
     border-color: #FF3346;
 }
 
-.btn-grl .btn-danger-dg:hover{
+.btn-danger-dg:hover{
    
     color: #fff;
     background-color: #FF3346;

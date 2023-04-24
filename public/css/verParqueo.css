@@ -1,11 +1,17 @@
+.bg-primary-pk{
+    background-color: #0256CE;
+}
+.bg-danger-pk{
+    background-color: #FF3346;
+}
 
-.grl-site .row .car{
+.row .car{
     width: 70px;
     padding: 0;
 }
 
-.grl-site .row .car .car-content{
-    height: 100px;
+.row .car .car-content{
+    min-height: calc(100px);
 }
 body{
     background-color: black;

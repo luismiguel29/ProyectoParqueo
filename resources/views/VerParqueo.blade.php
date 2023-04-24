@@ -8,7 +8,9 @@
    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <link  rel="stylesheet" href="{{asset('css/verParqueo.css')}}">
+    
+    <link  rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link  rel="stylesheet" href="{{asset('css/verParqueo.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,6 +21,7 @@
 
     @extends('welcome')
     @section('content')
+    
         <div class="container py-3 grl-site">
             <div class="row">
                 <div class="col-lg-12">
@@ -32,92 +35,21 @@
                             <h5>Parqueo</h5>
                         </div>
                         <div class="container ">
-                            <div class="row gap-3">
-                                <div class="car">
-                                    <p class="h3 text-center">1</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span>libre</span>
-                                    </div>
-                                </div>
+                            <div class="row mx-1 gap-3">
                                 <div class="car">
                                     <p class="h3 text-center">2</p>
                                     <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span class="fs-6">libre</span>
+                                        class="car-content  rounded-2  bg-primary-pk text-light d-flex align-items-center justify-content-center flex-column">
+                                        <i class="fa-solid fa-square-caret-up fa-3x"></i>
+                                        
                                     </div>
+                                    <p class="fs-6 text-center">Libre</p>
                                 </div>
                                 <div class="car">
                                     <p class="h3 text-center">3</p>
                                     <div
-                                        class="car-content bg-primary text-light d-flex align-items-center justify-content-center flex-column">
-                                        <i class="fa-solid fa-car-side fa-2x"></i>
-                                    </div>
-                                    <p class="fs-6 text-center">Ocupado</p>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">1</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span>libre</span>
-                                    </div>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">2</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span class="fs-6">libre</span>
-                                    </div>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">3</p>
-                                    <div
-                                        class="car-content bg-primary text-light d-flex align-items-center justify-content-center flex-column">
-                                        <i class="fa-solid fa-car-side fa-2x"></i>
-                                    </div>
-                                    <p class="fs-6 text-center">Ocupado</p>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">1</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span>libre</span>
-                                    </div>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">2</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span class="fs-6">libre</span>
-                                    </div>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">3</p>
-                                    <div
-                                        class="car-content bg-primary text-light d-flex align-items-center justify-content-center flex-column">
-                                        <i class="fa-solid fa-car-side fa-2x"></i>
-                                    </div>
-                                    <p class="fs-6 text-center">Ocupado</p>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">1</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span>libre</span>
-                                    </div>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">2</p>
-                                    <div
-                                        class="car-content bg-success text-light d-flex align-items-center justify-content-center flex-column">
-                                        <span class="fs-6">libre</span>
-                                    </div>
-                                </div>
-                                <div class="car">
-                                    <p class="h3 text-center">3</p>
-                                    <div
-                                        class="car-content bg-primary text-light d-flex align-items-center justify-content-center flex-column">
-                                        <i class="fa-solid fa-car-side fa-2x"></i>
+                                        class="car-content  rounded-2  bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">
+                                        <i class="fa-solid fa-car fa-3x"></i>
                                     </div>
                                     <p class="fs-6 text-center">Ocupado</p>
                                 </div>

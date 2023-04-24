@@ -67,7 +67,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('Cliente.listacliente')}}">
                       <span data-feather="shopping-cart"></span>
                       <i class="fa-solid fa-user pe-2"></i>
                       Cliente

@@ -28,8 +28,8 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required|max:20' ,
             'apellido' => 'required |max:20',
-            'usuario' => 'required|unique:usercustom|max:20|alpha',
-            'ci' => 'required|unique:usercustom|digits_between:1,20|numeric',
+            'usuario' => 'required|max:20|alpha',
+            'ci' => 'required|digits_between:1,20|numeric',
             'telefono' => 'required|digits_between:1,20|numeric',
             'correo' => 'required|email|max:70',
             'contraseña' => 'required|max:20',
@@ -57,7 +57,7 @@ class ClienteController extends Controller
             $usercustom->color = $request->input('color');
             $usercustom->modelo = $request->input('modelo');
             $usercustom->save();
-            return redirect ()->route('Cliente.lista')->with('message', '¡Registro exitoso!');
+            return redirect ()->route('Cliente.listacliente')->with('message', '¡Registro exitoso!');
     }
 
    
@@ -103,7 +103,7 @@ class ClienteController extends Controller
             $usercustom->color = $request->input('color');
             $usercustom->modelo = $request->input('modelo');
             $usercustom->save();
-            return redirect ()->route('Cliente.lista')->with('message', '¡Edicion de datos exitoso!!!!!!!');
+            return redirect ()->route('Cliente.listacliente')->with('message', '¡Edicion de datos exitoso!');
         
     }
     public function edit($id)

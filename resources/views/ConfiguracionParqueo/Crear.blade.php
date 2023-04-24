@@ -66,10 +66,14 @@
                                 <button type="submit" href="" class="btn btn-primary-pk btn-block w-100">Registrar</button>
                             </div>
                             <div class="col-md-6">
+                                <!--
                                 <button type="reset" class="btn btn-danger-dg btn-block w-100">
                                     Cancelar
                                 </button>
-                               
+                                -->
+                                <a href="\sites" class="btn btn-danger-dg btn-block w-100">
+                                    <span>Cancelar</span>
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -72,12 +72,12 @@
                           <input name="contraseña" class="form-control" id="inputContraseña3" value="{{isset($user)? $user->contraseña: old('contraseña') }}">
                         </div>
                       </div>
-                      <div class="row mb-3">
+                      <!--<div class="row mb-3">
                         <label for="inputRepetirContraseña3" class="col-sm-4 col-form-label text-end">Repetir Contraseña</label>
                         <div class="col-sm-7">
                           <input name="repetirContraseña" class="form-control" id="inputRepetirContraseña3" value="{{isset($user)? $user->repetirContraseña: old('repetirContraseña') }}">
                         </div>
-                      </div>
+                      </div>-->
                       <div class="row mb-3">
                         <label for="inputTipoDeVehiculo3" class="col-sm-4 col-form-label text-end">Tipo de Vehiculo</label>
                         <div class="col-sm-7">

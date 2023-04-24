@@ -33,7 +33,7 @@ class ClienteController extends Controller
             'telefono' => 'required|digits_between:1,20|numeric',
             'correo' => 'required|email|max:70',
             'contraseña' => 'required|max:20',
-            'repetirContraseña' => 'required|max:20',
+            /*'repetirContraseña' => 'required|max:20',*/
             'tipo_vehiculo' => 'required|max:50|alpha',
             'placa' => 'required|max:20|alpha_num',
             'marca' => 'required|max:20|alpha',
@@ -78,7 +78,7 @@ class ClienteController extends Controller
             'telefono' => 'required|digits_between:1,20|numeric',
             'correo' => 'required|email|max:70',
             'contraseña' => 'required|max:20',
-            'repetirContraseña' => 'required|max:20',
+            /*'repetirContraseña' => 'required|max:20',*/
             'tipo_vehiculo' => 'required|max:50|alpha',
             'placa' => 'required|max:20|alpha_num',
             'marca' => 'required|max:20|alpha',

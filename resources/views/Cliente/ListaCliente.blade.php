@@ -1,3 +1,5 @@
+@extends('welcome')
+@section ('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{asset('css/Cliente/listacliente.css')}}">
   <link rel="stylesheet" href="{{asset('css/Cliente/modalbotones.css')}}">
-  <title>Document</title>
+  <title>TIS</title>
 </head>
 <body>
-  @extends('welcome')
-  @section ('content')
+ 
   <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="text mb-0"><i class="fas fa-user"></i> Gestión de Usuario Administrador</h4>
@@ -111,6 +112,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
             integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
         </script>
-@endsection
+
 </body>
 </html>
+@endsection

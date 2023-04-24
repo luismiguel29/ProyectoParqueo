@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+@extends('welcome')
+@section ('content')<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,11 +9,10 @@
   <link rel="stylesheet" href="{{asset('css/Cliente/form.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Document</title>
+  <title>TIS</title>
 </head>
 <body>
-  @extends('welcome')
-  @section ('content')
+  
   <div class="container py-3">
     <div class="d-flex justify-content-center">
         <div class="col-lg-6">
@@ -117,31 +118,24 @@
                           <button type="submit" href="" class="btn btn-primary-pk btn-block w-100" >Registrar</button>
                       </div>
                       <div class="col-md-6">
-                          <a type="reset" class="btn btn-danger-dg btn-block w-100"   href="{{route('Cliente.listacliente')}}">
-                              Cancelar
-                          </a>
-                         
-                      </div></div>
+                          <a type="reset" class="btn btn-danger-dg btn-block w-100"   href="{{route('Cliente.listacliente')}}">Cancelar</a>
+                      </div>
+                    </div>
   
                   </form>
                   @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-              @endif
-                    
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                 @endif        
             </div>
-  
         </div>
-  
     </div>
   </div>
-  
-  @endsection
 </body>
 </html>
-
+@endsection

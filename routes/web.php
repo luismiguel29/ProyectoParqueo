@@ -34,7 +34,7 @@ Route::get('/', function () {
 //Rutas vilma
 
 Route::post('/formulario',[ClienteController::class,'store'])->name('Cliente.guardar');
-Route::get('/lista',[ClienteController::class,'index'])->name('Cliente.lista');
+Route::get('/listacliente',[ClienteController::class,'index'])->name('Cliente.listacliente');
 Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.verform');
 Route::delete('/elimardato',[ClienteController::class,'destroy'])->name('Cliente.eliminar');
 Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Cliente.editardato');

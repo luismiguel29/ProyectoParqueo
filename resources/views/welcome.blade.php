@@ -74,7 +74,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/sites">
                       <span data-feather="users"></span>
                       <i class="fa-solid fa-square-parking pe-2"></i>
                       Parqueo

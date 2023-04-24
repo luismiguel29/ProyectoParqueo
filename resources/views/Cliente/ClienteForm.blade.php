@@ -10,7 +10,7 @@
   <title>Document</title>
 </head>
 <body>
-  @extends('layout.welcome')
+  @extends('welcome')
   @section ('content')
   <div class="container py-3">
     <div class="d-flex justify-content-center">

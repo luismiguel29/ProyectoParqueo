@@ -73,7 +73,7 @@ Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index');
 });
 
-//rutasked
+//rutaskevin
 Route::get('/crear-cuenta', [RegisterController::class,'index'])->name('crearUser');
 Route::post('/crear-cuenta', [RegisterController::class,'store'])->name('crearUser');
 

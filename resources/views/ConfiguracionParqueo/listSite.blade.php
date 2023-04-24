@@ -17,6 +17,19 @@
                     <span class="h3">Lista de sitios</span>
                 </div>
                 
+                <!--DROPDOWN INICIO-->
+                <div class="col text-end dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                            Zonas
+                    </button>
+                    <ul class="dropdown-menu" style="">
+                        <li><a class="dropdown-item" href="#">Zona A</a></li>
+                        <li><a class="dropdown-item" href="#">Zona B</a></li>
+                    </ul>
+                </div>
+                <!--DROPDOWN FIN-->
+                
                 <div class="col text-end">
                     <a href="\crear" class="btn btn-primary">
                         <i class="fa-sharp fa-solid fa-plus"></i>

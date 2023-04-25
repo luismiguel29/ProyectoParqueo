@@ -54,7 +54,7 @@ class LoginController extends Controller
           if ($usuario) {
             if ($password) {             
               $request->session()->regenerate();
-              return view('horario.horario', compact('verificar'));
+              return redirect()->route('verparqueo')->with(['verificar'=>$verificar]);
             } else {
               return back()->with('alerta', 'Contraseña incorrecta!')->withInput();
             }

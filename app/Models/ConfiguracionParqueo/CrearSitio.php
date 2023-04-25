@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CrearSitio extends Model
 {
     //use HasFactory;
-    protected $table= "espacios_parqueo";
+    protected $table= "parqueo";
     protected $primaryKey = "id";
-    protected $fillable =['numero_espacio', 'estado', 'observacion'];
+    protected $fillable =['sitio', 'zona', 'observacion', 'estado'];
     public $timestamps = false;
 }

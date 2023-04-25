@@ -11,11 +11,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Desea eliminar el sitio {{$site->numero_espacio}}?
+                    Desea eliminar el sitio {{$site->sitio}}?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
                 </div>
             </div>
         </form>

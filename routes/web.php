@@ -89,7 +89,7 @@ Route::controller(HorarioController::class)->group(function(){
 
 //rutas yohana
 Route::controller(VerParqueoController::class)->group(function(){
-    Route::get('/VerParqueo', 'index');
+    Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
 
 

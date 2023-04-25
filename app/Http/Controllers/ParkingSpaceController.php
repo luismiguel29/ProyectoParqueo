@@ -10,13 +10,16 @@ class ParkingSpaceController extends Controller
     public function index()
     {
         $listSites = ParkingSpace::all();
-        return view('ConfiguracionParqueo.listSite', compact('listSites'));
+        $datosA = ParkingSpace::where('zona', 'A')->get();
+        $datosB = ParkingSpace::where('zona', 'B')->get();
+        return view('ConfiguracionParqueo.listSite', compact('listSites', 'datosA', 'datosB'));
     }
 
     public function update(Request $request, $id)
     {
         $site = ParkingSpace::findOrFail($id);
-        $site->numero_espacio = $request->input('nEspacio');
+        $site->sitio = $request->input('nSitio');
+        $site->descripcion = $request->input('nDescripcion');
         $site->save();
         return redirect()->route('sites.index');
     }

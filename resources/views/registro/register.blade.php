@@ -45,11 +45,11 @@
                             <div class="row mb-3">
                                 <label for="username" class="col-sm-4 col-form-label text-end">Nombre</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="first_name" name="nombre" placeholder="Ingrese su nombre"
-                                    value="{{ isset($usuario) ? $usuario->nombre : old('nombre') }}"">
+                                    <input type="text" name="nombre" class="form-control {{$errors->has('nombre')?'is-invalid':''}}"
+                                    id="first_name" value="{{isset($user)? $user->nombre: old('nombre') }}">
 
                                     @error('nombre')
-                                        <div class="alert alert-danger mt-2 thin-border small-alert" style="background-color: red; color: white; text-align: center;  font-size: 30px;">
+                                        <div class= class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -60,10 +60,11 @@
                             <div class="row mb-3">
                                 <label for="username" class="col-sm-4 col-form-label text-end">Apellido</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="last_name" name="apellido" placeholder="Ingrese su apellido"
-                                    value="{{ isset($usuario) ? $usuario->apellido : old('apellido') }}"">
+                                    <input type="text" name="apellido" class="form-control {{$errors->has('apellido')?'is-invalid':''}}"
+                                    id="last_name" value="{{isset($user)? $user->apellido: old('apellido') }}">
+
                                     @error('apellido')
-                                        <div class="alert alert-danger mt-2 thin-border small-alert" style="background-color: red; color: white; text-align: center;  font-size: 30px;">
+                                        <div class= class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -74,10 +75,11 @@
                             <div class="row mb-3">
                                 <label for="username" class="col-sm-4 col-form-label text-end">Usuario</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="username" name="usuario" placeholder="Ingrese su nombre de usuario"
-                                    value="{{ isset($usuario) ? $usuario->usuario : old('usuario') }}"">
+                                    <input type="text" name="usuario" class="form-control {{$errors->has('usuario')?'is-invalid':''}}"
+                                    id="username" value="{{isset($user)? $user->usuario: old('usuario') }}">
+
                                     @error('usuario')
-                                        <div class="alert alert-danger mt-2 thin-border small-alert" style="background-color: red; color: white; text-align: center;  font-size: 30px;">
+                                        <div class= class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -88,10 +90,11 @@
                             <div class="row mb-3">
                                 <label for="email" class="col-sm-4 col-form-label text-end">Correo electrónico</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo electrónico"
-                                    value="{{ isset($usuario) ? $usuario->correo : old('correo') }}"">
+                                    <input type="email" name="correo" class="form-control {{$errors->has('correo')?'is-invalid':''}}"
+                                    id="correo" value="{{isset($user)? $user->correo: old('correo') }}">
+
                                     @error('correo')
-                                        <div class="alert alert-danger mt-2 thin-border small-alert" style="background-color: red; color: white; text-align: center;  font-size: 30px;">
+                                        <div  class= class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <ul style="list-style: none; padding: 0;">
                                                     <p>{{$message}}</p>
@@ -104,10 +107,11 @@
                             <div class="row mb-3">
                                 <label for="phone" class="col-sm-4 col-form-label text-end">Teléfono</label>
                                 <div class="col-sm-8">
-                                    <input type="tel" class="form-control" id="phone" name="telefono" placeholder="Ingrese su número de teléfono"
-                                    value="{{ isset($usuario) ? $usuario->telefono : old('telefono') }}"">
+                                    <input type="phone" name="telefono" class="form-control {{$errors->has('telefono')?'is-invalid':''}}"
+                                    id="phone" value="{{isset($user)? $user->telefono: old('telefono') }}">
+
                                     @error('telefono')
-                                        <div class="alert alert-danger mt-2 thin-border small-alert" style="background-color: red; color: white; text-align: center;  font-size: 30px;">
+                                        <div class= class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -119,13 +123,15 @@
                                 <label for="password" class="col-sm-4 col-form-label text-end">Contraseña</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" {{ isset($usuario) ? 'disabled' : '' }}>
+                                        <input type="text" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}"
+                                        id="password" value="{{isset($user)? $user->password: old('password') }}">
                                         <div class="input-group-text">
+
                                             <i class="fas fa-eye" onclick="togglePasswordVisibility('password')"></i>
                                         </div>
                                     </div>
                                     @error('password')
-                                        <div class="alert alert-danger mt-2 thin-border small-alert" style="background-color: red; color: white; text-align: center;  font-size: 30px;">
+                                        <div class= class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>

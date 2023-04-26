@@ -41,16 +41,30 @@
                             <div class="form-outline mb-4">
                                 <input type="text" id="" name="usuario" class="form-control form-control-lg"
                                     placeholder="Usuario" />
+                                @error('usuario')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-outline mb-4 input-group">
                                 <input type="password" id="txtPassword" name="contraseña"
                                     class="form-control form-control-lg" placeholder="Contraseña" />
+                                    
                                 <span class="input-group-btn">
                                     <button id="show_password" class="btn btn-primary" type="button"
                                         onclick="mostrarPassword()">
                                         <span class="fa fa-eye-slash icon"></span> </button>
-                                </span>
+                                </span>                                
                             </div>
+                            <div>
+                                @error('contraseña')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            
 
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-login" type="submit">Ingresar</button>

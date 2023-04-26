@@ -40,10 +40,10 @@
                         <div class="card card-outline  border-top-pk   shadow">
                             <div class="row overflow-hidden">
                                 <div class="col p-3">
-                                    <label class="p-2" for="">Hora de inicio</label>
-                                    <input class="form-control" type="time" name="h_apertura" value="{{ old('h_apertura') }}">
+                                    <label for="validate" class="p-2" for="">Hora de inicio</label>
+                                    <input class="form-control" id="validate" type="time" name="h_apertura" value="{{ old('h_apertura') }}">
                                     @error('h_apertura')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="alert alert-danger ">{{ $message }}</div>
                                     @enderror
                                 </div>
 

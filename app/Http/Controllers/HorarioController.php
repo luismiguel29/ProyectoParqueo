@@ -51,7 +51,9 @@ class HorarioController extends Controller
             'h_cierre' => 'required|after:h_apertura',
             'dia' => 'required',
         ],[
-            'h_cierre.after' => 'Hora de cierre debe ser mayor que hora de inicio'
+            'h_apertura.required' => 'El campo hora de inicio es obligatorio',
+            'h_cierre.required' => 'El campo hora de cierre es obligatorio',
+            'h_cierre.after' => 'Hora de cierre debe ser mayor que hora de inicio',
         ]);
 
         $newhorario = new Horario();

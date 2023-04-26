@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 
 class ClienteController extends Controller
@@ -28,14 +29,14 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required|max:20' ,
             'apellido' => 'required |max:20',
-            'usuario' => 'required|max:20|alpha',
-            'ci' => 'required|digits_between:1,20|numeric',
+            'usuario' => 'required|unique:usercustom|max:20|alpha',
+            'ci' => 'required|unique:usercustom|digits_between:1,20|numeric',
             'telefono' => 'required|digits_between:1,20|numeric',
             'correo' => 'required|email|max:70',
             'contraseña' => 'required|max:20',
             /*'repetirContraseña' => 'required|max:20',*/
             'tipo_vehiculo' => 'required|max:50|alpha',
-            'placa' => 'required|max:20|alpha_num',
+            'placa' => 'required|unique:usercustom|max:20|alpha_num',
             'marca' => 'required|max:20|alpha',
             'color' => 'required',
             'modelo' => 'required|max:20|alpha_num',
@@ -50,7 +51,7 @@ class ClienteController extends Controller
             $usercustom->ci = $request->input('ci');
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
-            $usercustom->contraseña = $request->input('contraseña');
+            $usercustom->contraseña = Hash::make($request->input('contraseña'));
             $usercustom->tipo_vehiculo = $request->input('tipo_vehiculo');
             $usercustom->placa = $request->input('placa');
             $usercustom->marca = $request->input('marca');
@@ -73,14 +74,14 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required|max:20' ,
             'apellido' => 'required |max:20',
-            'usuario' => 'required|max:20|alpha',
-            'ci' => 'required|digits_between:1,20|numeric',
+            'usuario' => 'required|unique:usercustom|max:20|alpha',
+            'ci' => 'required|unique:usercustom|digits_between:1,20|numeric',
             'telefono' => 'required|digits_between:1,20|numeric',
             'correo' => 'required|email|max:70',
             'contraseña' => 'required|max:20',
             /*'repetirContraseña' => 'required|max:20',*/
             'tipo_vehiculo' => 'required|max:50|alpha',
-            'placa' => 'required|max:20|alpha_num',
+            'placa' => 'required|unique:usercustom|max:20|alpha_num',
             'marca' => 'required|max:20|alpha',
             'color' => 'required',
             'modelo' => 'required|max:20|alpha_num',
@@ -96,7 +97,7 @@ class ClienteController extends Controller
             $usercustom->ci = $request->input('ci');
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
-            $usercustom->contraseña = $request->input('contraseña');
+            $usercustom->contraseña = Hash::make($request->input('contraseña'));
             $usercustom->tipo_vehiculo = $request->input('tipo_vehiculo');
             $usercustom->placa = $request->input('placa');
             $usercustom->marca = $request->input('marca');

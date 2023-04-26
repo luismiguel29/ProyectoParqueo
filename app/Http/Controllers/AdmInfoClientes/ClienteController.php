@@ -18,7 +18,10 @@ class ClienteController extends Controller
     public function index(Request $request)
     {
         $clientes = Cliente:: select('usercustom.id', 'usercustom.nombre',
-        'usercustom.apellido','usercustom.usuario', 'usercustom.ci','usercustom.telefono', 'usercustom.correo','usercustom.tipo_vehiculo','usercustom.placa','usercustom.marca','usercustom.color','usercustom.modelo') -> get();
+        'usercustom.apellido','usercustom.usuario', 'usercustom.ci','usercustom.telefono', 'usercustom.correo',
+        'usercustom.tipo_vehiculo','usercustom.placa','usercustom.marca','usercustom.color','usercustom.modelo') 
+        ->where('tipo', 'cliente')
+        -> get();
         return view('Cliente.ListaCliente', compact('clientes')); 
     }
 
@@ -26,7 +29,7 @@ class ClienteController extends Controller
     {
 
         $request->validate([
-            'nombre' => 'required|max:20' ,
+            'nombre' => 'required|max:20',
             'apellido' => 'required |max:20',
             'usuario' => 'required|max:20|alpha',
             'ci' => 'required|digits_between:1,20|numeric',
@@ -44,6 +47,7 @@ class ClienteController extends Controller
         ]);
 
             $usercustom = new Cliente();
+            $usercustom->tipo = 'cliente';
             $usercustom->nombre = $request->input('nombre');
             $usercustom->apellido = $request->input('apellido');
             $usercustom->usuario = $request->input('usuario');

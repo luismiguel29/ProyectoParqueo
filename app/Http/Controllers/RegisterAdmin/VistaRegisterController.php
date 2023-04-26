@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\DB;
 class VistaRegisterController extends Controller
 {
     public function index() {
-        $usuarios = user::select('id', 'tipo', 'nombre', 'apellido', 'telefono', 'correo')->get();
+        $usuarios = user::select('id', 'tipo', 'nombre', 'apellido', 'telefono', 'correo')
+        ->where('tipo', '<>' , 'cliente')
+        ->get();
 
         return view('registro.visualizarUsr',['usuarios' => $usuarios]);
 

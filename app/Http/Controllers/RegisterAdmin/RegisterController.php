@@ -21,11 +21,11 @@ class RegisterController extends Controller
     {
         //dd($request->get('username'));
         $this->validate($request,[
-            'nombre' => 'required|regex:/^[\pL\s]+$/u|max:30',
-            'apellido' => 'required|regex:/^[\pL\s]+$/u|max:30',
+            'nombre' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
+            'apellido' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
             'usuario' => 'required|unique:usercustom|min:3|max:20',
             'correo' => 'required|unique:usercustom|email|max:60',
-            'telefono' => 'required|numeric|max:8',
+            'telefono' => 'required|string|min:8|max:8',
             'password' => 'required|confirmed|min:6'
         ]);
 

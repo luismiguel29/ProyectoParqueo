@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class VistaRegisterController extends Controller
 {
     public function index() {
-        $usuarios = User::select('id', 'tipo', 'nombre', 'apellido', 'telefono', 'correo')
+        $usuarios = User::select('id', 'tipo', 'nombre','usuario', 'apellido', 'telefono', 'correo')
         ->where('tipo', '<>' , 'cliente')
         ->get();
 

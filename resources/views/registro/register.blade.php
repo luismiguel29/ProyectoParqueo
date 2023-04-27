@@ -46,7 +46,7 @@
                                 <label for="username" class="col-sm-4 col-form-label text-end">Nombre</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="nombre" class="form-control {{$errors->has('nombre')?'is-invalid':''}}"
-                                    id="first_name" value="{{isset($user)? $user->nombre: old('nombre') }}">
+                                    id="first_name" value="{{isset($usuario)? $usuario->nombre: old('nombre') }}">
 
                                     @error('nombre')
                                         <div class= class="invalid-feedback">
@@ -61,7 +61,7 @@
                                 <label for="username" class="col-sm-4 col-form-label text-end">Apellido</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="apellido" class="form-control {{$errors->has('apellido')?'is-invalid':''}}"
-                                    id="last_name" value="{{isset($user)? $user->apellido: old('apellido') }}">
+                                    id="last_name" value="{{isset($usuario)? $usuario->apellido: old('apellido') }}">
 
                                     @error('apellido')
                                         <div class= class="invalid-feedback">
@@ -76,7 +76,7 @@
                                 <label for="username" class="col-sm-4 col-form-label text-end">Usuario</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="usuario" class="form-control {{$errors->has('usuario')?'is-invalid':''}}"
-                                    id="username" value="{{isset($user)? $user->usuario: old('usuario') }}">
+                                    id="username" value="{{isset($usuario)? $usuario->usuario: old('usuario') }}">
 
                                     @error('usuario')
                                         <div class= class="invalid-feedback">
@@ -91,7 +91,7 @@
                                 <label for="email" class="col-sm-4 col-form-label text-end">Correo electrónico</label>
                                 <div class="col-sm-8">
                                     <input type="email" name="correo" class="form-control {{$errors->has('correo')?'is-invalid':''}}"
-                                    id="correo" value="{{isset($user)? $user->correo: old('correo') }}">
+                                    id="correo" value="{{isset($usuario)? $usuario->correo: old('correo') }}">
 
                                     @error('correo')
                                         <div  class= class="invalid-feedback">
@@ -108,7 +108,7 @@
                                 <label for="phone" class="col-sm-4 col-form-label text-end">Teléfono</label>
                                 <div class="col-sm-8">
                                     <input type="phone" name="telefono" class="form-control {{$errors->has('telefono')?'is-invalid':''}}"
-                                    id="phone" value="{{isset($user)? $user->telefono: old('telefono') }}">
+                                    id="phone" value="{{isset($usuario)? $usuario->telefono: old('telefono') }}">
 
                                     @error('telefono')
                                         <div class= class="invalid-feedback">
@@ -119,14 +119,13 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-3 divPassword" {{ isset($usuario) ? 'style=display:none' : '' }}>
                                 <label for="password" class="col-sm-4 col-form-label text-end">Contraseña</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <input type="text" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}"
                                         id="password" value="{{isset($user)? $user->password: old('password') }}">
                                         <div class="input-group-text">
-
                                             <i class="fas fa-eye" onclick="togglePasswordVisibility('password')"></i>
                                         </div>
                                     </div>
@@ -139,17 +138,19 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
+
+                            <div class="row mb-3 divPassword" {{ isset($usuario) ? 'style=display:none' : '' }}>
                                 <label for="confirm-password" class="col-sm-4 col-form-label text-end">Confirmar contraseña</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" {{ isset($usuario) ? 'disabled' : '' }}>
+                                        <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" {{ isset($usuario) ? 'disabled' : '' }} >
                                         <div class="input-group-text">
                                             <i class="fas fa-eye" onclick="togglePasswordVisibility('password_confirmation')"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
 
                             {{-- <div class="">
                                 <div class="col-sm-8 d-flex justify-content-between">

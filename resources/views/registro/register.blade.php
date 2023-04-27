@@ -33,15 +33,15 @@
                             @endif
                             <div class="row mb-3">
                                 <label for="user-type" class="col-sm-4 col-form-label text-end">Tipo de usuario</label>
-
                                 <div class="col-sm-8">
                                     <select class="form-select" id="user-type" name="user_type">
-                                        <option value="administrador">Administrador</option>
-                                        <option value="secretaria">Secretaria</option>
-                                        <option value="guardia">Guardia</option>
+                                        <option value="administrador" {{ (isset($usuario) && $usuario->tipo == 'administrador') ? 'selected' : '' }}>Administrador</option>
+                                        <option value="secretaria" {{ (isset($usuario) && $usuario->tipo == 'secretaria') ? 'selected' : '' }}>Secretaria</option>
+                                        <option value="guardia" {{ (isset($usuario) && $usuario->tipo == 'guardia') ? 'selected' : '' }}>Guardia</option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label for="username" class="col-sm-4 col-form-label text-end">Nombre</label>
                                 <div class="col-sm-8">
@@ -124,7 +124,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <input type="text" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}"
-                                        id="password" value="{{isset($user)? $user->password: old('password') }}">
+                                        id="password" value="{{isset($usuario)? $usuario->password: old('password') }}">
                                         <div class="input-group-text">
                                             <i class="fas fa-eye" onclick="togglePasswordVisibility('password')"></i>
                                         </div>

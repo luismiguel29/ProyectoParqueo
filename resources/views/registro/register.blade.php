@@ -143,7 +143,7 @@
                                 <label for="confirm-password" class="col-sm-4 col-form-label text-end">Confirmar contraseña</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirme su contraseña" {{ isset($usuario) ? 'disabled' : '' }}>
+                                        <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" {{ isset($usuario) ? 'disabled' : '' }}>
                                         <div class="input-group-text">
                                             <i class="fas fa-eye" onclick="togglePasswordVisibility('password_confirmation')"></i>
                                         </div>

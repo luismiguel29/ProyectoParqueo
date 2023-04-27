@@ -38,6 +38,13 @@ class CrearSitioController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'nroespacio' => ['required'],
+          ],[
+            'nroespacio.required', 'El campo Nro de espacio es obligatorio'
+          ]);
+
         $crear = new CrearSitio;
       
         $crear->sitio=$request->input('nroespacio');
@@ -45,7 +52,7 @@ class CrearSitioController extends Controller
         $crear->descripcion=$request->input('observacion');
         // $crear->estado=$request->input('estado');
         $crear->save();
-        return back();
+        return redirect()->route('sites.index')->with('success', '¡Registro exitoso!');
       
     }
 

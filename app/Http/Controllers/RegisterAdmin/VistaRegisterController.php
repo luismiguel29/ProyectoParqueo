@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class VistaRegisterController extends Controller
 {
     public function index() {
-        $usuarios = user::select('id', 'tipo', 'nombre', 'apellido', 'telefono', 'correo')
+        $usuarios = User::select('id', 'tipo', 'nombre','usuario', 'apellido', 'telefono', 'correo')
         ->where('tipo', '<>' , 'cliente')
         ->get();
 
@@ -29,11 +29,11 @@ class VistaRegisterController extends Controller
 
     // Validar los datos
     $request->validate([
-        'nombre' => 'required|string|max:255',
-        'apellido' => 'required|string|max:255',
-        'usuario' => 'required|string|max:255',
+        'nombre' => 'required|string|min:2|max:30',
+        'apellido' => 'required|string|min:2|max:30',
+        'usuario' => 'required|string|min:3|max:20',
         'correo' => 'required|email',
-        'telefono' => 'required|string|max:255',
+        'telefono' => 'required|string|min:8|max:8',
         // Añadir más validaciones según sea necesario
     ]);
 

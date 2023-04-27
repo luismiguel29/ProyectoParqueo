@@ -13,6 +13,11 @@
 <body>
  
   <div class="container mt-5">
+    @if(session('success'))
+            <div class="alert alert-success">
+            {{ session('success') }}
+            </div>
+        @endif
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="text mb-0"><i class="fas fa-user"></i> Gestión de Usuario Cliente</h4>
         <a href="{{ route('Cliente.ClienteForm') }}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>

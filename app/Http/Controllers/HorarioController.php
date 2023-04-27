@@ -49,9 +49,11 @@ class HorarioController extends Controller
         $request->validate([
             'h_apertura' => 'required',
             'h_cierre' => 'required|after:h_apertura',
-            'dia' => 'required',
+            'dia' => 'required|unique:horario_atencion,dia',
         ],[
-            'h_cierre.after' => 'Hora de cierre debe ser mayor que hora de inicio'
+            'h_apertura.required' => 'El campo hora de inicio es obligatorio',
+            'h_cierre.required' => 'El campo hora de cierre es obligatorio',
+            'h_cierre.after' => 'Hora de cierre debe ser mayor que hora de inicio',
         ]);
 
         $newhorario = new Horario();
@@ -64,7 +66,7 @@ class HorarioController extends Controller
         
         /* return view('horario.listahorario', compact('horario')); */
 
-        return redirect()->route('lista');
+        return redirect()->route('lista')->with('success', '¡Registro exitoso!');
 
     }
 

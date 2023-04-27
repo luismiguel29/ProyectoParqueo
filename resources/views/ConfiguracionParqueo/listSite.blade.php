@@ -11,6 +11,11 @@
 @section('content')
     <section>
         <div class="container parkingSite">
+            @if(session('success'))
+                <div class="alert alert-success">
+                {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col pb-3">
                     <i class="fa-solid fa-car-side fa-2x pe-1"></i>

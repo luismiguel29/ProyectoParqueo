@@ -21,26 +21,26 @@ class RegisterController extends Controller
     {
         //dd($request->get('username'));
         $this->validate($request,[
-            'nombre' => 'required|regex:/^[\pL\s]+$/u|max:30',
-            'apellido' => 'required|regex:/^[\pL\s]+$/u|max:30',
+            'nombre' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
+            'apellido' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
             'usuario' => 'required|unique:usercustom|min:3|max:20',
             'correo' => 'required|unique:usercustom|email|max:60',
-            'telefono' => 'required|numeric',
+            'telefono' => 'required|string|min:8|max:8',
             'password' => 'required|confirmed|min:6'
         ]);
 
         user::create([
             'tipo'=>$request->user_type,
-            'nombre'=>Str::slug($request->nombre),//strMinusculas,
+            'nombre'=>($request->nombre),//strMinusculas,
             'apellido'=>$request->apellido,
-            'usuario'=>$request->usuario,
+            'usuario'=>Str::slug($request->usuario),
             'correo'=>$request->correo,
             'telefono'=>$request->telefono,
             'contraseña'=>$request->password
             // 'contraseña'=>Hash::make($request->password)//aumentarBd
         ]);
 
-        return redirect()->route('crearUser')->with('success', 'Usuario guardado correctamente')->with('showModal', true);
+        return redirect()->route('vistaRegister')->with('success', '¡Registro exitoso!');
 
     }
 }

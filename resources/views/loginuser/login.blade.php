@@ -32,25 +32,39 @@
                         <form action="{{ route('login.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @if (session('alerta'))
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>{{ session('alerta') }}</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('alerta') }}</strong>                                    
                                 </div>
                             @endif
                             <div class="form-outline mb-4">
-                                <input type="text" id="" name="usuario" class="form-control form-control-lg"
+                                <input type="text" id="" name="usuario" class="form-control form-control-lg {{$errors->has('usuario')?'is-invalid':''}}"
                                     placeholder="Usuario" />
+                                @error('usuario')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            <div class="form-outline mb-4 input-group">
-                                <input type="password" id="txtPassword" name="contraseña"
-                                    class="form-control form-control-lg" placeholder="Contraseña" />
-                                <span class="input-group-btn">
-                                    <button id="show_password" class="btn btn-primary" type="button"
-                                        onclick="mostrarPassword()">
-                                        <span class="fa fa-eye-slash icon"></span> </button>
-                                </span>
+                            <div class="row mb-4">
+                                <div class="form-outline input-group">
+                                    <input type="password" id="txtPassword" name="contraseña"
+                                        class="form-control form-control-lg {{$errors->has('contraseña')?'is-invalid':''}}" placeholder="Contraseña" />
+                                        
+                                    <span class="input-group-btn">
+                                        <button id="show_password" class="btn btn-primary" type="button"
+                                            onclick="mostrarPassword()">
+                                            <span class="fa fa-eye-slash icon"></span> </button>
+                                    </span>                                
+                                </div>
+                                @error('contraseña')
+                                    <div class="" style="color: #d9534f; font-size: 12px">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+                            
+                            
+                            
 
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-login" type="submit">Ingresar</button>

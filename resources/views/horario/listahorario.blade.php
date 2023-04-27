@@ -14,6 +14,11 @@
 
     <body>
         <div class="container py-3">
+            @if(session('success'))
+                <div class="alert alert-success">
+                {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="row">
                     <div class="col p-3">

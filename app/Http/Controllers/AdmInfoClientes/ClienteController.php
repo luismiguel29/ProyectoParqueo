@@ -30,18 +30,18 @@ class ClienteController extends Controller
     {
 
         $request->validate([
-            'nombre' => 'required|max:20',
-            'apellido' => 'required |max:20',
-            'usuario' => 'required|unique:usercustom|max:20|alpha',
+            'nombre' => 'required|max:20|regex:/^[A-Za-z\s]+$/',
+            'apellido' => 'required |max:20|regex:/^[A-Za-z\s]+$/',
+            'usuario' => 'required|unique:usercustom|max:20|alpha_num',
             'ci' => 'required|unique:usercustom|digits_between:1,20|numeric',
             'telefono' => 'required|digits_between:1,20|numeric',
-            'correo' => 'required|email|max:70',
+            'correo' => 'required|unique:usercustom|email|max:70',
             'contraseña' => 'required|max:20',
             /*'repetirContraseña' => 'required|max:20',*/
             'tipo_vehiculo' => 'required|max:50|alpha',
             'placa' => 'required|unique:usercustom|max:20|alpha_num',
             'marca' => 'required|max:20|alpha',
-            'color' => 'required',
+            'color' => 'required|alpha',
             'modelo' => 'required|max:20|alpha_num',
         ], [
             'nombreprod.regex' => 'El campo nombre solo puede tener letras',
@@ -76,16 +76,16 @@ class ClienteController extends Controller
     public function update (Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required|max:20' ,
-            'apellido' => 'required |max:20',
-            'usuario' => 'required|unique:usercustom|max:20|alpha',
-            'ci' => 'required|unique:usercustom|digits_between:1,20|numeric',
+            'nombre' => 'required|max:20|regex:/^[A-Za-z\s]+$/' ,
+            'apellido' => 'required |max:20|regex:/^[A-Za-z\s]+$/',
+            'usuario' => 'required|max:20|alpha_num',
+            'ci' => 'required|digits_between:1,20|numeric',
             'telefono' => 'required|digits_between:1,20|numeric',
             'correo' => 'required|email|max:70',
-            'contraseña' => 'required|max:20',
+            /*'contraseña' => 'required|max:255',*/
             /*'repetirContraseña' => 'required|max:20',*/
             'tipo_vehiculo' => 'required|max:50|alpha',
-            'placa' => 'required|unique:usercustom|max:20|alpha_num',
+            'placa' => 'required|max:20|alpha_num',
             'marca' => 'required|max:20|alpha',
             'color' => 'required',
             'modelo' => 'required|max:20|alpha_num',

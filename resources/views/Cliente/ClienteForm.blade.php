@@ -96,10 +96,13 @@
                           @enderror
                         </div>
                       </div>
+                      @if (!isset ($user ))
+                        
                       <div class="row mb-3">
                         <label for="inputContraseña3" class="col-sm-4 col-form-label text-end">Contraseña</label>
                         <div class="col-sm-7">
                           <input name="contraseña" class="form-control {{$errors->has('contraseña')?'is-invalid':''}}" id="inputContraseña3" value="{{isset($user)? $user->contraseña: old('contraseña') }}">
+                          
                           @error('contraseña')
                           <div class="invalid-feedback">
                               {{ $message }}
@@ -107,6 +110,7 @@
                           @enderror
                         </div>
                       </div>
+                      @endif
                       <!--<div class="row mb-3">
                         <label for="inputRepetirContraseña3" class="col-sm-4 col-form-label text-end">Repetir Contraseña</label>
                         <div class="col-sm-7">

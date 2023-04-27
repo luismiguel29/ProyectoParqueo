@@ -51,7 +51,7 @@
                                 <thead>
                                 <!--<thead class="text-center">-->
                                     <tr>
-                                        <th>N°</th>
+                                        <th>Zona</th>
                                         <th>N° espacio</th>
                                         <th>Ación</th>
                                     </tr>
@@ -60,7 +60,7 @@
                                 <tbody>
                                     @foreach($datosB as $site)
                                         <tr>
-                                            <td>{{$site->id}}</td>
+                                            <td>{{$site->zona}}</td>
                                             <td>{{$site->sitio}}</td>
                                             <td>
                                                 <div class="imgAction">

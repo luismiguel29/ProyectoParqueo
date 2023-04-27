@@ -32,6 +32,7 @@
                         <th>ID</th>
                         <th>Tipo de Usuario</th>
                         <th>Nombre</th>
+                        <th>Usuario</th>
                         <th>Apellido</th>
                         <th>Teléfono</th>
                         <th>Correo</th>
@@ -44,6 +45,7 @@
                             <td>{{ $usuario->id }}</td>
                             <td>{{ $usuario->tipo }}</td>
                             <td>{{ $usuario->nombre }}</td>
+                            <td>{{ $usuario->usuario }}</td>
                             <td>{{ $usuario->apellido }}</td>
                             <td>{{ $usuario->telefono }}</td>
                             <td>{{ $usuario->correo }}</td>

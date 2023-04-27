@@ -40,23 +40,23 @@
                         <div class="card card-outline  border-top-pk   shadow">
                             <div class="row overflow-hidden">
                                 <div class="col p-3">
-                                    <label class="p-2" for="">Hora de inicio</label>
-                                    <input class="form-control" type="time" name="h_apertura" value="{{ old('h_apertura') }}">
+                                    <label for="validate" class="p-2" for="">Hora de inicio</label>
+                                    <input class="form-control {{$errors->has('h_apertura')?'is-invalid':''}}" id="validate" type="time" name="h_apertura" value="{{ old('h_apertura') }}">
                                     @error('h_apertura')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="col p-3">
                                     <label class="p-2" for="">Hora de cierre</label>
-                                    <input class="form-control" type="time" name="h_cierre" value="{{ old('h_cierre') }}">
+                                    <input class="form-control {{$errors->has('h_cierre')?'is-invalid':''}}" type="time" name="h_cierre" value="{{ old('h_cierre') }}">
                                     @error('h_cierre')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col p-3">
                                     <label class="p-2" for="">Día</label>
-                                    <select class="form-select" id="" name="dia">
+                                    <select class="form-select {{$errors->has('dia')?'is-invalid':''}}" id="" name="dia">
                                         <option value="">Selecionar</option>
                                         <option value="Lunes">Lunes</option>
                                         <option value="Martes">Martes</option>
@@ -67,7 +67,7 @@
                                         <option value="Domingo">Domingo</option>
                                     </select>
                                     @error('dia')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -75,7 +75,7 @@
                             <div class="btn-group">
                                 <div class="col d-grid p-3">
                                     <button type="submit" class="btn btn-primary-pk"
-                                        >Guardar</button>
+                                        >Registrar</button>
                                 </div>
                                 <div class="col d-grid p-3">
                                     <a href="{{ route('lista') }}" class="btn btn-danger-dg"

@@ -55,7 +55,9 @@ Route::resource('/sites', ParkingSpaceController::class);
 });
 */
 Route::resource('/crear', CrearSitioController::class);
+Route::controller(CrearSitioController::class)->group(function(){
 
+});
 
 
 
@@ -69,6 +71,7 @@ Route::controller(PruebaController::class)->group(function(){
 
 Route::resource('/login', LoginController::class);
 Route::controller(LoginController::class)->group(function(){
+    Route::get('/login', 'index')->name('login');
     Route::get('/loginhorario', 'store');
 });
 

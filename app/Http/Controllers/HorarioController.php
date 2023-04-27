@@ -49,7 +49,7 @@ class HorarioController extends Controller
         $request->validate([
             'h_apertura' => 'required',
             'h_cierre' => 'required|after:h_apertura',
-            'dia' => 'required',
+            'dia' => 'required|unique:horario_atencion,dia',
         ],[
             'h_apertura.required' => 'El campo hora de inicio es obligatorio',
             'h_cierre.required' => 'El campo hora de cierre es obligatorio',

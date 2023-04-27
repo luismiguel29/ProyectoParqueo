@@ -27,7 +27,7 @@
                     <div container class="d-flex justify-content-between">
                         <div class="container pb-3">
                             <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                            <span class="h3 ">Ver Sitios Zona A</span>
+                            <span class="h3 ">Ver Sitios zona B</span>
                         </div>
                         <!--DROPDOWN INICIO-->
                         <div class="dropdown">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="container ">
                             <div class="row mx-1 gap-3">
-                                @foreach ($datosA as $dato)
+                                @foreach ($datosB as $dato)
                                     <div class="car">
                                         <p class="h3 text-center">{{ $dato->sitio}}</p>
                                         

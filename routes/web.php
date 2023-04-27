@@ -4,6 +4,7 @@ use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\VerParqueoController;
+use App\Http\Controllers\VerParqueoZonaBController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use Illuminate\Support\Facades\Route;
@@ -91,6 +92,11 @@ Route::controller(HorarioController::class)->group(function(){
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
+
+Route::controller(VerParqueoZonaBController::class)->group(function(){
+    Route::get('/VerParqueoZonaB', 'index')->name('verparqueozonab');
+});
+
 
 
 

@@ -135,12 +135,10 @@
                                         </div>
                                     </div>
                                     @error('password')
-                                        <div class= "invalid-feedback">
-                                            <ul style="list-style: none; padding: 0;">
-                                                <p>{{$message}}</p>
-                                            </ul>
-                                        </div>
-                                    @enderror
+                                    <div class="" style="color: #d9534f; font-size: 12px">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 </div>
                             </div>
 

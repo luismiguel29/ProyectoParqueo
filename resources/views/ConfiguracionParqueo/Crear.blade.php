@@ -52,7 +52,7 @@
                             <div class="col-md-6">
                                 <div class="form group">
                                     <label for="">Zona</label>
-                                    <select name="zona" id="" class="form-control">
+                                    <select name="zona" id="" class="form-select">
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                     </select>

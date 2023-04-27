@@ -32,10 +32,8 @@
                         <form action="{{ route('login.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @if (session('alerta'))
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>{{ session('alerta') }}</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('alerta') }}</strong>                                    
                                 </div>
                             @endif
                             <div class="form-outline mb-4">

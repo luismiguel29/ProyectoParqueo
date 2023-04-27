@@ -66,7 +66,7 @@ class HorarioController extends Controller
         
         /* return view('horario.listahorario', compact('horario')); */
 
-        return redirect()->route('lista');
+        return redirect()->route('lista')->with('success', '¡Registro exitoso!');
 
     }
 

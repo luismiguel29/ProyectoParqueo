@@ -40,7 +40,7 @@ class RegisterController extends Controller
             // 'contraseña'=>Hash::make($request->password)//aumentarBd
         ]);
 
-        return redirect()->route('crearUser')->with('success', 'Usuario guardado correctamente')->with('showModal', true);
+        return redirect()->route('vistaRegister')->with('success', '¡Registro exitoso!');
 
     }
 }

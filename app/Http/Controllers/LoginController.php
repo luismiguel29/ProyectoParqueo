@@ -60,7 +60,7 @@ class LoginController extends Controller
         return back()->with('alerta', 'Contraseña incorrecta!')->withInput();
       }
     } else {
-      return back()->with('alerta', 'Usuario no registrado!');
+      return redirect()->route('login')->with('alerta', 'Usuario no registrado!');
     }
   }
 

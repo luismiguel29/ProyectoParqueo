@@ -40,13 +40,19 @@
                             <div class="col-md-6">
                                 <div class="form group">
                                     <label for="">Nro espacio</label>
-                                    <input type="number" class="form-control" name="nroespacio" required >
+                                    <input type="number" class="form-control {{$errors->has('nroespacio')?'is-invalid':''}}" name="nroespacio">
+                                    @error('nroespacio')
+                                  <div class="invalid-feedback">
+                                         {{ $message }}
+                                  </div>
+                            @enderror
                                 </div>
+                                
                             </div>
                             <div class="col-md-6">
                                 <div class="form group">
                                     <label for="">Zona</label>
-                                    <select name="zona" id="" class="form-control" required>
+                                    <select name="zona" id="" class="form-control">
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                     </select>
@@ -58,7 +64,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="">Observaciones</label>
-                                <textarea name="observacion" required id="" cols="30" rows="5" class="form-control"></textarea>
+                                <textarea name="observacion" id="" cols="30" rows="5" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="row row-gap-3 pt-4 btn-grl">

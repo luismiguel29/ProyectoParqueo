@@ -62,7 +62,7 @@ class ClienteController extends Controller
             $usercustom->color = $request->input('color');
             $usercustom->modelo = $request->input('modelo');
             $usercustom->save();
-            return redirect ()->route('Cliente.listacliente')->with('message', '¡Registro exitoso!');
+            return redirect ()->route('Cliente.listacliente')->with('success', '¡Registro exitoso!');
     }
 
    

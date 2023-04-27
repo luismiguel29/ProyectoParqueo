@@ -26,9 +26,14 @@
                                 @method('PUT')
                             @endif
                             <!-- Muestra el mensaje de éxito si está presente en la sesión -->
-                            @if(session('success'))
+                            {{-- @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
+                                </div>
+                            @endif --}}
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('success') }}</strong>
                                 </div>
                             @endif
                             <div class="row mb-3">
@@ -49,7 +54,7 @@
                                     id="first_name" value="{{isset($usuario)? $usuario->nombre: old('nombre') }}">
 
                                     @error('nombre')
-                                        <div class= class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -64,7 +69,7 @@
                                     id="last_name" value="{{isset($usuario)? $usuario->apellido: old('apellido') }}">
 
                                     @error('apellido')
-                                        <div class= class="invalid-feedback">
+                                        <div class= "invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -79,7 +84,7 @@
                                     id="username" value="{{isset($usuario)? $usuario->usuario: old('usuario') }}">
 
                                     @error('usuario')
-                                        <div class= class="invalid-feedback">
+                                        <div class= "invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -94,7 +99,7 @@
                                     id="correo" value="{{isset($usuario)? $usuario->correo: old('correo') }}">
 
                                     @error('correo')
-                                        <div  class= class="invalid-feedback">
+                                        <div  class= "invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <ul style="list-style: none; padding: 0;">
                                                     <p>{{$message}}</p>
@@ -111,7 +116,7 @@
                                     id="phone" value="{{isset($usuario)? $usuario->telefono: old('telefono') }}">
 
                                     @error('telefono')
-                                        <div class= class="invalid-feedback">
+                                        <div class= "invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -130,7 +135,7 @@
                                         </div>
                                     </div>
                                     @error('password')
-                                        <div class= class="invalid-feedback">
+                                        <div class= "invalid-feedback">
                                             <ul style="list-style: none; padding: 0;">
                                                 <p>{{$message}}</p>
                                             </ul>
@@ -161,7 +166,7 @@
 
                             <div class="row row-gap-3 pt-4 ">
                                 <div class="col-md-6">
-                                    <button type="submit" href="" class="btn btn-primary-pk btn-block w-100"">Guardar</button>
+                                    <button type="submit" href="" class="btn btn-primary-pk btn-block w-100"">Registrar</button>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="{{ route('vistaRegister') }}" class="btn btn-danger-dg btn-block w-100">

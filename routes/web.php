@@ -9,6 +9,7 @@ use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ParkingSpaceController;
+use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 
@@ -51,9 +52,12 @@ Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Client
 Route::resource('/sites', ParkingSpaceController::class);
 /*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
-
 });
 */
+Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
+
+
+
 Route::resource('/crear', CrearSitioController::class);
 Route::controller(CrearSitioController::class)->group(function(){
 

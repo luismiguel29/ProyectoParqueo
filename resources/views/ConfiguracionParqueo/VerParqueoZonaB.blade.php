@@ -27,7 +27,7 @@
                     <div container class="d-flex justify-content-between">
                         <div class="container pb-3">
                             <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                            <span class="h3 ">Ver Sitios zona B</span>
+                            <span class="h3 ">Ver Sitios ZONA B</span>
                         </div>
                         <!--DROPDOWN INICIO-->
                         <div class="dropdown">

@@ -4,17 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/ConfiguracionParqueo/listSite.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    
-    
 </head>
 
 @extends('welcome')
@@ -24,7 +19,7 @@
             <div class="row">
                 <div class="col pb-3">
                     <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                    <span class="h3">Lista de sitios ZONA A</span>
+                    <span class="h3">Lista de sitios ZONA B</span>
                 </div>
                 
                 <!--DROPDOWN INICIO-->
@@ -38,7 +33,6 @@
                         <li><a class="dropdown-item" href="/siteszonab">Zona B</a></li>
                     </ul>
                 </div>
-
                 <!--DROPDOWN FIN-->
                 
                 <div class="col-2 text-end">
@@ -64,7 +58,7 @@
                                 </thead>
                                 
                                 <tbody>
-                                    @foreach($datosA as $site)
+                                    @foreach($datosB as $site)
                                         <tr>
                                             <td>{{$site->id}}</td>
                                             <td>{{$site->sitio}}</td>
@@ -93,5 +87,4 @@
         </div>
     </section>
 @endsection
-
 </html>

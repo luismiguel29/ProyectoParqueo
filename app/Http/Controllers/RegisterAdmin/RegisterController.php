@@ -25,15 +25,15 @@ class RegisterController extends Controller
             'apellido' => 'required|regex:/^[\pL\s]+$/u|max:30',
             'usuario' => 'required|unique:usercustom|min:3|max:20',
             'correo' => 'required|unique:usercustom|email|max:60',
-            'telefono' => 'required|numeric',
+            'telefono' => 'required|numeric|max:8',
             'password' => 'required|confirmed|min:6'
         ]);
 
         user::create([
             'tipo'=>$request->user_type,
-            'nombre'=>Str::slug($request->nombre),//strMinusculas,
+            'nombre'=>($request->nombre),//strMinusculas,
             'apellido'=>$request->apellido,
-            'usuario'=>$request->usuario,
+            'usuario'=>Str::slug($request->usuario),
             'correo'=>$request->correo,
             'telefono'=>$request->telefono,
             'contraseña'=>$request->password

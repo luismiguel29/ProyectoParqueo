@@ -117,7 +117,7 @@
                           <input name="repetirContraseña" class="form-control" id="inputRepetirContraseña3" value="{{isset($user)? $user->repetirContraseña: old('repetirContraseña') }}">
                         </div>
                       </div>-->
-                      <div class="row mb-3">
+                      <!--<div class="row mb-3">
                         <label for="inputTipoDeVehiculo3" class="col-sm-4 col-form-label text-end">Tipo de Vehiculo</label>
                         <div class="col-sm-7">
                         <select name="tipo_vehiculo" class="form-select {{$errors->has('tipo_vehiculo')?'is-invalid':''}}" aria-label="Default select example">
@@ -126,8 +126,8 @@
                                 <option value="motocicleta" {{(isset($user)&& $user->tipo_vehiculo =="motocicleta" )? 'selected':''}}>Motocicleta</option>
                               </select>
                         </div>
-                      </div>
-                      <div class="row mb-3">
+                      </div>-->
+                      <!--<div class="row mb-3">
                         <label for="inputNumeroDePlaca3" class="col-sm-4 col-form-label text-end">Numero de placa</label>
                         <div class="col-sm-7">
                           <input name="placa" class="form-control {{$errors->has('placa')?'is-invalid':''}}" id="inputNumeroDePlaca3" value="{{isset($user)? $user->placa: old('placa') }}">
@@ -137,8 +137,8 @@
                           </div>
                           @enderror
                         </div>
-                      </div>
-                      <div class="row mb-3">
+                      </div>-->
+                     <!-- <div class="row mb-3">
                         <label for="inputMarca3" class="col-sm-4 col-form-label text-end">Marca</label>
                         <div class="col-sm-7">
                           <input name="marca" class="form-control {{$errors->has('marca')?'is-invalid':''}}" id="inputMarca3" value="{{isset($user)? $user->marca: old('marca') }}">
@@ -148,8 +148,8 @@
                           </div>
                           @enderror
                         </div>
-                      </div>
-                      <div class="row mb-3">
+                      </div>-->
+                      <!--<div class="row mb-3">
                         <label for="inputColor3" class="col-sm-4 col-form-label text-end">Color</label>
                         <div class="col-sm-7">
                           <input name="color" class="form-control {{$errors->has('color')?'is-invalid':''}}" id="inputColor3" value="{{isset($user)? $user->color: old('color') }}">
@@ -159,8 +159,8 @@
                           </div>
                           @enderror
                         </div>
-                      </div>
-                    <div class="row mb-3">
+                      </div>-->
+                    <!--<div class="row mb-3">
                       <label for="inputModelo3" class="col-sm-4 col-form-label text-end">Modelo</label>
                       <div class="col-sm-7">
                         <input name="modelo" class="form-control {{$errors->has('modelo')?'is-invalid':''}}" id="inputModelo3" value="{{isset($user)? $user->modelo: old('modelo') }}">
@@ -170,7 +170,7 @@
                           </div>
                           @enderror
                       </div>
-                    </div>
+                    </div>-->
   
                     <div class="row row-gap-3 pt-4 ">
                       <div class="col-md-6">

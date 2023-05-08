@@ -21,7 +21,7 @@ class ClienteController extends Controller
         $clientes = Cliente:: select('usercustom.id', 'usercustom.nombre',
         'usercustom.apellido','usercustom.usuario', 'usercustom.ci','usercustom.telefono', 'usercustom.correo',
         'usercustom.tipo_vehiculo','usercustom.placa','usercustom.marca','usercustom.color','usercustom.modelo') 
-        ->where('tipo', 'cliente')
+        //->where('tipo', 'cliente')
         -> get();
         return view('Cliente.ListaCliente', compact('clientes')); 
     }
@@ -38,11 +38,11 @@ class ClienteController extends Controller
             'correo' => 'required|unique:usercustom|email|max:70',
             'contraseña' => 'required|max:20',
             /*'repetirContraseña' => 'required|max:20',*/
-            'tipo_vehiculo' => 'required|max:50|alpha',
-            'placa' => 'required|unique:usercustom|max:20|alpha_num',
-            'marca' => 'required|max:20|alpha',
-            'color' => 'required|alpha',
-            'modelo' => 'required|max:20|alpha_num',
+            //'tipo_vehiculo' => 'required|max:50|alpha',
+            //'placa' => 'required|unique:usercustom|max:20|alpha_num',
+            //'marca' => 'required|max:20|alpha',
+            //'color' => 'required|max:20|alpha',
+            //'modelo' => 'required|max:20|alpha_num',
         ], [
             'nombreprod.regex' => 'El campo nombre solo puede tener letras',
         ]);
@@ -56,11 +56,11 @@ class ClienteController extends Controller
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
             $usercustom->contraseña = Hash::make($request->input('contraseña'));
-            $usercustom->tipo_vehiculo = $request->input('tipo_vehiculo');
-            $usercustom->placa = $request->input('placa');
-            $usercustom->marca = $request->input('marca');
-            $usercustom->color = $request->input('color');
-            $usercustom->modelo = $request->input('modelo');
+            //$usercustom->tipo_vehiculo = $request->input('tipo_vehiculo');
+            //$usercustom->placa = $request->input('placa');
+            //$usercustom->marca = $request->input('marca');
+            //$usercustom->color = $request->input('color');
+            //$usercustom->modelo = $request->input('modelo');
             $usercustom->save();
             return redirect ()->route('Cliente.listacliente')->with('success', '¡Registro exitoso!');
     }
@@ -84,11 +84,11 @@ class ClienteController extends Controller
             'correo' => 'required|email|max:70',
             /*'contraseña' => 'required|max:255',*/
             /*'repetirContraseña' => 'required|max:20',*/
-            'tipo_vehiculo' => 'required|max:50|alpha',
-            'placa' => 'required|max:20|alpha_num',
-            'marca' => 'required|max:20|alpha',
-            'color' => 'required',
-            'modelo' => 'required|max:20|alpha_num',
+            //'tipo_vehiculo' => 'required|max:50|alpha',
+            //'placa' => 'required|max:20|alpha_num',
+            //'marca' => 'required|max:20|alpha',
+            //'color' => 'required|max:20|alpha',
+            //'modelo' => 'required|max:20|alpha_num',
         ], [
             'nombreprod.regex' => 'El campo nombre solo puede tener letras',
         ]);
@@ -102,11 +102,11 @@ class ClienteController extends Controller
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
             $usercustom->contraseña = Hash::make($request->input('contraseña'));
-            $usercustom->tipo_vehiculo = $request->input('tipo_vehiculo');
-            $usercustom->placa = $request->input('placa');
-            $usercustom->marca = $request->input('marca');
-            $usercustom->color = $request->input('color');
-            $usercustom->modelo = $request->input('modelo');
+            //$usercustom->tipo_vehiculo = $request->input('tipo_vehiculo');
+            //$usercustom->placa = $request->input('placa');
+            //$usercustom->marca = $request->input('marca');
+            //$usercustom->color = $request->input('color');
+            //$usercustom->modelo = $request->input('modelo');
             $usercustom->save();
             return redirect ()->route('Cliente.listacliente')->with('message', '¡Edicion de datos exitoso!');
         

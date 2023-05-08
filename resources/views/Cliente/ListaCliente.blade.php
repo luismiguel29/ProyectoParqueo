@@ -21,6 +21,30 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="text mb-0"><i class="fas fa-user"></i> Gestión de Usuario Cliente</h4>
         <a href="{{ route('Cliente.ClienteForm') }}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>
+        <button class="btn btn-primary btn-md" type="button" data-bs-toggle="modal" data-bs-target="#importar"><i class="fas fa-plus"></i> Importar</button>
+                <!-- Modal -->
+        <div class="modal fade" id="importar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Importar Cliente</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="{{route('Cliente.importar')}}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                  @csrf
+                  
+                  <input  name="importar" class="form-control" type="file">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary-pk" data-bs-dismiss="modal">Cancelar</button>
+                  <button  class="btn btn-danger-dg">Aceptar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
     </div>
         
           <div class="table-responsive" id="table-container">
@@ -35,8 +59,8 @@
                     <th>Cedula</th>
                     <th>Telefono</th>
                     <th>Correo</th>
-                    <th>Tipo de Vehiculo</th>
-                    <th>Placa</th>
+                    <!--<th>Tipo de Vehiculo</th>
+                    <th>Placa</th>-->
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -49,8 +73,8 @@
                       <td>{{$cliente->ci}}</td>
                       <td>{{$cliente->telefono}}</td>
                       <td>{{$cliente->correo}}</td>
-                      <td>{{$cliente->tipo_vehiculo}} </td>
-                      <td>{{$cliente->placa}}</td>
+                      <!--<td>{{$cliente->tipo_vehiculo}} </td>
+                      <td>{{$cliente->placa}}</td>-->
                           <td>
                             <div class="d-flex justify-content-evenly">
                               <a href="{{route('Cliente.verform', ['id'=>$cliente->id])}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>

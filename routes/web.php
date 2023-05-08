@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ParkingSpaceController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
+use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::get('/listacliente',[ClienteController::class,'index'])->name('Cliente.li
 Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.verform');
 Route::delete('/elimardato',[ClienteController::class,'destroy'])->name('Cliente.eliminar');
 Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Cliente.editardato');
-
+Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name('Cliente.importar');
 
 
 

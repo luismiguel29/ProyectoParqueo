@@ -4,10 +4,12 @@ use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\VerParqueoController;
+use App\Http\Controllers\VerParqueoZonaBController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ParkingSpaceController;
+use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
@@ -51,9 +53,12 @@ Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name(
 Route::resource('/sites', ParkingSpaceController::class);
 /*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
-
 });
 */
+Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
+
+
+
 Route::resource('/crear', CrearSitioController::class);
 Route::controller(CrearSitioController::class)->group(function(){
 
@@ -95,6 +100,11 @@ Route::controller(HorarioController::class)->group(function(){
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
+
+Route::controller(VerParqueoZonaBController::class)->group(function(){
+    Route::get('/VerParqueoZonaB', 'index')->name('verparqueozonab');
+});
+
 
 
 

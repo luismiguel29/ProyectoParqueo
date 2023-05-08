@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ConfiguracionParqueo\CrearSitio;
+use App\Models\ParkingSpace;
 use Illuminate\Http\Request;
 
-
-class VerParqueoController extends Controller
+class ParkingSpaceZonaBController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,9 @@ class VerParqueoController extends Controller
      */
     public function index()
     {
-        $datos = CrearSitio::all();
-        $datosA = CrearSitio::where('zona', 'A')->get();
-        $datosB = CrearSitio::where('zona', 'B')->get();
-        //return $datosA;
-        return view('/ConfiguracionParqueo/VerParqueo', compact('datosA')); 
-
+        $datosB = ParkingSpace::where('zona', 'B')->get();
+       
+        return view('ConfiguracionParqueo.listSiteZonaB', compact('datosB'));
     }
 
     /**

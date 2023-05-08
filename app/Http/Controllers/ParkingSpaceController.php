@@ -9,10 +9,11 @@ class ParkingSpaceController extends Controller
 {
     public function index()
     {
-        $listSites = ParkingSpace::all();
+       // $listSites = ParkingSpace::all();
         $datosA = ParkingSpace::where('zona', 'A')->get();
-        $datosB = ParkingSpace::where('zona', 'B')->get();
-        return view('ConfiguracionParqueo.listSite', compact('listSites', 'datosA', 'datosB'));
+        //$datosB = ParkingSpace::where('zona', 'B')->get();
+        //return view('ConfiguracionParqueo.listSite', compact('listSites', 'datosA', 'datosB'));
+        return view('ConfiguracionParqueo.listSite', compact('datosA'));
     }
 
     public function update(Request $request, $id)

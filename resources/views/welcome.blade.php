@@ -89,6 +89,13 @@
                         
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('listavehiculo') }}">
+                      <span data-feather="users"></span>
+                      <i class="fa-solid fa-car-side pe-2"></i>
+                      Vehiculo
+                    </a>
+                  </li>
                   {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>

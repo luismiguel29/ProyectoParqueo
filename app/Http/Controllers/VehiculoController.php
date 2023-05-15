@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
@@ -13,28 +14,45 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculo = Vehiculo::all();
+        return view('vehiculo.listavehiculo', compact('vehiculo'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function registrar()
     {
-        //
+        return view('vehiculo.registrarvehiculo');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function vistaeditar($id)
+    {
+        $vehiculo = Vehiculo::where('id', $id)->get();
+        return view('vehiculo.editarvehiculo', compact('vehiculo'));
+    }
+
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'tipo' => 'required',
+            'placa' => 'required|unique:vehiculo,placa',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'color' => 'required',
+        ],[
+            
+        ]);
+
+        $sesion = session()->get('sesion');
+
+        $vehiculo = new Vehiculo();
+        $vehiculo->usercustom_id = $sesion->id;
+        $vehiculo->tipo = $request->input('tipo');
+        $vehiculo->placa = $request->input('placa');
+        $vehiculo->marca = $request->input('marca');
+        $vehiculo->modelo = $request->input('modelo');
+        $vehiculo->color = $request->input('color');
+        $vehiculo->save();
+        return redirect()->route('listavehiculo')->with('success', '¡Registro exitoso!');
     }
 
     /**
@@ -68,7 +86,25 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tipo' => 'required',
+            'placa' => 'required|unique:vehiculo,placa',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'color' => 'required',
+        ],[
+            
+        ]);
+
+        $vehiculo = Vehiculo::find($id);
+        $vehiculo->usercustom_id = 1;
+        $vehiculo->tipo = $request->input('tipo');
+        $vehiculo->placa = $request->input('placa');
+        $vehiculo->marca = $request->input('marca');
+        $vehiculo->modelo = $request->input('modelo');
+        $vehiculo->color = $request->input('color');
+        $vehiculo->save();
+        return redirect()->route('listavehiculo')->with('success', '¡Actualizacion exitosa!');
     }
 
     /**
@@ -79,6 +115,13 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Vehiculo::find($id)->delete();
+        return redirect()->route('listavehiculo');
     }
+
+    public function listaRegistro()
+    {
+        return view('vehiculo.listaRegEntrSal');
+    }
+
 }

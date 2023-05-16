@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('content')
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
 
     <head>
         <meta charset="UTF-8">
@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="{{ asset('css/luiscss/horario.css') }}">
         <link rel="stylesheet" href="{{ asset('css/luiscss/listahorario.css') }}">
         <link rel="stylesheet" href="{{ asset('css/luiscss/boton.css') }}">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     </head>
 
     <body>
@@ -25,29 +29,17 @@
                         <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                         <span class="h3 ">Gestión Entradas/Salidas de Vehiculos</span>
                     </div>
-                    <div class="row mt-2" style="">
-                        <div class="col col-6 p-2">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Numero de placa">
-                                <span class="input-group-text" id="basic-addon2">Buscar</span>
-                            </div>
+                    <div class="row mt-2 p-2" style="">
+                        <div class="col col-sm-3 p-2">
+                            <select class="livesearch form-control" name="livesearch"></select>
                         </div>
-                        <form action="{{ route('agregarregistro') }}" method="POST">
-                            @csrf
-                            <div class="col  p-2 text-end">
+                        <div class="col-sm p-2 text-end">
+                            <form action="{{ route('agregarregistro') }}" method="POST">
+                                @csrf
                                 <button type="submit" class="btn btn-primary-pk" href=""><i class="fa-solid fa-plus"
                                         style="color: #ffffff;"></i>
                                     Ingreso</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <div class="col col-4">
-                            <select class="form-select">
-                                <option value="">4756rty</option>
-                                <option value="">5566srt</option>
-                                <option value="">2548tru</option>
-                            </select>
+                            </form>
                         </div>
                     </div>
 
@@ -94,22 +86,29 @@
         </div>
 
 
-
-
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
-            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
+        <script type="text/javascript">
+            $('.livesearch').select2({
+                placeholder: 'Select movie',
+                ajax: {
+                    url: '/ajax-autocomplete-search',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.placa,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
         </script>
     </body>
 
-
-
-    </body>
-
+    
     </html>
 @endsection

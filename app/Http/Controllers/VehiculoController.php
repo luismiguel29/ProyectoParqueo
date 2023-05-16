@@ -29,6 +29,7 @@ class VehiculoController extends Controller
         return view('vehiculo.editarvehiculo', compact('vehiculo'));
     }
 
+
     public function store(Request $request)
     {
 

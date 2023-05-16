@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registro;
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
 class RegistroController extends Controller
@@ -16,6 +17,19 @@ class RegistroController extends Controller
     {
         $listaregistro = Registro::all();
         return view('vehiculo.listaRegEntrSal', compact('listaregistro'));
+    }
+
+    public function buscarplaca(Request $request)
+    {
+    	$placa = [];
+
+        if($request->has('q')){
+            $search = $request->q;
+            $placa =Vehiculo::select("id", "placa")
+            		->where('placa', 'LIKE', "%$search%")
+            		->get();
+        }
+        return response()->json($placa);
     }
 
     /**

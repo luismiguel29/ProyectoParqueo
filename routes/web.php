@@ -13,6 +13,7 @@ use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\Select2SearchController;
 use App\Http\Controllers\VehiculoController;
 
 /*
@@ -103,7 +104,15 @@ Route::controller(RegistroController::class)->group(function(){
     Route::get('/listaregistro', 'index')->name('listaregistro');
     Route::post('/agregarregistro', 'store')->name('agregarregistro');
     Route::put('/editarregistro/{id}', 'update')->name('editarregistro');
+    Route::get('/buscarplaca', 'buscarplaca')->name('buscarplaca');
 });
+
+Route::get('/prueba', function () {
+    return view('vehiculo.pruebaeditar');
+});
+
+Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSearch']);
+//Route::get('ajax-autocomplete-search', [RegistroController::class,'selectSearch']);
 
 
 

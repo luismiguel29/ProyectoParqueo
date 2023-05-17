@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/luiscss/horario.css') }}">
         <link rel="stylesheet" href="{{ asset('css/luiscss/listahorario.css') }}">
         <link rel="stylesheet" href="{{ asset('css/luiscss/boton.css') }}">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
@@ -29,19 +29,24 @@
                         <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                         <span class="h3 ">Gestión Entradas/Salidas de Vehiculos</span>
                     </div>
-                    <div class="row mt-2 p-2" style="">
-                        <div class="col col-sm-3 p-2">
-                            <select class="livesearch form-control" name="livesearch"></select>
-                        </div>
-                        <div class="col-sm p-2 text-end">
-                            <form action="{{ route('agregarregistro') }}" method="POST">
-                                @csrf
+                    <form action="{{ route('agregarregistro') }}" method="POST">
+                        @csrf
+                        <div class="row mt-2 p-2" style="">
+                            <div class="col col-sm-3 p-2">
+                                <select class="livesearch form-control {{ $errors->has('livesearch') ? 'is-invalid' : '' }}"
+                                    name="livesearch" ></select>
+                                @error('livesearch')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm p-2 text-end">
                                 <button type="submit" class="btn btn-primary-pk" href=""><i class="fa-solid fa-plus"
                                         style="color: #ffffff;"></i>
                                     Ingreso</button>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
                         @if ($listaregistro->isNotEmpty())
@@ -67,8 +72,9 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="d-inline-block">
-                                                        <button type="submit"
-                                                            class="btn btn-danger-dg btn-sm">Salida</button>
+                                                        <button type="submit" class="btn btn-danger-dg btn-sm"
+                                                            @if ($reg->estado == 0) disabled @endif>Salida</button>
+
                                                     </div>
                                                 </form>
 
@@ -88,18 +94,19 @@
 
         <script type="text/javascript">
             $('.livesearch').select2({
-                placeholder: 'Select movie',
+                placeholder: 'Buscar placa',
                 ajax: {
                     url: '/ajax-autocomplete-search',
                     dataType: 'json',
                     delay: 250,
-                    processResults: function (data) {
+                    processResults: function(data) {
                         return {
-                            results: $.map(data, function (item) {
+                            results: $.map(data, function(item) {
                                 return {
                                     text: item.placa,
-                                    id: item.id
+                                    id: item.id,
                                 }
+
                             })
                         };
                     },
@@ -109,6 +116,6 @@
         </script>
     </body>
 
-    
+
     </html>
 @endsection

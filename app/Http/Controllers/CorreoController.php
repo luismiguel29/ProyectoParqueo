@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Registro;
-use App\Models\Vehiculo;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Mail\EnviarCorreo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
-class RegistroController extends Controller
+class CorreoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,23 +17,24 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        $fecha_ini = date('Y-m-d 00:00:00');
-        $fechaactual = now();
-        $listaregistro = Registro::where('ingreso', ">", $fecha_ini)->get();
-        return view('vehiculo.listaRegEntrSal', compact('listaregistro'));
+        $correo = User::all();
+        $asunto = "adjuntar asunto";
+        $contenido = "Adjuntar contenido asdsadkjasjhdkjashdkjashdkjsahdkjsahkdjhaskjdhaksjdhksahdkjsahdkjashdkjashdkjahdkjsahd";
+        foreach ($correo as $mail) {
+            Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
+        }
+        return redirect()->route('listavehiculo');
     }
 
-    public function buscarplaca(Request $request)
+    public function crearpago()
     {
-    	$placa = [];
-
-        if($request->has('q')){
-            $search = $request->q;
-            $placa =Vehiculo::select("id", "placa")
-            		->where('placa', 'LIKE', "%$search%")
-            		->get();
+        $fechadefinida = date('Y-m-5 00:00:00');
+        $fechaactual = Carbon::now();
+        $dato = "no es fecha";
+        if ($fechaactual>$fechadefinida) {
+            $dato = "es la fecha";
         }
-        return response()->json($placa);
+        return $fechaactual;
     }
 
     /**
@@ -53,26 +55,7 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'livesearch' => 'required',
-        ],[
-            'livesearch.required' => 'Seleccione un # de placa',
-        ]);
-
-        $sesion = session()->get('sesion');
-        
-        $placa = Vehiculo::where('id', request('livesearch'))->first();
-
-        $ingreso = new Registro();
-        $ingreso->vehiculo_usercustom_id = $placa->usercustom_id;
-        $ingreso->vehiculo_id = request('livesearch');
-        $ingreso->sitio = '1A';
-        $ingreso->placa = $placa->placa;
-        $ingreso->ingreso = now();
-        $ingreso->estado = 1;
-        $ingreso->save();
-        return redirect()->route('listaregistro');
-
+        //
     }
 
     /**
@@ -106,11 +89,7 @@ class RegistroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $registro = Registro::find($id);
-        $registro->salida = now();
-        $registro->estado = 0;
-        $registro->save();
-        return redirect()->route('listaregistro');
+        //
     }
 
     /**

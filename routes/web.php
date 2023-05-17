@@ -1,20 +1,23 @@
 <?php
 
-use App\Http\Controllers\HorarioController;
+use App\Mail\EnviarCorreo;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\VerParqueoController;
-use App\Http\Controllers\VerParqueoZonaBController;
-use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
-use App\Http\Controllers\AdmInfoClientes\ClienteController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ParkingSpaceController;
+use App\Http\Controllers\Select2SearchController;
+use App\Http\Controllers\VerParqueoZonaBController;
 use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
+use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
-use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\Select2SearchController;
-use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
+use App\Http\Controllers\CorreoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,12 +110,25 @@ Route::controller(RegistroController::class)->group(function(){
     Route::get('/buscarplaca', 'buscarplaca')->name('buscarplaca');
 });
 
+Route::controller(CorreoController::class)->group(function(){
+    Route::get('envcorreo', 'index')->name('envcorreo');
+    Route::get('pago', 'crearpago')->name('pago');
+});
+
 Route::get('/prueba', function () {
     return view('vehiculo.pruebaeditar');
+});
+Route::get('/vistacorreo', function () {
+    return view('vehiculo.prueba');
 });
 
 Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSearch']);
 //Route::get('ajax-autocomplete-search', [RegistroController::class,'selectSearch']);
+
+/* Route::post('enviarcorreo', function(){
+    Mail::to('rojashuallcoluismiguel29@gmail.com')->send(new EnviarCorreo);
+    return "correo enviado exitosamente";
+})->name('enviarcorreo'); */
 
 
 

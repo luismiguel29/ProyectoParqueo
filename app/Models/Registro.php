@@ -9,7 +9,7 @@ class Registro extends Model
 {
     protected $table="registro";
     protected $primaryKey="id";
-    protected $fillable = ['vehiculo_usercustom_id', 'vehiculo_id', 'sitio', 'placa', 'ingreso', 'salida'];
+    protected $fillable = ['vehiculo_usercustom_id', 'vehiculo_id', 'sitio', 'placa', 'ingreso', 'salida', 'estado'];
 
     public $timestamps = false;
 }

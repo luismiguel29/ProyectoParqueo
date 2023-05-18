@@ -47,7 +47,6 @@ Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name(
 
 
 
-
 //Rutas andrea
 
 Route::resource('/sites', ParkingSpaceController::class);

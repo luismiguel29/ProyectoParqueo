@@ -96,7 +96,7 @@
             $('.livesearch').select2({
                 placeholder: 'Buscar placa',
                 ajax: {
-                    url: '/ajax-autocomplete-search',
+                    url: '/buscarplaca',
                     dataType: 'json',
                     delay: 250,
                     processResults: function(data) {

@@ -122,13 +122,7 @@ Route::get('/vistacorreo', function () {
     return view('vehiculo.prueba');
 });
 
-Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSearch']);
-//Route::get('ajax-autocomplete-search', [RegistroController::class,'selectSearch']);
 
-/* Route::post('enviarcorreo', function(){
-    Mail::to('rojashuallcoluismiguel29@gmail.com')->send(new EnviarCorreo);
-    return "correo enviado exitosamente";
-})->name('enviarcorreo'); */
 
 
 

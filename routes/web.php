@@ -13,7 +13,7 @@ use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
-
+use App\Http\Controllers\ProveerMensajes\MensajeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +42,9 @@ Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.ver
 Route::delete('/elimardato',[ClienteController::class,'destroy'])->name('Cliente.eliminar');
 Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Cliente.editardato');
 Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name('Cliente.importar');
+//Ruta lista mensaje
+Route::get('/listamensaje',[MensajeController::class,'index'])->name('Mensaje.listamensaje');
+Route::post('/ModalRegistrar',[MensajeController::class,'store'])->name('MensajesGlobales.registarMen');
 
 
 

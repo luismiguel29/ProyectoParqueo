@@ -19,7 +19,7 @@ class CorreoController extends Controller
     {
         $correo = User::all();
         $asunto = "adjuntar asunto";
-        $contenido = "Adjuntar contenido asdsadkjasjhdkjashdkjashdkjsahdkjsahkdjhaskjdhaksjdhksahdkjsahdkjashdkjashdkjahdkjsahd";
+        $contenido = "Adjuntar contenido el contenido del correo es el siguiente";
         foreach ($correo as $mail) {
             Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
         }
@@ -28,13 +28,13 @@ class CorreoController extends Controller
 
     public function crearpago()
     {
-        $fechadefinida = date('Y-m-5 00:00:00');
-        $fechaactual = Carbon::now();
-        $dato = "no es fecha";
-        if ($fechaactual>$fechadefinida) {
-            $dato = "es la fecha";
+        //$fechadefinida = date('Y-m-d H:i:s');
+        $fechadefinida = date('Y-m-17 00:00:00');
+        $fechaactual = Carbon::parse(now())->format('Y-m-d 00:00:00');
+        if ($fechaactual==$fechadefinida) {
+            return "es la fecha";
         }
-        return $fechaactual;
+        return [$fechaactual, $fechadefinida];
     }
 
     /**

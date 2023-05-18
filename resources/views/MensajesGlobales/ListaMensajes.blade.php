@@ -49,7 +49,7 @@
                         <td>
                             <div class="d-flex justify-content-evenly">
                                 <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
-                                <a href="" class="btn btn-primary btn-sm">Global</a>
+                                <a href="{{route('MensajesGlobales.send')}}" class="btn btn-primary btn-sm">Global</a>
                                 
                                   
                             </div>

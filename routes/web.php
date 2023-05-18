@@ -45,6 +45,7 @@ Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name(
 //Ruta lista mensaje
 Route::get('/listamensaje',[MensajeController::class,'index'])->name('Mensaje.listamensaje');
 Route::post('/ModalRegistrar',[MensajeController::class,'store'])->name('MensajesGlobales.registarMen');
+Route::get('/EnviarMensaje',[MensajeController::class,'send'])->name('MensajesGlobales.send');
 
 
 

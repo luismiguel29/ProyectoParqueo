@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Mensaje;
-
+use Mail;
+use App\Mail\Message;
 
 
 class MensajeController extends Controller
@@ -38,5 +39,11 @@ class MensajeController extends Controller
             
             $usercustom->save();
             return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Registro exitoso!');
+    }
+
+    public function send (){
+
+        Mail::to('jhannethzeballosflores@gmail.com')->send(new Message());
+        return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Envio exitoso!');
     }
 }

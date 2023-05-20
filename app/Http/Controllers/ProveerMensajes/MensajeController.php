@@ -22,6 +22,10 @@ class MensajeController extends Controller
         return view('MensajesGlobales.ListaMensajes', compact('mensajes')); 
     }
 
+    public function register (){
+        return view ('MensajesGlobales.RegistrarMensaje');
+    }
+
     public function store(Request $request)
     {
 
@@ -39,6 +43,39 @@ class MensajeController extends Controller
             
             $usercustom->save();
             return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Registro exitoso!');
+    }
+
+    public function update (Request $request, $id)
+    {
+        $request->validate([
+            'asunto' => 'required|max:20|regex:/^[A-Za-z\s]+$/',
+            'descripcion' => 'required |max:255|regex:/^[A-Za-z\s]+$/',
+            
+        ], [
+            'asunto.regex' => 'El campo asunto solo puede tener letras',
+        ]);
+
+        $usercustom = Mensaje:: find($id);
+        $usercustom->asunto =$request->input('asunto') ;
+        $usercustom->descripcion = $request->input('descripcion');
+        
+        $usercustom->save();
+        return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Registro exitoso!');
+    }
+
+    public function edit($id)
+    {
+        $sms = Mensaje::find($id);
+        return view('MensajesGlobales.RegistrarMensaje', compact('sms' ));
+    }
+
+
+
+    public function destroy(Request $request)
+    {
+        error_log($request->id);
+        Mensaje::find($request->id)->delete();
+        return back();
     }
 
     public function send (){

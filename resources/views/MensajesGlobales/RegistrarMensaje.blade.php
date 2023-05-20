@@ -1,51 +1,72 @@
-<!-- Modal -->
-<div class="modal fade" id="registrarMensaje" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Mensaje</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+@extends('welcome')
+@section ('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{asset('css/Cliente/form.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>TIS</title>
+</head>
+<body>
+  
+  <div class="container py-3">
+    <div class="d-flex justify-content-center">
+        <div class="col-lg-6">
+            <div class="container pb-3">
+                <i class="fa-solid fa-envelope fa-2xl"; style="color: 222222;
+                margin-right: 10px;"></i>
+                <span class="h3 ">Registrar Mensaje</span>
             </div>
-            <div class="modal-body">
-                <form method="POST"
-                    action="{{ isset($user) ? route('Cliente.editardato', ['id' => $user->id]) : route('MensajesGlobales.registarMen') }}"
-                    style="padding: 50px 55px">
-                    @csrf
-                    @if (isset($user))
-                        @method('put')
-                    @endif
+            <div class="card card-outline  border-top-pk   shadow" >
+                <div class="card-header">
+                    <h5>Formulario</h5>
+                </div>
+                <form method="POST" action="{{isset($sms)? route( 'Mensaje.editardato', ['id'=>$sms->id]) : route('MensajesGlobales.registrarMen')}}" style="padding: 50px 55px" >
+                  @csrf
+                  @if(isset($sms))
+                  @method('put')
+                  @endif
                     <div class="row mb-3">
-                        <label for="inputAsunto3" class="col-sm-4 col-form-label text-end">Asunto</label>
-                        <div class="col-sm-7">
-                            <input name="asunto" class="form-control {{ $errors->has('asunto') ? 'is-invalid' : '' }}"
-                                id="inputAsunto3" value="{{ isset($user) ? $user->nombre : old('asunto') }}">
+                      <label for="inputNombre3" class="col-sm-4 col-form-label text-end">Asunto</label>
+                      <div class="col-sm-7">
+                        <input name="asunto" class="form-control {{$errors->has('asunto')?'is-invalid':''}}" id="inputNombre3" value="{{isset($sms)? $sms->Asunto: old('asunto') }}">
                             @error('asunto')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                  <div class="invalid-feedback">
+                                         {{ $message }}
+                                  </div>
                             @enderror
-                        </div>
+                      </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputDescripcion3" class="col-sm-4 col-form-label text-end">Descripcion</label>
+                        <label for="inputApellidos3" class="col-sm-4 col-form-label text-end" >Descripcion</label>
                         <div class="col-sm-7">
-                            <input name="descripcion"
-                                class="form-control {{ $errors->has('descripcion') ? 'is-invalid' : '' }}"
-                                id="inputDescripcion3" value="{{ isset($user) ? $user->apellido : old('apellido') }}">
+                          <input name="descripcion" class="form-control {{$errors->has('descripcion')?'is-invalid':''}}" id="inputApellidos3" value="{{isset($sms)? $sms->Descripcion: old('descripcion') }}">
                             @error('descripcion')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
-                            
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                    <button  class="btn btn-primary">Guardar</button>
-                </form>
+                      </div>
+                      <div class="row row-gap-3 pt-4 ">
+                        <div class="col-md-6">
+                            <button type="submit" href="" class="btn btn-primary-pk btn-block w-100" >Registrar</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a type="reset" class="btn btn-danger-dg btn-block w-100"   href="{{route('Mensaje.listamensaje')}}">Cancelar</a>
+                        </div>
+                      </div>
+                  </form>
+                       
             </div>
-
         </div>
     </div>
-</div>
+  </div>
+</body>
+</html>
+@endsection
 

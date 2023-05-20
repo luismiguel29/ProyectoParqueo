@@ -157,3 +157,8 @@ background-color: #FF3346;
 border-color: #FF3346;
 filter: grayscale(0.5);
 }
+
+.user-select-dropdown {
+	z-index: 2000 !important;
+	
+}

@@ -5,15 +5,17 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Mensaje;
 use App\Models\Cliente;
+use App\Models\User;
+class BuscarCorreo extends Component {
+    public $term;
+    public $users;
 
-class BuscarCorreo extends Component
-{
-    public $search = '';
- 
+    public function updatedTerm(){
+        $this->users = User::all()-> toArray();
+    }
     public function render()
     {
-        return view('livewire.buscar-correo', [
-            'users' => Cliente::where('nombre','LIKE','%'.$this->search.'%')->get(),
-        ]);
+        $this->updatedTerm();
+        return view('livewire.buscar-correo');
     }
 }

@@ -1,20 +1,12 @@
 @extends('welcome')
-@section ('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@section('head')
     <link rel="stylesheet" href="{{asset('css/Cliente/listacliente.css')}}">
     <link rel="stylesheet" href="{{asset('css/Cliente/modalbotones.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css"> 
-    <title>TIS</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @livewireStyles
-   
-</head>
-<body>
- 
+@endsection
+@section ('content')
+
     <div class="container mt-5">
       @if(session('success'))
               <div class="alert alert-success">
@@ -22,9 +14,9 @@
               </div>
           @endif
       <div class="d-flex justify-content-between align-items-center mb-4">
-          <h4 class="text mb-0"><i class="fas fa-user"></i> Gestión de Mensajes</h4>
-          <button href="" class="btn btn-primary btn-md" type="button" data-bs-toggle="modal"  data-bs-target="#registrarMensaje"><i class="fas fa-plus"></i> Agregar</button>
-          @include ('MensajesGlobales.RegistrarMensaje')
+          <h4 class="text mb-0"><i class="fa-solid fa-envelope"></i> Gestión de Mensajes</h4>
+          <a href="{{ route('Mensaje.formulario')}}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>
+       
       </div>
             <div class="table-responsive" id="table-container">
               @if($mensajes-> isNotEmpty())
@@ -45,7 +37,6 @@
                       <tr>
                         <td>{{$mensaje->Asunto}}</td>
                         <td> {{$mensaje->Descripcion}}</td>
-                       
                         <td>
                             <div class="d-flex justify-content-evenly">
                                 <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
@@ -57,7 +48,7 @@
                         </td>
                             <td>
                               <div class="d-flex justify-content-evenly">
-                                <a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                <a href="{{route('Mensaje.editarmensaje', ['id'=>$mensaje->id])}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                 <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"  ></i></button>
                                 
                               </div>
@@ -69,7 +60,7 @@
                   
                 </table>
                 <!-- Modal para mensaje individual-->
-                <div class="modal fade" id="mensaje" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="mensaje" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -77,7 +68,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                         </div>
-                        <!--<form action="{{route('Cliente.eliminar')}}" method="post">
+                        <!--<form action="" method="post">
                           <div class="modal-body">
                             @csrf
                             
@@ -93,10 +84,14 @@
                           </div>
                         </form>-->
                         @livewire('buscar-correo')
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary-pk" data-bs-dismiss="modal">Cancelar</button>
+                          <button  class="btn btn-danger-dg">Enviar</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-
+                 
                 <!-- Modal -->
                   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -105,7 +100,7 @@
                           <h1 class="modal-title fs-5" id="deleteModalLabel">Eliminar Mensaje</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{route('Cliente.eliminar')}}" method="post">
+                        <form action="{{route('Mensaje.eliminar')}}" method="post">
                           <div class="modal-body">
                             @csrf
                             @method('delete')
@@ -127,32 +122,35 @@
                 </div>
               @endif
             <div>
-              <script>
-                $(document).ready(function(){
-                  
-                    $('.delete-btn').on('click', function(){
-            
-                      let id = $(this).attr('data-id');
-                          $('#id').val(id);
-                    
-                    });
-                });
-              </script>
+              
             </div>
             
       </div>
+      @section('scripts')
+     
           <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
               integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
           </script>
           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
               integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
           </script>
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-              integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
+          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+          <script>
+            $(document).ready(function(){
+              
+                $('.delete-btn').on('click', function(){
+        
+                  let id = $(this).attr('data-id');
+                      $('#id').val(id);
+                
+                });
+                $('.js-example-basic-single').select2({dropdownCssClass: 'user-select-dropdown'});
+            });
           </script>
+           @livewireScripts
+      @endsection
+          
          
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
-   @livewireScripts
-  </body>
-</html>
+  
+  
 @endsection

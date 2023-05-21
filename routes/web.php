@@ -90,6 +90,7 @@ Route::resource('/login', LoginController::class);
 Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login');
     Route::get('/loginhorario', 'store');
+    Route::get('/cerrarsesion', 'cerrarsesion')->name('cerrarsesion');
 });
 
 Route::resource('horario', HorarioController::class);

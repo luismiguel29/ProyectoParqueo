@@ -26,6 +26,12 @@ class LoginController extends Controller
     return view('loginuser.login');
   }
 
+  public function cerrarsesion()
+  {
+    Auth::logout();
+    return redirect()->route('login')->with('message', 'Sesión cerrada');
+  }
+
   /**
    * Show the form for creating a new resource.
    *
@@ -51,8 +57,8 @@ class LoginController extends Controller
     ]);
 
     $usuario = User::where('usuario', $request->input('usuario'))->exists();
-    $password = User::where('usuario', $request->input('usuario'))->where('contraseña', $request->input('contraseña'))->exists();
-    $verificar = User::where('usuario', $request->input('usuario'))->where('contraseña', $request->input('contraseña'))->first();
+    $password = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->exists();
+    $verificar = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->first();
     if ($usuario) {
       if ($password) {
         $request->session()->regenerate();

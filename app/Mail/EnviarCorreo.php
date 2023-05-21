@@ -35,8 +35,9 @@ class EnviarCorreo extends Mailable
     public function build()
     {
         return $this->subject($this->asunto)
-                    ->view('vehiculo.prueba')
+                    ->view('emails.moraporpago')
                     ->with([
+                        'asunto' => $this->asunto,
                         'contenido' => $this->contenido,
                     ]);
     }

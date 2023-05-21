@@ -35,12 +35,12 @@ class VehiculoController extends Controller
 
         $request->validate([
             'tipo' => 'required',
-            'placa' => 'required|unique:vehiculo,placa',
+            'placa' => 'required|unique:vehiculo,placa|regex:/^[a-zA-Z0-9]+$/|max:7',
             'marca' => 'required',
             'modelo' => 'required',
             'color' => 'required',
         ],[
-            
+            'placa.regex' => 'Solo se acepta letras y numeros con un maximo de 7 caracteres'
         ]);
 
         $sesion = session()->get('sesion');

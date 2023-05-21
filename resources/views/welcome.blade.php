@@ -38,7 +38,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
+                    <a class="nav-link active" aria-current="page" href="{{ route('cerrarsesion') }}">  
                       <i class="fa-solid fa-power-off"></i>
                     </a>
                   </li>
@@ -80,21 +80,21 @@
                       <i class="fa-solid fa-square-parking pe-2"></i>
                       Parqueo
                     </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('lista') }}">
-                      <span data-feather="bar-chart-2"></span>
-                      <i class="fa-solid fa-clock pe-2"></i>
-                      Horario
-                      <i></i>
-                        
-                    </a>
-                  </li>
+                  </li>                  
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('listavehiculo') }}">
                       <span data-feather="users"></span>
                       <i class="fa-solid fa-car-side pe-2"></i>
-                      Vehiculo
+                      Vehiculos
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('listaregistro') }}">
+                      <span data-feather="bar-chart-2"></span>
+                      <i class="fa-solid fa-boxes-packing"></i>
+                      Entradas/Salidas
+                      <i></i>
+                        
                     </a>
                   </li>
                   {{-- <li class="nav-item">

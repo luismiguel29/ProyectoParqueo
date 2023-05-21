@@ -39,8 +39,8 @@
                         <td> {{$mensaje->Descripcion}}</td>
                         <td>
                             <div class="d-flex justify-content-evenly">
-                                <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
-                                <a href="{{route('MensajesGlobales.send')}}" class="btn btn-primary btn-sm">Global</a>
+                                <button class="btn btn-danger btn-sm-individual"   data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
+                                <a href="{{route('Mensaje.mensajeglobal', ['id'=>$mensaje->id])}}" class="btn btn-primary btn-sm">Global</a>
                                 
                                   
                             </div>
@@ -84,15 +84,12 @@
                           </div>
                         </form>-->
                         @livewire('buscar-correo')
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary-pk" data-bs-dismiss="modal">Cancelar</button>
-                          <button  class="btn btn-danger-dg">Enviar</button>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>
                  
-                <!-- Modal -->
+                <!-- Modal Eliminar-->
                   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -143,6 +140,13 @@
                   let id = $(this).attr('data-id');
                       $('#id').val(id);
                 
+                });
+
+                $('.btn-sm-individual').on('click', function(){
+        
+                let id = $(this).attr('data-id');
+                 $('#mensajeCorreo').val(id);
+      
                 });
                 $('.js-example-basic-single').select2({dropdownCssClass: 'user-select-dropdown'});
             });

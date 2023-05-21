@@ -12,7 +12,7 @@ class Mensaje extends Model
     //use HasFactory;
     protected $table = "mensaje";
     protected $primaryKey = "id";
-    protected $fillable = ['Asunto','Descripcion', 'dirigido_a'];
+    protected $fillable = ['Asunto','Descripcion'];
     public $timestamps = false;
 
 }

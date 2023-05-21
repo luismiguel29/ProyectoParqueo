@@ -45,11 +45,12 @@ Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name(
 //Ruta lista mensaje
 Route::get('/listamensaje',[MensajeController::class,'index'])->name('Mensaje.listamensaje');
 Route::post('/ModalRegistrar',[MensajeController::class,'store'])->name('MensajesGlobales.registrarMen');
-Route::get('/EnviarMensaje',[MensajeController::class,'send'])->name('MensajesGlobales.send');
-Route::delete('/elimardato',[MensajeController::class,'destroy'])->name('Mensaje.eliminar');
+Route::post('/EnviarMensaje',[MensajeController::class,'send'])->name('MensajesGlobales.send');
+Route::delete('/elimarmensaje',[MensajeController::class,'destroy'])->name('Mensaje.eliminar');
 Route::put('/editardato/{id}',[MensajeController::class,'update'])->name('Mensaje.editardato');
 Route::get('/MensajeFormulario',[MensajeController::class,'register'])->name('Mensaje.formulario');
 Route::get('/EditarMensaje/{id}',[MensajeController::class,'edit'])->name('Mensaje.editarmensaje');
+Route::get('/EnviarMensajeGlobal/{id}',[MensajeController::class,'sendGlobal'])->name('Mensaje.mensajeglobal');
 
 
 

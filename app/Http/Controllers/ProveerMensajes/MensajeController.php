@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Mensaje;
+use App\Models\Cliente;
 use Mail;
 use App\Mail\Message;
 
@@ -15,8 +16,8 @@ class MensajeController extends Controller
 {
     public function index(Request $request)
     {
-        $mensajes = Mensaje:: select('mensaje.id', 'mensaje.Asunto',
-        'mensaje.Descripcion','mensaje.Dirigido_a') 
+        $mensajes = Mensaje:: select('mensaje.id', 'mensaje.asunto',
+        'mensaje.descripcion',) 
         //->where('tipo', 'cliente')
         -> get();
         return view('MensajesGlobales.ListaMensajes', compact('mensajes')); 
@@ -78,9 +79,18 @@ class MensajeController extends Controller
         return back();
     }
 
-    public function send (){
-
-        Mail::to('jhannethzeballosflores@gmail.com')->send(new Message());
+    public function send (Request $request){
+        $mensaje = Mensaje::find($request->id);
+        Mail::to(Cliente::find($request->user)->correo)->send(new Message($mensaje));
         return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Envio exitoso!');
+        
+    }
+
+    public function sendGlobal ($id){
+        $mensaje = Mensaje::find($id);
+        $job = (new \App\Jobs\SendQueueEmail($mensaje))->delay(now()->addSeconds(2));
+        dispatch($job);
+        return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Envio exitoso!');
+        
     }
 }

@@ -19,7 +19,7 @@ use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
-
+use App\Http\Controllers\ProveerMensajes\MensajeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,9 +48,15 @@ Route::get('/verform/{id}',[ClienteController::class,'edit'])->name('Cliente.ver
 Route::delete('/elimardato',[ClienteController::class,'destroy'])->name('Cliente.eliminar');
 Route::put('/editardato/{id}',[ClienteController::class,'update'])->name('Cliente.editardato');
 Route::post('/ModalImportar',[ImportarClientesController::class,'store'])->name('Cliente.importar');
-
-
-
+//Ruta lista mensaje
+Route::get('/listamensaje',[MensajeController::class,'index'])->name('Mensaje.listamensaje');
+Route::post('/ModalRegistrar',[MensajeController::class,'store'])->name('MensajesGlobales.registrarMen');
+Route::post('/EnviarMensaje',[MensajeController::class,'send'])->name('MensajesGlobales.send');
+Route::delete('/elimarmensaje',[MensajeController::class,'destroy'])->name('Mensaje.eliminar');
+Route::put('/editardato/{id}',[MensajeController::class,'update'])->name('Mensaje.editardato');
+Route::get('/MensajeFormulario',[MensajeController::class,'register'])->name('Mensaje.formulario');
+Route::get('/EditarMensaje/{id}',[MensajeController::class,'edit'])->name('Mensaje.editarmensaje');
+Route::get('/EnviarMensajeGlobal/{id}',[MensajeController::class,'sendGlobal'])->name('Mensaje.mensajeglobal');
 
 
 

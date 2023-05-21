@@ -1,17 +1,23 @@
 <?php
 
-use App\Http\Controllers\HorarioController;
+use App\Mail\EnviarCorreo;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\VerParqueoController;
-use App\Http\Controllers\VerParqueoZonaBController;
-use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
-use App\Http\Controllers\AdmInfoClientes\ClienteController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ParkingSpaceController;
+use App\Http\Controllers\Select2SearchController;
+use App\Http\Controllers\VerParqueoZonaBController;
 use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
+use App\Http\Controllers\AdmInfoClientes\ClienteController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
+use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
+use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
 
 /*
@@ -87,6 +93,37 @@ Route::controller(HorarioController::class)->group(function(){
     Route::put('editarhorario/{id}', 'update')->name('editarhorario');
     Route::get('horarioupdate/{id}', 'horarioupdate')->name('horarioupdate');
 });
+
+Route::controller(VehiculoController::class)->group(function(){
+    Route::get('/listavehiculo', 'index')->name('listavehiculo');
+    Route::get('/registrarvehiculo', 'registrar')->name('registrarvehiculo');
+    Route::post('/agregarvehiculo', 'store')->name('agregarvehiculo');
+    Route::get('/vistaeditarvehiculo/{id}', 'vistaeditar')->name('vistaeditarvehiculo');
+    Route::put('/editarvehiculo/{id}', 'update')->name('editarvehiculo');
+    Route::delete('eliminarvehiculo/{id}', 'destroy')->name('eliminarvehiculo');
+    Route::get('/listaregistro', 'listaRegistro')->name('listaregistro');
+});
+
+Route::controller(RegistroController::class)->group(function(){
+    Route::get('/listaregistro', 'index')->name('listaregistro');
+    Route::post('/agregarregistro', 'store')->name('agregarregistro');
+    Route::put('/editarregistro/{id}', 'update')->name('editarregistro');
+    Route::get('/buscarplaca', 'buscarplaca')->name('buscarplaca');
+});
+
+Route::controller(CorreoController::class)->group(function(){
+    Route::get('envcorreo', 'index')->name('envcorreo');
+    Route::get('pago', 'crearpago')->name('pago');
+});
+
+Route::get('/prueba', function () {
+    return view('vehiculo.pruebaeditar');
+});
+Route::get('/vistacorreo', function () {
+    return view('vehiculo.prueba');
+});
+
+
 
 
 

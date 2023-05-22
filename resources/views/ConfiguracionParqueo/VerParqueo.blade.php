@@ -33,7 +33,7 @@
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                    Zonas
+                                Zonas
                             </button>
                             <ul class="dropdown-menu" style="">
                                 <li><a class="dropdown-item" href="{{ route('verparqueo') }}">Zona A</a></li>
@@ -42,8 +42,6 @@
                         </div>
                         <!--DROPDOWN FIN-->
                     </div>
-                   
-
 
                     <!--CARD-->
 
@@ -54,8 +52,7 @@
                         <div class="container ">
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosA as $dato)
-                                    <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
-                                    data-bs-target="#modal-update-{{ $dato->id}}">
+                                    <div class="car">
                                         <p class="h3 text-center">{{ $dato->sitio}}</p>
                                         
                                         <div

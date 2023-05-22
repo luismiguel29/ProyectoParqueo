@@ -14,7 +14,11 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculo = Vehiculo::all();
+        if (session()->get('sesion')->rol!="cliente") {
+            $vehiculo = Vehiculo::all();
+        }else{
+            $vehiculo = Vehiculo::where('usercustom_id', session()->get('sesion')->id)->get();
+        }        
         return view('vehiculo.listavehiculo', compact('vehiculo'));
     }
 
@@ -43,10 +47,9 @@ class VehiculoController extends Controller
             'placa.regex' => 'Solo se acepta letras y numeros con un maximo de 7 caracteres'
         ]);
 
-        $sesion = session()->get('sesion');
-
         $vehiculo = new Vehiculo();
-        $vehiculo->usercustom_id = $sesion->id;
+        //$vehiculo->usercustom_id = $sesion->id;
+        $vehiculo->usercustom_id = session()->get('sesion')->id;
         $vehiculo->tipo = $request->input('tipo');
         $vehiculo->placa = $request->input('placa');
         $vehiculo->marca = $request->input('marca');

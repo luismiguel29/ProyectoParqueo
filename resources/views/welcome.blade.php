@@ -88,15 +88,18 @@
                       Vehiculos
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('listaregistro') }}">
-                      <span data-feather="bar-chart-2"></span>
-                      <i class="fa-solid fa-boxes-packing"></i>
-                      Entradas/Salidas
-                      <i></i>
-                        
-                    </a>
-                  </li>
+                  
+                  @if (session()->get('sesion')->rol=="administrador" || session()->get('sesion')->rol=="guardia")
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('listaregistro') }}">
+                        <span data-feather="bar-chart-2"></span>
+                        <i class="fa-solid fa-boxes-packing"></i>
+                        Entradas/Salidas
+                        <i></i>
+                          
+                      </a>
+                    </li>
+                  @endif
                   {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>

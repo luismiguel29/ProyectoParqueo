@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\RegisterAdmin;
 
+use App\Models\UserCustom;
 use App\Models\User;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -10,8 +12,8 @@ use Illuminate\Support\Facades\DB;
 class VistaRegisterController extends Controller
 {
     public function index() {
-        $usuarios = User::select('id', 'tipo', 'nombre','usuario', 'apellido', 'telefono', 'correo')
-        ->where('tipo', '<>' , 'cliente')
+        $usuarios = User::select('id', 'rol', 'nombre','usuario', 'apellido', 'telefono', 'correo')
+        ->where('rol', '<>' , 'cliente')
         ->get();
 
         return view('registro.visualizarUsr',['usuarios' => $usuarios]);
@@ -38,6 +40,7 @@ class VistaRegisterController extends Controller
     ]);
 
     // Actualizar el usuario
+    $usuario->rol = strtolower($request->user_type);
     $usuario->nombre = $request->input('nombre');
     $usuario->apellido = $request->input('apellido');
     $usuario->usuario = $request->input('usuario');

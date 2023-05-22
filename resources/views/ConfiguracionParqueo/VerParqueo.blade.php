@@ -43,6 +43,8 @@
                         <!--DROPDOWN FIN-->
                     </div>
 
+
+
                     <!--CARD-->
 
                     <div class="card card-outline  border-top-pk   shadow">
@@ -53,7 +55,7 @@
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosA as $dato)
                                     <div class="car">
-                                        <p class="h3 text-center">{{ $dato->sitio }}</p>
+                                        <p class="h3 text-center">{{ $dato->sitio}}</p>
 
                                         <div
                                             class="car-content  rounded-2  bg-primary-pk text-light d-flex align-items-center justify-content-center flex-column">

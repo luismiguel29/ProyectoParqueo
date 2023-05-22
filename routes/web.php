@@ -19,7 +19,7 @@ use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
-use App\Http\Controllers\ProveerMensajes\MensajeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -167,5 +167,24 @@ Route::get('/vista', [VistaRegisterController::class,'index'])->name('vistaRegis
 Route::get('/usuarios/{id}/edit', [VistaRegisterController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{id}', [VistaRegisterController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [VistaRegisterController::class, 'destroy'])->name('usuarios.destroy');
+
+Route::get('/solicitud', [SolicitudController::class, 'index'])->name('solicitud');
+Route::delete('/mensaje/{id}', [SolicitudController::class, 'destroy'])->name('solicitudes.destroy');
+
+Route::get('/asignar', [AsignacionController::class, 'index'])->name('asignar');
+Route::get('/asignar/{id}', [AsignacionController::class, 'asignar'])->name('asignaciones.asignar');
+Route::get('/darbaja/{id}', [AsignacionController::class, 'darbaja'])->name('asignaciones.darbaja');
+
+Route::get('/buscarPorNombre', [AsignacionController::class,'buscarPorNombre'])->name('buscarPorNombre');
+
+
+Route::post('/asignarUsuario', [AsignacionController::class, 'asignarUsuario'])->name('asignarUsuario');
+
+
+
+
+
+
+
 
 

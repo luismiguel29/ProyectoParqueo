@@ -54,7 +54,8 @@
                         <div class="container ">
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosA as $dato)
-                                    <div class="car">
+                                    <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
+                                    data-bs-target="#modal-update-{{ $dato->id}}">
                                         <p class="h3 text-center">{{ $dato->sitio}}</p>
                                         
                                         <div
@@ -64,9 +65,11 @@
                                         </div>
                                         <p class="fs-6 text-center">Libre</p>
                                     </div>
+                                    @include('ConfiguracionParqueo.sendRequest')
                                 @endforeach
 
-                                <div class="car">
+                                <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
+                                data-bs-target="#modal-update-">
                                     <p class="h3 text-center">#</p>
                                     <div
                                         class="car-content  rounded-2  bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">

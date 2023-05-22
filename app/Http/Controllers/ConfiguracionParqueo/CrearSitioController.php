@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ConfiguracionParqueo;
 
 use App\Models\ConfiguracionParqueo\CrearSitio;
+use App\Models\EnviarSolicitud;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PSpell\Config;

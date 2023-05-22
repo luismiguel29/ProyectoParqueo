@@ -1,4 +1,3 @@
-
 @extends('welcome')
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +43,7 @@
                     @foreach($usuarios as $usuario)
                         <tr>
                             <td>{{ $usuario->id }}</td>
-                            <td>{{ $usuario->rol }}</td>
+                            <td>{{ $usuario->tipo }}</td>
                             <td>{{ $usuario->nombre }}</td>
                             <td>{{ $usuario->usuario }}</td>
                             <td>{{ $usuario->apellido }}</td>
@@ -99,10 +98,12 @@
           const tableContainer = document.getElementById("table-container");
           const table = tableContainer.querySelector("table");
           const blueLine = tableContainer.querySelector(".blue-line");
+
           if (blueLine) {
             blueLine.style.width = `${table.clientWidth}px`;
           }
         }
+
         window.addEventListener("load", adjustBlueLine);
         window.addEventListener("resize", adjustBlueLine);
     </script>

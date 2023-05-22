@@ -13,6 +13,8 @@ use App\Http\Controllers\ParkingSpaceZonaBController;
 use App\Http\Controllers\RegisterAdmin\RegisterController;
 use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
+use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
+use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +103,8 @@ Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
 
+//Route::resource('/VerParqueo', VerParqueoController::class);
+
 Route::controller(VerParqueoZonaBController::class)->group(function(){
     Route::get('/VerParqueoZonaB', 'index')->name('verparqueozonab');
 });
@@ -124,4 +128,11 @@ Route::get('/usuarios/{id}/edit', [VistaRegisterController::class, 'edit'])->nam
 Route::put('/usuarios/{id}', [VistaRegisterController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [VistaRegisterController::class, 'destroy'])->name('usuarios.destroy');
 
+
+//Solicitud Parqueo
+
+Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
+
+
+Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
 

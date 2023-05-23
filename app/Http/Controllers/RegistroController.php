@@ -14,6 +14,12 @@ class RegistroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth', ['except' => []]);
+     }
+
     public function index()
     {
         $fecha_ini = date('Y-m-d 00:00:00');

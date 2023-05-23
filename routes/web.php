@@ -93,7 +93,7 @@ Route::controller(PruebaController::class)->group(function(){
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login');
-    Route::get('/iniciarsesion', 'store')->name('iniciarsesion');
+    Route::post('/iniciarsesion', 'store')->name('iniciarsesion');
     Route::get('/cerrarsesion', 'cerrarsesion')->name('cerrarsesion');
 });
 

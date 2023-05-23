@@ -19,9 +19,11 @@ use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
-use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
+
+use App\Http\Controllers\ProveerMensajes\MensajeController;
+
 
 /*
 |--------------------------------------------------------------------------

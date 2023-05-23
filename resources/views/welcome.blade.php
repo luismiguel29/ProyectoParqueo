@@ -109,7 +109,15 @@
                         
                     </a>
                   </li> --}}
-                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('Mensaje.listamensaje') }}">
+                      <span data-feather="bar-chart-2"></span>
+                      <i class="fa-solid fa-envelope"></i>
+                      Mensajes
+                      <i></i>
+                        
+                    </a>
+                  </li> 
                 </ul>
               </div>
             </nav>

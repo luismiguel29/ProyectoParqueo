@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => []]);
+    }
+
     public function index()
     {
         return view('registro.register');

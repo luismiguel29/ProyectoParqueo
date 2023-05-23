@@ -14,6 +14,11 @@ use App\Models\Solicitud;
 
 class SolicitudController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => []]);
+    }
+
     public function index()
     {
         // Utiliza el modelo Solicitud para obtener todos los registros de la tabla solicitud

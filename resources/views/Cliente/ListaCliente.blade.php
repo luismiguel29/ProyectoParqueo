@@ -76,7 +76,7 @@
                       <!--<td>{{$cliente->tipo_vehiculo}} </td>
                       <td>{{$cliente->placa}}</td>-->
                           <td>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-start">
                               <a href="{{route('Cliente.verform', ['id'=>$cliente->id])}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                               <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$cliente->id}}" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"  ></i></button>
                               

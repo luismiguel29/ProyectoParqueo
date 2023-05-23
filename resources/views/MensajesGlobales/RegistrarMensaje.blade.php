@@ -13,7 +13,7 @@
 </head>
 <body>
   
-  <div class="container py-3">
+  <div class="container-fluid py-3">
     <div class="d-flex justify-content-center">
         <div class="col-lg-6">
             <div class="container pb-3">
@@ -33,7 +33,7 @@
                     <div class="row mb-3">
                       <label for="inputNombre3" class="col-sm-4 col-form-label text-end">Asunto</label>
                       <div class="col-sm-7">
-                        <input name="asunto" class="form-control {{$errors->has('asunto')?'is-invalid':''}}" id="inputNombre3" value="{{isset($sms)? $sms->Asunto: old('asunto') }}">
+                        <input name="asunto" class="form-control {{$errors->has('asunto')?'is-invalid':''}}" id="inputNombre3" value="{{isset($sms)? $sms->asunto: old('asunto') }}">
                             @error('asunto')
                                   <div class="invalid-feedback">
                                          {{ $message }}
@@ -44,7 +44,7 @@
                     <div class="row mb-3">
                         <label for="inputApellidos3" class="col-sm-4 col-form-label text-end" >Descripcion</label>
                         <div class="col-sm-7">
-                          <input name="descripcion" class="form-control {{$errors->has('descripcion')?'is-invalid':''}}" id="inputApellidos3" value="{{isset($sms)? $sms->Descripcion: old('descripcion') }}">
+                          <textarea name="descripcion" class="form-control {{$errors->has('descripcion')?'is-invalid':''}}" id="inputApellidos3" value="{{isset($sms)? $sms->descripcion: old('descripcion') }}"></textarea>
                             @error('descripcion')
                                 <div class="invalid-feedback">
                                     {{ $message }}

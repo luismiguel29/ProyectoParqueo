@@ -7,7 +7,7 @@
 @endsection
 @section ('content')
 
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
       @if(session('success'))
               <div class="alert alert-success">
               {{ session('success') }}
@@ -35,11 +35,11 @@
                   <tbody>
                       @foreach ($mensajes as $mensaje)
                       <tr>
-                        <td>{{$mensaje->Asunto}}</td>
-                        <td> {{$mensaje->Descripcion}}</td>
+                        <td>{{$mensaje->asunto}}</td>
+                        <td> {{$mensaje->descripcion}}</td>
                         <td>
-                            <div class="d-flex justify-content-evenly">
-                                <button class="btn btn-danger btn-sm-individual"   data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
+                            <div class="d-flex justify-content-start">
+                                <button class="btn btn-danger btn-sm-individual" style="margin-right: 15px"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
                                 <a href="{{route('Mensaje.mensajeglobal', ['id'=>$mensaje->id])}}" class="btn btn-primary btn-sm">Global</a>
                                 
                                   
@@ -47,7 +47,7 @@
                               
                         </td>
                             <td>
-                              <div class="d-flex justify-content-evenly">
+                              <div class="d-flex justify-content-start">
                                 <a href="{{route('Mensaje.editarmensaje', ['id'=>$mensaje->id])}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                 <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"  ></i></button>
                                 
@@ -83,8 +83,8 @@
                             <button  class="btn btn-danger-dg">Enviar</button>
                           </div>
                         </form>-->
-                        @livewire('buscar-correo')
                         
+                        @livewire('buscar-correo')
                       </div>
                     </div>
                   </div>
@@ -148,7 +148,7 @@
                  $('#mensajeCorreo').val(id);
       
                 });
-                $('.js-example-basic-single').select2({dropdownCssClass: 'user-select-dropdown'});
+                $('.js-example-basic-single').select2({dropdownParent: $('#mensaje')});
             });
           </script>
            @livewireScripts

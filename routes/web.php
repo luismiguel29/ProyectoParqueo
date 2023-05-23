@@ -23,6 +23,7 @@ use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 
 use App\Http\Controllers\ProveerMensajes\MensajeController;
+use App\Http\Controllers\RegisterAdmin\AsignacionController;
 use App\Http\Controllers\RegisterAdmin\SolicitudController;
 
 /*
@@ -176,6 +177,15 @@ Route::delete('/usuarios/{id}', [VistaRegisterController::class, 'destroy'])->na
 
 Route::get('/solicitud', [SolicitudController::class, 'index'])->name('solicitud');
 Route::delete('/mensaje/{id}', [SolicitudController::class, 'destroy'])->name('solicitudes.destroy');
+Route::get('/asignar', [AsignacionController::class, 'index'])->name('asignar');
+Route::get('/asignar/{id}', [AsignacionController::class, 'asignar'])->name('asignaciones.asignar');
+Route::get('/darbaja/{id}', [AsignacionController::class, 'darbaja'])->name('asignaciones.darbaja');
+
+Route::get('/buscarPorNombre', [AsignacionController::class,'buscarPorNombre'])->name('buscarPorNombre');
+
+
+Route::post('/asignarUsuario', [AsignacionController::class, 'asignarUsuario'])->name('asignarUsuario');
+
 //Solicitud Parqueo
 
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);

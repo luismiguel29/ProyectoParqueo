@@ -14,10 +14,10 @@ use App\Models\Solicitud;
 
 class SolicitudController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth',['except' => []]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth',['except' => []]);
+    // }
 
     public function index()
     {

@@ -99,6 +99,21 @@
 
                       </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('solicitud') }}">
+                          <span data-feather="bar-chart-2"></span>
+                          <i class="fas fa-file-alt pe-2"></i>
+                          Solicitudes
+                        </a>
+                      </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('asignar') }}">
+                          <span data-feather="bar-chart-2"></span>
+                          <i class="fas fa-car pe-2"></i>
+                          Asignar sitio
+                        </a>
+                    </li>
                   @endif
                   {{-- <li class="nav-item">
                     <a class="nav-link" href="#">

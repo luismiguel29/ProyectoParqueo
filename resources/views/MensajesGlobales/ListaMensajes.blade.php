@@ -39,8 +39,8 @@
                         <td> {{$mensaje->descripcion}}</td>
                         <td>
                             <div class="d-flex justify-content-start">
-                                <button class="btn btn-danger btn-sm-individual" style="margin-right: 15px"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
-                                <a href="{{route('Mensaje.mensajeglobal', ['id'=>$mensaje->id])}}" class="btn btn-primary btn-sm">Global</a>
+                                <button class="btn btn-primary btn-sm-individual" style="margin-right: 15px"  data-bs-toggle="modal" data-id="{{$mensaje->id}}" data-bs-target="#mensaje">Individual</button>
+                                <a href="{{route('Mensaje.mensajeglobal', ['id'=>$mensaje->id])}}" class="btn btn-primary ">Global</a>
                                 
                                   
                             </div>

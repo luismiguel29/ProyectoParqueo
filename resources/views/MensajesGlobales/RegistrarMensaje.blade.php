@@ -44,7 +44,7 @@
                     <div class="row mb-3">
                         <label for="inputApellidos3" class="col-sm-4 col-form-label text-end" >Descripcion</label>
                         <div class="col-sm-7">
-                          <textarea name="descripcion" class="form-control {{$errors->has('descripcion')?'is-invalid':''}}" id="inputApellidos3" value="{{isset($sms)? $sms->descripcion: old('descripcion') }}"></textarea>
+                          <textarea name="descripcion" class="form-control {{$errors->has('descripcion')?'is-invalid':''}}" id="inputApellidos3">{{isset($sms)? $sms->descripcion: old('descripcion') }}</textarea>
                             @error('descripcion')
                                 <div class="invalid-feedback">
                                     {{ $message }}

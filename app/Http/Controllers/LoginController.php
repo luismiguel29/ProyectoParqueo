@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parqueo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,12 +60,13 @@ class LoginController extends Controller
     $usuario = User::where('usuario', $request->input('usuario'))->exists();
     $password = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->exists();
     $verificar = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->first();
+    $sitio = Parqueo::where('usercustom_id', $verificar->id)->exists();
     if ($usuario) {
       if ($password) {
         $request->session()->regenerate();
-        $request->session()->put('sesion', $verificar);
+        $request->session()->put(['sesion' => $verificar, 'titular' => $sitio]);
         //return redirect()->route('verparqueo')->with(['verificar' => $verificar]);
-        return redirect()->route('verparqueo')->with('verificar', $verificar);
+        return redirect()->route('verparqueo');
       } else {
         return back()->with('alerta', 'Contraseña incorrecta!')->withInput();
       }

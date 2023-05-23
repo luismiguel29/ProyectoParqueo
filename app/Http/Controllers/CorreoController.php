@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\ConfiguracionParqueo;
+namespace App\Http\Controllers;
 
-use App\Models\ConfiguracionParqueo\CrearSitio;
-use App\Models\EnviarSolicitud;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\User;
+use App\Mail\EnviarCorreo;
 use Illuminate\Http\Request;
-use PSpell\Config;
+use Illuminate\Support\Facades\Mail;
 
-class CrearSitioController extends Controller
+class CorreoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,19 +16,35 @@ class CrearSitioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $datos = CrearSitio::all();
-        return view('/ConfiguracionParqueo/Crear', compact('datos')); 
+    {
+        $correo = User::all();
+        $asunto = "adjuntar asunto";
+        $contenido = "Adjuntar contenido el contenido del correo es el siguiente";
+        foreach ($correo as $mail) {
+            Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
+        }
+        return redirect()->route('listavehiculo');
     }
 
-    /**     
+    public function crearpago()
+    {
+        //$fechadefinida = date('Y-m-d H:i:s');
+        $fechadefinida = date('Y-m-17 00:00:00');
+        $fechaactual = Carbon::parse(now())->format('Y-m-d 00:00:00');
+        if ($fechaactual==$fechadefinida) {
+            return "es la fecha";
+        }
+        return [$fechaactual, $fechadefinida];
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,22 +55,7 @@ class CrearSitioController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'nroespacio' => ['required'],
-          ],[
-            'nroespacio.required', 'El campo Nro de espacio es obligatorio'
-          ]);
-
-        $crear = new CrearSitio;
-      
-        $crear->sitio=$request->input('nroespacio');
-        $crear->zona=$request->input('zona');
-        $crear->descripcion=$request->input('observacion');
-        // $crear->estado=$request->input('estado');
-        $crear->save();
-        return redirect()->route('sites.index')->with('success', '¡Registro exitoso!');
-      
+        //
     }
 
     /**

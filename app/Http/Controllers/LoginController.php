@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -23,6 +24,12 @@ class LoginController extends Controller
   public function index()
   {
     return view('loginuser.login');
+  }
+
+  public function cerrarsesion()
+  {
+    Auth::logout();
+    return redirect()->route('login')->with('message', 'Sesión cerrada');
   }
 
   /**
@@ -50,12 +57,14 @@ class LoginController extends Controller
     ]);
 
     $usuario = User::where('usuario', $request->input('usuario'))->exists();
-    $password = User::where('usuario', $request->input('usuario'))->where('contraseña', $request->input('contraseña'))->exists();
-    $verificar = User::where('usuario', $request->input('usuario'))->where('contraseña', $request->input('contraseña'))->first();
+    $password = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->exists();
+    $verificar = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->first();
     if ($usuario) {
       if ($password) {
         $request->session()->regenerate();
-        return redirect()->route('verparqueo')->with(['verificar' => $verificar]);
+        $request->session()->put('sesion', $verificar);
+        //return redirect()->route('verparqueo')->with(['verificar' => $verificar]);
+        return redirect()->route('verparqueo')->with('verificar', $verificar);
       } else {
         return back()->with('alerta', 'Contraseña incorrecta!')->withInput();
       }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConfiguracionParqueo\CrearSitio;
+use App\Models\EnviarSolicitud;
 use Illuminate\Http\Request;
 
 
@@ -41,10 +42,17 @@ class VerParqueoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enviar = new EnviarSolicitud;
+      
+        //$enviar->sitio=$request->input('nroespacio');
+        //$enviar->zona=$request->input('zona');
+        $enviar->descripcion=$request->input('Descripcion');
+        // $crear->estado=$request->input('estado');
+        $enviar->save();
+        return redirect()->route('verparqueo.index');
+      
     }
-
-    /**
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -75,7 +83,7 @@ class VerParqueoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

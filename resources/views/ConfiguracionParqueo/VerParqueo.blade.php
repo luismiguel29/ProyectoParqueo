@@ -33,7 +33,7 @@
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                    Zonas
+                                Zonas
                             </button>
                             <ul class="dropdown-menu" style="">
                                 <li><a class="dropdown-item" href="{{ route('verparqueo') }}">Zona A</a></li>
@@ -42,8 +42,6 @@
                         </div>
                         <!--DROPDOWN FIN-->
                     </div>
-                   
-
 
                     <!--CARD-->
 
@@ -64,9 +62,11 @@
                                         </div>
                                         <p class="fs-6 text-center">Libre</p>
                                     </div>
+                                    @include('ConfiguracionParqueo.sendRequest')
                                 @endforeach
 
-                                <div class="car">
+                                <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
+                                data-bs-target="#modal-update-">
                                     <p class="h3 text-center">#</p>
                                     <div
                                         class="car-content  rounded-2  bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">

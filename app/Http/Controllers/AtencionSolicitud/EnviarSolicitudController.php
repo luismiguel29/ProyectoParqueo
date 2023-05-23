@@ -1,34 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\ConfiguracionParqueo;
-
-use App\Models\ConfiguracionParqueo\CrearSitio;
-use App\Models\EnviarSolicitud;
+namespace App\Http\Controllers\AtencionSolicitud;
+use App\Models\AtencionSolicitud; 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PSpell\Config;
 
-class CrearSitioController extends Controller
+class EnviarSolicitudController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    { 
-        $datos = CrearSitio::all();
-        return view('/ConfiguracionParqueo/Crear', compact('datos')); 
+    public function index(Request $request)
+    {
+        $horarios = AtencionSolicitud::select('tarifa.id','tarifa.nombre','tarifa.precio')->get();
+        return view('AtencionSolicitud.EnviarSolicitud', compact('horarios')); 
+       // return view('/AtencionSolicitud/EnviarSolicitud');
     }
 
-    /**     
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,22 +37,13 @@ class CrearSitioController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'nroespacio' => ['required'],
-          ],[
-            'nroespacio.required', 'El campo Nro de espacio es obligatorio'
-          ]);
-
-        $crear = new CrearSitio;
+        $crear = new AtencionSolicitud();
       
-        $crear->sitio=$request->input('nroespacio');
-        $crear->zona=$request->input('zona');
-        $crear->descripcion=$request->input('observacion');
-        // $crear->estado=$request->input('estado');
+        $crear->nombre=$request->input('nombre_sitio');
+        $crear->precio=$request->input('precio');
+        
         $crear->save();
-        return redirect()->route('sites.index')->with('success', '¡Registro exitoso!');
-      
+        return redirect()->route('enviarSolicitud.index')->with('success', '¡Registro exitoso!');
     }
 
     /**
@@ -99,6 +88,8 @@ class CrearSitioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hora = AtencionSolicitud::findOrFail($id);
+        $hora->delete();
+        return redirect()->route('enviarSolicitud.index');
     }
 }

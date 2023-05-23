@@ -150,6 +150,7 @@ Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
 
+
 //Route::resource('/VerParqueo', VerParqueoController::class);
 
 Route::controller(VerParqueoZonaBController::class)->group(function(){

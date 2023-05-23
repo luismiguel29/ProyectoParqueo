@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\RegisterAdmin;
 use \DB;
 use App\Models\User;
-
+use App\Models\UserCustom;
+use App\Models\Rol;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -30,14 +31,14 @@ class RegisterController extends Controller
         ]);
 
         user::create([
-            'tipo'=>$request->user_type,
+            'rol' => strtolower($request->user_type),
             'nombre'=>($request->nombre),//strMinusculas,
             'apellido'=>$request->apellido,
             'usuario'=>Str::slug($request->usuario),
             'correo'=>$request->correo,
             'telefono'=>$request->telefono,
-            'contraseña'=>$request->password
-            // 'contraseña'=>Hash::make($request->password)//aumentarBd
+            'contrasenia'=>$request->password,
+            'contrasenia'=>Hash::make($request->password)
         ]);
 
         return redirect()->route('vistaRegister')->with('success', '¡Registro exitoso!');

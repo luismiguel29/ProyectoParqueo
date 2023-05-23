@@ -23,7 +23,7 @@ use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 
 use App\Http\Controllers\ProveerMensajes\MensajeController;
-
+use App\Http\Controllers\RegisterAdmin\SolicitudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,7 +174,8 @@ Route::get('/usuarios/{id}/edit', [VistaRegisterController::class, 'edit'])->nam
 Route::put('/usuarios/{id}', [VistaRegisterController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [VistaRegisterController::class, 'destroy'])->name('usuarios.destroy');
 
-
+Route::get('/solicitud', [SolicitudController::class, 'index'])->name('solicitud');
+Route::delete('/mensaje/{id}', [SolicitudController::class, 'destroy'])->name('solicitudes.destroy');
 //Solicitud Parqueo
 
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);

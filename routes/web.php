@@ -23,6 +23,9 @@ use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 
 use App\Http\Controllers\ProveerMensajes\MensajeController;
+use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
+use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

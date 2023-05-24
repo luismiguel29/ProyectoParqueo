@@ -98,7 +98,7 @@ class VehiculoController extends Controller
     {
         $request->validate([
             'tipo' => 'required',
-            'placa' => 'required|unique:vehiculo,placa',
+            'placa' => 'required',
             'marca' => 'required',
             'modelo' => 'required',
             'color' => 'required',
@@ -107,7 +107,7 @@ class VehiculoController extends Controller
         ]);
 
         $vehiculo = Vehiculo::find($id);
-        $vehiculo->usercustom_id = 1;
+        $vehiculo->usercustom_id = session()->get('sesion')->id;
         $vehiculo->tipo = $request->input('tipo');
         $vehiculo->placa = $request->input('placa');
         $vehiculo->marca = $request->input('marca');

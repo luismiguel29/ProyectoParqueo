@@ -93,7 +93,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('listaregistro') }}">
                         <span data-feather="bar-chart-2"></span>
-                        <i class="fa-solid fa-boxes-packing"></i>
+                        <i class="fa-sharp fa-solid fa-right-left"></i>
                         Entradas/Salidas
                         <i></i>
 
@@ -113,6 +113,16 @@
                           <i class="fas fa-car pe-2"></i>
                           Asignar sitio
                         </a>
+                    </li>
+                  @endif
+
+                  @if (session()->get('sitio'))
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('listainvitado') }}">
+                        <span data-feather="bar-chart-2"></span>
+                        <i class="fa-solid fa-handshake"></i>
+                        Compartir sitio
+                      </a>
                     </li>
                   @endif
                   {{-- <li class="nav-item">

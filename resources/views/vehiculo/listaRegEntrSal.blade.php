@@ -18,15 +18,15 @@
 
     <body>
         <div class="container-fluid py-3">
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+            @if (session('message'))
+                <div class="alert alert-danger">
+                    {{ session('message') }}
                 </div>
             @endif
             <div class="row">
                 <div class="row">
                     <div class="col">
-                        <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                        <i class="fa-sharp fa-solid fa-right-left fa-2x pe-1"></i>
                         <span class="h3 ">Gestión Entradas/Salidas de Vehiculos</span>
                     </div>
                     <form action="{{ route('agregarregistro') }}" method="POST">
@@ -54,7 +54,9 @@
                                 <thead class="p-3">
                                     <tr>
                                         <th>Sitio</th>
+                                        <th>Zona</th>
                                         <th>Placa</th>
+                                        <th>Usuario</th>
                                         <th>Ingreso</th>
                                         <th>Salida</th>
                                         <th>Acción</th>
@@ -64,7 +66,9 @@
                                     @foreach ($listaregistro as $reg)
                                         <tr>
                                             <td>{{ $reg->sitio }}</td>
+                                            <td>{{ $reg->zona }}</td>
                                             <td>{{ $reg->placa }}</td>
+                                            <td>{{ $reg->propietario->nombre }}</td>
                                             <td>{{ $reg->ingreso }}</td>
                                             <td>{{ $reg->salida }}</td>
                                             <td>

@@ -2,45 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+use App\Models\Parqueo;
 use App\Models\User;
-use App\Mail\EnviarCorreo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
-class CorreoController extends Controller
+class InvitadoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-     {
-         $this->middleware('auth', ['except' => []]);
-     }
-
     public function index()
     {
-        $correo = User::all();
-        $asunto = "adjuntar asunto";
-        $contenido = "Adjuntar contenido el contenido del correo es el siguiente";
-        foreach ($correo as $mail) {
-            Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
-        }
-        return redirect()->route('listavehiculo');
+        $parqueo = Parqueo::where('usercustom_id', session()->get('sesion')->id)->first();
+        return view('vehiculo.compartirSitio', compact('parqueo'));                   
     }
 
-    public function crearpago()
+    public function buscarusuario(Request $request)
     {
-        //$fechadefinida = date('Y-m-d H:i:s');
-        $fechadefinida = date('Y-m-17 00:00:00');
-        $fechaactual = Carbon::parse(now())->format('Y-m-d 00:00:00');
-        if ($fechaactual==$fechadefinida) {
-            return "es la fecha";
+        $placa = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $placa = User::select("id", "nombre", "apellido")
+                ->where('nombre', 'LIKE', "%$search%")
+                ->get();
         }
-        return [$fechaactual, $fechadefinida];
+        return response()->json($placa);
+    }
+
+
+    public function eliminarusuario(Request $request, $id)
+    {
+        Parqueo::where('id', $id)
+        ->update([
+            'invitado' => 0,
+        ]);
+        return redirect()->route('listainvitado');
     }
 
     /**
@@ -61,7 +60,7 @@ class CorreoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -95,7 +94,17 @@ class CorreoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'livesearch' => 'required',
+        ], [
+            'livesearch.required' => 'Seleccione un usuario',
+        ]);
+
+        Parqueo::where('id', $id)
+        ->update([
+            'invitado' => request('livesearch'),
+        ]);        
+        return redirect()->route('listainvitado');
     }
 
     /**

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-        
+
         <!-- Fonts -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <link  rel="stylesheet" href="{{asset('css/template.css')}}">
@@ -18,7 +18,7 @@
         <header class="navbar navbar-sky sticky-top bg-dark flex-md-nowrap p-0 shadow">
           <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
             <img src="/img/logo.png" alt="">
-          
+
           </a>
           <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,33 +28,33 @@
               <div class="container">
                 <ul class="nav flex-row">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
+                    <a class="nav-link active" aria-current="page" href="#">
                       <i class="fa-solid fa-bell"></i>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
+                    <a class="nav-link active" aria-current="page" href="#">
                       <i class="fa-solid fa-user"></i>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('cerrarsesion') }}">  
+                    <a class="nav-link active" aria-current="page" href="{{ route('cerrarsesion') }}">
                       <i class="fa-solid fa-power-off"></i>
                     </a>
                   </li>
                 </ul>
               </div>
-                
+
           </div>
         </header>
-        
+
         <div class="container-fluid">
           <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
               <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">  
+                    <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">
                       <i class="fa-solid fa-house pe-2"></i>
                       Inicio
                     </a>
@@ -63,7 +63,7 @@
                     <a class="nav-link" href="{{ route('vistaRegister') }}">
                       <span data-feather="file"></span>
                       <i class="fa-solid fa-users pe-2"></i>
-                      
+
                       Usuarios
                     </a>
                   </li>
@@ -103,15 +103,40 @@
                       Vehiculos
                     </a>
                   </li>
-                  
+
                   @if (session()->get('sesion')->rol=="administrador" || session()->get('sesion')->rol=="guardia")
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('listaregistro') }}">
                         <span data-feather="bar-chart-2"></span>
-                        <i class="fa-solid fa-boxes-packing"></i>
+                        <i class="fa-sharp fa-solid fa-right-left"></i>
                         Entradas/Salidas
                         <i></i>
-                          
+
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('solicitud') }}">
+                          <span data-feather="bar-chart-2"></span>
+                          <i class="fas fa-file-alt pe-2"></i>
+                          Solicitudes
+                        </a>
+                      </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('asignar') }}">
+                          <span data-feather="bar-chart-2"></span>
+                          <i class="fas fa-car pe-2"></i>
+                          Asignar sitio
+                        </a>
+                    </li>
+                  @endif
+
+                  @if (session()->get('sitio'))
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('listainvitado') }}">
+                        <span data-feather="bar-chart-2"></span>
+                        <i class="fa-solid fa-handshake"></i>
+                        Compartir sitio
                       </a>
                     </li>
                   @endif
@@ -121,24 +146,32 @@
                       <i class="fa-solid fa-sliders pe-2"></i>
                       Configuración
                       <i></i>
-                        
+
                     </a>
                   </li> --}}
-                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('Mensaje.listamensaje') }}">
+                      <span data-feather="bar-chart-2"></span>
+                      <i class="fa-solid fa-envelope"></i>
+                      Mensajes
+                      <i></i>
+
+                    </a>
+                  </li>
                 </ul>
               </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
               <div class=" py-3 mb-3 border-bottom">
                 <!--BODY INIT-->
-                
+
                 @yield('content')
-                
+
                 <!--BODY END-->
               </div>
-            
+
             </main>
-            
+
           </div>
         </div>
             <script type="module" src="./js/main.js"></script>

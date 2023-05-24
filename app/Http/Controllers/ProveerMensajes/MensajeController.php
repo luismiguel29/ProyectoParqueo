@@ -31,7 +31,7 @@ class MensajeController extends Controller
     {
 
         $request->validate([
-            'asunto' => 'required|max:20|regex:/^[A-Za-z\s]+$/',
+            'asunto' => 'required|max:255|regex:/^[A-Za-z\s]+$/',
             'descripcion' => 'required |max:255|regex:/^[A-Za-z\s]+$/',
             
         ], [
@@ -49,7 +49,7 @@ class MensajeController extends Controller
     public function update (Request $request, $id)
     {
         $request->validate([
-            'asunto' => 'required|max:20|regex:/^[A-Za-z\s]+$/',
+            'asunto' => 'required|max:255|regex:/^[A-Za-z\s]+$/',
             'descripcion' => 'required |max:255|regex:/^[A-Za-z\s]+$/',
             
         ], [

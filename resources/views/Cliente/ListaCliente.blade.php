@@ -20,8 +20,11 @@
         @endif
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="text mb-0"><i class="fas fa-user"></i> Gestión de Usuario Cliente</h4>
-        <a href="{{ route('Cliente.ClienteForm') }}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>
+        <div>
+          <a href="{{ route('Cliente.ClienteForm') }}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>
         <button class="btn btn-primary btn-md" type="button" data-bs-toggle="modal" data-bs-target="#importar"><i class="fas fa-plus"></i> Importar</button>
+        </div>
+        
                 <!-- Modal -->
         <div class="modal fade" id="importar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -76,7 +79,7 @@
                       <!--<td>{{$cliente->tipo_vehiculo}} </td>
                       <td>{{$cliente->placa}}</td>-->
                           <td>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-start">
                               <a href="{{route('Cliente.verform', ['id'=>$cliente->id])}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                               <button class="btn delete-btn btn-danger btn-sm"  data-bs-toggle="modal" data-id="{{$cliente->id}}" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"  ></i></button>
                               

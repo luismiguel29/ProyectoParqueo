@@ -40,9 +40,9 @@
                                 <label for="user-type" class="col-sm-4 col-form-label text-end">Tipo de usuario</label>
                                 <div class="col-sm-8">
                                     <select class="form-select" id="user-type" name="user_type">
-                                        <option value="administrador" {{ (isset($usuario) && $usuario->tipo == 'administrador') ? 'selected' : '' }}>Administrador</option>
-                                        <option value="secretaria" {{ (isset($usuario) && $usuario->tipo == 'secretaria') ? 'selected' : '' }}>Secretaria</option>
-                                        <option value="guardia" {{ (isset($usuario) && $usuario->tipo == 'guardia') ? 'selected' : '' }}>Guardia</option>
+                                        <option value="Administrador" {{ (isset($usuario) && $usuario->rol == 'administrador') ? 'selected' : '' }}>Administrador</option>
+                                        <option value="Secretaria" {{ (isset($usuario) && $usuario->rol == 'secretaria') ? 'selected' : '' }}>Secretaria</option>
+                                        <option value="Guardia" {{ (isset($usuario) && $usuario->rol == 'guardia') ? 'selected' : '' }}>Guardia</option>
                                     </select>
                                 </div>
                             </div>
@@ -170,12 +170,9 @@
                                     <a href="{{ route('vistaRegister') }}" class="btn btn-danger-dg btn-block w-100">
                                         Cancelar
                                     </a>
-
                                 </div>
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -194,12 +191,7 @@
             icon.classList.add("fa-eye-slash");
             }
         }
-
         </script>
-
-
-
     </body>
     </html>
-
 @endsection

@@ -20,8 +20,11 @@
         @endif
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="text mb-0"><i class="fas fa-user"></i> Gestión de Usuario Cliente</h4>
-        <a href="{{ route('Cliente.ClienteForm') }}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>
+        <div>
+          <a href="{{ route('Cliente.ClienteForm') }}" class="btn btn-primary btn-md" type="button"><i class="fas fa-plus"></i> Agregar</a>
         <button class="btn btn-primary btn-md" type="button" data-bs-toggle="modal" data-bs-target="#importar"><i class="fas fa-plus"></i> Importar</button>
+        </div>
+        
                 <!-- Modal -->
         <div class="modal fade" id="importar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">

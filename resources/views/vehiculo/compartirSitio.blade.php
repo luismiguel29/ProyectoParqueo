@@ -17,6 +17,7 @@
     </head>
 
     <body>
+        <h1>{{ $parqueo->id }}</h1>
         <div class="container-fluid py-3">
             @if (session('message'))
                 <div class="alert alert-danger">
@@ -26,11 +27,12 @@
             <div class="row">
                 <div class="row">
                     <div class="col">
-                        <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                        <span class="h3 ">Gestión Entradas/Salidas de Vehiculos</span>
+                        <i class="fa-solid fa-handshake fa-2x pe-1"></i>
+                        <span class="h3 ">Gestión compartir sitio</span>
                     </div>
-                    <form action="{{ route('agregarregistro') }}" method="POST">
+                    <form action="{{ route('agregarusuario', $parqueo->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="row mt-2 p-2" style="">
                             <div class="col col-sm-3 p-2">
                                 <select class="livesearch form-control {{ $errors->has('livesearch') ? 'is-invalid' : '' }}"
@@ -43,52 +45,44 @@
                             <div class="col-sm p-2 text-end">
                                 <button type="submit" class="btn btn-primary-pk" href=""><i class="fa-solid fa-plus"
                                         style="color: #ffffff;"></i>
-                                    Ingreso</button>
+                                    Compartir</button>
                             </div>
                         </div>
                     </form>
 
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
-                        @if ($listaregistro->isNotEmpty())
+                        @if ($parqueo->invitado > 0)
                             <table class="table table-striped mt-3 ">
                                 <thead class="p-3">
                                     <tr>
                                         <th>Sitio</th>
                                         <th>Zona</th>
-                                        <th>Placa</th>
-                                        <th>Usuario</th>
-                                        <th>Ingreso</th>
-                                        <th>Salida</th>
+                                        <th>Invitado</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($listaregistro as $reg)
-                                        <tr>
-                                            <td>{{ $reg->sitio }}</td>
-                                            <td>{{ $reg->zona }}</td>
-                                            <td>{{ $reg->placa }}</td>
-                                            <td>{{ $reg->propietario->nombre }}</td>
-                                            <td>{{ $reg->ingreso }}</td>
-                                            <td>{{ $reg->salida }}</td>
-                                            <td>
-                                                <form action="{{ route('editarregistro', $reg->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="d-inline-block">
-                                                        <button type="submit" class="btn btn-danger-dg btn-sm"
-                                                            @if ($reg->estado == 0) disabled @endif>Salida</button>
+                                    <tr>
+                                        <td>{{ $parqueo->sitio }}</td>
+                                        <td>{{ $parqueo->zona }}</td>
+                                        <td>{{ $parqueo->usercustom->nombre }}</td>
+                                        <td>
+                                            <form action="" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="d-inline-block">
+                                                    <button type="submit" class="btn btn-danger-dg btn-sm"
+                                                        >Eliminar</button>
 
-                                                    </div>
-                                                </form>
+                                                </div>
+                                            </form>
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         @else
-                            <div class="alert alert-dark">No existen registros de Entradas/Salidas</div>
+                            <div class="alert alert-dark">Actualmente no comparte sitio con ningun usuario</div>
                         @endif
                     </div>
                 </div>
@@ -98,16 +92,16 @@
 
         <script type="text/javascript">
             $('.livesearch').select2({
-                placeholder: 'Buscar placa',
+                placeholder: 'Buscar usuario',
                 ajax: {
-                    url: '/buscarplaca',
+                    url: '/buscarusuario',
                     dataType: 'json',
                     delay: 250,
                     processResults: function(data) {
                         return {
                             results: $.map(data, function(item) {
                                 return {
-                                    text: item.placa,
+                                    text: item.nombre+" "+item.apellido,
                                     id: item.id,
                                 }
 

@@ -21,7 +21,7 @@ use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
 use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
-
+use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\RegisterAdmin\AsignacionController;
 use App\Http\Controllers\RegisterAdmin\SolicitudController;
@@ -126,6 +126,12 @@ Route::controller(RegistroController::class)->group(function(){
 Route::controller(CorreoController::class)->group(function(){
     Route::get('envcorreo', 'index')->name('envcorreo');
     Route::get('pago', 'crearpago')->name('pago');
+});
+
+Route::controller(InvitadoController::class)->group(function(){
+    Route::get('listainvitado', 'index')->name('listainvitado');
+    Route::get('/buscarusuario', 'buscarusuario')->name('buscarusuario');
+    Route::put('/agregarusuario/{id}', 'update')->name('agregarusuario');
 });
 
 Route::get('/prueba', function () {

@@ -115,6 +115,16 @@
                         </a>
                     </li>
                   @endif
+
+                  @if (session()->get('sitio'))
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('listainvitado') }}">
+                        <span data-feather="bar-chart-2"></span>
+                        <i class="fa-solid fa-handshake"></i>
+                        Compartir sitio
+                      </a>
+                    </li>
+                  @endif
                   {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>

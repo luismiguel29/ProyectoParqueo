@@ -64,9 +64,9 @@ class LoginController extends Controller
     if ($usuario) {
       if ($password) {
         $request->session()->regenerate();
-        $request->session()->put(['sesion' => $verificar, 'titular' => $sitio]);
+        $request->session()->put(['sesion' => $verificar, 'sitio' => $sitio]);
         //return redirect()->route('verparqueo')->with(['verificar' => $verificar]);
-        return redirect()->route('verparqueo');
+        return redirect()->route('listavehiculo');
       } else {
         return back()->with('alerta', 'Contraseña incorrecta!')->withInput();
       }

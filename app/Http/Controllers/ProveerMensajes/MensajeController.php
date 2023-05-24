@@ -14,11 +14,15 @@ use App\Mail\Message;
 
 class MensajeController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth',['except' => []]);
+    // }
+
     public function index(Request $request)
     {
         $mensajes = Mensaje:: select('mensaje.id', 'mensaje.asunto',
         'mensaje.descripcion',) 
-        //->where('tipo', 'cliente')
         -> get();
         return view('MensajesGlobales.ListaMensajes', compact('mensajes')); 
     }
@@ -32,7 +36,7 @@ class MensajeController extends Controller
 
         $request->validate([
             'asunto' => 'required|max:255|regex:/^[A-Za-z\s]+$/',
-            'descripcion' => 'required |max:255|regex:/^[A-Za-z\s]+$/',
+            'descripcion' => 'required |max:255',
             
         ], [
             'asunto.regex' => 'El campo asunto solo puede tener letras',
@@ -50,7 +54,7 @@ class MensajeController extends Controller
     {
         $request->validate([
             'asunto' => 'required|max:255|regex:/^[A-Za-z\s]+$/',
-            'descripcion' => 'required |max:255|regex:/^[A-Za-z\s]+$/',
+            'descripcion' => 'required |max:255',
             
         ], [
             'asunto.regex' => 'El campo asunto solo puede tener letras',

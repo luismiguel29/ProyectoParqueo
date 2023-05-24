@@ -33,9 +33,13 @@ class InvitadoController extends Controller
     }
 
 
-    public function agregarusuario(Request $request)
+    public function eliminarusuario(Request $request, $id)
     {
-        
+        Parqueo::where('id', $id)
+        ->update([
+            'invitado' => 0,
+        ]);
+        return redirect()->route('listainvitado');
     }
 
     /**

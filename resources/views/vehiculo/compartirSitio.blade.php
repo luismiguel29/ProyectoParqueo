@@ -65,17 +65,45 @@
                                     <tr>
                                         <td>{{ $parqueo->sitio }}</td>
                                         <td>{{ $parqueo->zona }}</td>
-                                        <td>{{ $parqueo->usercustom->nombre }} {{ $parqueo->usercustom->apellido }}</td>
+                                        <td>{{ $parqueo->invitados->nombre }} {{ $parqueo->invitados->apellido }}</td>
                                         <td>
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="d-inline-block">
-                                                    <button type="submit" class="btn btn-danger-dg btn-sm"
-                                                        >Dejar de compartir</button>
+                                            <div class="d-inline-block">
+                                                <button type="button" class="bicon icon--red" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal">
+                                                    <i class="fa-solid fa-trash-can icon--white"></i>
+                                                </button>
+                                            </div>
 
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                ¡Atención!
+                                                            </h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">Esta seguro de eliminar el usuario con el que comparte el sitio?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary-pk"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            
+
+                                                            <form action="{{ route('eliminarusuario', $parqueo->id) }}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <button type="submit" class="btn btn-danger-dg"
+                                                                style="">Eliminar</button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </form>
+                                            </div>
 
                                         </td>
                                     </tr>

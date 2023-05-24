@@ -132,6 +132,7 @@ Route::controller(InvitadoController::class)->group(function(){
     Route::get('listainvitado', 'index')->name('listainvitado');
     Route::get('/buscarusuario', 'buscarusuario')->name('buscarusuario');
     Route::put('/agregarusuario/{id}', 'update')->name('agregarusuario');
+    Route::put('/eliminarusuario/{id}', 'eliminarusuario')->name('eliminarusuario');
 });
 
 Route::get('/prueba', function () {

@@ -32,4 +32,9 @@ class Parqueo extends Model
     {
         return $this->belongsTo('App\Models\User', 'usercustom_id');
     }
+
+    public function invitados()
+    {
+        return $this->belongsTo(User::class, 'invitado');
+    }
 }

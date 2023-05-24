@@ -52,7 +52,8 @@
                         <div class="container ">
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosA as $dato)
-                                    <div class="car">
+                                    <div class="car"  type="submit" class="bicon icon--blue" data-bs-toggle="modal"
+                                    data-bs-target="#modal-update-{{ $dato->id }}">
                                         <p class="h3 text-center">{{ $dato->sitio}}</p>
                                         
                                         <div

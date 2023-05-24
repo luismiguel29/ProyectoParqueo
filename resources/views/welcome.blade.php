@@ -80,7 +80,22 @@
                       <i class="fa-solid fa-square-parking pe-2"></i>
                       Parqueo
                     </a>
-                  </li>                  
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href='/enviarSolicitud'>
+                      <span data-feather="users"></span>
+                      <i class= "fa-solid fa-dollar pe-2"></i>
+                      Tarifa
+                    </a>
+                  </li>  
+                  <li class="nav-item">
+                    <a class="nav-link" href='/visualizarPagos'>
+                      <span data-feather="users"></span>
+                      <i class="fa-solid fa-money-check-dollar pe-2"></i>
+                      Control de Pago
+                    </a>
+                  </li> 
+                                  
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('listavehiculo') }}">
                       <span data-feather="users"></span>

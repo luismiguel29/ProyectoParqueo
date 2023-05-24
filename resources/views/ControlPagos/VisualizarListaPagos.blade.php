@@ -27,35 +27,30 @@
                 <div class="card-body">
                     <section>
                         <div class="container">
-                            <div class="row align-items-end">
-                                <div class="col-12 col-md-4">
-                                    <label class="form-label">Nombre</label>
-
-                                    <input class="form-control" type="text"
-                                        placeholder="Ingrese el nombre de usuario a buscar">
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <label class="form-label">Fecha inicio</label>
-                                    <input class="form-control" type="date" placeholder="Fecha inicio">
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <label class="form-label">Fecha fin</label>
-                                    <input class="form-control" type="date" placeholder="Fecha inicio">
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <label class="form-label">Estado</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>(Todos)</option>
-                                        <option value="1">Pendiente</option>
-                                        <option value="2">Pagado</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-2 pt-2 pt-md-0">
-                                    <button type="button" class="btn btn-primary ">Buscar</button>
-                                </div>
+                          <div class="row align-items-end">
+                            <div class="col-12 col-md-4">
+                              <label class="form-label">Tarifa</label>
+                      
+                              <input class="form-control" type="text" placeholder="Ingrese tarifa a buscar">
                             </div>
+                            <div class="col-12 col-md-2">
+                               <button type="button" class="btn btn-primary ">Buscar tarifa</button>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label class="form-label">Estado</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>(Todos)</option>
+                                    <option value="1">Pendiente</option>
+                                    <option value="2">Pagado</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-2 pt-2 pt-md-0">
+                              <button type="button" class="btn btn-primary ">Buscar estado</button>
+                            </div>
+                          </div>
                         </div>
-                    </section>
+                      </section>
+                      
                     <section>
                         <div class="container">
                             <div class="row pt-5 table-responsive">

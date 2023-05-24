@@ -40,6 +40,7 @@
                                         <th>Modelo</th>
                                         <th>Color</th>
                                         <th>Tipo</th>
+                                        <th>Propietario</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                             <td>{{ $item->modelo }}</td>
                                             <td>{{ $item->color }}</td>
                                             <td>{{ $item->tipo }}</td>
+                                            <td>{{ $item->propietario->nombre}} {{ $item->propietario->apellido}}</td>
                                             <td>
                                                 <div class="d-inline-block">
                                                     <a href="{{ route('vistaeditarvehiculo', $item->id) }}" type=""

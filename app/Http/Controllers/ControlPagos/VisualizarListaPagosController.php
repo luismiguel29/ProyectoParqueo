@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\ConfiguracionParqueo;
+namespace App\Http\Controllers\ControlPagos;
 
-use App\Models\ConfiguracionParqueo\CrearSitio;
-use App\Models\EnviarSolicitud;
 use App\Http\Controllers\Controller;
+use App\Models\VisualizarListaPagos;
 use Illuminate\Http\Request;
-use PSpell\Config;
 
-class CrearSitioController extends Controller
+class VisualizarListaPagosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,19 +14,19 @@ class CrearSitioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $datos = CrearSitio::all();
-        return view('/ConfiguracionParqueo/Crear', compact('datos')); 
+    {
+        
+        return view('ControlPagos.VisualizarListaPagos'); 
     }
 
-    /**     
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,22 +37,7 @@ class CrearSitioController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'nroespacio' => ['required'],
-          ],[
-            'nroespacio.required', 'El campo Nro de espacio es obligatorio'
-          ]);
-
-        $crear = new CrearSitio;
-      
-        $crear->sitio=$request->input('nroespacio');
-        $crear->zona=$request->input('zona');
-        $crear->descripcion=$request->input('observacion');
-        // $crear->estado=$request->input('estado');
-        $crear->save();
-        return redirect()->route('sites.index')->with('success', '¡Registro exitoso!');
-      
+        //
     }
 
     /**

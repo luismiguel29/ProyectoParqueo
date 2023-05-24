@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\ConfiguracionParqueo;
+namespace App\Http\Controllers;
 
-use App\Models\ConfiguracionParqueo\CrearSitio;
-use App\Models\EnviarSolicitud;
-use App\Http\Controllers\Controller;
+use App\Models\Parqueo;
+use App\Models\User;
 use Illuminate\Http\Request;
-use PSpell\Config;
 
-class CrearSitioController extends Controller
+class InvitadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,19 +14,42 @@ class CrearSitioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $datos = CrearSitio::all();
-        return view('/ConfiguracionParqueo/Crear', compact('datos')); 
+    {
+        $parqueo = Parqueo::where('usercustom_id', session()->get('sesion')->id)->first();
+        return view('vehiculo.compartirSitio', compact('parqueo'));                   
     }
 
-    /**     
+    public function buscarusuario(Request $request)
+    {
+        $placa = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $placa = User::select("id", "nombre", "apellido")
+                ->where('nombre', 'LIKE', "%$search%")
+                ->get();
+        }
+        return response()->json($placa);
+    }
+
+
+    public function eliminarusuario(Request $request, $id)
+    {
+        Parqueo::where('id', $id)
+        ->update([
+            'invitado' => 0,
+        ]);
+        return redirect()->route('listainvitado');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,22 +60,7 @@ class CrearSitioController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'nroespacio' => ['required'],
-          ],[
-            'nroespacio.required', 'El campo Nro de espacio es obligatorio'
-          ]);
-
-        $crear = new CrearSitio;
-      
-        $crear->sitio=$request->input('nroespacio');
-        $crear->zona=$request->input('zona');
-        $crear->descripcion=$request->input('observacion');
-        // $crear->estado=$request->input('estado');
-        $crear->save();
-        return redirect()->route('sites.index')->with('success', '¡Registro exitoso!');
-      
+        
     }
 
     /**
@@ -88,7 +94,17 @@ class CrearSitioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'livesearch' => 'required',
+        ], [
+            'livesearch.required' => 'Seleccione un usuario',
+        ]);
+
+        Parqueo::where('id', $id)
+        ->update([
+            'invitado' => request('livesearch'),
+        ]);        
+        return redirect()->route('listainvitado');
     }
 
     /**

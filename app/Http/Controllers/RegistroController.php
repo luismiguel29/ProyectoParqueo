@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Parqueo;
 use App\Models\Registro;
 use App\Models\Vehiculo;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RegistroController extends Controller
@@ -14,6 +15,12 @@ class RegistroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /* public function __construct()
+     {
+         $this->middleware('auth', ['except' => []]);
+     } */
+
     public function index()
     {
         $fecha_ini = date('Y-m-d 00:00:00');
@@ -24,13 +31,13 @@ class RegistroController extends Controller
 
     public function buscarplaca(Request $request)
     {
-    	$placa = [];
+        $placa = [];
 
-        if($request->has('q')){
+        if ($request->has('q')) {
             $search = $request->q;
-            $placa =Vehiculo::select("id", "placa")
-            		->where('placa', 'LIKE', "%$search%")
-            		->get();
+            $placa = Vehiculo::select("id", "placa")
+                ->where('placa', 'LIKE', "%$search%")
+                ->get();
         }
         return response()->json($placa);
     }
@@ -55,24 +62,39 @@ class RegistroController extends Controller
     {
         $request->validate([
             'livesearch' => 'required',
-        ],[
+        ], [
             'livesearch.required' => 'Seleccione un # de placa',
         ]);
 
-        $sesion = session()->get('sesion');
-        
         $placa = Vehiculo::where('id', request('livesearch'))->first();
+        $sitio = Parqueo::where('usercustom_id', $placa->usercustom_id)->first();
+        $invitado = Parqueo::where('invitado', $placa->usercustom_id)->first();
 
-        $ingreso = new Registro();
-        $ingreso->vehiculo_usercustom_id = $placa->usercustom_id;
-        $ingreso->vehiculo_id = request('livesearch');
-        $ingreso->sitio = '1A';
-        $ingreso->placa = $placa->placa;
-        $ingreso->ingreso = now();
-        $ingreso->estado = 1;
-        $ingreso->save();
-        return redirect()->route('listaregistro');
-
+        if ($sitio!=null) {           
+            $ingreso = new Registro();
+            $ingreso->vehiculo_usercustom_id = $placa->usercustom_id;
+            $ingreso->vehiculo_id = request('livesearch');
+            $ingreso->sitio = $sitio->sitio;
+            $ingreso->zona = $sitio->zona;
+            $ingreso->placa = $placa->placa;
+            $ingreso->ingreso = now();
+            $ingreso->estado = 1;
+            $ingreso->save();
+            return redirect()->route('listaregistro');
+        }else if($invitado!=null){
+            $ingreso = new Registro();
+            $ingreso->vehiculo_usercustom_id = $placa->usercustom_id;
+            $ingreso->vehiculo_id = request('livesearch');
+            $ingreso->sitio = $invitado->sitio;
+            $ingreso->zona = $invitado->zona;
+            $ingreso->placa = $placa->placa;
+            $ingreso->ingreso = now();
+            $ingreso->estado = 1;
+            $ingreso->save();
+            return redirect()->route('listaregistro');
+        }else{
+            return redirect()->route('listaregistro')->with('message', '¡El usuario no tiene un sitio asignado!');
+        }
     }
 
     /**

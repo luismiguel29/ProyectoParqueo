@@ -19,7 +19,13 @@ use App\Http\Controllers\RegisterAdmin\VistaRegisterController;
 use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
+use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
+use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
+use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
+use App\Http\Controllers\RegisterAdmin\AsignacionController;
+use App\Http\Controllers\RegisterAdmin\SolicitudController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,7 +59,7 @@ Route::get('/listamensaje',[MensajeController::class,'index'])->name('Mensaje.li
 Route::post('/ModalRegistrar',[MensajeController::class,'store'])->name('MensajesGlobales.registrarMen');
 Route::post('/EnviarMensaje',[MensajeController::class,'send'])->name('MensajesGlobales.send');
 Route::delete('/elimarmensaje',[MensajeController::class,'destroy'])->name('Mensaje.eliminar');
-Route::put('/editardato/{id}',[MensajeController::class,'update'])->name('Mensaje.editardato');
+Route::put('/actualizarmensaje/{id}',[MensajeController::class,'update'])->name('Mensaje.editardato');
 Route::get('/MensajeFormulario',[MensajeController::class,'register'])->name('Mensaje.formulario');
 Route::get('/EditarMensaje/{id}',[MensajeController::class,'edit'])->name('Mensaje.editarmensaje');
 Route::get('/EnviarMensajeGlobal/{id}',[MensajeController::class,'sendGlobal'])->name('Mensaje.mensajeglobal');
@@ -86,10 +92,9 @@ Route::controller(PruebaController::class)->group(function(){
     Route::get('/vistaejemplo', 'index');
 });
 
-Route::resource('/login', LoginController::class);
 Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login');
-    Route::get('/loginhorario', 'store');
+    Route::post('/iniciarsesion', 'store')->name('iniciarsesion');
     Route::get('/cerrarsesion', 'cerrarsesion')->name('cerrarsesion');
 });
 
@@ -123,6 +128,13 @@ Route::controller(CorreoController::class)->group(function(){
     Route::get('pago', 'crearpago')->name('pago');
 });
 
+Route::controller(InvitadoController::class)->group(function(){
+    Route::get('listainvitado', 'index')->name('listainvitado');
+    Route::get('/buscarusuario', 'buscarusuario')->name('buscarusuario');
+    Route::put('/agregarusuario/{id}', 'update')->name('agregarusuario');
+    Route::put('/eliminarusuario/{id}', 'eliminarusuario')->name('eliminarusuario');
+});
+
 Route::get('/prueba', function () {
     return view('vehiculo.pruebaeditar');
 });
@@ -144,6 +156,9 @@ Route::get('/vistacorreo', function () {
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
 });
+
+
+//Route::resource('/VerParqueo', VerParqueoController::class);
 
 Route::controller(VerParqueoZonaBController::class)->group(function(){
     Route::get('/VerParqueoZonaB', 'index')->name('verparqueozonab');
@@ -168,4 +183,21 @@ Route::get('/usuarios/{id}/edit', [VistaRegisterController::class, 'edit'])->nam
 Route::put('/usuarios/{id}', [VistaRegisterController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [VistaRegisterController::class, 'destroy'])->name('usuarios.destroy');
 
+Route::get('/solicitud', [SolicitudController::class, 'index'])->name('solicitud');
+Route::delete('/mensaje/{id}', [SolicitudController::class, 'destroy'])->name('solicitudes.destroy');
+Route::get('/asignar', [AsignacionController::class, 'index'])->name('asignar');
+Route::get('/asignar/{id}', [AsignacionController::class, 'asignar'])->name('asignaciones.asignar');
+Route::get('/darbaja/{id}', [AsignacionController::class, 'darbaja'])->name('asignaciones.darbaja');
+
+Route::get('/buscarPorNombre', [AsignacionController::class,'buscarPorNombre'])->name('buscarPorNombre');
+
+
+Route::post('/asignarUsuario', [AsignacionController::class, 'asignarUsuario'])->name('asignarUsuario');
+
+//Solicitud Parqueo
+
+Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
+
+
+Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
 

@@ -64,6 +64,7 @@
                                         </div>
                                         <p class="fs-6 text-center">Libre</p>
                                     </div>
+                                    
                                 @endforeach
 
                                 <div class="car">

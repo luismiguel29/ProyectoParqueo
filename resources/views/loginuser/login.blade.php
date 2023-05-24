@@ -29,7 +29,7 @@
                             <i class="fa-solid fa-user fa-2xl" style="color: #000000;"></i>
                             <span class="card-title text-center fs-5 h5">Por favor inicie sesión</span>
                         </div>
-                        <form action="{{ route('login.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('iniciarsesion') }}" method="post" >
                             @csrf
                             @if (session('alerta'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">

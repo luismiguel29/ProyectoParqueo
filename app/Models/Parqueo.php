@@ -30,6 +30,6 @@ class Parqueo extends Model
 
     public function usercustom()
     {
-        return $this->belongsTo('App\Models\UserCustom', 'usercustom_id');
+        return $this->belongsTo('App\Models\User', 'usercustom_id');
     }
 }

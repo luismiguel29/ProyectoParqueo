@@ -43,8 +43,8 @@
                             </div>
 
                             <div class="col-sm p-2 text-end">
-                                <button type="submit" class="btn btn-primary-pk" href=""><i class="fa-solid fa-plus"
-                                        style="color: #ffffff;"></i>
+                                <button type="submit" class="btn btn-primary-pk" href="" @if ($parqueo->invitado > 0) disabled @endif><i class="fa-solid fa-plus"
+                                        style="color: #ffffff;" ></i>
                                     Compartir</button>
                             </div>
                         </div>
@@ -65,14 +65,14 @@
                                     <tr>
                                         <td>{{ $parqueo->sitio }}</td>
                                         <td>{{ $parqueo->zona }}</td>
-                                        <td>{{ $parqueo->usercustom->nombre }}</td>
+                                        <td>{{ $parqueo->usercustom->nombre }} {{ $parqueo->usercustom->apellido }}</td>
                                         <td>
                                             <form action="" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="d-inline-block">
                                                     <button type="submit" class="btn btn-danger-dg btn-sm"
-                                                        >Eliminar</button>
+                                                        >Dejar de compartir</button>
 
                                                 </div>
                                             </form>

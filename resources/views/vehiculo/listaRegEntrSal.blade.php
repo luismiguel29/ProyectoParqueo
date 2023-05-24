@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="row">
                     <div class="col">
-                        <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                        <i class="fa-sharp fa-solid fa-right-left fa-2x pe-1"></i>
                         <span class="h3 ">Gestión Entradas/Salidas de Vehiculos</span>
                     </div>
                     <form action="{{ route('agregarregistro') }}" method="POST">

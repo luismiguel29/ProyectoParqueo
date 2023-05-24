@@ -44,7 +44,7 @@
 
                             <div class="col-sm p-2 text-end">
                                 <button type="submit" class="btn btn-primary-pk" href="" @if ($parqueo->invitado > 0) disabled @endif><i class="fa-solid fa-plus"
-                                        style="color: #ffffff;" ></i>
+                                        style="" ></i>
                                     Compartir</button>
                             </div>
                         </div>

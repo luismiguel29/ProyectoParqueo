@@ -43,7 +43,9 @@
                                         <th>Color</th>
                                         <th>Tipo</th>
                                         <th>Propietario</th>
+                                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                                         <th>Acción</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,6 +57,7 @@
                                             <td>{{ $item->color }}</td>
                                             <td>{{ $item->tipo }}</td>
                                             <td>{{ $item->propietario->nombre}} {{ $item->propietario->apellido}}</td>
+                                            @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                                             <td>
                                                 <div class="d-inline-block">
                                                     <a href="{{ route('vistaeditarvehiculo', $item->id) }}" type=""
@@ -105,6 +108,7 @@
 
 
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 @else

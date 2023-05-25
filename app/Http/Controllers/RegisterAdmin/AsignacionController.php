@@ -21,11 +21,13 @@ class AsignacionController extends Controller
 
         $asignaciones = DB::table('parqueo')
             ->leftJoin('usercustom', 'parqueo.usercustom_id', '=', 'usercustom.id')
-            ->select('parqueo.id', 'parqueo.zona', 'parqueo.sitio', 'parqueo.estado', 'parqueo.descripcion', 'parqueo.fechaasig','parqueo.invitado', 'usercustom.nombre', 'usercustom.telefono', 'usercustom.ci', 'usercustom.rol')
+            ->leftJoin('usercustom as invitado', 'parqueo.invitado', '=', 'invitado.id') // Segunda unión para obtener el usuario invitado
+            ->select('parqueo.id', 'parqueo.zona', 'parqueo.sitio', 'parqueo.estado', 'parqueo.descripcion', 'parqueo.fechaasig','parqueo.invitado', 'usercustom.nombre', 'usercustom.telefono', 'usercustom.ci', 'usercustom.rol', 'invitado.nombre as nombre_invitado', 'invitado.apellido as apellido_invitado') // Obtener el nombre y apellido del usuario invitado
             ->when($search, function ($query, $search) {
                 return $query->where('usercustom.ci', 'like', '%'.$search.'%');
             })
             ->get();
+
 
         return view('registro.asignarSol', ['asignaciones' => $asignaciones]);
     }
@@ -74,6 +76,19 @@ class AsignacionController extends Controller
 
         return response()->json(['message' => 'Asignación realizada con éxito.']);
     }
+
+    public function removeInvitado($id)
+    {
+        $parqueo = Parqueo::find($id);
+
+        if ($parqueo) {
+            $parqueo->invitado = null;
+            $parqueo->save();
+        }
+
+        return back();
+    }
+
 
 
 }

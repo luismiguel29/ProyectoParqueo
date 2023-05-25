@@ -2,6 +2,6 @@
 {{$mensaje -> Descripcion}}
 
 
-Thanks,<br>
+
 {{ config('app.name') }}
 @endcomponent

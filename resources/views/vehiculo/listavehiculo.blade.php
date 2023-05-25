@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="row">
                     <div class="col p-3">
-                        <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                        <i class="fa-solid fa-car-side fa-2x pe-2"></i>
                         <span class="h3 ">Gestión de Vehiculos</span>
                     </div>
                     @if (session()->get('sesion')->rol=="cliente")

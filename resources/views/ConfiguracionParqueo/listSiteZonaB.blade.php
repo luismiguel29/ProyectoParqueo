@@ -25,29 +25,29 @@
 
                 <div class="col-12 col-sm-auto d-flex gap-3 justify-content-center pb-3 pb-sm-0">
                     <!--DROPDOWN INICIO-->
-                       <div class="dropdown col-auto">
-                           <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                               Zonas
-                           </button>
-                           <ul class="dropdown-menu" style="">
-                               <li><a class="dropdown-item" href="/sites">Zona A</a></li>
-                               <li><a class="dropdown-item" href="/siteszonab">Zona B</a></li>
-                           </ul>
-                       </div>
-   
-                       <!--DROPDOWN FIN-->
-   
-                       <div class="col-auto">
-                           <a href="\crear" class="btn btn-primary">
-                               <i class="fa-sharp fa-solid fa-plus"></i>
-                               <span>Agregar</span>
-                           </a>
-                       </div>
-                   
-                   
-               </div>
-            </div>
+                        <div class="dropdown col-auto">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Zonas
+                            </button>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href="/sites">Zona A</a></li>
+                                <li><a class="dropdown-item" href="/siteszonab">Zona B</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!--DROPDOWN FIN-->
+                        @if (session()->get('sesion')->rol=="administrador")
+                        <div class="col-auto">
+                            <a href="\crear" class="btn btn-primary">
+                                <i class="fa-sharp fa-solid fa-plus"></i>
+                                <span>Agregar</span>
+                            </a>
+                        </div>
+                        @endif
+                    
+                </div>
+                </div>
 
             <div class="card card-outline  border-top-pk   shadow">
                 <div class="row">

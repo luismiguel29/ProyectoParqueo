@@ -25,11 +25,13 @@
                         <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                         <span class="h3 ">Gestión de Vehiculos</span>
                     </div>
+                    @if (session()->get('sesion')->rol=="cliente")
                     <div class="col p-3 text-end">
                         <a class="btn btn-primary-pk" href="{{ route('registrarvehiculo') }}"><i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                             Agregar</a>
                     </div>
-
+                    @endif
+                    
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
                         @if ($vehiculo->isNotEmpty())
                             <table class="table table-striped mt-3 ">

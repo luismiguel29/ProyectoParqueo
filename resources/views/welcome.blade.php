@@ -53,22 +53,24 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
               <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
+                  @if (session()->get('sesion')->rol=="cliente")
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">
                       <i class="fa-solid fa-house pe-2"></i>
                       Inicio
                     </a>
                   </li>
+                  @endif
+                  @if (session()->get('sesion')->rol=="administrador")
                   <li class="nav-item">
-                    @if (session()->get('sesion')->rol=="administrador")
                     <a class="nav-link" href="{{ route('vistaRegister') }}">
                       <span data-feather="file"></span>
                       <i class="fa-solid fa-users pe-2"></i>
-
                       Usuarios
                     </a>
-                    @endif
                   </li>
+                  @endif
+                  @if (session()->get('sesion')->rol=="administrador" || session()->get('sesion')->rol=="secretaria")
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('Cliente.listacliente')}}">
                       <span data-feather="shopping-cart"></span>
@@ -76,6 +78,8 @@
                       Cliente
                     </a>
                   </li>
+                  @endif
+                  @if (session()->get('sesion')->rol=="administrador" || session()->get('sesion')->rol=="secretaria")
                   <li class="nav-item">
                     <a class="nav-link" href="/sites">
                       <span data-feather="users"></span>
@@ -83,6 +87,7 @@
                       Parqueo
                     </a>
                   </li>
+                  @endif
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('listavehiculo') }}">
                       <span data-feather="users"></span>
@@ -97,18 +102,15 @@
                         <span data-feather="bar-chart-2"></span>
                         <i class="fa-sharp fa-solid fa-right-left"></i>
                         Entradas/Salidas
-                        <i></i>
-
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('solicitud') }}">
-                          <span data-feather="bar-chart-2"></span>
-                          <i class="fas fa-file-alt pe-2"></i>
-                          Solicitudes
-                        </a>
-                      </li>
-
+                      <a class="nav-link" href="{{ route('solicitud') }}">
+                        <span data-feather="bar-chart-2"></span>
+                        <i class="fas fa-file-alt pe-2"></i>
+                        Solicitudes
+                      </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('asignar') }}">
                           <span data-feather="bar-chart-2"></span>
@@ -117,7 +119,6 @@
                         </a>
                     </li>
                   @endif
-
                   @if (session()->get('sitio'))
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('listainvitado') }}">

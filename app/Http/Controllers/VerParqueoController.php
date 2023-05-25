@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ConfiguracionParqueo\CrearSitio;
 use App\Models\EnviarSolicitud;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -42,14 +43,22 @@ class VerParqueoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $enviar = new EnviarSolicitud;
+        $sitio = new CrearSitio;
       
-        //$enviar->sitio=$request->input('nroespacio');
+      
         //$enviar->zona=$request->input('zona');
+        $enviar->usuario=session()->get('sesion')->id;
+        $enviar->sitio=$request->input('sitio');
         $enviar->descripcion=$request->input('Descripcion');
+        $enviar->fecha= Carbon::now();
         // $crear->estado=$request->input('estado');
         $enviar->save();
         return redirect()->route('verparqueo.index');
+
+        //return $now = Carbon::now();
+         
       
     }
      /**

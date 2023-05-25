@@ -43,13 +43,14 @@
                         </div>
     
                         <!--DROPDOWN FIN-->
-    
+                        @if (session()->get('sesion')->rol=="administrador")
                         <div class="col-auto">
                             <a href="\crear" class="btn btn-primary">
                                 <i class="fa-sharp fa-solid fa-plus"></i>
                                 <span>Agregar</span>
                             </a>
                         </div>
+                        @endif
                     
                     
                 </div>

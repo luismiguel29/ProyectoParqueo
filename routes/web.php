@@ -62,7 +62,7 @@ Route::delete('/elimarmensaje',[MensajeController::class,'destroy'])->name('Mens
 Route::put('/actualizarmensaje/{id}',[MensajeController::class,'update'])->name('Mensaje.editardato');
 Route::get('/MensajeFormulario',[MensajeController::class,'register'])->name('Mensaje.formulario');
 Route::get('/EditarMensaje/{id}',[MensajeController::class,'edit'])->name('Mensaje.editarmensaje');
-Route::get('/EnviarMensajeGlobal/{id}',[MensajeController::class,'sendGlobal'])->name('Mensaje.mensajeglobal');
+Route::post('/EnviarMensajeGlobal',[MensajeController::class,'sendGlobal'])->name('Mensaje.mensajeglobal');
 
 
 
@@ -153,10 +153,13 @@ Route::get('/vistacorreo', function () {
 
 
 //rutas yohana
+Route::resource('/verparqueo', VerParqueoController::class);
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
+    Route::get('/VerParqueo', 'store')->name('verparqueo');
 });
 
+//Route::resource('/verparqueo', VerParqueoController::class);
 
 //Route::resource('/VerParqueo', VerParqueoController::class);
 

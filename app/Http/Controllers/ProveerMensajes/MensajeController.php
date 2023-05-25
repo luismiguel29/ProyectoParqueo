@@ -90,8 +90,8 @@ class MensajeController extends Controller
         
     }
 
-    public function sendGlobal ($id){
-        $mensaje = Mensaje::find($id);
+    public function sendGlobal (Request $request){
+        $mensaje = Mensaje::find($request->id);
         $job = (new \App\Jobs\SendQueueEmail($mensaje))->delay(now()->addSeconds(2));
         dispatch($job);
         return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Envio exitoso!');

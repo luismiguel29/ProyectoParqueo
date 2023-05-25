@@ -93,7 +93,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('listaregistro') }}">
                         <span data-feather="bar-chart-2"></span>
-                        <i class="fa-sharp fa-solid fa-right-left"></i>
+                        <i class="fa-sharp fa-solid fa-right-left pe-2"></i>
                         Entradas/Salidas
                         <i></i>
 
@@ -120,7 +120,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('listainvitado') }}">
                         <span data-feather="bar-chart-2"></span>
-                        <i class="fa-solid fa-handshake"></i>
+                        <i class="fa-solid fa-handshake pe-2"></i>
                         Compartir sitio
                       </a>
                     </li>

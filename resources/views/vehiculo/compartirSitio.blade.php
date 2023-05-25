@@ -17,7 +17,6 @@
     </head>
 
     <body>
-        <h1>{{ $parqueo->id }}</h1>
         <div class="container-fluid py-3">
             @if (session('message'))
                 <div class="alert alert-danger">
@@ -27,7 +26,7 @@
             <div class="row">
                 <div class="row">
                     <div class="col">
-                        <i class="fa-solid fa-handshake fa-2x pe-1"></i>
+                        <i class="fa-solid fa-handshake fa-2x pe-2"></i>
                         <span class="h3 ">Gestión compartir sitio</span>
                     </div>
                     <form action="{{ route('agregarusuario', $parqueo->id) }}" method="POST">

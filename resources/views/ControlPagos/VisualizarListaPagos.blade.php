@@ -34,7 +34,7 @@
                                         <div class="col-12 col-md-4">
                                             <label class="form-label">Tarifa</label>
 
-                                            <input class="form-control" type="text"
+                                            <input class="form-control" type="text"    wire:model="buscar"
                                                 placeholder="Ingrese tarifa a buscar">
                                         </div>
                                         <div class="col-12 col-md-2">
@@ -71,10 +71,10 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($horarios as $horario)
+                                                @foreach ($horarios as $horario and nombres as nombre)
                                                     <tr>
                                                         <!--<th scope="row">Pepito</th>-->
-                                                        <td>{{ $horario->usercustom_id }}</td>
+                                                        <td>{{ $nombre}}</td>
                                                         <td>{{ $horario->sitio }}</td>
                                                         <td>{{ $horario->fechaasig }}</td>
                                                         <td>{{ $horario->fechaasig }}</td>

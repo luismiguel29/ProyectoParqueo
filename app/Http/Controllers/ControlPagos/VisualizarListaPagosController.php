@@ -4,7 +4,9 @@ namespace App\Http\Controllers\ControlPagos;
 
 use App\Http\Controllers\Controller;
 use App\Models\VisualizarListaPagos;
+use App\Models\User;
 use App\Models\ConfiguracionParqueo\CrearSitio;
+use App\Models\AtencionSolicitud;
 use Illuminate\Http\Request;
 
 class VisualizarListaPagosController extends Controller
@@ -16,10 +18,26 @@ class VisualizarListaPagosController extends Controller
      */
     public function index()
     {
+        $parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
+        $nombres = array();
+        foreach ($parqueoUserId as $id) { 
+            $id = json_decode($id)->usercustom_id;
+            if($id < 0){
+                
+            }
+            $user = User::query()->select('nombre')->where('id', $id)->get();
+            array_push($nombres, $user);
+        }
+        
+        //array extraidos de parqueo y user custom
+        //$userId = User::query()->select(['id'])->get();
+        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', 0)->get();
+        return $horarios;
 
-        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->get();
-        //$horarios->usercustom_id;
-        return view('ControlPagos.VisualizarListaPagos', compact('horarios')); 
+        //return User::where('id')->first()->nombre;
+        //return User::where('id','1')->first()->nombre;
+        //return User::select('nombre')->where('id', '1')->get();
+        return view('ControlPagos.VisualizarListaPagos', compact('horarios', 'nombres')); 
        // return view('ControlPagos.VisualizarListaPagos'); 
     }
 
@@ -28,6 +46,13 @@ class VisualizarListaPagosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public $buscar;
+    public function buscador(){
+        $buscar = '%'.$this->buscar.'%';
+        return AtencionSolicitud::where('tarifa', 'like', $buscar)->get();
+
+     }
     public function create()
     {
         //

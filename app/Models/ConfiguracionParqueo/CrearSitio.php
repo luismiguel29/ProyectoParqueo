@@ -10,6 +10,6 @@ class CrearSitio extends Model
     //use HasFactory;
     protected $table= "parqueo";
     protected $primaryKey = "id";
-    protected $fillable =['usercustom_id','sitio', 'zona', 'descripcion', 'estado','fechaasig'];
+    protected $fillable =['usercustom_id', 'sitio', 'zona', 'descripcion', 'estado', 'fechaasig'];
     public $timestamps = false;
 }

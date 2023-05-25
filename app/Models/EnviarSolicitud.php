@@ -10,7 +10,7 @@ class EnviarSolicitud extends Model
     protected $table="solicitud";
     protected $primaryKey="id";
     protected $fillable=[
-        'descripcion'];
+        'usuario','sitio','descripcion','fecha'];
 
     public $timestamps = false;
 }

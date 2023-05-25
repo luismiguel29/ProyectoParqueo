@@ -18,8 +18,8 @@
         <div class="container-fluid parkingSite">
             <div class="row ">
                 <div class="col-12 col-sm pb-3">
-                    <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                    <span class="h3">Lista de sitios ZONA B</span>
+                    <i class="fa-solid fa-dollar pe-2 fa-2x pe-1"></i>
+                    <span class="h3">Tarifas</span>
                 </div>
 
 
@@ -31,7 +31,7 @@
                     <!--'ConfiguracionParqueo/crear.store'-->
                     @csrf
                     @method('post')
-                    <div class="row">
+                    <div class="row row-1">
                         <div class="col-md-3">
                             <div class="form group">
                                 <label for="">Nombre del sitio</label>
@@ -94,11 +94,20 @@
                                             <td>{{ $horario->nombre}}</td>
                                             <td>{{ $horario->precio }}</td>
                                             <td>
-                                                <div class="imgAction">
-                                                    <button type="submit" class="bicon icon--red" data-bs-toggle="modal"
-                                                        data-bs-target="#modal-delete-{{ $horario->id }}">
-                                                        <i class="fa-solid fa-xmark icon--white"></i>
+                                        
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="imgAction">
+                                                        <button type="submit" class="bicon icon--blue" data-bs-toggle="modal"
+                                                        data-bs-target="#modal-update-">
+                                                        <i class="fa-solid fa-pen-to-square icon--white"></i>
                                                     </button>
+                                                    </div>    
+                                                    <div class="imgAction">
+                                                        <button type="submit" class="bicon icon--red" data-bs-toggle="modal"
+                                                            data-bs-target="#modal-delete-{{ $horario->id }}">
+                                                            <i class="fa-solid fa-xmark icon--white"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>

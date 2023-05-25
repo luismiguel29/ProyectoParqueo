@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario Administrador</title>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,7 +15,7 @@
 
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <h4 class="text mb-4"><i class="fa-solid fa-car-side"></i> Registro de Vehiculo</h4>
+                    <h4 class="text mb-4"><i class="fa-solid fa-car-side pe-2"></i> Registro de Vehiculo</h4>
                     <div class="form-container">
 
                         <form action="{{ route('agregarvehiculo') }}" method="POST">

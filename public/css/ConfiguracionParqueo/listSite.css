@@ -52,3 +52,8 @@ a{
     border-top: 4px solid  #0256CE;
     padding: 30px;
 }
+
+.row-1{
+    align-items: end;
+
+}

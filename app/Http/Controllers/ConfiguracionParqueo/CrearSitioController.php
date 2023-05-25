@@ -47,7 +47,7 @@ class CrearSitioController extends Controller
           ]);
 
         $crear = new CrearSitio;
-      
+        $crear->usercustom_id= 0;
         $crear->sitio=$request->input('nroespacio');
         $crear->zona=$request->input('zona');
         $crear->descripcion=$request->input('observacion');

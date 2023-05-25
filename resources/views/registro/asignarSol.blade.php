@@ -62,7 +62,7 @@
             </div>
         </form> --}}
 
-        <div class="table-responsive" id="table-container">
+        <div class="table-responsive-fluid" id="table-container">
             <div class="blue-line"></div>
             <table id="myTable" class="table">
                 <thead>
@@ -87,11 +87,18 @@
                             <td>{{ $asignacion->sitio }}</td>
                             <td>{{ $asignacion->zona }}</td>
                             <td>{{ $asignacion->estado ? 'Activo' : 'Inactivo' }}</td>
-                            <td>{{ $asignacion->invitado }}</td>
+                            <td>
+                            @if($asignacion->nombre_invitado)
+                                {{ $asignacion->nombre_invitado . ' ' . $asignacion->apellido_invitado }}
+                            @else
+                                No hay invitado
+                            @endif
+                            </td>
                             <td>{{ $asignacion->fechaasig }}</td>
                             <td>
                                 <!-- Botón Asignar -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#asignarModal{{ $asignacion->id }}">Asignar</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal{{ $asignacion->id }}">Quitar invitado</button>
 
                                 <!-- Modal de asignar -->
                                 <div class="modal fade" id="asignarModal{{ $asignacion->id }}" tabindex="-1" aria-labelledby="asignarModalLabel{{ $asignacion->id }}" aria-hidden="true">
@@ -118,6 +125,28 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Modal de quitarInvi -->
+                                <div class="modal fade" id="confirmModal{{ $asignacion->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmModalLabel">Confirmación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas quitar al invitado?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <form action="{{ route('removeInvitado', $asignacion->id) }}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">Sí, quitar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </td>
                         </tr>
                     @endforeach

@@ -22,14 +22,16 @@
             <div class="row">
                 <div class="row">
                     <div class="col p-3">
-                        <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                        <i class="fa-solid fa-car-side fa-2x pe-2"></i>
                         <span class="h3 ">Gestión de Vehiculos</span>
                     </div>
+                    @if (session()->get('sesion')->rol=="cliente")
                     <div class="col p-3 text-end">
                         <a class="btn btn-primary-pk" href="{{ route('registrarvehiculo') }}"><i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                             Agregar</a>
                     </div>
-
+                    @endif
+                    
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
                         @if ($vehiculo->isNotEmpty())
                             <table class="table table-striped mt-3 ">
@@ -41,7 +43,9 @@
                                         <th>Color</th>
                                         <th>Tipo</th>
                                         <th>Propietario</th>
+                                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                                         <th>Acción</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,6 +57,7 @@
                                             <td>{{ $item->color }}</td>
                                             <td>{{ $item->tipo }}</td>
                                             <td>{{ $item->propietario->nombre}} {{ $item->propietario->apellido}}</td>
+                                            @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                                             <td>
                                                 <div class="d-inline-block">
                                                     <a href="{{ route('vistaeditarvehiculo', $item->id) }}" type=""
@@ -103,6 +108,7 @@
 
 
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 @else

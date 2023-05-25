@@ -153,10 +153,13 @@ Route::get('/vistacorreo', function () {
 
 
 //rutas yohana
+Route::resource('/verparqueo', VerParqueoController::class);
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
+    Route::get('/VerParqueo', 'store')->name('verparqueo');
 });
 
+//Route::resource('/verparqueo', VerParqueoController::class);
 
 //Route::resource('/VerParqueo', VerParqueoController::class);
 
@@ -190,9 +193,9 @@ Route::get('/asignar/{id}', [AsignacionController::class, 'asignar'])->name('asi
 Route::get('/darbaja/{id}', [AsignacionController::class, 'darbaja'])->name('asignaciones.darbaja');
 
 Route::get('/buscarPorNombre', [AsignacionController::class,'buscarPorNombre'])->name('buscarPorNombre');
-
-
 Route::post('/asignarUsuario', [AsignacionController::class, 'asignarUsuario'])->name('asignarUsuario');
+Route::get('/removeInvitado/{id}',[AsignacionController::class,'removeInvitado'])->name('removeInvitado');
+
 
 //Solicitud Parqueo
 

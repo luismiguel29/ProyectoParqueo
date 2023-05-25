@@ -11,7 +11,8 @@ class BuscarCorreo extends Component {
     public $users;
 
     public function updatedTerm(){
-        $this->users = User::all()-> toArray();
+        $this->users = User::where('rol', 'cliente')
+        -> get()-> toArray();
     }
     public function render()
     {

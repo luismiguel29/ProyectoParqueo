@@ -193,9 +193,9 @@ Route::get('/asignar/{id}', [AsignacionController::class, 'asignar'])->name('asi
 Route::get('/darbaja/{id}', [AsignacionController::class, 'darbaja'])->name('asignaciones.darbaja');
 
 Route::get('/buscarPorNombre', [AsignacionController::class,'buscarPorNombre'])->name('buscarPorNombre');
-
-
 Route::post('/asignarUsuario', [AsignacionController::class, 'asignarUsuario'])->name('asignarUsuario');
+Route::get('/removeInvitado/{id}',[AsignacionController::class,'removeInvitado'])->name('removeInvitado');
+
 
 //Solicitud Parqueo
 

@@ -11,7 +11,8 @@ class Parqueo extends Model
 
     protected $table = 'parqueo';
 
-    protected $primaryKey = ['id', 'usercustom_id'];
+    // // protected $primaryKey = ['id', 'usercustom_id'];
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',

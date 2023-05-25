@@ -33,7 +33,8 @@ class SendQueueEmail implements ShouldQueue
      */
     public function handle()
     {
-        $data = Cliente::all();
+        $data = Cliente::where('rol', 'cliente')
+        -> get();
         foreach ($data as $value){
             Mail::to($value->correo)->send(new Message($this->mensaje));
         }

@@ -47,8 +47,9 @@
                                             <button class="btn btn-primary btn-sm-individual" style="margin-right: 15px"
                                                 data-bs-toggle="modal" data-id="{{ $mensaje->id }}"
                                                 data-bs-target="#mensaje">Individual</button>
-                                            <a href="{{ route('Mensaje.mensajeglobal', ['id' => $mensaje->id]) }}"
-                                                class="btn btn-primary ">Global</a>
+                                            <button
+                                                class="btn btn-primary btn-global" data-bs-toggle="modal"
+                                                data-id="{{ $mensaje->id }}" data-bs-target="#global">Global</button>
 
 
                                         </div>
@@ -82,27 +83,35 @@
                                     aria-label="Close"></button>
 
                             </div>
-                            <!--<form action="" method="post">
-                                  <div class="modal-body">
-                                    @csrf
-                                    
-                                    <input id="id" name="id" hidden>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                    </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary-pk" data-bs-dismiss="modal">Cancelar</button>
-                                    <button  class="btn btn-danger-dg">Enviar</button>
-                                  </div>
-                                </form>-->
 
                             @livewire('buscar-correo')
                         </div>
                     </div>
                 </div>
-
+                <!-- Modal para mensaje global-->
+                <div class="modal fade" id="global" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Enviar Mensaje</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('Mensaje.mensajeglobal') }}" method="post">
+                                <div class="modal-body">
+                                    @csrf
+                                    <input id="mensajeGlobal" name="id" hidden>
+                                    ¿Esta seguro de enviar este mensaje a todo los clientes titulares del sistema?
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary-pk">Enviar</button>
+                                    <button type="button" class="btn btn-danger-dg " data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <!-- Modal Eliminar-->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -161,6 +170,12 @@
 
                     let id = $(this).attr('data-id');
                     $('#mensajeCorreo').val(id);
+
+                });
+                $('.btn-global').on('click', function() {
+
+                let id = $(this).attr('data-id');
+                $('#mensajeGlobal').val(id);
 
                 });
                 $('.js-example-basic-single').select2({

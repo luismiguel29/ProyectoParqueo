@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ControlPagos;
 
 use App\Http\Controllers\Controller;
 use App\Models\VisualizarListaPagos;
+use App\Models\ConfiguracionParqueo\CrearSitio;
 use Illuminate\Http\Request;
 
 class VisualizarListaPagosController extends Controller
@@ -15,8 +16,11 @@ class VisualizarListaPagosController extends Controller
      */
     public function index()
     {
-        
-        return view('ControlPagos.VisualizarListaPagos'); 
+
+        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->get();
+        //$horarios->usercustom_id;
+        return view('ControlPagos.VisualizarListaPagos', compact('horarios')); 
+       // return view('ControlPagos.VisualizarListaPagos'); 
     }
 
     /**

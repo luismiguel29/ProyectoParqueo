@@ -18,8 +18,8 @@
         <div class="container-fluid parkingSite">
             <div class="row ">
                 <div class="col-12 col-sm pb-3">
-                    <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                    <span class="h3">Lista de sitios ZONA B</span>
+                    <i class="fa-solid fa-dollar pe-2 fa-2x pe-1"></i>
+                    <span class="h3">Tarifas</span>
                 </div>
 
 

@@ -71,10 +71,10 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($horarios as $horario and nombres as nombre)
+                                                @foreach ($horarios as $horario)
                                                     <tr>
                                                         <!--<th scope="row">Pepito</th>-->
-                                                        <td>{{ $nombre}}</td>
+                                                        <td>{{ $horario->nombre}}</td>
                                                         <td>{{ $horario->sitio }}</td>
                                                         <td>{{ $horario->fechaasig }}</td>
                                                         <td>{{ $horario->fechaasig }}</td>

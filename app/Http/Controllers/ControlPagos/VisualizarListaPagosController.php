@@ -22,17 +22,20 @@ class VisualizarListaPagosController extends Controller
         $nombres = array();
         foreach ($parqueoUserId as $id) { 
             $id = json_decode($id)->usercustom_id;
-            if($id < 0){
-                
-            }
             $user = User::query()->select('nombre')->where('id', $id)->get();
-            array_push($nombres, $user);
+            if($id > 0){
+                array_push($nombres, $user[0]);
+            }
         }
         
         //array extraidos de parqueo y user custom
         //$userId = User::query()->select(['id'])->get();
-        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', 0)->get();
-        return $horarios;
+        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', '!=', 0)->get();
+
+        for ($i=0; $i<count($horarios); $i++) { 
+            $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;;
+            json_encode($horarios[$i]);
+        }
 
         //return User::where('id')->first()->nombre;
         //return User::where('id','1')->first()->nombre;

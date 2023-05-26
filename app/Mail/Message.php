@@ -30,7 +30,7 @@ class Message extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->mensaje-> Asunto)->markdown('emails.message');
+        return $this->subject($this->mensaje-> asunto)->markdown('emails.message');
         
     }
 }

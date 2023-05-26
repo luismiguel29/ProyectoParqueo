@@ -1,5 +1,5 @@
 @component('mail::message')
-{{$mensaje -> Descripcion}}
+{{$mensaje -> descripcion}}
 
 
 

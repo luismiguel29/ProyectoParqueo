@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Mail\EnviarCorreo;
+use App\Models\Mensaje;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -41,16 +42,16 @@ class NotificacionMora extends Command
      */
     public function handle()
     {
-        $fechamora = date('Y-m-22 15:40:00');
+        $fechamora = date('Y-m-11 H:i:s');
         $fechaactual = Carbon::parse(now())->format('Y-m-d H:i:s');
-        $asunto = "adjuntar asunto";
-        $contenido = "Adjuntar contenido el contenido del correo es el siguiente";
-        if ($fechaactual==$fechamora) {
+        if ($fechaactual == $fechamora) {
+            $mensaje = Mensaje::where('asunto', 'like', "%mora%");
+            $asunto = $mensaje->Asunto;
+            $contenido = $mensaje->Descripcion;
             $correo = User::where('estado', 0)->get();
             foreach ($correo as $mail) {
                 Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
             }
-
-        }        
+        }
     }
 }

@@ -129,7 +129,22 @@
                             </a>
                         </li>
                         @endif
-
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                        <li class="nav-item">
+                            <a class="nav-link" href='/enviarSolicitud'>
+                                <span data-feather="users"></span>
+                                <i class="fa-solid fa-dollar pe-2"></i>
+                                Tarifa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/visualizarPagos'>
+                                <span data-feather="users"></span>
+                                <i class="fa-solid fa-money-check-dollar pe-2"></i>
+                                Control de pago
+                            </a>
+                        </li>
+                        @endif
                         @if (session()->get('sitio'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('listainvitado') }}">

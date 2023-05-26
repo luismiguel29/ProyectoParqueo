@@ -31,6 +31,7 @@
                     <!--'ConfiguracionParqueo/crear.store'-->
                     @csrf
                     @method('post')
+                    @if (session()->get('sesion')->rol == 'secretaria')
                     <div class="row row-1">
                         <div class="col-md-3">
                             <div class="form group">
@@ -67,6 +68,7 @@
                         </div>
 
                     </div>
+                    @endif
                     <br>
 
                 </form>

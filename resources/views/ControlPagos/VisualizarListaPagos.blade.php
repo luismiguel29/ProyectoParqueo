@@ -31,15 +31,18 @@
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
+                                        @if ( session()->get('sesion')->rol == 'secretaria')
                                         <div class="col-12 col-md-4">
                                             <label class="form-label">Tarifa</label>
 
                                             <input class="form-control" type="text"    wire:model="buscar"
                                                 placeholder="Ingrese tarifa a buscar">
                                         </div>
+                                        
                                         <div class="col-12 col-md-2">
                                             <button type="button" class="btn btn-primary ">Buscar tarifa</button>
                                         </div>
+                                        @endif
                                         <div class="col-12 col-md-4">
                                             <label class="form-label">Estado</label>
                                             <select class="form-select" aria-label="Default select example">
@@ -66,7 +69,9 @@
                                                     <th scope="col">Fecha inicio</th>
                                                     <th scope="col">Fecha fin</th>
                                                     <th scope="col">Monto</th>
+                                                    
                                                     <th scope="col">Estado</th>
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -81,7 +86,9 @@
                                                         <td>60 <spam class="fw-bold">BOB</spam>
                                                         </td>
                                                         <td>
+                                                            
                                                             <select class="form-select">
+                                                               
                                                                 <option selected>Pendiente</option>
                                                                 <option value="1">Pagado</option>
                                                             </select>

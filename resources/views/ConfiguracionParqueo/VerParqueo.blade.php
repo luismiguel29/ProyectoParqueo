@@ -24,12 +24,22 @@
         <div class="container py-3 grl-site">
             <div class="row">
                 <div class="col-lg-12">
-                    <div container class="d-flex justify-content-between">
+                    <div container class="d-flex justify-content-between column-gap-3">
                         <div class="container pb-3">
                             <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                             <span class="h3 ">Ver Sitios ZONA A</span>
                         </div>
                         <!--DROPDOWN INICIO-->
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Mapas
+                            </button>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href='/mapaA'>Mapa A</a></li>
+                                <li><a class="dropdown-item" href='/mapaB'>Mapa B</a></li>
+                            </ul>
+                        </div>
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -52,10 +62,10 @@
                         <div class="container ">
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosA as $dato)
-                                    <div class="car"  type="submit" class="bicon icon--blue" data-bs-toggle="modal"
-                                    data-bs-target="#modal-update-{{ $dato->id }}">
-                                        <p class="h3 text-center">{{ $dato->sitio}}</p>
-                                        
+                                    <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
+                                        data-bs-target="#modal-update-{{ $dato->id }}">
+                                        <p class="h3 text-center">{{ $dato->sitio }}</p>
+
                                         <div
                                             class="car-content  rounded-2  bg-primary-pk text-light d-flex align-items-center justify-content-center flex-column">
                                             <i class="fa-solid fa-square-caret-up fa-3x"></i>
@@ -67,7 +77,7 @@
                                 @endforeach
 
                                 <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
-                                data-bs-target="#modal-update-">
+                                    data-bs-target="#modal-update-">
                                     <p class="h3 text-center">#</p>
                                     <div
                                         class="car-content  rounded-2  bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">

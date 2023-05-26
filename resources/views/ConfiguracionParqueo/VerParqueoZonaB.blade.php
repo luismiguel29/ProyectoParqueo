@@ -24,12 +24,22 @@
         <div class="container py-3 grl-site">
             <div class="row">
                 <div class="col-lg-12">
-                    <div container class="d-flex justify-content-between">
+                    <div container class="d-flex justify-content-between column-gap-3">
                         <div class="container pb-3">
                             <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                             <span class="h3 ">Ver Sitios ZONA B</span>
                         </div>
                         <!--DROPDOWN INICIO-->
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Mapas
+                            </button>
+                            <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item" href='/mapaA'>Mapa A</a></li>
+                                <li><a class="dropdown-item" href='/mapaB'>Mapa B</a></li>
+                            </ul>
+                        </div>
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">

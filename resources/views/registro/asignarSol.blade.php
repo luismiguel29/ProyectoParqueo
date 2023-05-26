@@ -97,9 +97,9 @@
                             <td>{{ $asignacion->fechaasig }}</td>
                             <td>
                                 <!-- Botón Asignar -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#asignarModal{{ $asignacion->id }}">Asignar</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal{{ $asignacion->id }}">Quitar invitado</button>
-
+                                <button type="button" class="btn btn-primary btn-sm me-2" data-toggle="modal" data-target="#asignarModal{{ $asignacion->id }}">
+                                    <span class="small">Asignar</span>
+                                </button>
                                 <!-- Modal de asignar -->
                                 <div class="modal fade" id="asignarModal{{ $asignacion->id }}" tabindex="-1" aria-labelledby="asignarModalLabel{{ $asignacion->id }}" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -125,6 +125,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Botón Quitar Usuario -->
+                                <button type="button" class="btn btn-danger btn-sm me-2" data-bs-toggle="modal" data-bs-target="#removeUserModal{{ $asignacion->id }}">
+                                    <span class="small">Desasignar</span>
+                                </button>
+
+                                <!-- Modal Quitar Usuario -->
+                                <div class="modal fade" id="removeUserModal{{ $asignacion->id }}" tabindex="-1" aria-labelledby="removeUserModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="removeUserModalLabel">Confirmación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas quitar al usuario del parqueo?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <form action="{{ route('removeUser', $asignacion->id) }}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">Sí, quitar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmModal{{ $asignacion->id }}">
+                                    <span class="small">Quitar invitado</span>
+                                </button>
                                 <!-- Modal de quitarInvi -->
                                 <div class="modal fade" id="confirmModal{{ $asignacion->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">

@@ -42,7 +42,7 @@
                         </div>
                         <!--DROPDOWN FIN-->
                     </div>
-                   
+
 
 
                     <!--CARD-->
@@ -55,26 +55,24 @@
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosB as $dato)
                                     <div class="car">
-                                        <p class="h3 text-center">{{ $dato->sitio}}</p>
-                                        
-                                        <div
-                                            class="car-content  rounded-2  bg-primary-pk text-light d-flex align-items-center justify-content-center flex-column">
-                                            <i class="fa-solid fa-square-caret-up fa-3x"></i>
-
+                                        <p class="h3 text-center">{{ $dato->sitio }}</p>
+                                        <div class="car-content rounded-2 bg-{{ $dato->estado == 1 ? 'danger-pk' : 'primary-pk' }} text-light d-flex align-items-center justify-content-center flex-column">
+                                            <i class="fa-solid fa-{{ $dato->estado == 1 ? 'car' : 'square-caret-up' }} fa-3x"></i>
                                         </div>
-                                        <p class="fs-6 text-center">Libre</p>
+                                        <p class="fs-6 text-center">{{ $dato->estado == 1 ? 'Ocupado' : 'Libre' }}</p>
                                     </div>
-                                    
                                 @endforeach
 
-                                <div class="car">
+
+
+                                {{-- <div class="car">
                                     <p class="h3 text-center">#</p>
                                     <div
                                         class="car-content  rounded-2  bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">
                                         <i class="fa-solid fa-car fa-3x"></i>
                                     </div>
                                     <p class="fs-6 text-center">Ocupado</p>
-                                </div>
+                                </div> --}}
                             </div>
 
                         </div>

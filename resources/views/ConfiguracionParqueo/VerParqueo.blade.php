@@ -49,35 +49,29 @@
                         <div class="card-header">
                             <h5>Parqueo</h5>
                         </div>
-                        <div class="container ">
+                        <div class="container">
                             <div class="row mx-1 gap-3">
                                 @foreach ($datosA as $dato)
-                                    <div class="car"  type="submit" class="bicon icon--blue" data-bs-toggle="modal"
-                                    data-bs-target="#modal-update-{{ $dato->id }}">
-                                        <p class="h3 text-center">{{ $dato->sitio}}</p>
-                                        
-                                        <div
-                                            class="car-content  rounded-2  bg-primary-pk text-light d-flex align-items-center justify-content-center flex-column">
-                                            <i class="fa-solid fa-square-caret-up fa-3x"></i>
-
+                                    <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal" data-bs-target="#modal-update-{{ $dato->id }}">
+                                        <p class="h3 text-center">{{ $dato->sitio }}</p>
+                                        <div class="car-content rounded-2 bg-{{ $dato->estado == 1 ? 'danger-pk' : 'primary-pk' }} text-light d-flex align-items-center justify-content-center flex-column">
+                                            <i class="fa-solid fa-{{ $dato->estado == 1 ? 'car' : 'square-caret-up' }} fa-3x"></i>
                                         </div>
-                                        <p class="fs-6 text-center">Libre</p>
+                                        <p class="fs-6 text-center">{{ $dato->estado == 1 ? 'Ocupado' : 'Libre' }}</p>
                                     </div>
                                     @include('ConfiguracionParqueo.sendRequest')
                                 @endforeach
 
-                                <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal"
-                                data-bs-target="#modal-update-">
+                                {{-- <div class="car" type="submit" class="bicon icon--blue" data-bs-toggle="modal" data-bs-target="#modal-update-">
                                     <p class="h3 text-center">#</p>
-                                    <div
-                                        class="car-content  rounded-2  bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">
+                                    <div class="car-content rounded-2 bg-danger-pk text-light d-flex align-items-center justify-content-center flex-column">
                                         <i class="fa-solid fa-car fa-3x"></i>
                                     </div>
                                     <p class="fs-6 text-center">Ocupado</p>
-                                </div>
+                                </div> --}}
                             </div>
-
                         </div>
+
 
 
                     </div>

@@ -88,6 +88,18 @@ class AsignacionController extends Controller
 
         return back();
     }
+    public function removeUser($id)
+    {
+        $parqueo = Parqueo::find($id);
+
+        if ($parqueo) {
+            $parqueo->usercustom_id = '0';
+            $parqueo->save();
+        }
+
+        return back();
+    }
+
 
 
 

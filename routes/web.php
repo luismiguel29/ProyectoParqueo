@@ -25,6 +25,8 @@ use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\RegisterAdmin\AsignacionController;
 use App\Http\Controllers\RegisterAdmin\SolicitudController;
+use App\Http\Controllers\MapaAController;
+use App\Http\Controllers\MapaBController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,7 +170,8 @@ Route::controller(VerParqueoZonaBController::class)->group(function(){
 });
 
 
-
+Route::resource('/mapaA', MapaAController::class);
+Route::resource('/mapaB', MapaBController::class);
 
 
 
@@ -195,12 +198,11 @@ Route::get('/darbaja/{id}', [AsignacionController::class, 'darbaja'])->name('asi
 Route::get('/buscarPorNombre', [AsignacionController::class,'buscarPorNombre'])->name('buscarPorNombre');
 Route::post('/asignarUsuario', [AsignacionController::class, 'asignarUsuario'])->name('asignarUsuario');
 Route::get('/removeInvitado/{id}',[AsignacionController::class,'removeInvitado'])->name('removeInvitado');
+Route::get('/removeUser/{id}', [AsignacionController::class,'removeUser'])->name('removeUser');
 
 
 //Solicitud Parqueo
 
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
-
-
 Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
 

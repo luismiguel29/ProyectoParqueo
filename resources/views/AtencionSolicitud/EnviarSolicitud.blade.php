@@ -84,7 +84,10 @@
                                         <th>#</th>
                                         <th>Nombre del sitio</th>
                                         <th>Precio</th>
+                                        @if (session()->get('sesion')->rol == 'secretaria')
+
                                         <th>Acción</th>
+                                        @endif
                                     </tr>
                                 </thead>
 
@@ -95,6 +98,7 @@
                                             <td>{{ $horario->id}}</td>
                                             <td>{{ $horario->nombre}}</td>
                                             <td>{{ $horario->precio }}</td>
+                                            @if (session()->get('sesion')->rol == 'secretaria')
                                             <td>
                                         
                                                 <div class="d-flex justify-content-between">
@@ -112,6 +116,7 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @include('AtencionSolicitud.deleteHorario')
                                     @endforeach 

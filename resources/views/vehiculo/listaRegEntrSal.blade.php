@@ -39,12 +39,13 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-
+                            @if (session()->get('sesion')->rol == 'guardia')
                             <div class="col-sm p-2 text-end">
                                 <button type="submit" class="btn btn-primary-pk" href=""><i class="fa-solid fa-plus"
                                         style="color: #ffffff;"></i>
                                     Ingreso</button>
                             </div>
+                            @endif
                         </div>
                     </form>
 
@@ -59,7 +60,9 @@
                                         <th>Usuario</th>
                                         <th>Ingreso</th>
                                         <th>Salida</th>
+                                        @if (session()->get('sesion')->rol == 'guardia')
                                         <th>Acción</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,6 +74,7 @@
                                             <td>{{ $reg->propietario->nombre }}</td>
                                             <td>{{ $reg->ingreso }}</td>
                                             <td>{{ $reg->salida }}</td>
+                                             @if (session()->get('sesion')->rol == 'guardia')
                                             <td>
                                                 <form action="{{ route('editarregistro', $reg->id) }}" method="POST">
                                                     @csrf
@@ -83,6 +87,7 @@
                                                 </form>
 
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

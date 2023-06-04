@@ -174,6 +174,11 @@
                                 </a>
                             </li>
                         @endif
+                        <a class="nav-link" href='{{ route('listahistorial') }}'>
+                            <span data-feather="users"></span>
+                            <i class="fa-solid fa-calendar-days pe-2"></i>
+                            Historial de Reportes
+                        </a>
                     </ul>
                 </div>
             </nav>

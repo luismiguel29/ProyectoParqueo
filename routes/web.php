@@ -21,6 +21,7 @@ use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
 use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
+use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\RegisterAdmin\AsignacionController;
@@ -144,6 +145,11 @@ Route::get('/vistacorreo', function () {
     return view('vehiculo.prueba');
 });
 
+Route::controller(HistorialController::class)->group(function(){
+    Route::get('listahistorial', 'listahistorial')->name('listahistorial');
+    Route::post('registroHistorial', 'registroHistorial')->name('registroHistorial');
+    Route::get('buscarHistorial', 'buscarHistorial')->name('buscarHistorial');
+});
 
 
 

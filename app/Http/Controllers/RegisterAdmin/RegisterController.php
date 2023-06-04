@@ -42,8 +42,8 @@ class RegisterController extends Controller
             'usuario'=>Str::slug($request->usuario),
             'correo'=>$request->correo,
             'telefono'=>$request->telefono,
-            'contrasenia'=>$request->password,
-            'contrasenia'=>Hash::make($request->password)
+            'password'=>$request->password,
+            'password'=>Hash::make($request->password)
         ]);
 
         return redirect()->route('vistaRegister')->with('success', '¡Registro exitoso!');

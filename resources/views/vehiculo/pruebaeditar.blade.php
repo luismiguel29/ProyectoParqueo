@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <a href="{{ route('cerrarsesion') }}">cerrar</a>
+    <a href="{{ route('regis') }}">Registrar</a>
 
     <a href="{{ route('envcorreo') }}" class="btn btn-primary">Correo</a>
     

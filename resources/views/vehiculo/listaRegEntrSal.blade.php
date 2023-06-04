@@ -82,7 +82,6 @@
                                                     <div class="d-inline-block">
                                                         <button type="submit" class="btn btn-danger-dg btn-sm"
                                                             @if ($reg->estado == 0) disabled @endif>Salida</button>
-
                                                     </div>
                                                 </form>
 

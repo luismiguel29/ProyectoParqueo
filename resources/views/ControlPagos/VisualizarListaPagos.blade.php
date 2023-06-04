@@ -33,17 +33,17 @@
                                     <div class="row align-items-end">
                                         @if ( session()->get('sesion')->rol == 'secretaria')
                                         <div class="col-12 col-md-4">
-                                            <label class="form-label">Tarifa</label>
+                                            <label class="form-label">Titular</label>
 
                                             <input class="form-control" type="text"    wire:model="buscar"
-                                                placeholder="Ingrese tarifa a buscar">
+                                                placeholder="Ingrese titular a buscar">
                                         </div>
                                         
                                         <div class="col-12 col-md-2">
-                                            <button type="button" class="btn btn-primary ">Buscar tarifa</button>
+                                            <button type="button" class="btn btn-primary ">Buscar titular</button>
                                         </div>
                                         @endif
-                                        <div class="col-12 col-md-4">
+                                        <!--<div class="col-12 col-md-4">
                                             <label class="form-label">Estado</label>
                                             <select class="form-select" aria-label="Default select example">
                                                 <option selected>(Todos)</option>
@@ -53,7 +53,7 @@
                                         </div>
                                         <div class="col-12 col-md-2 pt-2 pt-md-0">
                                             <button type="button" class="btn btn-primary ">Buscar estado</button>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </section>
@@ -66,8 +66,8 @@
                                                 <tr>
                                                     <th scope="col">Titular</th>
                                                     <th scope="col">Sitio</th>
-                                                    <th scope="col">Fecha inicio</th>
-                                                    <th scope="col">Fecha fin</th>
+                                                    <th scope="col">Período</th>
+                                                    
                                                     <th scope="col">Monto</th>
                                                     
                                                     <th scope="col">Estado</th>
@@ -82,16 +82,15 @@
                                                         <td>{{ $horario->nombre}}</td>
                                                         <td>{{ $horario->sitio }}</td>
                                                         <td>{{ $horario->fechaasig }}</td>
-                                                        <td>{{ $horario->fechaasig }}</td>
+                                                        
                                                         <td>60 <spam class="fw-bold">BOB</spam>
                                                         </td>
                                                         <td>
                                                             
-                                                            <select class="form-select">
-                                                               
-                                                                <option selected>Pendiente</option>
-                                                                <option value="1">Pagado</option>
-                                                            </select>
+                                                            <div class="d-inline-block">
+                                                                <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+        
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach

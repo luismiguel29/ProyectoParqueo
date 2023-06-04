@@ -8,10 +8,7 @@
 </head>
 <body>
 
-    <form action="" method="POST">
-        @csrf
-        <button type="submit">Enviar</button>
-    </form>
+    <a href="{{ route('cerrarsesion') }}">cerrar</a>
 
     <a href="{{ route('envcorreo') }}" class="btn btn-primary">Correo</a>
     

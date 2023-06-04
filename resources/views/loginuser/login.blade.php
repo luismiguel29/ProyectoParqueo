@@ -46,7 +46,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="form-outline input-group">
-                                    <input type="password" id="txtPassword" name="contraseña"
+                                    <input type="password" id="txtPassword" name="password"
                                         class="form-control form-control-lg {{$errors->has('contraseña')?'is-invalid':''}}" placeholder="Contraseña" />
                                         
                                     <span class="input-group-btn">

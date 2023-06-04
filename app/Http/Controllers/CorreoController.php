@@ -16,10 +16,10 @@ class CorreoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function __construct()
+     /* public function __construct()
      {
          $this->middleware('auth', ['except' => []]);
-     }
+     } */
 
     public function index()
     {
@@ -27,9 +27,10 @@ class CorreoController extends Controller
         $asunto = "adjuntar asunto";
         $contenido = "Adjuntar contenido el contenido del correo es el siguiente";
         foreach ($correo as $mail) {
-            Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
+            //Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
+            Mail::to($mail->correo)->send(new EnviarCorreo($asunto, $contenido));
         }
-        return redirect()->route('listavehiculo');
+        return redirect()->back();
     }
 
     public function crearpago()

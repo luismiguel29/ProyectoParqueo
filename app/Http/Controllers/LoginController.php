@@ -6,6 +6,7 @@ use App\Models\Parqueo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
@@ -16,10 +17,10 @@ class LoginController extends Controller
    * @return \Illuminate\Http\Response
    */
 
-  public function __construct()
+  /* public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'store']]);
-    }
+    } */
 
 
   public function index()
@@ -52,26 +53,20 @@ class LoginController extends Controller
   public function store(Request $request)
   {
 
-    $credenciales = $request->validate([
-      'usuario' => ['required', 'string'],
-      'contraseña' => ['required', 'string'],
+    $credentials = $request->validate([
+      'usuario' => ['required'],
+      'password' => ['required'],
     ]);
 
-    $usuario = User::where('usuario', $request->input('usuario'))->exists();
-    $password = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->exists();
-    $verificar = User::where('usuario', $request->input('usuario'))->where('contrasenia', $request->input('contraseña'))->first();
-    $sitio = Parqueo::where('usercustom_id', $verificar->id)->exists();
-    if ($usuario) {
-      if ($password) {
-        $request->session()->regenerate();
-        $request->session()->put(['sesion' => $verificar, 'sitio' => $sitio]);
-        //return redirect()->route('verparqueo')->with(['verificar' => $verificar]);
-        return redirect()->route('listavehiculo');
-      } else {
-        return back()->with('alerta', 'Contraseña incorrecta!')->withInput();
-      }
+    if (Auth::attempt($credentials)) {
+      $verificar = User::where('id', auth()->user()->id)->first();
+      $sitio = Parqueo::where('usercustom_id', $verificar->id)->exists();
+      $request->session()->regenerate();
+      $request->session()->put(['sesion' => $verificar, 'sitio' => $sitio]);
+      return redirect()->route('listavehiculo');
+      //return auth()->user()->correo;
     } else {
-      return redirect()->route('login')->with('alerta', 'Usuario no registrado!');
+      return back()->with('alerta', 'Credenciales incorrectas!');
     }
   }
 

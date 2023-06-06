@@ -20,6 +20,7 @@ use App\Http\Controllers\ConfiguracionParqueo\CrearSitioController;
 use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
 use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
+use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\InvitadoController;
@@ -149,6 +150,11 @@ Route::controller(HistorialController::class)->group(function(){
     Route::get('listahistorial', 'listahistorial')->name('listahistorial');
     Route::post('registroHistorial', 'registroHistorial')->name('registroHistorial');
     Route::get('buscarHistorial', 'buscarHistorial')->name('buscarHistorial');
+});
+
+Route::controller(ConfiguracionController::class)->group(function(){
+    Route::get('verConfiguracion','verConfiguracion')->name('verConfiguracion');
+    Route::post('modificarConfiguracion','modificarConfiguracion')->name('modificarConfiguracion');
 });
 
 

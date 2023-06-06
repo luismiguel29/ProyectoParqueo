@@ -41,6 +41,7 @@ class EnviarSolicitudController extends Controller
       
         $crear->nombre=$request->input('nombre_sitio');
         $crear->precio=$request->input('precio');
+        $crear->estado=0;
         
         $crear->save();
         return redirect()->route('enviarSolicitud.index')->with('success', '¡Registro exitoso!');

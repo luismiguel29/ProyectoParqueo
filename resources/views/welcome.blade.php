@@ -179,6 +179,11 @@
                             <i class="fa-solid fa-calendar-days pe-2"></i>
                             Historial de Reportes
                         </a>
+                        <a class="nav-link" href='{{ route('verConfiguracion') }}'>
+                            <span data-feather="users"></span>
+                            <i class="fa-solid fa-gear pe-2"></i>
+                            Configuraciones
+                        </a>
                     </ul>
                 </div>
             </nav>

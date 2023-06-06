@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AtencionSolicitud extends Model
+class Configuracion extends Model
 {
-    protected $table="tarifa";
+    protected $table="configuracion";
     protected $primaryKey="id";
-    protected $fillable=[
-        'nombre', 'precio', 'estado'];
+    protected $fillable = ['nombre', 'dia', 'estado'];
 
     public $timestamps = false;
 }

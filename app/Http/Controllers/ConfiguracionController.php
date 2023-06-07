@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AtencionSolicitud;
 use App\Models\Configuracion;
+use App\Models\Pago;
 use Illuminate\Http\Request;
 
 class ConfiguracionController extends Controller
@@ -39,5 +40,11 @@ class ConfiguracionController extends Controller
             'estado' => 1,
         ]);
         return redirect()->route('verConfiguracion')->with('success', '¡Cambios guardados correctamente!');
+    }
+
+    public function vistaPago($id)
+    {
+        $pago = Pago::where('id', $id)->first();
+        return view('ControlPagos.vistaPago', compact('pago'));
     }
 }

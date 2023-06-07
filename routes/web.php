@@ -155,7 +155,9 @@ Route::controller(HistorialController::class)->group(function(){
 Route::controller(ConfiguracionController::class)->group(function(){
     Route::get('verConfiguracion','verConfiguracion')->name('verConfiguracion');
     Route::post('modificarConfiguracion','modificarConfiguracion')->name('modificarConfiguracion');
+    Route::get('vistaPago/{id}','vistaPago')->name('vistaPago');
 });
+
 
 
 

@@ -39,7 +39,7 @@
                                 <label class="" for="">
                                     <h5>Tarifa:</h5>
                                 </label>
-                                <div class="col-6">
+                                <div class="col-sm-6">
                                     <select class="form-select" name="tarifa" id="">
                                         @foreach ($tarifa as $item)
                                             <option @if ($item->estado == 1) selected @endif
@@ -53,7 +53,7 @@
                                 <label class="mt-2" for="">
                                     <h5>Fecha limite de pago:</h5>
                                 </label>
-                                <div class="col-6">
+                                <div class="col-sm-6">
                                     <select class="form-select" name="fecha" id="">
                                         @foreach ($configuracion as $item2)
                                             <option @if ($item2->estado == 1) selected @endif
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-sm-6">
                                     <div class="mt-3">
                                         <div class="col-sm-6 mx-auto d-grid p-3">
                                             <button type="submit" class="btn btn-primary-pk">Guardar cambios</button>

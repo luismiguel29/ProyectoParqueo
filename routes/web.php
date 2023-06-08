@@ -21,6 +21,7 @@ use App\Http\Controllers\CorreoController;
 use App\Http\Controllers\AdmInfoClientes\ImportarClientesController;
 use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
+use App\Http\Controllers\ControlPagos\VisualizarListaPagosClienteController;
 use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\RegisterAdmin\AsignacionController;
@@ -205,4 +206,6 @@ Route::get('/removeUser/{id}', [AsignacionController::class,'removeUser'])->name
 
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
 Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
+Route::resource('/visualizarPagosCliente', VisualizarListaPagosClienteController::class);
+
 

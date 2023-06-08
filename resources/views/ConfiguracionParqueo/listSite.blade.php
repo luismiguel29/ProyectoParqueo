@@ -30,6 +30,13 @@
 
                
                 <div class="col-12 col-sm-auto d-flex gap-3 justify-content-center pb-3 pb-sm-0">
+                    <div class="col-auto">
+                        <a href="/sites/pdf" class="btn btn-primary" target="_blank">
+                            <i class="fa-sharp fa-solid fa-plus"></i>
+                            <span>PDF</span>
+                        </a>
+                    </div>
+
                      <!--DROPDOWN INICIO-->
                         <div class="dropdown col-auto">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"

@@ -71,13 +71,15 @@ Route::post('/EnviarMensajeGlobal',[MensajeController::class,'sendGlobal'])->nam
 
 
 //Rutas andrea
+Route::get('/sites/pdf', [ParkingSpaceController::class, 'pdf'])->name('sites.pdf'); //***************************/
 
 Route::resource('/sites', ParkingSpaceController::class);
+Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
 /*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
 });
 */
-Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
+
 
 
 

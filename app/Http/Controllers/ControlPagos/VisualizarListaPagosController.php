@@ -18,7 +18,7 @@ class VisualizarListaPagosController extends Controller
      */
     public function index()
     {
-       $parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
+        $parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
         $nombres = array();
         foreach ($parqueoUserId as $id) { 
             $id = json_decode($id)->usercustom_id;
@@ -27,22 +27,21 @@ class VisualizarListaPagosController extends Controller
                 array_push($nombres, $user[0]);
             }
         }
-
         
         //array extraidos de parqueo y user custom
         //$userId = User::query()->select(['id'])->get();
-        return $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', '!=', 0)->get();
-
+        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', '!=', 0)->get();
+        
         for ($i=0; $i<count($horarios); $i++) { 
-            $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;;
+            $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;
             json_encode($horarios[$i]);
         }
-
+        
         //return User::where('id')->first()->nombre;
         //return User::where('id','1')->first()->nombre;
         //return User::select('nombre')->where('id', '1')->get();
         return view('ControlPagos.VisualizarListaPagos', compact('horarios', 'nombres')); 
-       // return view('ControlPagos.VisualizarListaPagos'); 
+        // return view('ControlPagos.VisualizarListaPagos'); 
     }
 
     /**
@@ -50,13 +49,11 @@ class VisualizarListaPagosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public $buscar;
     public function buscador(){
         $buscar = '%'.$this->buscar.'%';
         return AtencionSolicitud::where('tarifa', 'like', $buscar)->get();
-
-     }
+    }
     public function create()
     {
         //

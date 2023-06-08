@@ -16,6 +16,7 @@ class Solicitud extends Model
         'sitio',
         'descripcion',
         'fecha',
+        'tipo',
     ];
 
     // Si tu base de datos no usa el timestamp de Laravel, añade lo siguiente:

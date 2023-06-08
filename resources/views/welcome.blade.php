@@ -174,11 +174,29 @@
                                 </a>
                             </li>
                         @endif
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('visualizarReclamo') }}">
+                                <span data-feather="users"></span>
+                                <i class="fas fa-book pe-2"></i>
+                                Ver Reclamos
+                            </a>
+                        </li>
+                        @endif
                         <a class="nav-link" href='{{ route('listahistorial') }}'>
                             <span data-feather="users"></span>
                             <i class="fa-solid fa-calendar-days pe-2"></i>
                             Historial de Reportes
                         </a>
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contacto.edit') }}">
+                                <span data-feather="users"></span>
+                                <i class="fas fa-address-book"></i>
+                                Modificar Contactos
+                            </a>
+                        </li>
+                        @endif
                         <a class="nav-link" href='{{ route('verConfiguracion') }}'>
                             <span data-feather="users"></span>
                             <i class="fa-solid fa-gear pe-2"></i>

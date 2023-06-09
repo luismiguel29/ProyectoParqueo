@@ -40,7 +40,7 @@ class ClienteController extends Controller
         ]);
 
             $usercustom = new User();
-            $usercustom->tipo = 'cliente';
+            $usercustom->rol = 'cliente';
             $usercustom->nombre = $request->input('nombre');
             $usercustom->apellido = $request->input('apellido');
             $usercustom->usuario = $request->input('usuario');

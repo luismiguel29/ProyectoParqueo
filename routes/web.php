@@ -29,6 +29,10 @@ use App\Http\Controllers\RegisterAdmin\AsignacionController;
 use App\Http\Controllers\RegisterAdmin\SolicitudController;
 use App\Http\Controllers\MapaAController;
 use App\Http\Controllers\MapaBController;
+use App\Http\Controllers\RegisterAdmin\ReclamoController;
+use App\Http\Controllers\RegisterAdmin\RegistrarContacto;
+use App\Http\Controllers\RegisterAdmin\VistaContactos;
+use App\Http\Controllers\RegisterAdmin\VistaReclamoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -219,4 +223,13 @@ Route::get('/removeUser/{id}', [AsignacionController::class,'removeUser'])->name
 
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
 Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
+//reclamoContactos Parqueo
 
+Route::get('/reclamo', [ReclamoController::class,'index'])->name('reclamo');
+Route::post('/ruta-de-registro', [ReclamoController::class, 'store'])->name('reclamo.store');
+Route::get('/Vereclamo', [VistaReclamoController::class,'index'])->name('visualizarReclamo');
+Route::get('/Vistacontactos', [VistaContactos::class,'index'])->name('Vistacontactos');
+
+// Route::get('/contactosregistro', [RegistrarContacto::class,'index'])->name('contacReg');
+Route::get('/contacto/edit', [RegistrarContacto::class, 'edit'])->name('contacto.edit');
+Route::put('/contacto/update', [RegistrarContacto::class, 'update'])->name('contacto.update');

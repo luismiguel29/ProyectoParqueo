@@ -154,6 +154,15 @@
                                 </a>
                             </li>
                         @endif
+                        @if (session()->get('sesion')->rol == 'cliente')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mostrarCuenta') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fa-solid fa-user pe-2"></i>
+                                    Cuenta
+                                </a>
+                            </li>
+                        @endif
                         {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>
@@ -182,12 +191,7 @@
                                 Ver Reclamos
                             </a>
                         </li>
-                        @endif
-                        <a class="nav-link" href='{{ route('listahistorial') }}'>
-                            <span data-feather="users"></span>
-                            <i class="fa-solid fa-calendar-days pe-2"></i>
-                            Historial de Reportes
-                        </a>
+                        @endif                        
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contacto.edit') }}">
@@ -197,11 +201,18 @@
                             </a>
                         </li>
                         @endif
-                        <a class="nav-link" href='{{ route('verConfiguracion') }}'>
-                            <span data-feather="users"></span>
-                            <i class="fa-solid fa-gear pe-2"></i>
-                            Configuraciones
-                        </a>
+                        @if (session()->get('sesion')->rol == 'administrador')
+                            <a class="nav-link" href='{{ route('listahistorial') }}'>
+                                <span data-feather="users"></span>
+                                <i class="fa-solid fa-calendar-days pe-2"></i>
+                                Historial de Reportes
+                            </a>
+                            <a class="nav-link" href='{{ route('verConfiguracion') }}'>
+                                <span data-feather="users"></span>
+                                <i class="fa-solid fa-gear pe-2"></i>
+                                Configuraciones
+                            </a>
+                        @endif                        
                     </ul>
                 </div>
             </nav>

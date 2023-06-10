@@ -134,6 +134,9 @@ Route::controller(RegistroController::class)->group(function(){
 Route::controller(CorreoController::class)->group(function(){
     Route::get('envcorreo', 'index')->name('envcorreo');
     Route::get('pago', 'crearpago')->name('pago');
+    Route::get('notificarMora', 'notificarMora')->name('notificarMora');
+    Route::put('actualizarCuenta/{id}', 'actualizarCuenta')->name('actualizarCuenta');
+    Route::get('mostrarCuenta', 'mostrarCuenta')->name('mostrarCuenta');
 });
 
 Route::controller(InvitadoController::class)->group(function(){

@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <a href="{{ route('regis') }}">Registrar</a>
+    <a href="{{ route('envcorreo') }}">Registrar</a>
 
-    <a href="{{ route('envcorreo') }}" class="btn btn-primary">Correo</a>
+    <a href="{{ route('envcorreo') }}" class="btn btn-primary-pk">Correo</a>
     
 </body>
 </html>

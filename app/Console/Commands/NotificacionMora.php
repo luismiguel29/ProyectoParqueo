@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Mail\EnviarCorreo;
 use App\Models\Mensaje;
+use App\Models\Pago;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -48,9 +49,9 @@ class NotificacionMora extends Command
             $mensaje = Mensaje::where('asunto', 'like', "%mora%");
             $asunto = $mensaje->Asunto;
             $contenido = $mensaje->Descripcion;
-            $correo = User::where('estado', 0)->get();
-            foreach ($correo as $mail) {
-                Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
+            $pendiente = Pago::where('estado', 0)->get();
+            foreach ($pendiente as $mail) {
+                Mail::to($mail->pagoTitular->correo)->queue(new EnviarCorreo($asunto, $contenido));
             }
         }
     }

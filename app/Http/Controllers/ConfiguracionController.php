@@ -12,9 +12,9 @@ class ConfiguracionController extends Controller
     public function verConfiguracion()
     {
         $configuracion = Configuracion::all();
-        $enUsoConf = Configuracion::where('id', 1)->first();
-        $enUsoTarifa = AtencionSolicitud::where('estado', 1)->first();
+        $enUsoConf = Configuracion::where('estado', 1)->first();
         $tarifa = AtencionSolicitud::all();
+        $enUsoTarifa = AtencionSolicitud::where('estado', 1)->first();        
         return view('configuracion.vistaConf', compact('tarifa', 'enUsoTarifa', 'configuracion', 'enUsoConf'));
     }
 

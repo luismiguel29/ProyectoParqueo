@@ -57,7 +57,8 @@
                                     <select class="form-select" name="fecha" id="">
                                         @foreach ($configuracion as $item2)
                                             <option @if ($item2->estado == 1) selected @endif
-                                                value="{{ $item2->id }}">{{ $item2->dia }}, {{ $item2->nombre }}</option>
+                                                value="{{ $item2->id }}">{{ $item2->dia }}, {{ $item2->nombre }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -70,6 +71,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="">
+                                <a href="{{ route('notificarMora') }}" class="btn btn-primary-pk">Mora</a>
                             </div>
                         </div>
                     </form>

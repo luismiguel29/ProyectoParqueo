@@ -29,7 +29,7 @@
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
-                                        <form action="{{route('visualizarPagosCliente.index')}}" method="get">
+                                        <form action="{{route('visualizarPagos.index')}}" method="get">
                                             <div class="col-12 col-md-4">
                                                 <label class="form-label">Titular</label>
                                                 
@@ -72,26 +72,32 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($pagos as $pago)
+                                                @if (count($pagos) < 1)
                                                     <tr>
-                                                        <!--<th scope="row">Pepito</th>-->
-                                                        <td>{{ $pago->nombre}}</td>
-                                                        <td>{{ $pago->sitio }}</td>
-                                                        <!--<td>{{ $pago->mesLiteral }}</td> ***********************-->
-                                                        <td>{{ $pago->fechapago }}</td>
-                                                        <td>60<spam class="fw-bold"> BOB</spam></td>
-                                                        @if ($pago->estado == 0)
-                                                            <td>Debe</td>
-                                                        @else
-                                                            <td>Pagado</td>
-                                                        @endif
-                                                        <td>
-                                                            <div class="d-inline-block">
-                                                                <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
-                                                            </div>
-                                                        </td>
+                                                        <td colspan="6">No hay resultados</td>
                                                     </tr>
-                                                @endforeach
+                                                @else
+                                                    @foreach ($pagos as $pago)
+                                                        <tr>
+                                                            <!--<th scope="row">Pepito</th>-->
+                                                            <td>{{ $pago->nombre}}</td>
+                                                            <td>{{ $pago->sitio }}</td>
+                                                            <!--<td>{{ $pago->mesLiteral }}</td> ***********************-->
+                                                            <td>{{ $pago->mesLiteral }}</td>
+                                                            <td>60<spam class="fw-bold"> BOB</spam></td>
+                                                            @if ($pago->estado == 0)
+                                                                <td>Debe</td>
+                                                            @else
+                                                                <td>Pagado</td>
+                                                            @endif
+                                                            <td>
+                                                                <div class="d-inline-block">
+                                                                    <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>

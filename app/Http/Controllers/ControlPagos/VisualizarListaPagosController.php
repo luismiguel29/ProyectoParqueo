@@ -19,10 +19,11 @@ class VisualizarListaPagosController extends Controller
      */
     public function index(Request $request)
     {
-        //CrearSitio == tabla PARQUEO
+        $nombreBuscado = trim($request->get('nombreABuscar'));
         $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
                     ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
                     ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+                    ->where('nombre', 'LIKE', '%'.$nombreBuscado.'%')
                     ->get();
         //$pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago')->get();
         //$pagos = Pago::select('parqueo_id', 'fechapago')->where('estado', '==', 0)->get(); ****************************
@@ -35,7 +36,7 @@ class VisualizarListaPagosController extends Controller
             $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero-1];
             
             json_encode($pagos[$i]);
-        }/*************************/
+        }
         //Control de fechas
         $diaActual = date("d");
         if($diaActual == 10){
@@ -74,13 +75,6 @@ class VisualizarListaPagosController extends Controller
                 }
             }
         }
-        
-        $nombreBuscado = trim($request->get('nombreABuscar'));
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
-                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
-                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
-                    ->where('nombre', 'LIKE', '%'.$nombreBuscado.'%')
-                    ->get();
         
         return view('ControlPagos.VisualizarListaPagos', compact('pagos', 'nombreBuscado'));
     }

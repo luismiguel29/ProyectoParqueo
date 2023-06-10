@@ -17,20 +17,15 @@ class VisualizarListaPagosClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //CrearSitio == tabla PARQUEO
-        $parqueoUserId = Pago::select('parqueo_usercustom_id')->get();
-        $nombres = array();
-        foreach ($parqueoUserId as $id) {
-            $id = json_decode($id)->parqueo_usercustom_id;
-            $user = User::select('nombre')->where('id', $id)->get();
-            if ($id > 0) {
-                array_push($nombres, $user[0]);
-            }
-        }
-        
-        $pagos = Pago::select('parqueo_id', 'fechapago')->get();
+        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
+                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+                    ->get();                
+        //$pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago')->get();
+        //$pagos = Pago::select('parqueo_id', 'fechapago')->where('estado', '==', 0)->get(); ****************************
         $mesesLiteral = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
         $parqueo = CrearSitio::select('id', 'parqueo.usercustom_id', 'parqueo.sitio', 'parqueo.fechaasig', 'parqueo.zona')->where('usercustom_id', '!=', 0)->get();
         
@@ -38,66 +33,56 @@ class VisualizarListaPagosClienteController extends Controller
             $fecha = json_decode($pagos[$i])->fechapago;
             $mesNumero = date("n", strtotime($fecha));
             $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero-1];
-            $pagos[$i]->nombre = json_decode($nombres[$i])->nombre;
-            $nombreSitio = CrearSitio::select('sitio')->where('id', $pagos[$i]->parqueo_id)->get();
-            $pagos[$i]->sitio = json_decode($nombreSitio[0])->sitio;
+            
             json_encode($pagos[$i]);
-        }
-        /*************************/
+        }/*************************/
         //Control de fechas
         $diaActual = date("d");
-        date("Y-m-d H:i:s");
-        
-        //if($diaActual == 10){
-        if(true){
+        if($diaActual == 10){
             for ($i = 0; $i < count($parqueo); $i++) {
                 $fechaActual = date("Y-m-d H:i:s");
                 $pagosPersona = Pago::select('fechapago')->where('parqueo_usercustom_id', $parqueo[$i]->usercustom_id)->orderBy('fechapago', 'desc')->first();
-                $fechaPersona = json_decode($pagosPersona)->fechapago;
-                return $mesPersona = date("n", strtotime($fechaPersona));
-                if(true){
+                if($pagosPersona != ""){
+                    $fechaPersona = json_decode($pagosPersona)->fechapago;
+                    $mesPersona = date("n", strtotime($fechaPersona));
+                    $mesActual = date("n", strtotime(date("Y-m-d H:i:s")));
+                    if($mesPersona != $mesActual){
+                        $datosJson = $parqueo[$i];
+                        $idUserPagos = json_decode($datosJson)->usercustom_id;
+                        $idParqueo = json_decode($datosJson)->id;
+                        
+                        $pago = new Pago;
+                        $pago->parqueo_usercustom_id = $idUserPagos;
+                        $pago->tarifa_id = "1";
+                        $pago->parqueo_id = $idParqueo;
+                        $pago->fechapago = date("Y-m-d H:i:s");
+                        $pago->estado = 0; //0->no pagado
+                        $pago->save();
+                    }
+                }else{
+                    $datosJson = $parqueo[$i];
+                    $idUserPagos = json_decode($datosJson)->usercustom_id;
+                    $idParqueo = json_decode($datosJson)->id;
                     
+                    $pago = new Pago;
+                    $pago->parqueo_usercustom_id = $idUserPagos;
+                    $pago->tarifa_id = "1";
+                    $pago->parqueo_id = $idParqueo;
+                    $pago->fechapago = date("Y-m-d H:i:s");
+                    $pago->estado = 0; //0->no pagado
+                    $pago->save();
                 }
-                $datosJson = $parqueo[$i];
-                $idUserPagos = json_decode($datosJson)->usercustom_id;
-                //$tarifa;
-                $idParqueo = json_decode($datosJson)->id;
-                //$fechapago;
-                
-                $pago = new Pago;
-                $pago->parqueo_usercustom_id = $idUserPagos;
-                $pago->tarifa_id = "";
-                $pago->parqueo_id = $idParqueo;
-                $pago->fechapago = "";
-                $pago->estado = 0; //0->no pagado
-                //$pago->save();
             }
         }
         
-        return view('ControlPagos.VisualizarListaPagosCliente', compact('pagos'));
-    }
-
-    public function controlPago($parqueo)
-    {
-        for ($i = 0; $i < count($parqueo); $i++) {
-            $fechaActual = date("Y-m-d H:i:s");
-            if(true){
-
-            }
-            $datosJson = $parqueo[$i];
-            $idUserPagos = json_decode($datosJson)->usercustom_id;
-            //$tarifa;
-            $idParqueo = json_decode($datosJson)->id;
-            //$fechapago;
-            
-            $pago = new Pago;
-            $pago->parqueo_usercustom_id = $idUserPagos;
-            $pago->tarifa_id = "";
-            $pago->parqueo_id = $idParqueo;
-            $pago->fechapago = "";
-            $pago->estado = 0; //0->no pagado
-            //$pago->save();
-        }
+        $nombreBuscado = trim($request->get('nombreABuscar'));
+        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
+                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+                    ->where('nombre', 'LIKE', '%'.$nombreBuscado.'%')
+                    ->get();
+        
+        return view('ControlPagos.VisualizarListaPagosCliente', compact('pagos', 'nombreBuscado'));
     }
 
     /**

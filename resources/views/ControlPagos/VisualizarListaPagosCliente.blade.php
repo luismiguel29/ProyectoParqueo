@@ -29,18 +29,19 @@
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
-                                        @if ( session()->get('sesion')->rol == 'secretaria')
-                                        <div class="col-12 col-md-4">
-                                            <label class="form-label">Titular</label>
+                                        <form action="{{route('visualizarPagosCliente.index')}}" method="get">
+                                            <div class="col-12 col-md-4">
+                                                <label class="form-label">Titular</label>
+                                                
+                                                <input class="form-control" type="text" wire:model="buscar"
+                                                    placeholder="Ingrese titular a buscar" name="nombreABuscar" value="{{$nombreBuscado}}">
+                                            </div>
                                             
-                                            <input class="form-control" type="text"    wire:model="buscar"
-                                                placeholder="Ingrese titular a buscar">
-                                        </div>
+                                            <div class="col-12 col-md-2">
+                                                <button type="submit" class="btn btn-primary ">Buscar titular</button>
+                                            </div>
+                                        </form>
                                         
-                                        <div class="col-12 col-md-2">
-                                            <button type="button" class="btn btn-primary ">Buscar titular</button>
-                                        </div>
-                                        @endif
                                         <!--<div class="col-12 col-md-4">
                                             <label class="form-label">Estado</label>
                                             <select class="form-select" aria-label="Default select example">
@@ -67,6 +68,7 @@
                                                     <th scope="col">Período</th>
                                                     <th scope="col">Monto</th>
                                                     <th scope="col">Estado</th>
+                                                    <th scope="col">Acción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -75,9 +77,14 @@
                                                         <!--<th scope="row">Pepito</th>-->
                                                         <td>{{ $pago->nombre}}</td>
                                                         <td>{{ $pago->sitio }}</td>
-                                                        <td>{{ $pago->mesLiteral }}</td>
-                                                        
+                                                        <!--<td>{{ $pago->mesLiteral }}</td> ***********************-->
+                                                        <td>{{ $pago->fechapago }}</td>
                                                         <td>60<spam class="fw-bold"> BOB</spam></td>
+                                                        @if ($pago->estado == 0)
+                                                            <td>Debe</td>
+                                                        @else
+                                                            <td>Pagado</td>
+                                                        @endif
                                                         <td>
                                                             <div class="d-inline-block">
                                                                 <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>

@@ -101,12 +101,13 @@ class AsignacionController extends Controller
 
         if ($parqueo) {
             $parqueo->usercustom_id = '0';
+            $parqueo->estado = 0;  // Inactivo
+            $parqueo->fechaasig = null;  // Borrar la fecha de asignación
             $parqueo->save();
         }
 
         return back();
     }
-
 
 
 

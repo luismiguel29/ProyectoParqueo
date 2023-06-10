@@ -104,15 +104,7 @@
                             </a>
                         </li>
 
-                        @if (session()->get('sesion')->rol == 'cliente')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reclamo') }}">
-                                <span data-feather="users"></span>
-                                <i class="fas fa-bullhorn"></i>
-                                Reclamos
-                            </a>
-                        </li>
-                        @endif
+
 
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'guardia' || session()->get('sesion')->rol == 'secretaria' )
                             <li class="nav-item">
@@ -181,6 +173,15 @@
                                     Cuenta
                                 </a>
                             </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'cliente')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reclamo') }}">
+                                <span data-feather="users"></span>
+                                <i class="fas fa-bullhorn"></i>
+                                Reclamos
+                            </a>
+                        </li>
                         @endif
                         @if (session()->get('sesion')->rol == 'cliente')
                             <li class="nav-item">

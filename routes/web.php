@@ -23,6 +23,7 @@ use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\ControlPagos\VisualizarListaPagosClienteController;
 use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\RegisterAdmin\AsignacionController;
@@ -227,6 +228,8 @@ Route::get('/removeUser/{id}', [AsignacionController::class,'removeUser'])->name
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
 Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
 //reclamoContactos Parqueo
+Route::resource('/visualizarPagosCliente', VisualizarListaPagosClienteController::class);
+
 
 Route::get('/reclamo', [ReclamoController::class,'index'])->name('reclamo');
 Route::post('/ruta-de-registro', [ReclamoController::class, 'store'])->name('reclamo.store');

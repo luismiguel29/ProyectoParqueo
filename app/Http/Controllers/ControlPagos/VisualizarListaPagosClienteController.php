@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\ControlPagos;
 
-use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\VisualizarListaPagos;
 use App\Models\User;
-use App\Models\Pago;
 use App\Models\ConfiguracionParqueo\CrearSitio;
 use App\Models\AtencionSolicitud;
 use Illuminate\Http\Request;
@@ -17,72 +16,32 @@ class VisualizarListaPagosClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //CrearSitio == tabla PARQUEO
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
-                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
-                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
-                    ->get();                
-        //$pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago')->get();
-        //$pagos = Pago::select('parqueo_id', 'fechapago')->where('estado', '==', 0)->get(); ****************************
-        $mesesLiteral = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-        $parqueo = CrearSitio::select('id', 'parqueo.usercustom_id', 'parqueo.sitio', 'parqueo.fechaasig', 'parqueo.zona')->where('usercustom_id', '!=', 0)->get();
-        
-        for ($i = 0; $i < count($pagos); $i++) { 
-            $fecha = json_decode($pagos[$i])->fechapago;
-            $mesNumero = date("n", strtotime($fecha));
-            $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero-1];
-            
-            json_encode($pagos[$i]);
-        }/*************************/
-        //Control de fechas
-        $diaActual = date("d");
-        if($diaActual == 10){
-            for ($i = 0; $i < count($parqueo); $i++) {
-                $fechaActual = date("Y-m-d H:i:s");
-                $pagosPersona = Pago::select('fechapago')->where('parqueo_usercustom_id', $parqueo[$i]->usercustom_id)->orderBy('fechapago', 'desc')->first();
-                if($pagosPersona != ""){
-                    $fechaPersona = json_decode($pagosPersona)->fechapago;
-                    $mesPersona = date("n", strtotime($fechaPersona));
-                    $mesActual = date("n", strtotime(date("Y-m-d H:i:s")));
-                    if($mesPersona != $mesActual){
-                        $datosJson = $parqueo[$i];
-                        $idUserPagos = json_decode($datosJson)->usercustom_id;
-                        $idParqueo = json_decode($datosJson)->id;
-                        
-                        $pago = new Pago;
-                        $pago->parqueo_usercustom_id = $idUserPagos;
-                        $pago->tarifa_id = "1";
-                        $pago->parqueo_id = $idParqueo;
-                        $pago->fechapago = date("Y-m-d H:i:s");
-                        $pago->estado = 0; //0->no pagado
-                        $pago->save();
-                    }
-                }else{
-                    $datosJson = $parqueo[$i];
-                    $idUserPagos = json_decode($datosJson)->usercustom_id;
-                    $idParqueo = json_decode($datosJson)->id;
-                    
-                    $pago = new Pago;
-                    $pago->parqueo_usercustom_id = $idUserPagos;
-                    $pago->tarifa_id = "1";
-                    $pago->parqueo_id = $idParqueo;
-                    $pago->fechapago = date("Y-m-d H:i:s");
-                    $pago->estado = 0; //0->no pagado
-                    $pago->save();
-                }
+        $parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
+        $nombres = array();
+        foreach ($parqueoUserId as $id) { 
+            $id = json_decode($id)->usercustom_id;
+            $user = User::query()->select('nombre')->where('id', $id)->get();
+            if($id > 0){
+                array_push($nombres, $user[0]);
             }
         }
         
-        $nombreBuscado = trim($request->get('nombreABuscar'));
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
-                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
-                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
-                    ->where('nombre', 'LIKE', '%'.$nombreBuscado.'%')
-                    ->get();
+        //array extraidos de parqueo y user custom
+        //$userId = User::query()->select(['id'])->get();
+        $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', '!=', 0)->get();
         
-        return view('ControlPagos.VisualizarListaPagosCliente', compact('pagos', 'nombreBuscado'));
+        for ($i=0; $i<count($horarios); $i++) { 
+            $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;
+            json_encode($horarios[$i]);
+        }
+        
+        //return User::where('id')->first()->nombre;
+        //return User::where('id','1')->first()->nombre;
+        //return User::select('nombre')->where('id', '1')->get();
+        return view('ControlPagos.VisualizarListaPagosCliente', compact('horarios', 'nombres')); 
+        // return view('ControlPagos.VisualizarListaPagos'); 
     }
 
     /**
@@ -90,6 +49,11 @@ class VisualizarListaPagosClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $buscar;
+    public function buscador(){
+        $buscar = '%'.$this->buscar.'%';
+        return AtencionSolicitud::where('tarifa', 'like', $buscar)->get();
+    }
     public function create()
     {
         //

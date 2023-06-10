@@ -25,7 +25,7 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <form action="" method="POST">
+                    <form action="{{ route('realizarPago', $pago->id) }}" method="POST">
                         @csrf
                         <div class="card card-outline  border-top-pk   shadow p-3">
                             <div  class="col-sm-6 text-center">  
@@ -60,10 +60,41 @@
                                 <div class="col-sm-6">
                                     <div class="row row-gap-3 mt-3">
                                         <div class="col-sm-6 mx-auto d-grid">
-                                            <button type="submit" class="btn btn-primary-pk">Completar pago</button>
+                                            <button type="button" class="btn btn-primary-pk" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">Completar pago</button>
                                         </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">¡Atención!
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">Esta seguro de realizar el pago?</div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger-dg"
+                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                        
+
+                                                        <form action="{{ route('realizarPago', $pago->id) }}" method="POST">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-primary-pk"
+                                                            style="">Pagar</button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                         <div class="col-sm-6 mx-auto d-grid">
-                                            <button type="submit" class="btn btn-danger-dg">Cancelar</button>
+                                            <a href="/visualizarPagosCliente" type="submit" class="btn btn-danger-dg">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

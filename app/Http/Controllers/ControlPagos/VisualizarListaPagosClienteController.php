@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ControlPagos;
 use App\Http\Controllers\Controller;
 use App\Models\VisualizarListaPagos;
 use App\Models\User;
+use App\Models\Pago;
 use App\Models\ConfiguracionParqueo\CrearSitio;
 use App\Models\AtencionSolicitud;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class VisualizarListaPagosClienteController extends Controller
      */
     public function index()
     {
-        $parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
+        /*$parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
         $nombres = array();
         foreach ($parqueoUserId as $id) { 
             $id = json_decode($id)->usercustom_id;
@@ -28,20 +29,25 @@ class VisualizarListaPagosClienteController extends Controller
             }
         }
         
-        //array extraidos de parqueo y user custom
-        //$userId = User::query()->select(['id'])->get();
         $horarios = CrearSitio::select('parqueo.usercustom_id','parqueo.sitio','parqueo.fechaasig')->where('usercustom_id', '!=', 0)->get();
-        
         for ($i=0; $i<count($horarios); $i++) { 
             $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;
             json_encode($horarios[$i]);
-        }
+        }*/
         
         //return User::where('id')->first()->nombre;
         //return User::where('id','1')->first()->nombre;
         //return User::select('nombre')->where('id', '1')->get();
-        return view('ControlPagos.VisualizarListaPagosCliente', compact('horarios', 'nombres')); 
-        // return view('ControlPagos.VisualizarListaPagos'); 
+        
+        /************************/
+        $idUsuario = session()->get('sesion')->id;
+        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+                    ->where('parqueo_usercustom_id', $idUsuario)
+                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
+                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+                    ->get();
+        
+        return view('ControlPagos.VisualizarListaPagosCliente', compact('pagos'));
     }
 
     /**

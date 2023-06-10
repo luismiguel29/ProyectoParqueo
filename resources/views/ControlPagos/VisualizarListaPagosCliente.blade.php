@@ -34,7 +34,7 @@
                                         @if ( session()->get('sesion')->rol == 'secretaria')
                                         <div class="col-12 col-md-4">
                                             <label class="form-label">Titular</label>
-
+                                            
                                             <input class="form-control" type="text"    wire:model="buscar"
                                                 placeholder="Ingrese titular a buscar">
                                         </div>
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </section>
-
+                            
                             <section>
                                 <div class="container">
                                     <div class="row pt-5 table-responsive">
@@ -67,44 +67,41 @@
                                                     <th scope="col">Titular</th>
                                                     <th scope="col">Sitio</th>
                                                     <th scope="col">Período</th>
-                                                    
                                                     <th scope="col">Monto</th>
-                                                    
                                                     <th scope="col">Estado</th>
-                                                   
+                                                    <th scope="col">Acción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                @foreach ($horarios as $horario)
+                                                @foreach ($pagos as $pago)
                                                     <tr>
                                                         <!--<th scope="row">Pepito</th>-->
-                                                        <td>{{ $horario->nombre}}</td>
-                                                        <td>{{ $horario->sitio }}</td>
-                                                        <td>{{ $horario->fechaasig }}</td>
-                                                        
-                                                        <td>60 <spam class="fw-bold">BOB</spam>
-                                                        </td>
+                                                        <td>{{ $pago->nombre}}</td>
+                                                        <td>{{ $pago->sitio }}</td>
+                                                        <td>{{ $pago->fechapago }}</td>
+                                                        <td>60 <spam class="fw-bold">BOB</spam></td>
+                                                        @if ($pago->estado == 0)
+                                                            <td>Debe</td>
+                                                        @else
+                                                            <td>Pagado</td>
+                                                        @endif
                                                         <td>
-                                                            
                                                             <div class="d-inline-block">
                                                                 <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
-        
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </section>
                         </div>
-
+                        
                     </div>
                 </div>
-
+                
             </div>
         </div>
     @endsection

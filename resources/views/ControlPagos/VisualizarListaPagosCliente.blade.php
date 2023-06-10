@@ -83,7 +83,7 @@
                                                             <!--<th scope="row">Pepito</th>-->
                                                             <td>{{ $pago->nombre}}</td>
                                                             <td>{{ $pago->sitio }}</td>
-                                                            <td>{{ $pago->fechapago }}</td>
+                                                            <td>{{ $pago->mesLiteral}}</td>
                                                             <td>60 <spam class="fw-bold">BOB</spam></td>
                                                             @if ($pago->estado == 0)
                                                                 <td>Debe</td>

@@ -34,19 +34,32 @@ class VisualizarListaPagosClienteController extends Controller
             $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;
             json_encode($horarios[$i]);
         }*/
-        
+
         //return User::where('id')->first()->nombre;
         //return User::where('id','1')->first()->nombre;
         //return User::select('nombre')->where('id', '1')->get();
-        
+
         /************************/
+
         $idUsuario = session()->get('sesion')->id;
         $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
-                    ->where('parqueo_usercustom_id', $idUsuario)
-                    ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
-                    ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
-                    ->get();
-        
+            ->where('parqueo_usercustom_id', $idUsuario)
+            ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
+            ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+            ->get();
+
+
+        $mesesLiteral = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
+        for ($i = 0; $i < count($pagos); $i++) {
+            $fecha = json_decode($pagos[$i])->fechapago;
+            $mesNumero = date("n", strtotime($fecha));
+            $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero - 1];
+
+            json_encode($pagos[$i]);
+        }
+
+
         return view('ControlPagos.VisualizarListaPagosCliente', compact('pagos'));
     }
 
@@ -56,8 +69,9 @@ class VisualizarListaPagosClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public $buscar;
-    public function buscador(){
-        $buscar = '%'.$this->buscar.'%';
+    public function buscador()
+    {
+        $buscar = '%' . $this->buscar . '%';
         return AtencionSolicitud::where('tarifa', 'like', $buscar)->get();
     }
     public function create()

@@ -16,7 +16,11 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h4 class="text mb-4"><i class="fas fa-bullhorn"></i> Registrar reclamos</h4>
-
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
                 <div class="form-container">
                     <form action="{{ route('reclamo.store') }}" method="post">
 

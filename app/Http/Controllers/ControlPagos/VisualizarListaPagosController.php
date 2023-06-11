@@ -20,7 +20,7 @@ class VisualizarListaPagosController extends Controller
     public function index(Request $request)
     {
         $nombreBuscado = trim($request->get('nombreABuscar'));
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+        return $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado', 'pago.id')
                     ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
                     ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
                     ->where('nombre', 'LIKE', '%'.$nombreBuscado.'%')

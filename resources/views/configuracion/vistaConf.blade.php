@@ -32,8 +32,12 @@
                     @endif
                     <form action="{{ route('modificarConfiguracion') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="enUsoTarifa" value="{{ $enUsoTarifa->id }}">
-                        <input type="hidden" name="enUsoConf" value="{{ $enUsoConf->id }}">
+                        @if (!empty($enUsoTarifa))
+                            <input type="hidden" name="enUsoTarifa" value="{{ $enUsoTarifa->id }}">
+                        @endif
+                        @if (!empty($enUsoConf))
+                            <input type="hidden" name="enUsoConf" value="{{ $enUsoConf->id }}">
+                        @endif
                         <div class="card card-outline  border-top-pk   shadow p-3">
                             <div class="row">
                                 <label class="" for="">
@@ -42,9 +46,13 @@
                                 <div class="col-sm-6">
                                     <select class="form-select" name="tarifa" id="">
                                         @foreach ($tarifa as $item)
-                                            <option @if ($item->estado == 1) selected @endif
-                                                value="{{ $item->id }}">{{ $item->nombre }} - Monto bs.
-                                                {{ $item->precio }}</option>
+                                            @if ($item->estado==0)
+                                                <option value="{{ $item->id }}">{{ $item->nombre }} - Monto bs.
+                                                    {{ $item->precio }}</option>
+                                            @else
+                                                <option selected style="font-weight: bold" value="{{ $item->id }}">=>{{ $item->nombre }} - Monto bs.
+                                                    {{ $item->precio }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,9 +64,11 @@
                                 <div class="col-sm-6">
                                     <select class="form-select" name="fecha" id="">
                                         @foreach ($configuracion as $item2)
-                                            <option @if ($item2->estado == 1) selected @endif
-                                                value="{{ $item2->id }}">{{ $item2->dia }}, {{ $item2->nombre }}
-                                            </option>
+                                            @if ($item2->estado==0)
+                                                <option value="{{ $item2->id }}">{{ $item2->dia }}, {{ $item2->nombre }}</option>
+                                            @else
+                                                <option selected style="font-weight: bold" value="{{ $item2->id }}">=>{{ $item2->dia }}, {{ $item2->nombre }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>

@@ -47,4 +47,13 @@ class ConfiguracionController extends Controller
         $pago = Pago::where('id', $id)->first();
         return view('ControlPagos.vistaPago', compact('pago'));
     }
+
+    public function realizarPago($id)
+    {
+        Pago::where('id', $id)
+        ->update([
+            'estado'=> 1,
+        ]);
+        //return redirect()->route('visualizarPagos.index');
+    }
 }

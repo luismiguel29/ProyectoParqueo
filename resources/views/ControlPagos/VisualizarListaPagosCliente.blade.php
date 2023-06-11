@@ -92,7 +92,10 @@
                                                             @endif
                                                             <td>
                                                                 <div class="d-inline-block">
-                                                                    <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                    <form action="{{ route('vistaPago', $pago->id) }}" method="POST">
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                    </form>
                                                                 </div>
                                                             </td>
                                                         </tr>

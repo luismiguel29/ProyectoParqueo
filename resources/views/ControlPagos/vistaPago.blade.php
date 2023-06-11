@@ -94,7 +94,11 @@
 
 
                                         <div class="col-sm-6 mx-auto d-grid">
-                                            <a href="/visualizarPagosCliente" type="submit" class="btn btn-danger-dg">Cancelar</a>
+                                            <a @if (session()->get('sesion')->rol == 'cliente')
+                                                href="/visualizarPagosCliente"
+                                            @else
+                                                href="/visualizarPagos"
+                                            @endif  type="submit" class="btn btn-danger-dg">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

@@ -19,6 +19,10 @@ class VisualizarListaPagosController extends Controller
      */
     public function index(Request $request)
     {
+
+        //Obtener datos de tarifas
+        $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
+        $tarifasPago = json_decode($tarifas)->precio;
         $nombreBuscado = trim($request->get('nombreABuscar'));
         $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado', 'pago.id')
                     ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
@@ -31,12 +35,13 @@ class VisualizarListaPagosController extends Controller
         $parqueo = CrearSitio::select('id', 'parqueo.usercustom_id', 'parqueo.sitio', 'parqueo.fechaasig', 'parqueo.zona')->where('usercustom_id', '!=', 0)->get();
         
         for ($i = 0; $i < count($pagos); $i++) { 
-            $fecha = json_decode($pagos[$i])->fechapago;
+           $fecha = json_decode($pagos[$i])->fechapago;
             $mesNumero = date("n", strtotime($fecha));
             $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero-1];
-            
+            $pagos[$i]->monto = $tarifasPago;
             json_encode($pagos[$i]);
         }
+       
         //Control de fechas
         $diaActual = date("d");
         if($diaActual == 10){

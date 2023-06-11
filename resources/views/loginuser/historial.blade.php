@@ -20,7 +20,7 @@
                         <i class="fa-solid fa-calendar-days fa-2x pe-2"></i>
                         <span class="h3 ">Historial de reportes</span>
                     </div>
-                    <form action="{{ route('buscarHistorial') }}" method="GET">
+                   <!-- <form action="{{ route('buscarHistorial') }}" method="GET">
                     {{-- <form action="{{ route('registroHistorial') }}" method="POST"> --}}
                         @csrf
                         <div class="row p-3">
@@ -43,7 +43,7 @@
                                 {{-- <button type="submit" class="btn btn-primary-pk">Registrar reporte</button> --}}
                             </div>
                         </div>
-                    </form>
+                    </form>-->
                     
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
                         @if ($historial->isNotEmpty())

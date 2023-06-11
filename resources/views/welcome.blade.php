@@ -210,13 +210,23 @@
                             </a>
                         </li>
                         @endif
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contacto.edit') }}">
+                                <span data-feather="users"></span>
+                                <i class="fa-solid fa-calendar-days pe-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        @endif
+
                         @if (session()->get('sesion')->rol == 'administrador')
-                            <a class="nav-link" href='{{ route('listahistorial') }}'>
+                            <a class="nav-link" href="{{ route('listahistorial') }}">
                                 <span data-feather="users"></span>
                                 <i class="fa-solid fa-calendar-days pe-2"></i>
                                 Historial de Reportes
                             </a>
-                            <a class="nav-link" href='{{ route('verConfiguracion') }}'>
+                            <a class="nav-link" href="{{ route('verConfiguracion') }}">
                                 <span data-feather="users"></span>
                                 <i class="fa-solid fa-gear pe-2"></i>
                                 Configuraciones

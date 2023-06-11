@@ -42,7 +42,7 @@ class VisualizarListaPagosClienteController extends Controller
         /************************/
 
         $idUsuario = session()->get('sesion')->id;
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado','pago.id')
             ->where('parqueo_usercustom_id', $idUsuario)
             ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
             ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')

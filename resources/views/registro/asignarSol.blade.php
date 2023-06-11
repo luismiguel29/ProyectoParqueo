@@ -62,7 +62,7 @@
             </div>
         </form> --}}
 
-        <div class="table-responsive-fluid" id="table-container">
+        <div class="table-responsive" id="table-container">
             <div class="blue-line"></div>
             <table id="myTable" class="table">
                 <thead>

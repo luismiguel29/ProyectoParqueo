@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/ConfiguracionParqueo/crear.css') }}">
-
-    <title>Document</title>
 </head>
 
 <body>
@@ -31,18 +29,19 @@
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
-                                        @if ( session()->get('sesion')->rol == 'secretaria')
-                                        <div class="col-12 col-md-4">
-                                            <label class="form-label">Titular</label>
-
-                                            <input class="form-control" type="text"    wire:model="buscar"
-                                                placeholder="Ingrese titular a buscar">
-                                        </div>
+                                        <form action="{{route('visualizarPagos.index')}}" method="get">
+                                            <div class="col-12 col-md-4">
+                                                <label class="form-label">Titular</label>
+                                                
+                                                <input class="form-control" type="text" wire:model="buscar"
+                                                    placeholder="Ingrese titular a buscar" name="nombreABuscar" value="{{$nombreBuscado}}">
+                                            </div>
+                                            
+                                            <div class="col-12 col-md-2">
+                                                <button type="submit" class="btn btn-primary ">Buscar titular</button>
+                                            </div>
+                                        </form>
                                         
-                                        <div class="col-12 col-md-2">
-                                            <button type="button" class="btn btn-primary ">Buscar titular</button>
-                                        </div>
-                                        @endif
                                         <!--<div class="col-12 col-md-4">
                                             <label class="form-label">Estado</label>
                                             <select class="form-select" aria-label="Default select example">
@@ -57,7 +56,7 @@
                                     </div>
                                 </div>
                             </section>
-
+                            
                             <section>
                                 <div class="container">
                                     <div class="row pt-5 table-responsive">
@@ -67,44 +66,46 @@
                                                     <th scope="col">Titular</th>
                                                     <th scope="col">Sitio</th>
                                                     <th scope="col">Período</th>
-                                                    
                                                     <th scope="col">Monto</th>
-                                                    
                                                     <th scope="col">Estado</th>
-                                                   
+                                                    <th scope="col">Acción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                @foreach ($horarios as $horario)
+                                                @if (count($pagos) < 1)
                                                     <tr>
-                                                        <!--<th scope="row">Pepito</th>-->
-                                                        <td>{{ $horario->nombre}}</td>
-                                                        <td>{{ $horario->sitio }}</td>
-                                                        <td>{{ $horario->fechaasig }}</td>
-                                                        
-                                                        <td>60 <spam class="fw-bold">BOB</spam>
-                                                        </td>
-                                                        <td>
-                                                            
-                                                            <div class="d-inline-block">
-                                                                <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
-        
-                                                            </div>
-                                                        </td>
+                                                        <td colspan="6">No hay resultados</td>
                                                     </tr>
-                                                @endforeach
-
+                                                @else
+                                                    @foreach ($pagos as $pago)
+                                                        <tr>
+                                                            <!--<th scope="row">Pepito</th>-->
+                                                            <td>{{ $pago->nombre}}</td>
+                                                            <td>{{ $pago->sitio }}</td>
+                                                            <!--<td>{{ $pago->mesLiteral }}</td> ***********************-->
+                                                            <td>{{ $pago->mesLiteral }}</td>
+                                                            <td>60<spam class="fw-bold"> BOB</spam></td>
+                                                            @if ($pago->estado == 0)
+                                                                <td>Debe</td>
+                                                            @else
+                                                                <td>Pagado</td>
+                                                            @endif
+                                                            <td>
+                                                                <div class="d-inline-block">
+                                                                    <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </section>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     @endsection

@@ -19,7 +19,7 @@
             <div class="container pb-3">
                 <i class="fa-solid fa-user fa-2xl"; style="color: 222222;
                 margin-right: 10px;"></i>
-                <span class="h3 ">Registar Usuario Cliente</span>
+                <span class="h3 ">Registrar Usuario Cliente</span>
             </div>
             <div class="card card-outline  border-top-pk   shadow" >
                 <div class="card-header">

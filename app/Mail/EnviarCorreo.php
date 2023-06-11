@@ -12,17 +12,16 @@ class EnviarCorreo extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $asunto, $contenido;
+    protected $mensaje;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($asunto, $contenido )
+    public function __construct($mensaje )
     {
-        $this->asunto = $asunto;
-        $this->contenido = $contenido;
+        $this->mensaje = $mensaje;
 
     }
 
@@ -34,11 +33,11 @@ class EnviarCorreo extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->asunto)
+        return $this->subject($this->mensaje->asunto)
                     ->view('emails.moraporpago')
                     ->with([
-                        'asunto' => $this->asunto,
-                        'contenido' => $this->contenido,
+                        'asunto' => $this->mensaje->asunto,
+                        'descripcion' => $this->mensaje->descripcion,
                     ]);
     }
 }

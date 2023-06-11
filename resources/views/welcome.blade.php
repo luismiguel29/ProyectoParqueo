@@ -104,6 +104,8 @@
                             </a>
                         </li>
 
+
+
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'guardia' || session()->get('sesion')->rol == 'secretaria' )
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('listaregistro') }}">
@@ -172,6 +174,24 @@
                                 </a>
                             </li>
                         @endif
+                        @if (session()->get('sesion')->rol == 'cliente')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reclamo') }}">
+                                <span data-feather="users"></span>
+                                <i class="fas fa-bullhorn"></i>
+                                Reclamos
+                            </a>
+                        </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'cliente')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('Vistacontactos') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fas fa-info-circle pe-2"></i>
+                                    informacion
+                                </a>
+                            </li>
+                        @endif
                         {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                       <span data-feather="bar-chart-2"></span>
@@ -200,7 +220,7 @@
                                 Ver Reclamos
                             </a>
                         </li>
-                        @endif                        
+                        @endif
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contacto.edit') }}">
@@ -221,7 +241,7 @@
                                 <i class="fa-solid fa-gear pe-2"></i>
                                 Configuraciones
                             </a>
-                        @endif                        
+                        @endif
                     </ul>
                 </div>
             </nav>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\AdmInfoClientes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +17,7 @@ class ClienteController extends Controller
     // }
     public function index(Request $request)
     {
-        $clientes = Cliente:: select('usercustom.id', 'usercustom.rol', 'usercustom.nombre',
+        $clientes = User:: select('usercustom.id', 'usercustom.rol', 'usercustom.nombre',
         'usercustom.apellido','usercustom.usuario', 'usercustom.ci','usercustom.telefono', 'usercustom.correo') 
         ->where('rol', 'cliente')
         -> get();
@@ -39,15 +39,15 @@ class ClienteController extends Controller
             'nombreprod.regex' => 'El campo nombre solo puede tener letras',
         ]);
 
-            $usercustom = new Cliente();
-            $usercustom->tipo = 'cliente';
+            $usercustom = new User();
+            $usercustom->rol = 'cliente';
             $usercustom->nombre = $request->input('nombre');
             $usercustom->apellido = $request->input('apellido');
             $usercustom->usuario = $request->input('usuario');
             $usercustom->ci = $request->input('ci');
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
-            $usercustom->contrasenia = Hash::make($request->input('contraseña'));
+            $usercustom->password = Hash::make($request->input('contraseña'));
             $usercustom->save();
             return redirect ()->route('Cliente.listacliente')->with('success', '¡Registro exitoso!');
     }
@@ -74,7 +74,7 @@ class ClienteController extends Controller
             'nombreprod.regex' => 'El campo nombre solo puede tener letras',
         ]);
 
-            $usercustom = Cliente:: find($id);
+            $usercustom = User:: find($id);
 
             $usercustom->nombre = $request->input('nombre');
             $usercustom->apellido = $request->input('apellido');
@@ -82,7 +82,7 @@ class ClienteController extends Controller
             $usercustom->ci = $request->input('ci');
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
-            $usercustom->contrasenia = Hash::make($request->input('contraseña'));
+            $usercustom->password = Hash::make($request->input('contraseña'));
             return redirect ()->route('Cliente.listacliente')->with('message', '¡Edicion de datos exitoso!');
         
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdmInfoClientes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
@@ -20,12 +21,15 @@ class ImportarClientesController extends Controller{
         $reader->setHeaderOffset(0);
         $records = (new Statement())->process($reader);
         foreach ($records as $record) {
-            $usercustom = new Cliente();
-            $usercustom->nombre = $record ['NOMBRE'];
+            $usercustom = new User();
+            $usercustom->nombre = $record ['NOMBRE'];            
             $usercustom->apellido = $record ['APELLIDO'];
-            $usercustom->ci = $record ['CI'];
+            $usercustom->ci = $record ['CI'];            
             $usercustom->telefono = $record ['TELEFONO'];
             $usercustom->correo = $record ['CORREO'];
+            $usercustom->usuario = $record ['USUARIO'];
+            $usercustom->password = Hash::make($record ['PASSWORD']);
+            $usercustom->rol = $record ['ROL'];
             $usercustom->save();
         }
         

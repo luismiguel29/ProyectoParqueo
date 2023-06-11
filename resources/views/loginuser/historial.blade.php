@@ -38,8 +38,8 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-sm-2 my-auto d-block">
-                                <button class="btn btn-primary-pk" >Buscar</button>
+                            <div class="col-sm-2 my-auto d-grid">
+                                <button class="btn btn-primary-pk mt-4" >Buscar</button>
                                 {{-- <button type="submit" class="btn btn-primary-pk">Registrar reporte</button> --}}
                             </div>
                         </div>

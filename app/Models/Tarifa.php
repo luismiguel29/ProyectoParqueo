@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ParkingSpace extends Model
+class Tarifa extends Model
 {
-    protected $table="parqueo";
+    protected $table="tarifa";
     protected $primaryKey="id";
     protected $fillable=[
-        'sitio', 'zona', 'descripcion', 'estado'
-    ];
-    
+        'nombre', 'precio', 'estado'];
+
     public $timestamps = false;
 }

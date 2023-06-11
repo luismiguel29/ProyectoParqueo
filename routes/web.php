@@ -23,12 +23,17 @@ use App\Http\Controllers\AtencionSolicitud\EnviarSolicitudController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ControlPagos\VisualizarListaPagosController;
 use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\ControlPagos\VisualizarListaPagosClienteController;
 use App\Http\Controllers\InvitadoController;
 use App\Http\Controllers\ProveerMensajes\MensajeController;
 use App\Http\Controllers\RegisterAdmin\AsignacionController;
 use App\Http\Controllers\RegisterAdmin\SolicitudController;
 use App\Http\Controllers\MapaAController;
 use App\Http\Controllers\MapaBController;
+use App\Http\Controllers\RegisterAdmin\ReclamoController;
+use App\Http\Controllers\RegisterAdmin\RegistrarContacto;
+use App\Http\Controllers\RegisterAdmin\VistaContactos;
+use App\Http\Controllers\RegisterAdmin\VistaReclamoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,6 +137,9 @@ Route::controller(RegistroController::class)->group(function(){
 Route::controller(CorreoController::class)->group(function(){
     Route::get('envcorreo', 'index')->name('envcorreo');
     Route::get('pago', 'crearpago')->name('pago');
+    Route::get('notificarMora', 'notificarMora')->name('notificarMora');
+    Route::put('actualizarCuenta/{id}', 'actualizarCuenta')->name('actualizarCuenta');
+    Route::get('mostrarCuenta', 'mostrarCuenta')->name('mostrarCuenta');
 });
 
 Route::controller(InvitadoController::class)->group(function(){
@@ -157,7 +165,10 @@ Route::controller(HistorialController::class)->group(function(){
 Route::controller(ConfiguracionController::class)->group(function(){
     Route::get('verConfiguracion','verConfiguracion')->name('verConfiguracion');
     Route::post('modificarConfiguracion','modificarConfiguracion')->name('modificarConfiguracion');
+    Route::get('vistaPago/{id}','vistaPago')->name('vistaPago');
+    Route::post('realizarPago/{id}','realizarPago')->name('realizarPago');
 });
+
 
 
 
@@ -219,4 +230,15 @@ Route::get('/removeUser/{id}', [AsignacionController::class,'removeUser'])->name
 
 Route::resource('/enviarSolicitud', EnviarSolicitudController::class);
 Route::resource('/visualizarPagos', VisualizarListaPagosController::class);
+//reclamoContactos Parqueo
+Route::resource('/visualizarPagosCliente', VisualizarListaPagosClienteController::class);
 
+
+Route::get('/reclamo', [ReclamoController::class,'index'])->name('reclamo');
+Route::post('/ruta-de-registro', [ReclamoController::class, 'store'])->name('reclamo.store');
+Route::get('/Vereclamo', [VistaReclamoController::class,'index'])->name('visualizarReclamo');
+Route::get('/Vistacontactos', [VistaContactos::class,'index'])->name('Vistacontactos');
+
+// Route::get('/contactosregistro', [RegistrarContacto::class,'index'])->name('contacReg');
+Route::get('/contacto/edit', [RegistrarContacto::class, 'edit'])->name('contacto.edit');
+Route::put('/contacto/update', [RegistrarContacto::class, 'update'])->name('contacto.update');

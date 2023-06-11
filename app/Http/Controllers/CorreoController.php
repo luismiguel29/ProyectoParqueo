@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Pago;
 use App\Models\User;
+use App\Models\Mensaje;
 use App\Mail\EnviarCorreo;
+use App\Models\Parqueo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class CorreoController extends Controller
@@ -16,7 +20,7 @@ class CorreoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     /* public function __construct()
+    /* public function __construct()
      {
          $this->middleware('auth', ['except' => []]);
      } */
@@ -27,8 +31,8 @@ class CorreoController extends Controller
         $asunto = "adjuntar asunto";
         $contenido = "Adjuntar contenido el contenido del correo es el siguiente";
         foreach ($correo as $mail) {
-            //Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
-            Mail::to($mail->correo)->send(new EnviarCorreo($asunto, $contenido));
+            Mail::to($mail->correo)->queue(new EnviarCorreo($asunto, $contenido));
+            //Mail::to($mail->correo)->send(new EnviarCorreo($asunto, $contenido));
         }
         return redirect()->back();
     }
@@ -38,75 +42,49 @@ class CorreoController extends Controller
         //$fechadefinida = date('Y-m-d H:i:s');
         $fechadefinida = date('Y-m-17 00:00:00');
         $fechaactual = Carbon::parse(now())->format('Y-m-d 00:00:00');
-        if ($fechaactual==$fechadefinida) {
+        if ($fechaactual == $fechadefinida) {
             return "es la fecha";
         }
         return [$fechaactual, $fechadefinida];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function notificarMora()
     {
-        //
+        $mensaje = Mensaje::where('asunto', 'like', "%mora%")->first();
+        $parqueo = Parqueo::where('estado', 1)->get();
+        foreach ($parqueo as $item) {
+            $deuda = Pago::where('parqueo_usercustom_id', $item->usercustom_id)
+            ->where('estado', 0)->first();
+            if (!empty($deuda)) {
+                Mail::to($item->usercustom->correo)->send(new EnviarCorreo($mensaje));
+                //Mail::to($item->usercustom->correo)->send(new EnviarCorreo($mensaje->asunto, $mensaje->descripcion));
+            }
+            
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function mostrarCuenta()
     {
-        //
+        $cuenta = User::where('id', session()->get('sesion')->id)->first();
+        return view('Cliente.ClienteUpdate', compact('cuenta'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function actualizarCuenta($id, Request $request)
     {
-        //
-    }
+        $request->validate([
+            'usuario' => 'required|max:20|alpha_num',
+            'telefono' => 'required|digits_between:1,20|numeric',
+            'correo' => 'required|email|max:70',
+            'contraseña' => 'required|max:20',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        User::where('id', $id)
+        ->update([
+            'usuario' => request('usuario'),
+            'telefono' => request('telefono'),
+            'correo' => request('correo'),
+            'password' => Hash::make(request('contraseña')),
+        ]);
+        return redirect()->route('mostrarCuenta')->with('success', '¡Se modificaron los cambios!');
     }
 }

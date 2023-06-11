@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AtencionSolicitud;
 use App\Models\Configuracion;
+use App\Models\Pago;
 use Illuminate\Http\Request;
 
 class ConfiguracionController extends Controller
@@ -11,9 +12,9 @@ class ConfiguracionController extends Controller
     public function verConfiguracion()
     {
         $configuracion = Configuracion::all();
-        $enUsoConf = Configuracion::where('id', 1)->first();
-        $enUsoTarifa = AtencionSolicitud::where('estado', 1)->first();
+        $enUsoConf = Configuracion::where('estado', 1)->first();
         $tarifa = AtencionSolicitud::all();
+        $enUsoTarifa = AtencionSolicitud::where('estado', 1)->first();        
         return view('configuracion.vistaConf', compact('tarifa', 'enUsoTarifa', 'configuracion', 'enUsoConf'));
     }
 
@@ -39,5 +40,20 @@ class ConfiguracionController extends Controller
             'estado' => 1,
         ]);
         return redirect()->route('verConfiguracion')->with('success', '¡Cambios guardados correctamente!');
+    }
+
+    public function vistaPago($id)
+    {
+        $pago = Pago::where('id', $id)->first();
+        return view('ControlPagos.vistaPago', compact('pago'));
+    }
+
+    public function realizarPago($id)
+    {
+        Pago::where('id', $id)
+        ->update([
+            'estado'=> 1,
+        ]);
+        //return redirect()->route('visualizarPagos.index');
     }
 }

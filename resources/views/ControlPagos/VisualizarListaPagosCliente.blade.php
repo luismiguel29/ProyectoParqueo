@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/ConfiguracionParqueo/crear.css') }}">
+
+    <title>Document</title>
 </head>
 
 <body>
@@ -29,19 +31,18 @@
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
-                                        <form action="{{route('visualizarPagos.index')}}" method="get">
-                                            <div class="col-12 col-md-4">
-                                                <label class="form-label">Titular</label>
-                                                
-                                                <input class="form-control" type="text" wire:model="buscar"
-                                                    placeholder="Ingrese titular a buscar" name="nombreABuscar" value="{{$nombreBuscado}}">
-                                            </div>
+                                        @if ( session()->get('sesion')->rol == 'secretaria')
+                                        <div class="col-12 col-md-4">
+                                            <label class="form-label">Titular</label>
                                             
-                                            <div class="col-12 col-md-2">
-                                                <button type="submit" class="btn btn-primary ">Buscar titular</button>
-                                            </div>
-                                        </form>
+                                            <input class="form-control" type="text"    wire:model="buscar"
+                                                placeholder="Ingrese titular a buscar">
+                                        </div>
                                         
+                                        <div class="col-12 col-md-2">
+                                            <button type="button" class="btn btn-primary ">Buscar titular</button>
+                                        </div>
+                                        @endif
                                         <!--<div class="col-12 col-md-4">
                                             <label class="form-label">Estado</label>
                                             <select class="form-select" aria-label="Default select example">
@@ -74,7 +75,7 @@
                                             <tbody>
                                                 @if (count($pagos) < 1)
                                                     <tr>
-                                                        <td colspan="6">No hay resultados</td>
+                                                        <td colspan="6">No hay registross??</td>
                                                     </tr>
                                                 @else
                                                     @foreach ($pagos as $pago)
@@ -82,9 +83,8 @@
                                                             <!--<th scope="row">Pepito</th>-->
                                                             <td>{{ $pago->nombre}}</td>
                                                             <td>{{ $pago->sitio }}</td>
-                                                            <!--<td>{{ $pago->mesLiteral }}</td> ***********************-->
-                                                            <td>{{ $pago->mesLiteral }}</td>
-                                                            <td>60<spam class="fw-bold"> BOB</spam></td>
+                                                            <td>{{ $pago->mesLiteral}}</td>
+                                                            <td>60 <spam class="fw-bold">BOB</spam></td>
                                                             @if ($pago->estado == 0)
                                                                 <td>Debe</td>
                                                             @else
@@ -104,8 +104,10 @@
                                 </div>
                             </section>
                         </div>
+                        
                     </div>
                 </div>
+                
             </div>
         </div>
     @endsection

@@ -40,7 +40,8 @@ class VisualizarListaPagosClienteController extends Controller
         //return User::select('nombre')->where('id', '1')->get();
 
         /************************/
-
+        $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
+        $tarifasPago = json_decode($tarifas)->precio;
         $idUsuario = session()->get('sesion')->id;
         $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado','pago.id')
             ->where('parqueo_usercustom_id', $idUsuario)
@@ -55,7 +56,7 @@ class VisualizarListaPagosClienteController extends Controller
             $fecha = json_decode($pagos[$i])->fechapago;
             $mesNumero = date("n", strtotime($fecha));
             $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero - 1];
-
+            $pagos[$i]->monto = $tarifasPago;
             json_encode($pagos[$i]);
         }
 

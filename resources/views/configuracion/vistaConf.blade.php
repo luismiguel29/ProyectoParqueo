@@ -50,7 +50,7 @@
                                                 <option value="{{ $item->id }}">{{ $item->nombre }} - Monto bs.
                                                     {{ $item->precio }}</option>
                                             @else
-                                                <option selected style="font-weight: bold" value="{{ $item->id }}">{{ $item->nombre }} - Monto bs.
+                                                <option selected style="font-weight: bold" value="{{ $item->id }}">=>{{ $item->nombre }} - Monto bs.
                                                     {{ $item->precio }}</option>
                                             @endif
                                         @endforeach
@@ -67,7 +67,7 @@
                                             @if ($item2->estado==0)
                                                 <option value="{{ $item2->id }}">{{ $item2->dia }}, {{ $item2->nombre }}</option>
                                             @else
-                                                <option selected style="font-weight: bold" value="{{ $item2->id }}">{{ $item2->dia }}, {{ $item2->nombre }}</option>
+                                                <option selected style="font-weight: bold" value="{{ $item2->id }}">=>{{ $item2->dia }}, {{ $item2->nombre }}</option>
                                             @endif
                                         @endforeach
                                     </select>

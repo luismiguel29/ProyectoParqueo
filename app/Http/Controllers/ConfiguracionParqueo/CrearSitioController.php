@@ -14,37 +14,21 @@ class CrearSitioController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     { 
         $datos = CrearSitio::all();
         return view('/ConfiguracionParqueo/Crear', compact('datos')); 
     }
 
-    /**     
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-
         $request->validate([
             'nroespacio' => ['required'],
-          ],[
+        ],[
             'nroespacio.required', 'El campo Nro de espacio es obligatorio'
-          ]);
-
+        ]);
+        
         $crear = new CrearSitio;
         $crear->usercustom_id= 0;
         $crear->sitio=$request->input('nroespacio');
@@ -53,51 +37,5 @@ class CrearSitioController extends Controller
         // $crear->estado=$request->input('estado');
         $crear->save();
         return redirect()->route('sites.index')->with('success', '¡Registro exitoso!');
-      
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

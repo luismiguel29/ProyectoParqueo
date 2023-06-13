@@ -8,6 +8,11 @@ use App\Models\Solicitud;
 
 class VistaReclamoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         // Obtén la consulta de búsqueda del parámetro de consulta "search"

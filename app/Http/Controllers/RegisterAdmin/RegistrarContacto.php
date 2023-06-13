@@ -9,6 +9,10 @@ use App\Models\Contacto;
 class RegistrarContacto extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Muestra el formulario para editar un contacto existente.
      *

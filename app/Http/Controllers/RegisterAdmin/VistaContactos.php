@@ -8,6 +8,10 @@ use App\Models\Contacto;
 
 class VistaContactos extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $contacto = Contacto::first();

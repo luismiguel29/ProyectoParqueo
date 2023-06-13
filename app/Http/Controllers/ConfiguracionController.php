@@ -54,6 +54,11 @@ class ConfiguracionController extends Controller
         ->update([
             'estado'=> 1,
         ]);
-        //return redirect()->route('visualizarPagos.index');
+        if (session()->get('sesion')->rol == 'cliente') {
+            return redirect()->route('visualizarPagosCliente.index');
+        } else {
+            return redirect()->route('visualizarPagos.index');
+        }
+        
     }
 }

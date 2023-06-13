@@ -81,10 +81,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- <div class="">
-                                <a href="{{ route('notificarMora') }}" class="btn btn-primary-pk">Mora</a>
-                            </div> --}}
+                            </div>                            
                         </div>
                     </form>
 

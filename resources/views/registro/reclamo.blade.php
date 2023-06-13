@@ -27,7 +27,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="tipo_mensaje">Elegir tipo de mensaje</label>
-                            <select class="form-control" id="tipo_mensaje" name="tipo_mensaje">
+                            <select class="form-select" id="tipo_mensaje" name="tipo_mensaje">
                                 <option>Espacio de estacionamiento ocupado</option>
                                 <option>Daños en el vehículo</option>
                                 <option>Acceso restringido</option>

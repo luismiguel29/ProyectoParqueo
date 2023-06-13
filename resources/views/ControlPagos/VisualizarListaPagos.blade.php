@@ -29,15 +29,15 @@
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
-                                        <form action="{{route('visualizarPagos.index')}}" method="get">
-                                            <div class="col-12 col-md-4">
+                                        <form class="row align-items-end" action="{{route('visualizarPagos.index')}}" method="get">
+                                            <div class="col-12 col-md-6">
                                                 <label class="form-label">Titular</label>
                                                 
                                                 <input class="form-control" type="text" wire:model="buscar"
                                                     placeholder="Ingrese titular a buscar" name="nombreABuscar" value="{{$nombreBuscado}}">
                                             </div>
                                             
-                                            <div class="col-12 col-md-2">
+                                            <div class="col-12 col-md-6">
                                                 <button type="submit" class="btn btn-primary ">Buscar titular</button>
                                             </div>
                                         </form>

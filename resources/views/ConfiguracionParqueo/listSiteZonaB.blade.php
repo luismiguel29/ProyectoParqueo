@@ -22,7 +22,7 @@
                     <i class="fa-solid fa-car-side fa-2x pe-1"></i>
                     <span class="h3">Lista de sitios ZONA B</span>
                 </div>
-
+                
                 <div class="col-12 col-sm-auto d-flex gap-3 justify-content-center pb-3 pb-sm-0">
                     <!--DROPDOWN INICIO-->
                         <div class="dropdown col-auto">
@@ -45,10 +45,9 @@
                             </a>
                         </div>
                         @endif
-                    
                 </div>
                 </div>
-
+                
             <div class="card card-outline  border-top-pk   shadow">
                 <div class="row">
                     <div class="col-lg-5">
@@ -62,7 +61,7 @@
                                         <th>Ación</th>
                                     </tr>
                                 </thead>
-
+                                
                                 <tbody>
                                     @foreach ($datosB as $site)
                                         <tr>
@@ -74,7 +73,7 @@
                                                         data-bs-target="#modal-update-{{ $site->id }}">
                                                         <i class="fa-solid fa-pen-to-square icon--white"></i>
                                                     </button>
-
+                                                    
                                                     <button type="submit" class="bicon icon--red" data-bs-toggle="modal"
                                                         data-bs-target="#modal-delete-{{ $site->id }}">
                                                         <i class="fa-solid fa-trash-can icon--white"></i>
@@ -91,7 +90,7 @@
                     </div>
                 </div>
             </div>
-
+            
         </div>
     </section>
 @endsection

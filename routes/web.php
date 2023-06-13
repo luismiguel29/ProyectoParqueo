@@ -80,13 +80,16 @@ Route::get('/buscarFechas',[ReportesController::class,'buscarFechas'])->name('Re
 
 
 //Rutas andrea
+Route::get('/sites/comprobante', [ParkingSpaceController::class, 'comprobante'])->name('sites.comprobante'); //***************************/
+Route::get('/ReportesDeIngresos/reporte', [ReportesController::class, 'reporte'])->name('ReportesDeIngresos.reporte'); 
 
 Route::resource('/sites', ParkingSpaceController::class);
+Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
 /*Route::controller(CrearSitioController::class)->group(function(){
     Route::get('/ConfiguracionParqueo/crear', 'index');
 });
 */
-Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
+
 
 
 

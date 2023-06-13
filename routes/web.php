@@ -81,6 +81,7 @@ Route::get('/buscarFechas',[ReportesController::class,'buscarFechas'])->name('Re
 
 //Rutas andrea
 Route::get('/sites/pdf', [ParkingSpaceController::class, 'pdf'])->name('sites.pdf'); //***************************/
+Route::get('/sites/factura', [ParkingSpaceController::class, 'factura'])->name('sites.factura'); 
 
 Route::resource('/sites', ParkingSpaceController::class);
 Route::resource('/siteszonab', ParkingSpaceZonaBController::class);

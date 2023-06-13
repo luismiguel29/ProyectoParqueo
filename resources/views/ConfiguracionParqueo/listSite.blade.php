@@ -36,6 +36,12 @@
                             <span>PDF</span>
                         </a>
                     </div>
+                    <div class="col-auto">
+                        <a href="/sites/factura" class="btn btn-primary" target="_blank">
+                            <i class="fa-sharp fa-solid fa-plus"></i>
+                            <span>factura</span>
+                        </a>
+                    </div>
 
                      <!--DROPDOWN INICIO-->
                         <div class="dropdown col-auto">

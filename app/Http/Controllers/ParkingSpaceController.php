@@ -7,6 +7,10 @@ use App\Models\ParkingSpace;
 
 class ParkingSpaceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
        // $listSites = ParkingSpace::all();

@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 
 class VisualizarListaPagosClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         /*$parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
@@ -47,6 +46,7 @@ class VisualizarListaPagosClienteController extends Controller
             ->where('parqueo_usercustom_id', $idUsuario)
             ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
             ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+            ->where('pago.estado', '!=', '1')
             ->get();
 
 

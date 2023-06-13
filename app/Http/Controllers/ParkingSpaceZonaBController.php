@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class ParkingSpaceZonaBController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $datosB = ParkingSpace::where('zona', 'B')->get();

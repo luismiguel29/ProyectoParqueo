@@ -1,8 +1,7 @@
 @extends('welcome')
 @section('head')
-    <link rel="stylesheet" href="{{ asset('css/luiscss/horario.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/luiscss/listahorario.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/luiscss/boton.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/Cliente/listacliente.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/Cliente/modalbotones.css') }}">
 @endsection
 @section('content')
 
@@ -11,11 +10,9 @@
             <div class="row">
                 <div class="row">
                     <div class="col mt-3">
-                        <i class="fa-regular fa-file-chart-column fa-xl"></i>
-                        <span class="h3 ">Reportes de Ingresos</span>
-                    </div>
+                    <h4 class="text mb-0"><i class="fa-solid fa-file-pdf fa-xl"></i> Gestión de Reportes</h4>
+                    </div> 
                     <form action="{{ route('Reportes.buscarreportes') }}" method="GET">
-                    {{-- <form action="{{ route('registroHistorial') }}" method="POST"> --}}
                         @csrf
                         <div class="row p-3">
                             <div class="col-sm-2">
@@ -33,8 +30,8 @@
                                 @enderror
                             </div>
                             <div class="col-sm-2 my-auto d-grid">
-                                <button class="btn btn-primary-pk mt-4" >Buscar</button>
-                                {{-- <button type="submit" class="btn btn-primary-pk">Registrar reporte</button> --}}
+                                <button class="btn btn-primary-pk mt-sm-4" >Buscar</button>
+
                             </div>
                         </div>
                     </form>
@@ -70,7 +67,7 @@
                                 @else
                                     <div class="alert alert-dark m-4" role="alert">¡No existen reportes de ingresos!
                                     </div>
-                        @endif
+                                @endif
 
                         </tbody>
                         </table>

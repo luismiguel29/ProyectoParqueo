@@ -232,9 +232,9 @@
                         @endif
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contacto.edit') }}">
+                            <a class="nav-link" href="{{ route('Reportes.reportesDeIngreso') }}">
                                 <span data-feather="users"></span>
-                                <i class="fa-solid fa-calendar-days pe-2"></i>
+                                <i class="fa-solid fa-file-pdf fa-lg pe-2"></i>
                                 Reportes
                             </a>
                         </li>

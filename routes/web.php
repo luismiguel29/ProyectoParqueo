@@ -72,6 +72,7 @@ Route::post('/EnviarMensajeGlobal',[MensajeController::class,'sendGlobal'])->nam
 
 //Rutas andrea
 Route::get('/sites/pdf', [ParkingSpaceController::class, 'pdf'])->name('sites.pdf'); //***************************/
+Route::get('/sites/factura', [ParkingSpaceController::class, 'factura'])->name('sites.factura'); 
 
 Route::resource('/sites', ParkingSpaceController::class);
 Route::resource('/siteszonab', ParkingSpaceZonaBController::class);

@@ -35,7 +35,15 @@ class ParkingSpaceController extends Controller
     
     public function pdf(){ //***************************/
         $listSites = ParkingSpace::all();
-        $pdf = Pdf::loadView('informe.reporte', compact('listSites'));
+        //$pdf = Pdf::loadView('informe.reporte', compact('listSites'));
+        $pdf = Pdf::setPaper([0.0, 0.0, 450.53, 700.28],'landscape')->loadView('informe.reporte', compact('listSites'));
+        return $pdf->stream();
+        //return $pdf->download('reportee.pdf');
+    }
+
+    public function factura(){ //***************************/
+        $listSites = ParkingSpace::all();
+        $pdf = Pdf::setPaper('a4','landscape')->loadView('informe.factura', compact('listSites'));
         return $pdf->stream();
         //return $pdf->download('reportee.pdf');
     }

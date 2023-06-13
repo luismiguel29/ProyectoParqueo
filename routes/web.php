@@ -34,6 +34,8 @@ use App\Http\Controllers\RegisterAdmin\ReclamoController;
 use App\Http\Controllers\RegisterAdmin\RegistrarContacto;
 use App\Http\Controllers\RegisterAdmin\VistaContactos;
 use App\Http\Controllers\RegisterAdmin\VistaReclamoController;
+use App\Http\Controllers\Reportes\ReportesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +74,9 @@ Route::put('/actualizarmensaje/{id}',[MensajeController::class,'update'])->name(
 Route::get('/MensajeFormulario',[MensajeController::class,'register'])->name('Mensaje.formulario');
 Route::get('/EditarMensaje/{id}',[MensajeController::class,'edit'])->name('Mensaje.editarmensaje');
 Route::post('/EnviarMensajeGlobal',[MensajeController::class,'sendGlobal'])->name('Mensaje.mensajeglobal');
-
+//Ruta reportes
+Route::get('/ReportesDeIngresos',[ReportesController::class,'index'])->name('Reportes.reportesDeIngreso');
+Route::get('/buscarFechas',[ReportesController::class,'buscarFechas'])->name('Reportes.buscarreportes');
 
 
 //Rutas andrea

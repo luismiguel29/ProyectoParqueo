@@ -69,8 +69,11 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td class="date" colspan="2">Fecha inicio: <span>12321312</span></td>
-			<td class="date" colspan="2">Fecha fin: <span>12321312</span></td>
+			<!--<td class="date" colspan="2">Fecha inicio: <span>2023</span></td>
+			<td class="date" colspan="2">Fecha fin: <span>2023</span></td>-->
+			<td></td>
+			<td></td>
+			<td class="date" colspan="2">Gestión: <span>2023</span></td>
 		</tr>
 		<tr class="space">
 			<td colspan="8"></td>
@@ -85,16 +88,17 @@
 			<td>Cantidad Vehiculos</td>
 			<td>Tiempo uso</td>
 		</tr>
-		<tr class="table-int-body">
-			<td>122</td>
-			<td>David Adriazola assjfosajdja sdfad </td>
-			<td>12/23/33</td>
-			<td>Pagado</td>
-			<td>60Bs</td>
-			<td>120Bs</td>
-			<td>2</td>
-			<td>345min</td>
-
-		</tr>
+		@foreach($reportes as $reporte)
+			<tr class="table-int-body">
+				<td>{{ $reporte->sitio }}</td>
+				<td>{{ $reporte->nombre }}</td>
+				<td>{{ $reporte->fechaasig }}</td>
+				<td>{{ $reporte->Estado_Pago }}</td>
+				<td>{{ $reporte->total_pagado }}</td>
+				<td>{{ $reporte->total_pendiente }}</td>
+				<td>{{ $reporte->cantidad_vehiculos }}</td>
+				<td>{{ $reporte->tiempo_uso }}</td>
+			</tr>
+		@endforeach
 	</tbody>
 </table>

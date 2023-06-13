@@ -31,12 +31,6 @@
                             <span>Comprobante</span>
                         </a>
                     </div>
-                    <div class="col-auto">
-                        <a href="/sites/reporte" class="btn btn-primary" target="_blank">
-                            <i class="fa-sharp fa-solid fa-plus"></i>
-                            <span>Reporte</span>
-                        </a>
-                    </div>
                     
                     <!--DROPDOWN INICIO-->
                     <div class="dropdown col-auto">

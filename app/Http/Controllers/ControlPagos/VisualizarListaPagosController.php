@@ -22,7 +22,7 @@ class VisualizarListaPagosController extends Controller
 
         //Obtener datos de tarifas
         $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
-        //return $id_tarifas = json_decode(AtencionSolicitud::select('tarifa.estado')->where('tarifa.estado', '=', 1)->first('tarifa.estado'))->estado;
+        $id_tarifas = json_decode(AtencionSolicitud::select('tarifa.id')->where('tarifa.estado', '=', 1)->first('tarifa.id'))->id;
        
         $tarifasPago = json_decode($tarifas)->precio;
         $nombreBuscado = trim($request->get('nombreABuscar'));
@@ -61,7 +61,7 @@ class VisualizarListaPagosController extends Controller
                         
                         $pago = new Pago;
                         $pago->parqueo_usercustom_id = $idUserPagos;
-                        $pago->tarifa_id = "1";
+                        $pago->tarifa_id = $id_tarifas;
                         $pago->parqueo_id = $idParqueo;
                         $pago->fechapago = date("Y-m-d H:i:s");
                         $pago->estado = 0; //0->no pagado
@@ -74,7 +74,7 @@ class VisualizarListaPagosController extends Controller
                     
                     $pago = new Pago;
                     $pago->parqueo_usercustom_id = $idUserPagos;
-                    $pago->tarifa_id = "1";
+                    $pago->tarifa_id = $id_tarifas;
                     $pago->parqueo_id = $idParqueo;
                     $pago->fechapago = date("Y-m-d H:i:s");
                     $pago->estado = 0; //0->no pagado

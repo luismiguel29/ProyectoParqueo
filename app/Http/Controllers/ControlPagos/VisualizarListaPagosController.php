@@ -22,6 +22,8 @@ class VisualizarListaPagosController extends Controller
 
         //Obtener datos de tarifas
         $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
+        //return $id_tarifas = json_decode(AtencionSolicitud::select('tarifa.estado')->where('tarifa.estado', '=', 1)->first('tarifa.estado'))->estado;
+       
         $tarifasPago = json_decode($tarifas)->precio;
         $nombreBuscado = trim($request->get('nombreABuscar'));
         $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado', 'pago.id')
@@ -89,6 +91,11 @@ class VisualizarListaPagosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function generarpago()
+    {
+        
+    }
+
     public function create()
     {
         //

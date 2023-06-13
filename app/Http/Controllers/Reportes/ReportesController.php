@@ -45,7 +45,7 @@ class ReportesController extends Controller
     public function reporte(){ //***************************/
         $reportes = DB::select(DB::raw("SELECT U.nombre, U.apellido, P.fechaasig, P.sitio, ( SELECT SUM(TF.precio) FROM tarifa TF, pago PG WHERE TF.id = PG.tarifa_id AND PG.estado = 1 AND PG.parqueo_id = P.id ) AS total_pagado, ( SELECT SUM(T.precio) FROM tarifa T, pago PA WHERE T.id = PA.tarifa_id AND PA.estado = 0 AND PA.parqueo_id = P.id ) AS total_pendiente, COUNT(V.placa) AS cantidad_vehiculos, SUM(R.salida - R.ingreso) AS tiempo_uso, CASE WHEN ( SELECT SUM(TA.precio) FROM tarifa TA, pago PAG WHERE TA.id = PAG.tarifa_id AND PAG.estado = 0 AND PAG.parqueo_id = P.id ) > 0 THEN 'Pendiente' ELSE 'Pagado' END AS Estado_Pago FROM parqueo P, usercustom U, vehiculo V LEFT JOIN registro R ON R.vehiculo_id = V.id WHERE P.usercustom_id = U.id AND V.usercustom_id = U.id GROUP BY P.sitio, P.zona;"));
         $pdf = Pdf::setPaper('a4','landscape')->loadView('informe.reporte', compact('reportes'));
-        return $pdf->stream();
-        //return $pdf->download('reportee.pdf');
+        //return $pdf->stream();
+        return $pdf->download('reportee.pdf');
     }
 }

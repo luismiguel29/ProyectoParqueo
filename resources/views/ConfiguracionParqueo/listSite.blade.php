@@ -25,12 +25,12 @@
                 </div>
                 
                 <div class="col-12 col-sm-auto d-flex gap-3 justify-content-center pb-3 pb-sm-0">
-                    <div class="col-auto">
+                    <!--<div class="col-auto">
                         <a href="/sites/comprobante" class="btn btn-primary" target="_blank">
                             <i class="fa-sharp fa-solid fa-plus"></i>
                             <span>Comprobante</span>
                         </a>
-                    </div>
+                    </div>-->
                     
                     <!--DROPDOWN INICIO-->
                     <div class="dropdown col-auto">

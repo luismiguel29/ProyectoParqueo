@@ -118,19 +118,18 @@
         </tr>
         <tr>
             <td></td>
-            <td colspan="6"><span class="text-key">Titular: </span><span class="text-value">Nombre ApellidoP.
-                    ApellidoM.</span></td>
+            <td colspan="6"><span class="text-key">Titular: </span><span class="text-value">{{ $pago->pagoTitular->nombre }} {{ $pago->pagoTitular->apellido }}</span></td>
             <td></td>
         </tr>
         <tr>
             <td></td>
-            <td colspan="3"><span class="text-key">Sitio (Parqueo):</span> <span class="text-value"> 25</span></td>
-            <td colspan="3"><span class="text-key">Zona:</span> <span class="text-value"> Zona A</span></td>
+            <td colspan="3"><span class="text-key">Sitio (Parqueo):</span> <span class="text-value"> {{ $pago->pagoSitio->sitio }}</span></td>
+            <td colspan="3"><span class="text-key">Zona:</span> <span class="text-value"> {{ $pago->pagoSitio->zona }}</span></td>
             <td></td>
         </tr>
         <tr>
             <td></td>
-            <td colspan="6"><span class="total-key">TOTAL: </span><span class="total-value">60</span> <span
+            <td colspan="6"><span class="total-key">TOTAL: </span><span class="total-value">{{ $pago->pagoTarifa->precio }}</span> <span
                     class="total-key">Bs</span></td>
             <td></td>
         </tr>

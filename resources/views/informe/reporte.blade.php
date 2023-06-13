@@ -110,10 +110,7 @@
             <td></td>
             <td class="text-top" colspan="6">
                 <span>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit magni voluptates esse eligendi dolor
-                    cupiditate accusamus nulla eos aperiam labore. Lorem ipsum dolor sit, amet consectetur adipisicing
-                    elit. Expedita et repudiandae molestiae consequatur nam iste, libero fugiat necessitatibus quos
-                    delectus.
+                    Cochabamba - Bolivia
                 </span>
 
             </td>
@@ -149,10 +146,9 @@
         </tr>
         <tr>
             <td></td>
-            <td class="text-bottom" colspan="6"> <span>Este ccoprobante es valido para tramites administrativos Lorem
-                    ipsum dolor sit, amet consectetur adipisicing elit. Quod laborum libero cumque cupiditate facilis,
-                    suscipit voluptatem enim ad laudantium voluptatibus! Quis odio, minima ipsa laborum quam illo
-                    inventore culpa animi!</span></td>
+            <td class="text-bottom" colspan="6"> <span>Este comprobante es válido para tramites administrativos  <br>
+                Universidad Mayor de San Simón </span></td>
+           
             <td></td>
         </tr>
     </tbody>

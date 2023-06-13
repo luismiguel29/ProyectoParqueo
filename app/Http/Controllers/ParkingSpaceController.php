@@ -27,27 +27,28 @@ class ParkingSpaceController extends Controller
         $site->sitio = $request->input('nSitio');
         $site->descripcion = $request->input('nDescripcion');
         $site->save();
-        return redirect()->route('sites.index');
+        //return redirect()->route('sites.index');
+        return redirect()->back();
     }
     
     public function destroy($id)
     {
         $site = ParkingSpace::findOrFail($id);
         $site->delete();
-        return redirect()->route('sites.index');
+        //return redirect()->route('sites.index');
+        return redirect()->back();
     }
     
-    public function pdf(){ //***************************/
+    public function comprobante(){ //***************************/
         $listSites = ParkingSpace::all();
-        //$pdf = Pdf::loadView('informe.reporte', compact('listSites'));
-        $pdf = Pdf::setPaper([0.0, 0.0, 400.53, 700.28],'landscape')->loadView('informe.reporte', compact('listSites'));
+        $pdf = Pdf::setPaper([0.0, 0.0, 400.53, 700.28],'landscape')->loadView('informe.comprobante', compact('listSites'));
         return $pdf->stream();
-        //return $pdf->download('reportee.pdf');
+        //return $pdf->download('comprobantee.pdf');
     }
 
-    public function factura(){ //***************************/
+    public function reporte(){ //***************************/
         $listSites = ParkingSpace::all();
-        $pdf = Pdf::setPaper('a4','landscape')->loadView('informe.factura', compact('listSites'));
+        $pdf = Pdf::setPaper('a4','landscape')->loadView('informe.reporte', compact('listSites'));
         return $pdf->stream();
         //return $pdf->download('reportee.pdf');
     }

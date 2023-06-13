@@ -14,10 +14,10 @@ use App\Mail\Message;
 
 class MensajeController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth',['except' => []]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
 
     public function index(Request $request)
     {

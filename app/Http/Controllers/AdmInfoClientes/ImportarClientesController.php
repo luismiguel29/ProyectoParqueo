@@ -14,6 +14,10 @@ use League\Csv\Statement;
 
 class ImportarClientesController extends Controller{
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
     public function store(Request $request)
     {
         $clientes = $request->file('importar')->get();

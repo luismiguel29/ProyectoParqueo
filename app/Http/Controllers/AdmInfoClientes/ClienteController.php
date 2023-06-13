@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth',['except' => []]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
     public function index(Request $request)
     {
         $clientes = User:: select('usercustom.id', 'usercustom.rol', 'usercustom.nombre',

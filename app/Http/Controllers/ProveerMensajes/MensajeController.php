@@ -14,10 +14,10 @@ use App\Mail\Message;
 
 class MensajeController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth',['except' => []]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
 
     public function index(Request $request)
     {
@@ -92,8 +92,11 @@ class MensajeController extends Controller
 
     public function sendGlobal (Request $request){
         $mensaje = Mensaje::find($request->id);
-        $job = (new \App\Jobs\SendQueueEmail($mensaje))->delay(now()->addSeconds(2));
-        dispatch($job);
+        $data = Cliente::where('rol', 'cliente')
+        -> get();
+        foreach ($data as $value){
+            Mail::to($value->correo)->send(new Message($mensaje));
+        }
         return redirect ()->route('Mensaje.listamensaje')->with('success', '¡Envio exitoso!');
         
     }

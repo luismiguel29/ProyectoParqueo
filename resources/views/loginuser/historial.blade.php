@@ -16,7 +16,7 @@
         <div class="container-fluid py-3">
             <div class="row">
                 <div class="row">
-                    <div class="col mt-3">
+                    <div class="col p-3">
                         <i class="fa-solid fa-calendar-days fa-2x pe-2"></i>
                         <span class="h3 ">Historial de reportes</span>
                     </div>
@@ -25,26 +25,26 @@
                         @csrf
                         <div class="row p-3">
                             <div class="col-sm-2">
-                                <label for="" class="p-2">Desde:</label>
+                                <label for="">Hora de inicio</label>
                                 <input class="form-control {{$errors->has('fechaini')?'is-invalid':''}}" type="date" name="fechaini" value=" {{ old('fechaini') }}">
                                 @error('fechaini')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-sm-2">
-                                <label for="" class="p-2">Hasta:</label>
+                                <label for="">Hora final</label>
                                 <input class="form-control {{$errors->has('fechafin')?'is-invalid':''}}" type="date" name="fechafin" value=" {{ old('fechafin') }}">
                                 @error('fechafin')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-sm-2 my-auto d-grid">
-                                <button class="btn btn-primary-pk mt-4" >Buscar</button>
+                            <div class="col-sm-2 my-auto d-block">
+                                <button class="btn btn-primary-pk" >Buscar</button>
                                 {{-- <button type="submit" class="btn btn-primary-pk">Registrar reporte</button> --}}
                             </div>
                         </div>
                     </form>
-                    
+
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
                         @if ($historial->isNotEmpty())
                             <table class="table table-striped mt-3 ">

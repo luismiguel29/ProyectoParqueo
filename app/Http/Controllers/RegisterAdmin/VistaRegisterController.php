@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class VistaRegisterController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth',['except' => []]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index() {
         $usuarios = User::select('id', 'rol', 'nombre','usuario', 'apellido', 'telefono', 'correo')

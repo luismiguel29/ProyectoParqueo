@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 
 class VisualizarListaPagosClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         /*$parqueoUserId =  CrearSitio::query()->select(['usercustom_id'])->get();
@@ -40,12 +39,14 @@ class VisualizarListaPagosClienteController extends Controller
         //return User::select('nombre')->where('id', '1')->get();
 
         /************************/
-
+        $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
+        $tarifasPago = json_decode($tarifas)->precio;
         $idUsuario = session()->get('sesion')->id;
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado','pago.id')
             ->where('parqueo_usercustom_id', $idUsuario)
             ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
             ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+            ->where('pago.estado', '!=', '1')
             ->get();
 
 
@@ -55,7 +56,7 @@ class VisualizarListaPagosClienteController extends Controller
             $fecha = json_decode($pagos[$i])->fechapago;
             $mesNumero = date("n", strtotime($fecha));
             $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero - 1];
-
+            $pagos[$i]->monto = $tarifasPago;
             json_encode($pagos[$i]);
         }
 

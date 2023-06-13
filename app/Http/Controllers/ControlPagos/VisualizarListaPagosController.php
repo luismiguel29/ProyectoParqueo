@@ -12,18 +12,24 @@ use Illuminate\Http\Request;
 
 class VisualizarListaPagosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
+
+        //Obtener datos de tarifas
+        $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
+        $id_tarifas = json_decode(AtencionSolicitud::select('tarifa.id')->where('tarifa.estado', '=', 1)->first('tarifa.id'))->id;
+       
+        $tarifasPago = json_decode($tarifas)->precio;
         $nombreBuscado = trim($request->get('nombreABuscar'));
-        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado')
+        $pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado', 'pago.id')
                     ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
                     ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
                     ->where('nombre', 'LIKE', '%'.$nombreBuscado.'%')
+                    ->where('pago.estado', '!=', '1')
                     ->get();
         //$pagos = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago')->get();
         //$pagos = Pago::select('parqueo_id', 'fechapago')->where('estado', '==', 0)->get(); ****************************
@@ -31,12 +37,13 @@ class VisualizarListaPagosController extends Controller
         $parqueo = CrearSitio::select('id', 'parqueo.usercustom_id', 'parqueo.sitio', 'parqueo.fechaasig', 'parqueo.zona')->where('usercustom_id', '!=', 0)->get();
         
         for ($i = 0; $i < count($pagos); $i++) { 
-            $fecha = json_decode($pagos[$i])->fechapago;
+           $fecha = json_decode($pagos[$i])->fechapago;
             $mesNumero = date("n", strtotime($fecha));
             $pagos[$i]->mesLiteral = $mesesLiteral[$mesNumero-1];
-            
+            $pagos[$i]->monto = $tarifasPago;
             json_encode($pagos[$i]);
         }
+       
         //Control de fechas
         $diaActual = date("d");
         if($diaActual == 10){
@@ -54,7 +61,7 @@ class VisualizarListaPagosController extends Controller
                         
                         $pago = new Pago;
                         $pago->parqueo_usercustom_id = $idUserPagos;
-                        $pago->tarifa_id = "1";
+                        $pago->tarifa_id = $id_tarifas;
                         $pago->parqueo_id = $idParqueo;
                         $pago->fechapago = date("Y-m-d H:i:s");
                         $pago->estado = 0; //0->no pagado
@@ -67,7 +74,7 @@ class VisualizarListaPagosController extends Controller
                     
                     $pago = new Pago;
                     $pago->parqueo_usercustom_id = $idUserPagos;
-                    $pago->tarifa_id = "1";
+                    $pago->tarifa_id = $id_tarifas;
                     $pago->parqueo_id = $idParqueo;
                     $pago->fechapago = date("Y-m-d H:i:s");
                     $pago->estado = 0; //0->no pagado
@@ -84,6 +91,11 @@ class VisualizarListaPagosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function generarpago()
+    {
+        
+    }
+
     public function create()
     {
         //

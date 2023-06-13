@@ -84,7 +84,7 @@
                                                             <td>{{ $pago->sitio }}</td>
                                                             <!--<td>{{ $pago->mesLiteral }}</td> ***********************-->
                                                             <td>{{ $pago->mesLiteral }}</td>
-                                                            <td>60<spam class="fw-bold"> BOB</spam></td>
+                                                            <td>{{ $pago->monto}}<spam class="fw-bold"> BOB</spam></td>
                                                             @if ($pago->estado == 0)
                                                                 <td>Debe</td>
                                                             @else
@@ -92,7 +92,10 @@
                                                             @endif
                                                             <td>
                                                                 <div class="d-inline-block">
-                                                                    <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                    <form action="{{ route('vistaPago', $pago->id) }}" method="POST">
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                    </form>
                                                                 </div>
                                                             </td>
                                                         </tr>

@@ -14,7 +14,7 @@ class EnviarSolicitudController extends Controller
      */
     public function index(Request $request)
     {
-        $horarios = AtencionSolicitud::select('tarifa.id','tarifa.nombre','tarifa.precio')->get();
+        $horarios = AtencionSolicitud::select('tarifa.id','tarifa.nombre','tarifa.precio', 'tarifa.estado')->get();
         return view('AtencionSolicitud.EnviarSolicitud', compact('horarios')); 
        // return view('/AtencionSolicitud/EnviarSolicitud');
     }

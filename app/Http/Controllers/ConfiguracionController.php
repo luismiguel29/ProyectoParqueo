@@ -58,7 +58,7 @@ class ConfiguracionController extends Controller
         if (session()->get('sesion')->rol == 'cliente') {
             return redirect()->route('visualizarPagosCliente.index');
         } else {
-            return redirect()->route('visualizarPagos.index');
+            return redirect()->route('visualizarPagos.index')->with('message', 'Pago realizado correctamente!');
         }
         
     }

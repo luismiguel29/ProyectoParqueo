@@ -58,9 +58,9 @@ class CorreoController extends Controller
             if (!empty($deuda)) {
                 Mail::to($item->usercustom->correo)->send(new EnviarCorreo($mensaje));
                 //Mail::to($item->usercustom->correo)->send(new EnviarCorreo($mensaje->asunto, $mensaje->descripcion));
-            }
-            
+            }            
         }
+        return redirect()->route('visualizarPagos.index')->with('message', 'Notificacion enviada correctamente');
     }
 
     public function mostrarCuenta()

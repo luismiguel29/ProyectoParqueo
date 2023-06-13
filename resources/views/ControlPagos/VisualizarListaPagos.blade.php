@@ -92,7 +92,7 @@
                                                             @endif
                                                             <td>
                                                                 <div class="d-inline-block">
-                                                                    <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                    <button type="submit" class="btn btn-danger-dg btn-sm"   >Pagar</button>
                                                                 </div>
                                                             </td>
                                                         </tr>

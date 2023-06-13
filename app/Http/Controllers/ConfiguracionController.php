@@ -53,6 +53,7 @@ class ConfiguracionController extends Controller
         Pago::where('id', $id)
         ->update([
             'estado'=> 1,
+            'cancelado'=> now(),
         ]);
         if (session()->get('sesion')->rol == 'cliente') {
             return redirect()->route('visualizarPagosCliente.index');

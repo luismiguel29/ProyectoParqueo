@@ -44,7 +44,7 @@ class VisualizarListaPagosController extends Controller
        
         //Control de fechas
         $diaActual = date("d");
-        if($diaActual == 11){
+        if($diaActual == 10){
             for ($i = 0; $i < count($parqueo); $i++) {
                 $fechaActual = date("Y-m-d H:i:s");
                 $pagosPersona = Pago::select('fechapago')->where('parqueo_usercustom_id', $parqueo[$i]->usercustom_id)->orderBy('fechapago', 'desc')->first();

@@ -8,6 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/luiscss/login.css') }}">
+    
+    
 
 </head>
 
@@ -21,9 +23,9 @@
                 <div class="logo">
                     <img src="/img/logoblack.png" class="img-fluid" alt="">
                 </div>
-                <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card shadow rounded-3 my-5 border-top-pk">
 
-                    <div class="card-body p-4 p-sm-5 border-top-pk shadow">
+                    <div class="card-body p-4 p-sm-5 shadow">
                         <div class="cardtitle input-group">
                             <i class="fa-solid fa-user fa-2xl" style="color: #000000;"></i>
                             <span class="card-title text-center fs-5 h5">Por favor inicie sesión</span>

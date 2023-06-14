@@ -19,32 +19,8 @@
             <img src="/img/logo.png" alt="">
           
           </a>
-          <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="navbar-nav">
-            <div class="menu-header">
-              <div class="container">
-                <ul class="nav flex-row">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
-                      <i class="fa-solid fa-bell"></i>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
-                      <i class="fa-solid fa-user"></i>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">  
-                      <i class="fa-solid fa-power-off"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-                
-          </div>
+          
+          
         </header>
         
         <div class="container-fluid">

@@ -75,7 +75,7 @@
                                             <tbody>
                                                 @if (count($pagos) < 1)
                                                     <tr>
-                                                        <td colspan="6">No hay registross??</td>
+                                                        <td colspan="6"> </td>
                                                     </tr>
                                                 @else
                                                     @foreach ($pagos as $pago)

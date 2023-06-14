@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ParkingSpace;
+use Barryvdh\DomPDF\Facade\Pdf; //***************************/
 
 class ParkingSpaceController extends Controller
 {
@@ -19,20 +20,29 @@ class ParkingSpaceController extends Controller
         //return view('ConfiguracionParqueo.listSite', compact('listSites', 'datosA', 'datosB'));
         return view('ConfiguracionParqueo.listSite', compact('datosA'));
     }
-
+    
     public function update(Request $request, $id)
     {
         $site = ParkingSpace::findOrFail($id);
         $site->sitio = $request->input('nSitio');
         $site->descripcion = $request->input('nDescripcion');
         $site->save();
-        return redirect()->route('sites.index');
+        //return redirect()->route('sites.index');
+        return redirect()->back();
     }
-
+    
     public function destroy($id)
     {
         $site = ParkingSpace::findOrFail($id);
         $site->delete();
-        return redirect()->route('sites.index');
+        //return redirect()->route('sites.index');
+        return redirect()->back();
+    }
+    
+    public function comprobante(){ //***************************/
+        $listSites = ParkingSpace::all();
+        $pdf = Pdf::setPaper([0.0, 0.0, 400.53, 700.28],'landscape')->loadView('informe.comprobante', compact('listSites'));
+        return $pdf->stream();
+        //return $pdf->download('comprobantee.pdf');
     }
 }

@@ -9,7 +9,7 @@ class Pago extends Model
 {
     protected $table="pago";
     protected $primaryKey="id";
-    protected $fillable = ['tarifa_id', 'parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'estado'];
+    protected $fillable = ['tarifa_id', 'parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'estado', 'cancelado'];
 
     public $timestamps = false;
 

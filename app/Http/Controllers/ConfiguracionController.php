@@ -6,6 +6,7 @@ use App\Models\AtencionSolicitud;
 use App\Models\Configuracion;
 use App\Models\Pago;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ConfiguracionController extends Controller
 {
@@ -50,14 +51,19 @@ class ConfiguracionController extends Controller
 
     public function realizarPago($id)
     {
+        $pago = Pago::where('id', $id)->first();
+        $pdf = Pdf::setPaper([0.0, 0.0, 400.53, 700.28],'landscape')->loadView('informe.comprobante', compact('pago'));
+        $pdf->download('comprobantee.pdf');
+        
         Pago::where('id', $id)
         ->update([
             'estado'=> 1,
+            'cancelado'=> now(),
         ]);
         if (session()->get('sesion')->rol == 'cliente') {
             return redirect()->route('visualizarPagosCliente.index');
         } else {
-            return redirect()->route('visualizarPagos.index');
+            return redirect()->route('visualizarPagos.index')->with('message', 'Pago realizado correctamente!');
         }
         
     }

@@ -24,12 +24,17 @@
                         <i class="fa-solid fa-money-check-dollar fa-2x pe-1"></i>
                         <span class="h3 ">Control de pagos</span>
                     </div>
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <div class="card card-outline border-top-pk   shadow">
                         <div class="card-body">
                             <section>
                                 <div class="container">
                                     <div class="row align-items-end">
-                                        <form action="{{route('visualizarPagos.index')}}" method="get">
+                                        <form class="row align-items-end" action="{{route('visualizarPagos.index')}}" method="get">
                                             <div class="col-12 col-md-4">
                                                 <label class="form-label">Titular</label>
                                                 
@@ -37,10 +42,14 @@
                                                     placeholder="Ingrese titular a buscar" name="nombreABuscar" value="{{$nombreBuscado}}">
                                             </div>
                                             
-                                            <div class="col-12 col-md-2">
+                                            <div class="col-12 col-md-4">
                                                 <button type="submit" class="btn btn-primary ">Buscar titular</button>
                                             </div>
+                                            <div class="col-12 col-md-4">
+                                                <a href="{{ route('notificarMora') }}" class="btn btn-primary">Notificar retraso en pago</a>
+                                            </div>
                                         </form>
+                                        
                                         
                                         <!--<div class="col-12 col-md-4">
                                             <label class="form-label">Estado</label>

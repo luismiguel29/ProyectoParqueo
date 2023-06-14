@@ -12,6 +12,14 @@
                     <div class="col mt-3">
                     <h4 class="text mb-0"><i class="fa-solid fa-file-pdf fa-xl"></i> Gestión de Reportes</h4>
                     </div> 
+                    
+                    <div class="col-auto"> <!------------aumento--------------->
+                        <a href="/ReportesDeIngresos/reporte" class="btn btn-primary" target="_blank">
+                            <i class="fa-sharp fa-solid fa-plus"></i>
+                            <span>Reporte</span>
+                        </a>
+                    </div>
+                    
                     <form action="{{ route('Reportes.buscarreportes') }}" method="GET">
                         @csrf
                         <div class="row p-3">

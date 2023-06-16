@@ -172,7 +172,7 @@
                                 </a>
                             </li>
                         @endif
-                        
+
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('Mensaje.listamensaje') }}">
@@ -198,7 +198,7 @@
                                 <a class="nav-link" href="{{ route('contacto.edit') }}">
                                     <span data-feather="users"></span>
                                     <i class="fas fa-address-book  pe-2"></i>
-                                    Modificar Contactos
+                                    Datos del Parqueo
                                 </a>
                             </li>
                         @endif

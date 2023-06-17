@@ -9,6 +9,7 @@ use App\Models\Pago;
 use App\Models\ConfiguracionParqueo\CrearSitio;
 use App\Models\AtencionSolicitud;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class VisualizarListaPagosClienteController extends Controller
 {
@@ -33,11 +34,11 @@ class VisualizarListaPagosClienteController extends Controller
             $horarios[$i]->nombre = json_decode($nombres[$i])->nombre;
             json_encode($horarios[$i]);
         }*/
-
+        
         //return User::where('id')->first()->nombre;
         //return User::where('id','1')->first()->nombre;
         //return User::select('nombre')->where('id', '1')->get();
-
+        
         /************************/
         $tarifas= AtencionSolicitud::select('tarifa.precio')->where('tarifa.estado', '=', 1)->first('tarifa.precio');
         $tarifasPago = json_decode($tarifas)->precio;
@@ -46,12 +47,10 @@ class VisualizarListaPagosClienteController extends Controller
             ->where('parqueo_usercustom_id', $idUsuario)
             ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
             ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
-            ->where('pago.estado', '!=', '1')
+            
             ->get();
-
-
+            
         $mesesLiteral = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-
         for ($i = 0; $i < count($pagos); $i++) {
             $fecha = json_decode($pagos[$i])->fechapago;
             $mesNumero = date("n", strtotime($fecha));
@@ -59,80 +58,21 @@ class VisualizarListaPagosClienteController extends Controller
             $pagos[$i]->monto = $tarifasPago;
             json_encode($pagos[$i]);
         }
-
-
+        
         return view('ControlPagos.VisualizarListaPagosCliente', compact('pagos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function comprobante($id){ //***************************/
+        $pago = Pago::where('id', $id)->first();
+        $pdf = Pdf::setPaper([0.0, 0.0, 400.53, 700.28],'landscape')->loadView('informe.comprobante', compact('pago'));
+        //return $pdf->stream();
+        return $pdf->download('comprobantee.pdf');
+    }
+
     public $buscar;
     public function buscador()
     {
         $buscar = '%' . $this->buscar . '%';
         return AtencionSolicitud::where('tarifa', 'like', $buscar)->get();
-    }
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

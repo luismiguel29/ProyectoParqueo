@@ -82,6 +82,7 @@ Route::get('/buscarFechas',[ReportesController::class,'buscarFechas'])->name('Re
 //Rutas andrea
 Route::get('/sites/comprobante', [ParkingSpaceController::class, 'comprobante'])->name('sites.comprobante'); //***************************/
 Route::get('/ReportesDeIngresos/reporte', [ReportesController::class, 'reporte'])->name('ReportesDeIngresos.reporte'); 
+Route::post('comprobante/{id}', [VisualizarListaPagosClienteController::class, 'comprobante'])->name('comprobante');
 
 Route::resource('/sites', ParkingSpaceController::class);
 Route::resource('/siteszonab', ParkingSpaceZonaBController::class);

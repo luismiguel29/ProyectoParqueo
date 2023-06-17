@@ -21,8 +21,8 @@ class HistorialController extends Controller
         Historial::create([
             'usuario' => session('sesion')->id,
             'fecha' => Carbon::now(),
-            'fechaini' => request('fechaini'),
-            'fechafin' => request('fechafin'),
+            /* 'fechaini' => request('fechaini'),
+            'fechafin' => request('fechafin'), */
         ]);
     }
 

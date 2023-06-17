@@ -20,10 +20,10 @@ class CorreoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    /* public function __construct()
+    public function __construct()
      {
          $this->middleware('auth', ['except' => []]);
-     } */
+     }
 
     public function index()
     {
@@ -85,6 +85,6 @@ class CorreoController extends Controller
             'correo' => request('correo'),
             'password' => Hash::make(request('contraseña')),
         ]);
-        return redirect()->route('mostrarCuenta')->with('success', '¡Se modificaron los cambios!');
+        return redirect()->route('mostrarCuenta')->with('success', '¡Actualizacion de datos correctamente!');
     }
 }

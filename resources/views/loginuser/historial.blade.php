@@ -52,8 +52,8 @@
                                     <tr>
                                         <th>Usuario</th>
                                         <th>Fecha Realizada</th>
-                                        <th>Fecha Inicial</th>
-                                        <th>Fecha Final</th>
+                                        {{-- <th>Fecha Inicial</th>
+                                        <th>Fecha Final</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,8 +61,8 @@
                                         <tr>
                                             <td>{{ $item->usuarioNom->nombre }}</td>
                                             <td>{{ $item->fecha }}</td>
-                                            <td>{{ $item->fechaini }}</td>
-                                            <td>{{ $item->fechafin }}</td>
+                                            {{-- <td>{{ $item->fechaini }}</td>
+                                            <td>{{ $item->fechafin }}</td> --}}
                                         </tr>
                                     @endforeach
                                 @else

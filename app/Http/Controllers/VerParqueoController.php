@@ -14,6 +14,7 @@ class VerParqueoController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
         $datos = CrearSitio::all();
@@ -21,87 +22,21 @@ class VerParqueoController extends Controller
         $datosB = CrearSitio::where('zona', 'B')->get();
         //return $datosA;
         return view('/ConfiguracionParqueo/VerParqueo', compact('datosA')); 
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function guardarSolicitud(Request $request, $idParqueo)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+        $request->validate([
+            'descripcion' => 'required'
+        ]);
         
-        $enviar = new EnviarSolicitud;
-        $sitio = new CrearSitio;
-      
-      
-        //$enviar->zona=$request->input('zona');
-        $enviar->usuario=session()->get('sesion')->id;
-        $enviar->sitio=$request->input('sitio');
-        $enviar->descripcion=$request->input('Descripcion');
-        $enviar->fecha= Carbon::now();
-        // $crear->estado=$request->input('estado');
+        $enviar = new EnviarSolicitud; //tabla solicitud
+        $sitio = new CrearSitio; //tabla parqueo
+        $enviar->usuario = session()->get('sesion')->id;
+        $enviar->sitio = $idParqueo;
+        $enviar->descripcion = $request->input('descripcion');
+        $enviar->fecha = now();
         $enviar->save();
-        return redirect()->route('verparqueo.index');
-
-        //return $now = Carbon::now();
-         
-      
-    }
-     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('verparqueo.index')->with('success', 'Solicitud enviadaaaaaaaaaaaaaaaa!');
     }
 }

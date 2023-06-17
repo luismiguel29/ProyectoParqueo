@@ -189,7 +189,7 @@ Route::controller(ConfiguracionController::class)->group(function(){
 Route::resource('/verparqueo', VerParqueoController::class);
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
-    Route::get('/VerParqueo', 'store')->name('verparqueo');
+    Route::post('guardarSolicitud/{id}', 'guardarSolicitud')->name('guardarSolicitud');
 });
 
 //Route::resource('/verparqueo', VerParqueoController::class);

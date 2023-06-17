@@ -47,9 +47,17 @@ class VisualizarListaPagosClienteController extends Controller
             ->where('parqueo_usercustom_id', $idUsuario)
             ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
             ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
-            //->where('pago.estado', '=', '1')->orderBy('pago.id', 'DESC')->take(2)
-            //->where('pago.estado', '!=', '1')
+            ->where('pago.estado', '!=', '1')
             ->get();
+            
+        $aux = Pago::select('parqueo_usercustom_id', 'parqueo_id', 'fechapago', 'nombre', 'sitio', 'pago.estado','pago.id')
+            ->where('parqueo_usercustom_id', $idUsuario)
+            ->join('usercustom', 'usercustom.id', '=', 'pago.parqueo_usercustom_id')
+            ->join('parqueo', 'parqueo.id', '=', 'pago.parqueo_id')
+            ->where('pago.estado', '=', '1')->orderBy('pago.id', 'DESC')->take(5)
+            ->get();
+            
+        $pagos = $pagos->concat($aux);
             
         $mesesLiteral = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
         for ($i = 0; $i < count($pagos); $i++) {

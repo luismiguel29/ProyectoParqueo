@@ -37,6 +37,6 @@ class VerParqueoController extends Controller
         $enviar->descripcion = $request->input('descripcion');
         $enviar->fecha = now();
         $enviar->save();
-        return redirect()->route('verparqueo.index')->with('success', 'Solicitud enviadaaaaaaaaaaaaaaaa!');
+        return redirect()->route('verparqueo.index')->with('success', 'Solicitud enviada!');
     }
 }

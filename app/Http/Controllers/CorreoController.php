@@ -50,7 +50,7 @@ class CorreoController extends Controller
 
     public function notificarMora()
     {
-        $mensaje = Mensaje::where('asunto', 'like', "%mora%")->first();
+        $mensaje = Mensaje::where('asunto', 'like', "%pendiente mensualidad%")->first();
         $parqueo = Parqueo::where('estado', 1)->get();
         foreach ($parqueo as $item) {
             $deuda = Pago::where('parqueo_usercustom_id', $item->usercustom_id)

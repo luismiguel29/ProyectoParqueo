@@ -92,10 +92,17 @@
                                                             @endif
                                                             <td>
                                                                 <div class="d-inline-block">
-                                                                    <form action="{{ route('vistaPago', $pago->id) }}" method="POST">
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
-                                                                    </form>
+                                                                    @if ($pago->estado == 0)
+                                                                        <form action="{{ route('vistaPago', $pago->id) }}" method="POST">
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger-dg btn-sm">Pagar</button>
+                                                                        </form>
+                                                                    @else
+                                                                        <form action="{{ route('comprobante', $pago->id) }}" method="POST">
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-danger-dg btn-sm">Reporte</button>
+                                                                        </form>
+                                                                    @endif
                                                                 </div>
                                                             </td>
                                                         </tr>

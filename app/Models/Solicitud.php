@@ -21,4 +21,9 @@ class Solicitud extends Model
 
     // Si tu base de datos no usa el timestamp de Laravel, añade lo siguiente:
     public $timestamps = false;
+
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'usuario', 'id');
+    }
+
 }

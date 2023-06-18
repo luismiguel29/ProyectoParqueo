@@ -53,28 +53,36 @@
                         @foreach ($solicitudes as $solicitud)
                             <tr>
                                 <td>{{ $solicitud->id }}</td>
-                                <td>{{ $solicitud->usuario }}</td>
+                                <td>{{ $solicitud->nombre }} {{ $solicitud->apellido }}</td>
                                 <td>{{ $solicitud->sitio }}</td>
                                 <td class="wordwrap">
                                     <!-- Versión corta de la descripción -->
+                                    @php
+                                        $descripcionCorta = \Illuminate\Support\Str::limit($solicitud->descripcion, 50, '...');
+                                        $descripcionHaSidoTruncada = $descripcionCorta != $solicitud->descripcion;
+                                    @endphp
                                     <div id="short-description-{{ $solicitud->id }}">
-                                        {{ \Illuminate\Support\Str::limit($solicitud->descripcion, 50, '...') }}
-                                        <!-- Limita la descripción a 50 caracteres -->
-                                        <button class="btn btn-link p-0 m-0 align-baseline"
-                                            onclick="showFullDescription({{ $solicitud->id }})">ver más</button>
+                                        {{ $descripcionCorta }}
+                                        <!-- El botón 'ver más' solo aparecerá si la descripción ha sido truncada -->
+                                        @if($descripcionHaSidoTruncada)
+                                            <button class="btn btn-link p-0 m-0 align-baseline"
+                                                onclick="showFullDescription({{ $solicitud->id }})">ver más</button>
+                                        @endif
                                     </div>
 
                                     <!-- Versión completa de la descripción -->
                                     <div id="full-description-{{ $solicitud->id }}" style="display: none;">
                                         {{ $solicitud->descripcion }}
-                                        <button class="btn btn-link p-0 m-0 align-baseline"
-                                            onclick="hideFullDescription({{ $solicitud->id }})">ver menos</button>
+                                        @if($descripcionHaSidoTruncada)
+                                            <button class="btn btn-link p-0 m-0 align-baseline"
+                                                onclick="hideFullDescription({{ $solicitud->id }})">ver menos</button>
+                                        @endif
                                     </div>
                                 </td>
                                 <td>{{ $solicitud->fecha }}</td>
-                                
+
                                     <td>
-                                        
+
 
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal-{{ $solicitud->id }}">
@@ -114,7 +122,7 @@
 
 
                                     </td>
-                                
+
                             </tr>
                         @endforeach
                     </tbody>

@@ -88,7 +88,7 @@ class ClienteController extends Controller
     }
     public function edit($id)
     {
-        $user =Cliente::find($id);
+        $user =User::find($id);
         return view('Cliente.ClienteForm', compact('user' ));
     }
 
@@ -97,7 +97,7 @@ class ClienteController extends Controller
     public function destroy(Request $request)
     {
         error_log($request->id);
-        Cliente::find($request->id)->delete();
+        User::find($request->id)->delete();
         return back();
     }
 

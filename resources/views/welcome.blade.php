@@ -94,7 +94,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if (session()->get('sesion')->rol == 'cliente')
+                        @if (session()->get('sitio'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('listainvitado') }}">
                                     <span data-feather="bar-chart-2"></span>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\RegisterAdmin;
-use \DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 
@@ -19,14 +19,18 @@ class SolicitudController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        // Utiliza el modelo Solicitud para obtener todos los registros de la tabla solicitud
-        $solicitudes = Solicitud::orderBy('fecha', 'asc')->get();
+    public function index() {
+        // Unimos las tablas 'solicitud' y 'usercustom' en base al 'id' del usuario
+        $solicitudes = DB::table('solicitud')
+            ->join('usercustom', 'solicitud.usuario', '=', 'usercustom.id')
+            ->select('solicitud.*', 'usercustom.nombre', 'usercustom.apellido')
+            ->orderBy('solicitud.fecha', 'asc')
+            ->get();
 
-        // Pasa los registros obtenidos a la vista
+        // Pasamos los registros obtenidos a la vista
         return view('registro.solicitudes', ['solicitudes' => $solicitudes]);
     }
+
 
     public function destroy($id)
     {

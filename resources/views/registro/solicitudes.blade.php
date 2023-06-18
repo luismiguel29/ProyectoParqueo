@@ -53,7 +53,7 @@
                         @foreach ($solicitudes as $solicitud)
                             <tr>
                                 <td>{{ $solicitud->id }}</td>
-                                <td>{{ $solicitud->usuario }}</td>
+                                <td>{{ $solicitud->nombre }} {{ $solicitud->apellido }}</td>
                                 <td>{{ $solicitud->sitio }}</td>
                                 <td class="wordwrap">
                                     <!-- Versión corta de la descripción -->
@@ -72,9 +72,9 @@
                                     </div>
                                 </td>
                                 <td>{{ $solicitud->fecha }}</td>
-                                
+
                                     <td>
-                                        
+
 
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal-{{ $solicitud->id }}">
@@ -114,7 +114,7 @@
 
 
                                     </td>
-                                
+
                             </tr>
                         @endforeach
                     </tbody>

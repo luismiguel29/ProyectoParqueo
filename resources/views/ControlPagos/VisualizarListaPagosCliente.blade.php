@@ -100,7 +100,7 @@
                                                                     @else
                                                                         <form action="{{ route('comprobante', $pago->id) }}" method="POST">
                                                                             @csrf
-                                                                            <button type="submit" class="btn btn-danger-dg btn-sm">Reporte</button>
+                                                                            <button type="submit" class="btn btn-danger-dg btn-sm">Comprobante</button>
                                                                         </form>
                                                                     @endif
                                                                 </div>

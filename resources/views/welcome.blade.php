@@ -39,29 +39,12 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse  scrollbox ">
                 <div class="position-sticky pt-3 ">
                     <ul class="nav flex-column  menu">
-                        @if (session()->get('sesion')->rol == 'cliente')
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">
-                                    <i class="fa-solid fa-house pe-2"></i>
-                                    Inicio
-                                </a>
-                            </li>
-                        @endif
                         @if (session()->get('sesion')->rol == 'administrador')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('vistaRegister') }}">
                                     <span data-feather="file"></span>
                                     <i class="fa-solid fa-users pe-2"></i>
                                     Usuarios
-                                </a>
-                            </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Cliente.listacliente') }}">
-                                    <span data-feather="shopping-cart"></span>
-                                    <i class="fa-solid fa-user pe-2"></i>
-                                    Cliente
                                 </a>
                             </li>
                         @endif
@@ -74,6 +57,61 @@
                                 </a>
                             </li>
                         @endif
+                        @if (session()->get('sesion')->rol == 'cliente')
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">
+                                    <i class="fa-solid fa-house pe-2"></i>
+                                    Inicio
+                                </a>
+                            </li>
+                        @endif                        
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('Cliente.listacliente') }}">
+                                    <span data-feather="shopping-cart"></span>
+                                    <i class="fa-solid fa-user pe-2"></i>
+                                    Cliente
+                                </a>
+                            </li>
+                        @endif    
+                        @if (session()->get('sesion')->rol == 'cliente')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mostrarCuenta') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fa-solid fa-user pe-2"></i>
+                                    Cuenta
+                                </a>
+                            </li>
+                        @endif   
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('asignar') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fas fa-car pe-2"></i>
+                                    Asignar sitio
+                                </a>
+                            </li>
+                        @endif
+                        @if (session()->get('sitio'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('listainvitado') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fa-solid fa-handshake pe-2"></i>
+                                    Compartir sitio
+                                </a>
+                            </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'administrador' ||
+                                session()->get('sesion')->rol == 'guardia' ||
+                                session()->get('sesion')->rol == 'secretaria')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('solicitud') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fas fa-file-alt pe-2"></i>
+                                    Solicitudes
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('listavehiculo') }}">
                                 <span data-feather="users"></span>
@@ -81,9 +119,6 @@
                                 Vehiculos
                             </a>
                         </li>
-
-
-
                         @if (session()->get('sesion')->rol == 'administrador' ||
                                 session()->get('sesion')->rol == 'guardia' ||
                                 session()->get('sesion')->rol == 'secretaria')
@@ -94,20 +129,33 @@
                                     Entradas/Salidas
                                 </a>
                             </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('solicitud') }}">
+                                <a class="nav-link" href="{{ route('Mensaje.listamensaje') }}">
                                     <span data-feather="bar-chart-2"></span>
-                                    <i class="fas fa-file-alt pe-2"></i>
-                                    Solicitudes
+                                    <i class="fa-solid fa-envelope pe-2"></i>
+                                    Mensajes
+                                    <i></i>
+
                                 </a>
                             </li>
                         @endif
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('asignar') }}">
-                                    <span data-feather="bar-chart-2"></span>
-                                    <i class="fas fa-car pe-2"></i>
-                                    Asignar sitio
+                                <a class="nav-link" href="{{ route('visualizarReclamo') }}">
+                                    <span data-feather="users"></span>
+                                    <i class="fas fa-book pe-2"></i>
+                                    Ver Reclamos
+                                </a>
+                            </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'cliente')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reclamo') }}">
+                                    <span data-feather="users"></span>
+                                    <i class="fas fa-bullhorn pe-2 "></i>
+                                    Reclamos
                                 </a>
                             </li>
                         @endif
@@ -136,69 +184,12 @@
                                 </a>
                             </li>
                         @endif
-                        @if (session()->get('sitio'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('listainvitado') }}">
-                                    <span data-feather="bar-chart-2"></span>
-                                    <i class="fa-solid fa-handshake pe-2"></i>
-                                    Compartir sitio
-                                </a>
-                            </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'cliente')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('mostrarCuenta') }}">
-                                    <span data-feather="bar-chart-2"></span>
-                                    <i class="fa-solid fa-user pe-2"></i>
-                                    Cuenta
-                                </a>
-                            </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'cliente')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reclamo') }}">
-                                    <span data-feather="users"></span>
-                                    <i class="fas fa-bullhorn pe-2 "></i>
-                                    Reclamos
-                                </a>
-                            </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'cliente')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Vistacontactos') }}">
-                                    <span data-feather="bar-chart-2"></span>
-                                    <i class="fas fa-info-circle pe-2"></i>
-                                    informacion
-                                </a>
-                            </li>
-                        @endif
-
                         @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('Mensaje.listamensaje') }}">
-                                    <span data-feather="bar-chart-2"></span>
-                                    <i class="fa-solid fa-envelope pe-2"></i>
-                                    Mensajes
-                                    <i></i>
-
-                                </a>
-                            </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('visualizarReclamo') }}">
+                                <a class="nav-link" href="{{ route('verConfiguracion') }}">
                                     <span data-feather="users"></span>
-                                    <i class="fas fa-book pe-2"></i>
-                                    Ver Reclamos
-                                </a>
-                            </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('contacto.edit') }}">
-                                    <span data-feather="users"></span>
-                                    <i class="fas fa-address-book  pe-2"></i>
-                                    Datos del Parqueo
+                                    <i class="fa-solid fa-gear pe-2"></i>
+                                    Configuraciones
                                 </a>
                             </li>
                         @endif
@@ -211,7 +202,6 @@
                                 </a>
                             </li>
                         @endif
-
                         @if (session()->get('sesion')->rol == 'administrador')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('listahistorial') }}">
@@ -220,15 +210,25 @@
                                     Historial de Reportes
                                 </a>
                             </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('verConfiguracion') }}">
+                                <a class="nav-link" href="{{ route('contacto.edit') }}">
                                     <span data-feather="users"></span>
-                                    <i class="fa-solid fa-gear pe-2"></i>
-                                    Configuraciones
+                                    <i class="fas fa-address-book  pe-2"></i>
+                                    Datos del Parqueo
                                 </a>
                             </li>
-                        @endif
-
+                        @endif                        
+                        @if (session()->get('sesion')->rol == 'cliente')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('Vistacontactos') }}">
+                                    <span data-feather="bar-chart-2"></span>
+                                    <i class="fas fa-info-circle pe-2"></i>
+                                    informacion
+                                </a>
+                            </li>
+                        @endif    
                         <hr style="background: white; height:2px;">
                         <li class="nav-item out-session">
                             <a class="nav-link " aria-current="page"

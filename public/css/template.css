@@ -158,3 +158,64 @@ filter: grayscale(0.5);
 	z-index: 2000 !important;
 	
 }
+
+
+
+.scrollbox::-webkit-scrollbar {
+	width: 7px;
+
+	background: var(--color-light-blue);
+}
+
+.scrollbox::-webkit-scrollbar-thumb {
+	border-radius: 0px;
+	background: rgba(0, 0, 0, 0.5);
+}
+.scrollbox{
+	overflow: auto;
+}
+
+
+/*A partir de aqui debo corregir*/
+.menu li{
+	list-style: none;
+	color: #fff;
+	cursor: pointer;
+	margin: 2px 0;
+	margin-left: 0px;
+	margin-right: 0px;
+	/*background: ;*/
+	border-radius: 0px;
+	position: relative;
+	z-index: 2;
+}
+
+
+.menu li::before{
+	content:"";
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 0%;
+	background-color: rgba(0, 0, 0, 0.3);
+	
+	transition: width .8s ease;
+	border-radius: 0px;
+	z-index: -1;
+
+}
+
+.menu li:hover::before{
+	width: 100%;
+	z-index: -1;
+}
+
+
+
+
+.out-session{
+	position: relative;
+	background: #FF3346;
+	
+}

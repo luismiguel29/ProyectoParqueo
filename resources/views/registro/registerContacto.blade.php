@@ -14,7 +14,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h4 class="text mb-4"><i class="fas fa-address-book"></i> Datos de Contacto</h4>
+                <h4 class="text mb-4"><i class="fas fa-address-book"></i> Datos del Parqueo</h4>
 
                 <div class="form-container">
                     <!-- Cambia la acción del formulario para apuntar a la ruta de actualización y especifica el método PUT -->
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Guardar</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Actualizar</button>
                         </div>
                         <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
                             <div class="modal-dialog">

@@ -82,6 +82,7 @@ Route::get('/buscarFechas',[ReportesController::class,'buscarFechas'])->name('Re
 //Rutas andrea
 Route::get('/sites/comprobante', [ParkingSpaceController::class, 'comprobante'])->name('sites.comprobante'); //***************************/
 Route::get('/ReportesDeIngresos/reporte', [ReportesController::class, 'reporte'])->name('ReportesDeIngresos.reporte'); 
+Route::post('comprobante/{id}', [VisualizarListaPagosClienteController::class, 'comprobante'])->name('comprobante');
 
 Route::resource('/sites', ParkingSpaceController::class);
 Route::resource('/siteszonab', ParkingSpaceZonaBController::class);
@@ -189,7 +190,7 @@ Route::controller(ConfiguracionController::class)->group(function(){
 Route::resource('/verparqueo', VerParqueoController::class);
 Route::controller(VerParqueoController::class)->group(function(){
     Route::get('/VerParqueo', 'index')->name('verparqueo');
-    Route::get('/VerParqueo', 'store')->name('verparqueo');
+    Route::post('guardarSolicitud/{id}', 'guardarSolicitud')->name('guardarSolicitud');
 });
 
 //Route::resource('/verparqueo', VerParqueoController::class);

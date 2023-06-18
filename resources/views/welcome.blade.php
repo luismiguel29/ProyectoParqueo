@@ -65,7 +65,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                        @if (session()->get('sesion')->rol == 'administrador')
                             <li class="nav-item">
                                 <a class="nav-link" href="/sites">
                                     <span data-feather="users"></span>
@@ -74,6 +74,7 @@
                                 </a>
                             </li>
                         @endif
+                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'cliente')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('listavehiculo') }}">
                                 <span data-feather="users"></span>
@@ -81,12 +82,11 @@
                                 Vehiculos
                             </a>
                         </li>
-
+                        @endif
 
 
                         @if (session()->get('sesion')->rol == 'administrador' ||
-                                session()->get('sesion')->rol == 'guardia' ||
-                                session()->get('sesion')->rol == 'secretaria')
+                                session()->get('sesion')->rol == 'guardia')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('listaregistro') }}">
                                     <span data-feather="bar-chart-2"></span>
@@ -94,6 +94,8 @@
                                     Entradas/Salidas
                                 </a>
                             </li>
+                        @endif
+                        @if (session()->get('sesion')->rol == 'administrador')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('solicitud') }}">
                                     <span data-feather="bar-chart-2"></span>
@@ -101,8 +103,8 @@
                                     Solicitudes
                                 </a>
                             </li>
-                        @endif
-                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                       @endif
+                        @if (session()->get('sesion')->rol == 'administrador' )
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('asignar') }}">
                                     <span data-feather="bar-chart-2"></span>
@@ -193,7 +195,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                        @if (session()->get('sesion')->rol == 'administrador')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contacto.edit') }}">
                                     <span data-feather="users"></span>

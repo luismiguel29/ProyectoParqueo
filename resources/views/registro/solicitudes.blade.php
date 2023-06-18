@@ -44,9 +44,9 @@
                             <th>Sitio</th>
                             <th>Descripción</th>
                             <th>Fecha</th>
-                            @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
-                                <th>Acción</th>
-                            @endif
+
+                            <th>Acción</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -72,13 +72,9 @@
                                     </div>
                                 </td>
                                 <td>{{ $solicitud->fecha }}</td>
-                                @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria')
+                                
                                     <td>
-                                        <!-- Aquí irían los botones y modales -->
-                                        <!-- Botón eliminar que abre el modal -->
-                                        {{-- <button type="button" class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#reviewModal-{{ $solicitud->id }}">
-                                    <i class="fas fa-check"></i>
-                                </button> --}}
+                                        
 
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal-{{ $solicitud->id }}">
@@ -115,26 +111,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Modal de confirmación -->
-                                        {{-- <div class="modal fade" id="reviewModal-{{ $solicitud->id }}" tabindex="-1" aria-labelledby="reviewModalLabel{{ $solicitud->id }}" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="reviewModalLabel{{ $solicitud->id }}">Revisado</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                          Esta solicitud ha sido revisada.
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div> --}}
+
 
                                     </td>
-                                @endif
+                                
                             </tr>
                         @endforeach
                     </tbody>

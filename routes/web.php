@@ -138,6 +138,7 @@ Route::controller(RegistroController::class)->group(function(){
     Route::post('/agregarregistro', 'store')->name('agregarregistro');
     Route::put('/editarregistro/{id}', 'update')->name('editarregistro');
     Route::get('/buscarplaca', 'buscarplaca')->name('buscarplaca');
+    Route::get('/buscarRegistro', 'buscarRegistro')->name('buscarRegistro');
 });
 
 Route::controller(CorreoController::class)->group(function(){

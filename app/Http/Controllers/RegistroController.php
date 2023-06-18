@@ -16,16 +16,32 @@ class RegistroController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    /* public function __construct()
+    public function __construct()
      {
          $this->middleware('auth', ['except' => []]);
-     } */
+     }
 
     public function index()
     {
         $fecha_ini = date('Y-m-d 00:00:00');
         $fechaactual = now();
         $listaregistro = Registro::where('ingreso', ">", $fecha_ini)->get();
+        return view('vehiculo.listaRegEntrSal', compact('listaregistro'));
+    }
+
+    public function buscarRegistro(Request $request)
+    {
+        $request->validate([
+            'fechaini' => 'required',
+            'fechafin' => 'required',
+        ],[
+            'fechaini.required' => 'El campo fecha inicial es obligatorio',
+            'fechafin.required' => 'El campo fecha final es obligatorio',
+        ]);
+        $date1 = Carbon::parse(request('fechaini'))->format('Y-m-d 00:00:00');
+        $date2 = Carbon::parse(request('fechafin'))->format('Y-m-d 23:59:59');
+        $listaregistro = Registro::whereBetween('ingreso', [$date1, $date2])
+        ->get();
         return view('vehiculo.listaRegEntrSal', compact('listaregistro'));
     }
 

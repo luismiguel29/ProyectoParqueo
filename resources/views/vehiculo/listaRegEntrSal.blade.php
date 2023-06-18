@@ -29,6 +29,34 @@
                         <i class="fa-sharp fa-solid fa-right-left fa-2x pe-2"></i>
                         <span class="h3 ">Gestión Entradas/Salidas de Vehiculos</span>
                     </div>
+
+                    @if (session()->get('sesion')->rol == 'administrador')
+                        <form action="{{ route('buscarRegistro') }}" method="GET">
+                        {{-- <form action="{{ route('registroHistorial') }}" method="POST"> --}}
+                            @csrf
+                            <div class="row p-3">
+                                <div class="col-sm-2">
+                                    <label for="">Hora de inicio</label>
+                                    <input class="form-control {{$errors->has('fechaini')?'is-invalid':''}}" type="date" name="fechaini" value=" {{ old('fechaini') }}">
+                                    @error('fechaini')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="">Hora final</label>
+                                    <input class="form-control {{$errors->has('fechafin')?'is-invalid':''}}" type="date" name="fechafin" value=" {{ old('fechafin') }}">
+                                    @error('fechafin')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-2 my-auto d-block">
+                                    <button class="btn btn-primary-pk" >Buscar</button>
+                                    {{-- <button type="submit" class="btn btn-primary-pk">Registrar reporte</button> --}}
+                                </div>
+                            </div>
+                        </form>
+                    @endif
+
                     <form action="{{ route('agregarregistro') }}" method="POST">
                         @csrf
                         <div class="row mt-2 p-2" style="">
@@ -71,7 +99,7 @@
                                             <td>{{ $reg->sitio }}</td>
                                             <td>{{ $reg->zona }}</td>
                                             <td>{{ $reg->placa }}</td>
-                                            <td>{{ $reg->propietario->nombre }}</td>
+                                            <td>{{ $reg->propietario->nombre}}</td>
                                             <td>{{ $reg->ingreso }}</td>
                                             <td>{{ $reg->salida }}</td>
                                              @if (session()->get('sesion')->rol == 'guardia')

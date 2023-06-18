@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class HistorialController extends Controller
 {
+
+    public function __construct()
+     {
+         $this->middleware('auth', ['except' => []]);
+     }
+
     public function listahistorial(Request $request)
     {
         $fecha_ini = date('Y-m-d 00:00:00');
@@ -21,8 +27,8 @@ class HistorialController extends Controller
         Historial::create([
             'usuario' => session('sesion')->id,
             'fecha' => Carbon::now(),
-            'fechaini' => request('fechaini'),
-            'fechafin' => request('fechafin'),
+            /* 'fechaini' => request('fechaini'),
+            'fechafin' => request('fechafin'), */
         ]);
     }
 

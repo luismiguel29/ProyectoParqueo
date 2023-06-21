@@ -18,7 +18,7 @@
                 <div class="col">
                     <div class="containera pb-3">
                         <i class="fa-solid fa-gear fa-2x"></i>
-                        <span class="h3 ">Configuración</span>
+                        <span class="h3 ">Configuraciones</span>
                     </div>
                     @if (session('success'))
                         <div class="alert alert-success">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="row">
                                 <label class="mt-2" for="">
-                                    <h5>Fecha limite de pago:</h5>
+                                    <h5>Fecha notificación retraso en pago:</h5>
                                 </label>
                                 <div class="col-sm-6">
                                     <select class="form-select" name="fecha" id="">

@@ -39,8 +39,8 @@ class HistorialController extends Controller
             'fechaini' => 'required',
             'fechafin' => 'required',
         ],[
-            'fechaini.required' => 'El campo fecha inicial es obligatorio',
-            'fechafin.required' => 'El campo fecha final es obligatorio',
+            'fechaini.required' => 'El campo fecha inicio es obligatorio',
+            'fechafin.required' => 'El campo fecha fin es obligatorio',
         ]);
         $date1 = Carbon::parse(request('fechaini'))->format('Y-m-d 00:00:00');
         $date2 = Carbon::parse(request('fechafin'))->format('Y-m-d 23:59:59');

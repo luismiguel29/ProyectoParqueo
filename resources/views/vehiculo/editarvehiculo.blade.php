@@ -29,7 +29,7 @@
                                 <div class="row mb-3">
                                     <label for="user-type" class="col-sm-4 col-form-label text-end">Tipo de Vehiculo</label>
                                     <div class="col-sm-8">
-                                        <select class="form-select {{ $errors->has('tipo') ? 'is-invalid' : '' }}"
+                                        <select disabled class="form-select {{ $errors->has('tipo') ? 'is-invalid' : '' }}"
                                             id="user-type" name="tipo">
                                             <option value="{{ $item->tipo }}">{{ $item->tipo }}</option>
                                         </select>
@@ -42,7 +42,7 @@
                                 <div class="row mb-3">
                                     <label for="username" class="col-sm-4 col-form-label text-end">Placa</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="placa"
+                                        <input disabled type="text" name="placa"
                                             class="form-control {{ $errors->has('placa') ? 'is-invalid' : '' }}"
                                             id="first_name" value="{{ $item->placa }}">
 

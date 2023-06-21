@@ -14,11 +14,6 @@
 
     <body>
         <div class="container-fluid py-3">
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             <div class="row">
                 <div class="row">
                     <div class="col p-3">
@@ -31,7 +26,11 @@
                             Agregar</a>
                     </div>
                     @endif
-                    
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="table-responsive card card-outline  border-top-pk   shadow">
                         @if ($vehiculo->isNotEmpty())
                             <table class="table table-striped mt-3 ">
@@ -43,7 +42,7 @@
                                         <th>Color</th>
                                         <th>Tipo</th>
                                         <th>Propietario</th>
-                                        @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria' || session()->get('sesion')->rol == 'cliente')
+                                        @if (session()->get('sesion')->rol == 'cliente')
                                         <th>Acción</th>
                                         @endif
                                     </tr>
@@ -59,19 +58,21 @@
                                             <td>{{ $item->propietario->nombre}} {{ $item->propietario->apellido}}</td>
                                             @if (session()->get('sesion')->rol == 'administrador' || session()->get('sesion')->rol == 'secretaria' || session()->get('sesion')->rol == 'cliente')
                                             <td>
-                                                <div class="d-inline-block">
-                                                    <a href="{{ route('vistaeditarvehiculo', $item->id) }}" type=""
-                                                        class="bicon icon--blue"><i
-                                                            class="fa-solid fa-pen-to-square icon--white"></i></a>
-                                                </div>
+                                                @if (session()->get('sesion')->rol == 'cliente')
+                                                    <div class="d-inline-block">
+                                                        <a href="{{ route('vistaeditarvehiculo', $item->id) }}" type=""
+                                                            class="bicon icon--blue"><i
+                                                                class="fa-solid fa-pen-to-square icon--white"></i></a>
+                                                    </div>
 
-                                                <div class="d-inline-block offset-sm-1">
-                                                    <button type="button" class="bicon icon--red" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal-{{ $item->id }}">
-                                                        <i class="fa-solid fa-trash-can icon--white"></i>
-                                                    </button>
-                                                </div>
-
+                                                    <div class="d-inline-block offset-sm-1">
+                                                        <button type="button" class="bicon icon--red" data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal-{{ $item->id }}">
+                                                            <i class="fa-solid fa-trash-can icon--white"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
+                                                
 
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal-{{ $item->id }}"

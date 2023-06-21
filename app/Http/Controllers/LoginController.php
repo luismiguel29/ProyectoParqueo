@@ -54,8 +54,11 @@ class LoginController extends Controller
   {
 
     $credentials = $request->validate([
-      'usuario' => ['required'],
-      'password' => ['required'],
+      'usuario' => 'required|min:4|max:15|regex:/^[a-zA-Z0-9]+$/',
+      'password' => 'required|min:6|max:20',
+    ],[
+      'usuario.min' => 'El usuario debe contener mínimo 4 caracteres',
+      'password.min' => 'La contraseña debe contener mínimo 6 caracteres',
     ]);
 
     if (Auth::attempt($credentials)) {
@@ -63,7 +66,11 @@ class LoginController extends Controller
       $sitio = Parqueo::where('usercustom_id', $verificar->id)->exists();
       $request->session()->regenerate();
       $request->session()->put(['sesion' => $verificar, 'sitio' => $sitio]);
-      return redirect()->route('listavehiculo');
+      if ($verificar->rol=='administrador' || $verificar->rol=='secretaria' || $verificar->rol=='cliente') {
+        return redirect()->route('verparqueo');
+      } else {
+        return redirect()->route('listaregistro');
+      }          
       //return auth()->user()->correo;
     } else {
       return back()->with('alerta', 'Credenciales incorrectas!');

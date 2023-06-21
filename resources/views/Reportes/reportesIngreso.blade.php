@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="row">
                     <div class="col mt-3">
-                    <h4 class="text mb-0"><i class="fa-solid fa-file-pdf fa-xl"></i> Gestión de Reportes</h4>
+                    <h4 class="text mb-0"><i class="fa-solid fa-file-pdf fa-xl"></i>Reportes</h4>
                     </div> 
                     
                     <div class="col-auto"> <!------------aumento--------------->

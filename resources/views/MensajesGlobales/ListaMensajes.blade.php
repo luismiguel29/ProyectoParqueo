@@ -14,7 +14,7 @@
             </div>
         @endif
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="text mb-0"><i class="fa-solid fa-envelope"></i> Gestión de Mensajes</h4>
+            <h4 class="text mb-0"><i class="fa-solid fa-envelope"></i>Mensajes</h4>
             @if (session()->get('sesion')->rol == 'secretaria' || session()-> get('sesion')-> rol =='administrador')
                 <a href="{{ route('Mensaje.formulario') }}" class="btn btn-primary btn-md" type="button"><i
                         class="fas fa-plus"></i> Agregar</a>

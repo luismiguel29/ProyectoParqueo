@@ -41,8 +41,9 @@
                   
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary-pk" data-bs-dismiss="modal">Cancelar</button>
-                  <button  class="btn btn-danger-dg">Aceptar</button>
+                  <button  class="btn btn-primary-pk">Aceptar</button>
+                  <button type="button" class="btn btn-danger-dg" data-bs-dismiss="modal">Cancelar</button>
+                  
                 </div>
               </form>
             </div>

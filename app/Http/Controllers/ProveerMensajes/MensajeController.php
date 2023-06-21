@@ -92,7 +92,9 @@ class MensajeController extends Controller
 
     public function sendGlobal (Request $request){
         $mensaje = Mensaje::find($request->id);
-        $data = Cliente::where('rol', 'cliente')
+        $data = DB::table('usercustom')
+        ->join ('parqueo', 'parqueo.usercustom_id', '=', 'usercustom.id')  
+        ->select('usercustom.correo') 
         -> get();
         foreach ($data as $value){
             Mail::to($value->correo)->send(new Message($mensaje));

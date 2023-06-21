@@ -31,12 +31,14 @@ class ClienteController extends Controller
             'nombre' => 'required|max:20|regex:/^[A-Za-z\s]+$/',
             'apellido' => 'required |max:20|regex:/^[A-Za-z\s]+$/',
             'usuario' => 'required|unique:usercustom|max:20|alpha_num',
-            'ci' => 'required|unique:usercustom|digits_between:1,20|numeric',
-            'telefono' => 'required|digits_between:1,20|numeric',
+            'ci' => 'required|unique:usercustom|digits_between:8,20|numeric',
+            'telefono' => 'required|numeric|digits_between:8,20',
             'correo' => 'required|unique:usercustom|email|max:70',
             'contraseña' => 'required|max:20',
         ], [
-            'nombreprod.regex' => 'El campo nombre solo puede tener letras',
+            'nombre.regex' => 'El campo nombre solo puede tener letras',
+            'apellido.regex' => 'El campo apellido solo puede tener letras',
+            
         ]);
 
             $usercustom = new User();
@@ -71,7 +73,8 @@ class ClienteController extends Controller
             'correo' => 'required|email|max:70',
     
         ], [
-            'nombreprod.regex' => 'El campo nombre solo puede tener letras',
+            'nombre.regex' => 'El campo nombre solo puede tener letras',
+            'telefono.numeric' => 'El campo telefono solo puede tener numeros positivos',
         ]);
 
             $usercustom = User:: find($id);

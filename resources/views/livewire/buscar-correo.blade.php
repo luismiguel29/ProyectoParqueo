@@ -5,7 +5,7 @@
     <select  name="user" class="js-example-basic-single">
         
         @foreach ($users as $user)
-            <option value="{{ $user['id'] }}">{{ $user['nombre'] }}</option>
+            <option value="{{ $user->id}}">{{ $user->nombre }}</option>
         @endforeach
     </select>
     <div class="modal-footer">

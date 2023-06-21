@@ -36,8 +36,8 @@
               <form action="{{route('Cliente.importar')}}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                   @csrf
-                  
-                  <input  name="importar" class="form-control" type="file">
+                  <label>Solo se puede importar un archivo .csv *</label>
+                  <input  name="importar" class="form-control" type="file"/>
                   
                 </div>
                 <div class="modal-footer">

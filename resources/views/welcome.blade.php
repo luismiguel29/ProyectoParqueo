@@ -24,7 +24,6 @@
     <header class="navbar navbar-sky sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
             <img src="/img/logo.png" alt="">
-
         </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -39,7 +38,13 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse  scrollbox ">
                 <div class="position-sticky pt-3 ">
                     <ul class="nav flex-column  menu">
-
+                        <li class="nav-item">
+                            <label class="nav-link active" aria-current="page">
+                                <i class="fa-solid fa-circle-user fa-2xl pe-2" style="color: #3ad501;"></i>
+                                Usuario : {{ session()->get('sesion')->usuario }}
+                            </label>
+                        </li>
+                        <hr style="background: white; height:2px;">
                         @if (session()->get('sesion')->rol == 'cliente' || session()->get('sesion')->rol == 'administrador')
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('verparqueo') }}">

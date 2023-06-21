@@ -49,7 +49,7 @@
                             <div class="row mb-4">
                                 <div class="form-outline input-group">
                                     <input type="password" id="txtPassword" name="password"
-                                        class="form-control form-control-lg {{$errors->has('contraseña')?'is-invalid':''}}" placeholder="Contraseña" />
+                                        class="form-control form-control-lg {{$errors->has('password')?'is-invalid':''}}" placeholder="Contraseña" />
                                         
                                     <span class="input-group-btn">
                                         <button id="show_password" class="btn btn-primary" type="button"
@@ -57,7 +57,7 @@
                                             <span class="fa fa-eye-slash icon"></span> </button>
                                     </span>                                
                                 </div>
-                                @error('contraseña')
+                                @error('password')
                                     <div class="" style="color: #d9534f; font-size: 12px">
                                         {{ $message }}
                                     </div>

@@ -34,8 +34,8 @@ class ReportesController extends Controller
             'fechaini' => 'required',
             'fechafin' => 'required',
         ],[
-            'fechaini.required' => 'El campo fecha inicial es obligatorio *',
-            'fechafin.required' => 'El campo fecha final es obligatorio *',
+            'fechaini.required' => 'El campo fecha inicial es obligatorio ',
+            'fechafin.required' => 'El campo fecha final es obligatorio ',
         ]);
         $fecha_ini = Carbon::parse(request('fechaini'))->format('Y-m-d 00:00:00');
         $fecha_fin= Carbon::parse(request('fechafin'))->format('Y-m-d 23:59:59');

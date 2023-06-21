@@ -38,7 +38,7 @@ class ClienteController extends Controller
         ], [
             'nombre.regex' => 'El campo nombre solo puede tener letras',
             'apellido.regex' => 'El campo apellido solo puede tener letras',
-            
+
         ]);
 
             $usercustom = new User();

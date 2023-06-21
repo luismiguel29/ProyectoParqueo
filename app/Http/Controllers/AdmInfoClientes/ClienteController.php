@@ -35,6 +35,7 @@ class ClienteController extends Controller
             'telefono' => 'required|numeric|digits_between:8,20',
             'correo' => 'required|unique:usercustom|email|max:70',
             'contraseña' => 'required|max:20',
+            'repetircontraseña' => 'same:contraseña',
         ], [
             'nombre.regex' => 'El campo nombre solo puede tener letras',
             'apellido.regex' => 'El campo apellido solo puede tener letras',

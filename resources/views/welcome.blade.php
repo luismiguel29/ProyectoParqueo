@@ -30,8 +30,16 @@
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
+           
         </button>
+        <li class="nav-item d-none d-md-block" style=" list-style:none; padding-right:30px; ">
+            <a class="nav-link " aria-current="page"
+                href="{{ route('cerrarsesion') }}">
+                <i class="fa-solid fa-power-off fa-lg"  style="color:#fff;"></i>
+            </a>
+        </li>
 
+        
     </header>
 
     <div class="container-fluid">
@@ -62,7 +70,7 @@
                                 <a class="nav-link" href="/sites">
                                     <span data-feather="users"></span>
                                     <i class="fa-solid fa-square-parking pe-2"></i>
-                                    Parqueo
+                                    Parqueos
                                 </a>
                             </li>
                         @endif
@@ -165,14 +173,14 @@
                                 <a class="nav-link" href='/enviarSolicitud'>
                                     <span data-feather="users"></span>
                                     <i class="fa-solid fa-dollar pe-2"></i>
-                                    Tarifa
+                                    Tarifas
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href='/visualizarPagos'>
                                     <span data-feather="users"></span>
                                     <i class="fa-solid fa-money-check-dollar pe-2"></i>
-                                    Control de pago
+                                    Control de pagos
                                 </a>
                             </li>
                         @endif
@@ -181,7 +189,7 @@
                                 <a class="nav-link" href='/visualizarPagosCliente'>
                                     <span data-feather="users"></span>
                                     <i class="fa-solid fa-money-check-dollar pe-2"></i>
-                                    Control de pago
+                                    Control de pagos
                                 </a>
                             </li>
                         @endif
@@ -231,7 +239,7 @@
                             </li>
                         @endif     
                         <hr style="background: white; height:2px;">
-                        <li class="nav-item out-session">
+                        <li class="nav-item out-session d-md-none">
                             <a class="nav-link " aria-current="page"
                                 href="{{ route('cerrarsesion') }}">
                                 <i class="fa-solid fa-power-off pe-2 "> </i> Cerrar sesión

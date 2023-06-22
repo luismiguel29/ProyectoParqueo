@@ -49,6 +49,9 @@
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
                             <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+                            @error('descripcion')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
 

@@ -30,7 +30,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        {{-- <th>ID</th> --}}
                         <th>Tipo de Usuario</th>
                         <th>Nombre</th>
                         <th>Usuario</th>
@@ -43,7 +43,7 @@
                 <tbody>
                     @foreach($usuarios as $usuario)
                         <tr>
-                            <td>{{ $usuario->id }}</td>
+                            {{-- <td>{{ $usuario->id }}</td> --}}
                             <td>{{ $usuario->rol }}</td>
                             <td>{{ $usuario->nombre }}</td>
                             <td>{{ $usuario->usuario }}</td>

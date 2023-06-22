@@ -50,7 +50,7 @@
             </div>
         @endif
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="text mb-0"><i class="fas fa-file-alt pe-2"></i> Asignar</h4>
+            <h4 class="text mb-0"><i class="fas fa-file-alt pe-2"></i> Asignar Sitio</h4>
         </div>
         <!-- Formulario de búsqueda -->
         {{-- <form method="GET" action="{{ route('asignar') }}">
@@ -67,7 +67,7 @@
             <table id="myTable" class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        {{-- <th>ID</th> --}}
                         <th>Usuario</th>
                         <th>Teléfono</th>
                         <th>Sitio</th>
@@ -81,8 +81,9 @@
                 <tbody>
                     @foreach($asignaciones as $asignacion)
                         <tr>
-                            <td>{{ $asignacion->id }}</td>
-                            <td>{{ $asignacion->nombre }}</td>
+                            {{-- <td>{{ $asignacion->id }}</td> --}}
+                            <td>{{ $asignacion->nombre }} {{ $asignacion->apellido }}</td>
+
                             <td>{{ $asignacion->telefono }}</td>
                             <td>{{ $asignacion->sitio }}</td>
                             <td>{{ $asignacion->zona }}</td>
@@ -97,9 +98,10 @@
                             <td>{{ $asignacion->fechaasig }}</td>
                             <td>
                                 <!-- Botón Asignar -->
-                                <button type="button" class="btn btn-primary btn-sm me-2" data-toggle="modal" data-target="#asignarModal{{ $asignacion->id }}">
+                                <button type="button" class="btn btn-primary btn-sm me-2" data-toggle="modal" data-target="#asignarModal{{ $asignacion->id }}" {{ $fechaHabilitada ? '' : 'disabled' }}>
                                     <span class="small">Asignar</span>
                                 </button>
+
                                 <!-- Modal de asignar -->
                                 <div class="modal fade" id="asignarModal{{ $asignacion->id }}" tabindex="-1" aria-labelledby="asignarModalLabel{{ $asignacion->id }}" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -118,10 +120,19 @@
                                                 <select id="resultados{{ $asignacion->id }}" class="form-control">
                                                 </select>
                                             </div>
+                                            <style>
+                                                /* Este es el CSS personalizado */
+                                                .cancel-btn:hover {
+                                                    background-color: red !important;  /* Cambia 'red' al color rojo que prefieras */
+                                                    border-color: red !important; /* Cambia 'red' al color rojo que prefieras */
+                                                }
+                                            </style>
+
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary cancel-btn" data-dismiss="modal">Cancelar</button>
                                                 <button type="button" class="btn btn-primary" id="confirmarAsignacion{{ $asignacion->id }}" disabled>Confirmar Asignación</button>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +153,16 @@
                                                 ¿Estás seguro de que deseas quitar al usuario del parqueo?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <style>
+                                                    /* Este es el CSS personalizado */
+                                                    .cancel-btn:hover {
+                                                        background-color: red !important;  /* Cambia 'red' al color rojo que prefieras */
+                                                        border-color: red !important; /* Cambia 'red' al color rojo que prefieras */
+                                                    }
+                                                </style>
+
+                                                <button type="button" class="btn btn-secondary cancel-btn" data-bs-dismiss="modal">Cancelar</button>
+
                                                 <form action="{{ route('removeUser', $asignacion->id) }}" method="GET">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">Sí, quitar</button>
@@ -167,7 +187,15 @@
                                                 ¿Estás seguro de que deseas quitar al invitado?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <style>
+                                                    /* Este es el CSS personalizado */
+                                                    .cancel-btn:hover {
+                                                        background-color: red !important;  /* Cambia 'red' al color rojo que prefieras */
+                                                        border-color: red !important; /* Cambia 'red' al color rojo que prefieras */
+                                                    }
+                                                </style>
+
+                                                <button type="button" class="btn btn-secondary cancel-btn" data-bs-dismiss="modal">Cancelar</button>
                                                 <form action="{{ route('removeInvitado', $asignacion->id) }}" method="GET">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">Sí, quitar</button>
@@ -192,20 +220,38 @@
 
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable({
+            var table = $('#myTable').DataTable({
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
                 }
             });
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Configuración de búsqueda personalizada para buscar desde el inicio de la cadena
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var inputVal = $('.dataTables_filter input').val().toLowerCase();
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        if (data[i].toLowerCase().startsWith(inputVal)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            );
+
+            // Realizar una búsqueda cuando se ingresa algo en el campo de búsqueda
+            $('.dataTables_filter input').on('keyup', function() {
+                table.draw();
+            });
         });
-
-    });
-
     </script>
+
 
     <script>
         @foreach($asignaciones as $asignacion)
@@ -215,11 +261,22 @@
                     $.get('{{ route('buscarPorNombre') }}', {nombre: nombre}, function(data) {
                         var select = $("#resultados{{ $asignacion->id }}");
                         select.empty();
-                        data.forEach(function(user) {
-                            select.append('<option value="'+ user.id +'">' + user.nombre + ' ' + user.apellido +' ' + user.ci + '</option>');
-                        });
-                        // Habilitar el botón de confirmación solo si hay resultados
-                        $("#confirmarAsignacion{{ $asignacion->id }}").prop('disabled', !data.length);
+                        if (data.message) {
+                            select.append('<option>' + data.message + '</option>');
+                            $("#confirmarAsignacion{{ $asignacion->id }}").prop('disabled', true);
+                        } else {
+                            data.forEach(function(user) {
+                                select.append('<option value="'+ user.id +'">' + user.nombre + ' ' + user.apellido +' ' + user.ci + '</option>');
+                            });
+                            $("#confirmarAsignacion{{ $asignacion->id }}").prop('disabled', !data.length);
+                        }
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                        if (jqXHR.status === 404) {
+                            var select = $("#resultados{{ $asignacion->id }}");
+                            select.empty();
+                            select.append('<option>Usuario no encontrado</option>');
+                            $("#confirmarAsignacion{{ $asignacion->id }}").prop('disabled', true);
+                        }
                     });
                 });
 
@@ -230,6 +287,7 @@
                         if (data.message === 'Asignación realizada con éxito.') {
                             // Cerrar el modal y actualizar la página (o una parte de ella) aquí
                             $('#asignarModal{{ $asignacion->id }}').modal('hide');
+                            alert('Usuario asignado de manera exitosa.'); // Nuevo mensaje emergente
                             location.reload();  // O actualiza solo una parte de la página
                         } else {
                             alert(data.message);  // O muestra el error de una forma más amigable
@@ -238,8 +296,6 @@
                 });
             });
         @endforeach
-
-
     </script>
 
 

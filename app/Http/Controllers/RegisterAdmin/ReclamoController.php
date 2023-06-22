@@ -20,6 +20,13 @@ class ReclamoController extends Controller
 
     public function store(Request $request)
     {
+        // Validaciones
+        $request->validate([
+            'descripcion' => 'required',
+        ], [
+            'descripcion.required' => 'El campo descripción es obligatorio.',
+        ]);
+
         $solicitud = new Solicitud;
 
         // Si un usuario está autenticado, se usará su nombre; si no, se usará 'Guest'
@@ -35,6 +42,5 @@ class ReclamoController extends Controller
         // Redirige al usuario a la misma vista con un mensaje de éxito
         return back()->with('success', 'Reclamo registrado exitosamente');
     }
-
 
 }

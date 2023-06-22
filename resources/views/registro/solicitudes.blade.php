@@ -39,7 +39,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            {{-- <th>ID</th> --}}
                             <th>Usuario</th>
                             <th>Sitio</th>
                             <th>Descripción</th>
@@ -52,7 +52,7 @@
                     <tbody>
                         @foreach ($solicitudes as $solicitud)
                             <tr>
-                                <td>{{ $solicitud->id }}</td>
+                                {{-- <td>{{ $solicitud->id }}</td> --}}
                                 <td>{{ $solicitud->nombre }} {{ $solicitud->apellido }}</td>
                                 <td>{{ $solicitud->sitio }}</td>
                                 <td class="wordwrap">
@@ -103,8 +103,8 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Estás seguro de que quieres eliminar la solicitud
-                                                        {{ $solicitud->id }}?
+                                                        ¿Estás seguro de que quieres eliminar esta solicitud?
+                                                        {{-- {{ $solicitud->id }}? --}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"

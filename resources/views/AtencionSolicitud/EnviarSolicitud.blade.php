@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/ConfiguracionParqueo/listSite.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 
@@ -26,38 +26,40 @@
             </div>
 
             <div class="card card-outline  border-top-pk   shadow">
+               
                 <form action="{{ route('enviarSolicitud.store') }}" method="post" class="card-body"
                     style="display: block;">
                     <!--'ConfiguracionParqueo/crear.store'-->
                     @csrf
                     @method('post')
-                    
+
                     <div class="row row-1">
                         <div class="col-md-3">
                             <div class="form group">
-                                <label for="">Nombre del sitio</label>
-                                <input type="text"
+                                <label for="">Nombre de la tarifa
+                                <input type="text"  value="{{old('nombre_tarifa')}}"
                                     class="form-control {{ $errors->has('nroespacio') ? 'is-invalid' : '' }}"
-                                    name="nombre_sitio">
-                                @error('nroespacio')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                    name="nombre_tarifa">
+                                   
+                                @error('nombre_tarifa')
+                            
+                                    <small style="color:red">{{ $message }}</small>
                                 @enderror
+                            </label>
                             </div>
 
                         </div>
                         <div class="col-md-3">
                             <div class="form group">
-                                <label for="">Precio</label>
-                                <input type="number"
-                                    class="form-control {{ $errors->has('nroespacio') ? 'is-invalid' : '' }}"
+                                <label for="">Precio
+                                <input type="number" value="{{old('precio')}}"
+                                    class="form-control {{ $errors->has('nroespacio') ? 'is-invalid' : '' }}" 
                                     name="precio">
-                                @error('nroespacio')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                    @error('precio')
+                                    
+                                    <small style="color:red">{{ $message }}</small>
                                 @enderror
+                            </label>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -68,7 +70,7 @@
                         </div>
 
                     </div>
-                   
+
                     <br>
 
                 </form>
@@ -84,42 +86,43 @@
                                         <th>#</th>
                                         <th>Nombre del sitio</th>
                                         <th>Precio</th>
-                                       
+
 
                                         <th>Acción</th>
-                                       
+
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     @foreach ($horarios as $horario)
                                         <tr>
-                                            
-                                            <td>{{ $horario->id}}</td>
-                                            <td>{{ $horario->nombre}}</td>
+
+                                            <td>{{ $horario->id }}</td>
+                                            <td>{{ $horario->nombre }}</td>
                                             <td>{{ $horario->precio }}</td>
-                                           
+
                                             <td>
-                                        
+
                                                 <div class="d-flex justify-content-between">
                                                     <div class="imgAction">
-                                                        <button type="submit" class="bicon icon--blue" data-bs-toggle="modal"
-                                                        data-bs-target="#modal-update-">
-                                                        <i class="fa-solid fa-pen-to-square icon--white"></i>
-                                                    </button>
-                                                    </div>    
+                                                        <button type="submit" class="bicon icon--blue"
+                                                            data-bs-toggle="modal" data-bs-target="#modal-update-">
+                                                            <i class="fa-solid fa-pen-to-square icon--white"></i>
+                                                        </button>
+                                                    </div>
                                                     <div class="imgAction">
-                                                        <button type="submit" class="bicon icon--red" data-bs-toggle="modal"
+                                                        <button type="submit" class="bicon icon--red"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#modal-delete-{{ $horario->id }}">
-                                                            <i class="fa-solid fa-xmark icon--white"></i>
+                                                            <i class="fa-solid fa-trash-can icon--white"></i>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </td>
-                                            
+
                                         </tr>
                                         @include('AtencionSolicitud.deleteHorario')
-                                    @endforeach 
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

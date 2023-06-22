@@ -37,9 +37,18 @@ class EnviarSolicitudController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'nombre_tarifa' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:5|max:30',
+            'precio' => 'required|string|min:2|max:3',
+           
+              ], [
+                'nombreprod.regex' => 'El campo nombre solo puede tener letras',
+            ]);
+        
         $crear = new AtencionSolicitud();
       
-        $crear->nombre=$request->input('nombre_sitio');
+        $crear->nombre=$request->input('nombre_tarifa');
         $crear->precio=$request->input('precio');
         $crear->estado=0;
         
@@ -76,9 +85,24 @@ class EnviarSolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+          $request->validate([
+            'nombre_tarifa' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
+            'precio' => 'required|string|min:2|max:3',
+           
+              ], [
+                'nombreprod.regex' => 'El campo nombre solo puede tener letras',
+            ]);
+        
+        $crear = new AtencionSolicitud();
+      
+        $crear->nombre=$request->input('nombre_tarifa');
+        $crear->precio=$request->input('precio');
+        $crear->estado=0;
+        
+        $crear->save();
+        return redirect()->route('enviarSolicitud.index')->with('success', '¡Registro exitoso!');
     }
 
     /**

@@ -45,7 +45,7 @@ class VehiculoController extends Controller
 
         $request->validate([
             'tipo' => 'required',
-            'placa' => 'required|unique:vehiculo,placa|regex:/^\d{3,4}[a-zA-Z]{3}+$/|min:5|max:7',
+            'placa' => 'required|unique:vehiculo,placa|regex:/^\d{3,4}[a-zA-Z]{3}+$/|min:6|max:7',
             'marca' => 'required|regex:/^[a-zA-Z]+$/|min:3|max:15',
             'modelo' => 'required|regex:/^[a-zA-Z0-9]+$/|min:3|max:15',
             'color' => 'required|regex:/^[a-zA-Z]+$/|min:4|max:10',
@@ -60,7 +60,7 @@ class VehiculoController extends Controller
         //$vehiculo->usercustom_id = $sesion->id;
         $vehiculo->usercustom_id = session()->get('sesion')->id;
         $vehiculo->tipo = $request->input('tipo');
-        $vehiculo->placa = strtoupper($request->input('placa'));
+        $vehiculo->placa = $request->input('placa');
         $vehiculo->marca = $request->input('marca');
         $vehiculo->modelo = $request->input('modelo');
         $vehiculo->color = $request->input('color');

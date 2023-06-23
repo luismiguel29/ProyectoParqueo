@@ -112,25 +112,32 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel">Confirmar eliminación
+                                                        <h5 class="modal-title" id="deleteModalLabel">Confirmar eliminación de Reclamo
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Estás seguro de que quieres eliminar la solicitud
-                                                        {{ $solicitud->id }}?
+                                                        ¿Estás seguro de que quieres eliminar este reclamo?
+                                                        {{-- {{ $solicitud->id }}? --}}
                                                     </div>
+                                                    <style>
+                                                        /* Este es el CSS personalizado */
+                                                        .custom-hover:hover {
+                                                            background-color: red !important;  /* Cambia 'red' al color rojo que prefieras */
+                                                            border-color: red !important; /* Cambia 'red' al color rojo que prefieras */
+                                                        }
+                                                    </style>
+
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
-                                                        <form action="{{ route('solicitudes.destroy', $solicitud->id) }}"
-                                                            method="POST">
+                                                        <button type="button" class="btn btn-secondary custom-hover" data-bs-dismiss="modal">Cancelar</button>
+                                                        <form action="{{ route('solicitudes.destroy', $solicitud->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                                         </form>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>

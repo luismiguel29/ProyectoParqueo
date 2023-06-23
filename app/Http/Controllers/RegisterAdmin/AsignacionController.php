@@ -21,15 +21,17 @@ class AsignacionController extends Controller
 
         $asignaciones = DB::table('parqueo')
             ->leftJoin('usercustom', 'parqueo.usercustom_id', '=', 'usercustom.id')
-            ->leftJoin('usercustom as invitado', 'parqueo.invitado', '=', 'invitado.id') // Segunda unión para obtener el usuario invitado
-            ->select('parqueo.id', 'parqueo.zona', 'parqueo.sitio', 'parqueo.estado', 'parqueo.descripcion', 'parqueo.fechaasig','parqueo.invitado', 'usercustom.nombre', 'usercustom.telefono', 'usercustom.ci', 'usercustom.rol', 'invitado.nombre as nombre_invitado', 'invitado.apellido as apellido_invitado') // Obtener el nombre y apellido del usuario invitado
+            ->leftJoin('usercustom as invitado', 'parqueo.invitado', '=', 'invitado.id')
+            ->select('parqueo.id', 'parqueo.zona', 'parqueo.sitio', 'parqueo.estado', 'parqueo.descripcion', 'parqueo.fechaasig', 'parqueo.invitado', 'usercustom.nombre', 'usercustom.apellido', 'usercustom.telefono', 'usercustom.ci', 'usercustom.rol', 'invitado.nombre as nombre_invitado', 'invitado.apellido as apellido_invitado')
             ->when($search, function ($query, $search) {
                 return $query->where('usercustom.ci', 'like', '%'.$search.'%');
             })
             ->get();
 
 
-        return view('registro.asignarSol', ['asignaciones' => $asignaciones]);
+            $fechaHabilitada = now()->day >= 1 && now()->day <= 10;
+
+            return view('registro.asignarSol', ['asignaciones' => $asignaciones, 'fechaHabilitada' => $fechaHabilitada]);
     }
 
 
@@ -37,9 +39,14 @@ class AsignacionController extends Controller
     public function buscarPorNombre(Request $request)
     {
         $nombre = $request->get('nombre');
-        $usuarios = User::where('nombre', 'LIKE', "%{$nombre}%")
-                                ->where('rol', 'cliente')
-                                ->get();
+        $usuarios = User::where('nombre', 'LIKE', "{$nombre}%")
+                        ->where('rol', 'cliente')
+                        ->get();
+
+        if($usuarios->isEmpty()) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+
         return response()->json($usuarios);
     }
 
@@ -94,12 +101,13 @@ class AsignacionController extends Controller
 
         if ($parqueo) {
             $parqueo->usercustom_id = '0';
+            $parqueo->estado = 0;  // Inactivo
+            $parqueo->fechaasig = null;  // Borrar la fecha de asignación
             $parqueo->save();
         }
 
         return back();
     }
-
 
 
 

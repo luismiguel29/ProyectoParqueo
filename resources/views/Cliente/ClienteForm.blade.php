@@ -101,10 +101,31 @@
                       <div class="row mb-3">
                         <label for="inputContraseña3" class="col-sm-4 col-form-label text-end">Contraseña</label>
                         <div class="col-sm-7">
-                          <input name="contraseña" class="form-control {{$errors->has('contraseña')?'is-invalid':''}}" id="inputContraseña3" value="{{isset($user)? $user->contraseña: old('contraseña') }}">
-                          
+                        <div class="input-group">
+                            <input name="contraseña" class="form-control {{$errors->has('contraseña')?'is-invalid':''}}" id="contraseña" value="{{isset($user)? $user->contraseña: old('contraseña') }}">
+                            <div class="input-group-text">
+                                    <i class="fas fa-eye" onclick="togglePasswordVisibility('contraseña')"></i>
+                            </div>
+                        </div>
                           @error('contraseña')
-                          <div class="invalid-feedback">
+                          <div class="invalid-feedback" style="display:block">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label for="inputContraseña3" class="col-sm-4 col-form-label text-end">Repetir Contraseña</label>
+                        <div class="col-sm-7">
+                        <div class="input-group">
+                            <input name="repetircontraseña" class="form-control {{$errors->has('repetircontraseña')?'is-invalid':''}}" id="repetircontraseña" value="{{ old('repetircontraseña') }}">
+                            <div class="input-group-text">
+                                    <i class="fas fa-eye" onclick="togglePasswordVisibility('repetircontraseña')"></i>
+                            </div>
+                        </div>
+                          @error('repetircontraseña')
+                          <div class="invalid-feedback" style="display:block">
                               {{ $message }}
                           </div>
                           @enderror
@@ -187,6 +208,21 @@
         </div>
     </div>
   </div>
+  <script>
+            function togglePasswordVisibility(id) {
+            const input = document.getElementById(id);
+            const icon = event.target;
+            if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+            } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+            }
+        }
+  </script>
 </body>
 </html>
 @endsection

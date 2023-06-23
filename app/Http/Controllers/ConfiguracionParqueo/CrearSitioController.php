@@ -24,7 +24,7 @@ class CrearSitioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nroespacio' => ['required'],
+            'nroespacio' => 'numeric|required|min:1|max:999',
         ],[
             'nroespacio.required', 'El campo Nro de espacio es obligatorio'
         ]);

@@ -60,17 +60,26 @@
                         <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
+                                    <style>
+                                        /* Este es el CSS personalizado */
+                                        .btn-secondary:hover {
+                                            background-color: red !important;  /* Cambia 'red' al color rojo que prefieras */
+                                            border-color: red !important; /* Cambia 'red' al color rojo que prefieras */
+                                        }
+                                    </style>
+
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="confirmModalLabel">Confirmar Acción</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Estás seguro que quieres modificar los contactos?
+                                        ¿Estás seguro que quieres modificar los Datos del Parqueo?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                         <button type="button" id="confirmButton" class="btn btn-primary">Confirmar</button>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

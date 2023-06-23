@@ -128,17 +128,17 @@
                                 <label for="password" class="col-sm-4 col-form-label text-end">Contraseña</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}"
-                                        id="password" value="{{isset($usuario)? $usuario->password: old('password') }}">
+                                        <input type="password" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}"
+                                               id="password" value="{{isset($usuario)? $usuario->password: old('password') }}">
                                         <div class="input-group-text">
-                                            <i class="fas fa-eye" onclick="togglePasswordVisibility('password')"></i>
+                                            <i class="fas fa-eye-slash" onclick="togglePasswordVisibility('password')"></i>
                                         </div>
                                     </div>
                                     @error('password')
                                     <div class="" style="color: #d9534f; font-size: 12px">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                    @enderror
                                 </div>
                             </div>
 
@@ -146,9 +146,9 @@
                                 <label for="confirm-password" class="col-sm-4 col-form-label text-end">Confirmar contraseña</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="password_confirmation" name="password_confirmation" {{ isset($usuario) ? 'disabled' : '' }} >
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" {{ isset($usuario) ? 'disabled' : '' }} >
                                         <div class="input-group-text">
-                                            <i class="fas fa-eye" onclick="togglePasswordVisibility('password_confirmation')"></i>
+                                            <i class="fas fa-eye-slash" onclick="togglePasswordVisibility('password_confirmation')"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -179,18 +179,18 @@
         </div>
         <script>
             function togglePasswordVisibility(id) {
-            const input = document.getElementById(id);
-            const icon = event.target;
-            if (input.type === "password") {
-            input.type = "text";
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye");
-            } else {
-            input.type = "password";
-            icon.classList.remove("fa-eye");
-            icon.classList.add("fa-eye-slash");
+                const input = document.getElementById(id);
+                const icon = event.target;
+                if (input.type === "password") {
+                    input.type = "text";
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye");
+                } else {
+                    input.type = "password";
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash");
+                }
             }
-        }
         </script>
     </body>
     </html>

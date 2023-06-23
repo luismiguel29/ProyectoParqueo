@@ -40,7 +40,7 @@ class EnviarSolicitudController extends Controller
 
         $request->validate([
             'nombre_tarifa' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:5|max:30',
-            'precio' => 'required|string|min:2|max:3',
+            'precio' => 'numeric|required|min:10|max:999',
            
               ], [
                 'nombreprod.regex' => 'El campo nombre solo puede tener letras',
@@ -89,7 +89,7 @@ class EnviarSolicitudController extends Controller
     {
           $request->validate([
             'nombre_tarifa' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
-            'precio' => 'required|string|min:2|max:3',
+            'precio' =>  'numeric|required|min:10|max:999',
            
               ], [
                 'nombreprod.regex' => 'El campo nombre solo puede tener letras',

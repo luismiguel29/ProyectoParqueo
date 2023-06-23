@@ -18,80 +18,79 @@
 <body class="hold-transition sidebar-mini">
     @extends('welcome')
     @section('content')
-
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-lg-6 border-grl">
-                <div class="container pb-3">
-                    <i class="fa-solid fa-car-side fa-2x pe-1"></i>
-                    <span class="h3 ">Creación de sitios</span>
-                </div>
-
-                <div class="card card-outline border-top-pk   shadow">
-                    <div class="card-header">
-                         <h5>Ingrese todos los campos</h5>
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-lg-6 border-grl">
+                    <div class="container pb-3">
+                        <i class="fa-solid fa-car-side fa-2x pe-1"></i>
+                        <span class="h3 ">Creación de sitios</span>
                     </div>
-                    <!--APARTIR DE AQUI ES EL BODY-->
-                    <form action="{{route('crear.store')}}" method="post" class="card-body" style="display: block;">
-                        <!--'ConfiguracionParqueo/crear.store'-->
-                        @csrf
-                        @method('post')
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form group">
-                                    <label for="">Nro espacio</label>
-                                    <input type="number" class="form-control {{$errors->has('nroespacio')?'is-invalid':''}}" name="nroespacio">
-                                    @error('nroespacio')
-                                  <div class="invalid-feedback">
-                                         {{ $message }}
-                                  </div>
-                            @enderror
-                                </div>
-                                
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form group">
-                                    <label for="">Zona</label>
-                                    <select name="zona" id="" class="form-select">
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                    </select>
-                                </div>
-                            </div>
 
+                    <div class="card card-outline border-top-pk   shadow">
+                        <div class="card-header">
+                            <h5>Ingrese todos los campos</h5>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">Observaciones</label>
-                                <textarea name="observacion" id="" cols="30" rows="5" class="form-control"></textarea>
+                        <!--APARTIR DE AQUI ES EL BODY-->
+                        <form action="{{ route('crear.store') }}" method="post" class="card-body" style="display: block;">
+                            <!--'ConfiguracionParqueo/crear.store'-->
+                            @csrf
+                            @method('post')
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form group">
+                                        <label for="">Nro espacio
+                                            <input 
+                                                class="form-control {{ $errors->has('nroespacio') ? 'is-invalid' : '' }}"
+                                                name="nroespacio">
+                                            @error('nroespacio')
+                                                <small style="color:red">{{ $message }}</small>
+                                            @enderror
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form group">
+                                        <label for="">Zona</label>
+                                        <select name="zona" id="" class="form-select">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="row row-gap-3 pt-4 btn-grl">
-                            <div class="col-md-6">
-                                <button type="submit" href="" class="btn btn-primary-pk btn-block w-100">Registrar</button>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Observaciones</label>
+                                    <textarea name="observacion" id="" cols="30" rows="5" class="form-control"></textarea>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <!--
-                                <button type="reset" class="btn btn-danger-dg btn-block w-100">
-                                    Cancelar
-                                </button>
-                                -->
-                                <a href="\sites" class="btn btn-danger-dg btn-block w-100">
-                                    <span>Cancelar</span>
-                                </a>
+                            <div class="row row-gap-3 pt-4 btn-grl">
+                                <div class="col-md-6">
+                                    <button type="submit" href=""
+                                        class="btn btn-primary-pk btn-block w-100">Registrar</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <!--
+                                    <button type="reset" class="btn btn-danger-dg btn-block w-100">
+                                        Cancelar
+                                    </button>
+                                    -->
+                                    <a href="\sites" class="btn btn-danger-dg btn-block w-100">
+                                        <span>Cancelar</span>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
     @endsection
 </body>
 
 </html>
-
-

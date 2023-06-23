@@ -45,22 +45,19 @@ class VehiculoController extends Controller
 
         $request->validate([
             'tipo' => 'required',
-            'placa' => 'required|unique:vehiculo,placa|regex:/^\d{3,4}[a-zA-Z]{3}+$/|min:5|max:7',
-            'marca' => 'required|regex:/^[a-zA-Z]+$/|min:3|max:15',
-            'modelo' => 'required|regex:/^[a-zA-Z0-9]+$/|min:3|max:15',
-            'color' => 'required|regex:/^[a-zA-Z]+$/|min:4|max:10',
+            'placa' => 'required|unique:vehiculo,placa|regex:/^[a-zA-Z0-9]+$/|max:7',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'color' => 'required',
         ],[
-            'placa.regex' => 'El formato de placa es incorrecto, debe ingresar 3 o 4 digitos seguido de 3 letras',
-            'marca.regex' => 'Solo se adminiten letras con un mínimo de 3 y un máximo de 15 caracteres',
-            'modelo.regex' => 'Solo se adminiten letras y numeros con un mínimo de 3 y un máximo de 15 caracteres',
-            'color.regex' => 'Solo se adminiten letras con un mínimo de 4 y un máximo de 15 caracteres'
+            'placa.regex' => 'Solo se acepta letras y numeros con un maximo de 7 caracteres'
         ]);
 
         $vehiculo = new Vehiculo();
         //$vehiculo->usercustom_id = $sesion->id;
         $vehiculo->usercustom_id = session()->get('sesion')->id;
         $vehiculo->tipo = $request->input('tipo');
-        $vehiculo->placa = strtoupper($request->input('placa'));
+        $vehiculo->placa = $request->input('placa');
         $vehiculo->marca = $request->input('marca');
         $vehiculo->modelo = $request->input('modelo');
         $vehiculo->color = $request->input('color');
@@ -100,16 +97,19 @@ class VehiculoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'marca' => 'required|regex:/^[a-zA-Z]+$/|min:3|max:15',
-            'modelo' => 'required|regex:/^[a-zA-Z0-9]+$/|min:3|max:15',
-            'color' => 'required|regex:/^[a-zA-Z]+$/|min:4|max:10',
+            'tipo' => 'required',
+            'placa' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'color' => 'required',
         ],[
-            'marca.regex' => 'Solo se adminiten letras con un mínimo de 3 y un máximo de 15 caracteres',
-            'modelo.regex' => 'Solo se adminiten letras y numeros con un mínimo de 3 y un máximo de 15 caracteres',
-            'color.regex' => 'Solo se adminiten letras con un mínimo de 4 y un máximo de 15 caracteres'
+            
         ]);
 
         $vehiculo = Vehiculo::find($id);
+        $vehiculo->usercustom_id = session()->get('sesion')->id;
+        $vehiculo->tipo = $request->input('tipo');
+        $vehiculo->placa = $request->input('placa');
         $vehiculo->marca = $request->input('marca');
         $vehiculo->modelo = $request->input('modelo');
         $vehiculo->color = $request->input('color');

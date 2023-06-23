@@ -13,7 +13,14 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nSitio" class="form-label">N° espacio</label>
-                        <input type="text" class="form-control" name="nSitio" value="{{$site->sitio}}">
+                        <input type="text" class="form-control {{$errors->has('sitio')?'is-invalid':''}}" name="sitio" value="{{$site->sitio}}">
+                        @error('sitio')
+                            <div class="invalid-feedback">
+                                <ul style="list-style: none; padding: 0;">
+                                    <p>{{$message}}</p>
+                                </ul>
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="nDescripcion" class="form-label">Descripción</label>
@@ -21,15 +28,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="disabledSelect" class="form-label">Zona</label>
-                        <select id="disabledSelect" class="form-select">
-                        <option>Zona A</option>
-                        <option>Zona B</option>
-                        </select>
+                        <input type="text" class="form-control" disabled value="{{$site->zona}}">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-danger">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </form>

@@ -14,6 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+        <script src="./assets/select2v410/js/i18n/es.js"></script>
     </head>
 
     <body>
@@ -32,25 +33,29 @@
 
                     @if (session()->get('sesion')->rol == 'administrador')
                         <form action="{{ route('buscarRegistro') }}" method="GET">
-                        {{-- <form action="{{ route('registroHistorial') }}" method="POST"> --}}
+                            {{-- <form action="{{ route('registroHistorial') }}" method="POST"> --}}
                             @csrf
                             <div class="row p-3">
                                 <div class="col-sm-2">
-                                    <label for="">Fecha inicio <span style="color: red; font-size: 20px">*</span></label>
-                                    <input class="form-control {{$errors->has('fechaini')?'is-invalid':''}}" type="date" name="fechaini" value=" {{ old('fechaini') }}">
+                                    <label for="">Fecha inicio <span
+                                            style="color: red; font-size: 20px">*</span></label>
+                                    <input class="form-control {{ $errors->has('fechaini') ? 'is-invalid' : '' }}"
+                                        type="date" name="fechaini" value=" {{ old('fechaini') }}">
                                     @error('fechaini')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-sm-2">
-                                    <label for="">Fecha fin <span style="color: red; font-size: 20px">*</span></label>
-                                    <input class="form-control {{$errors->has('fechafin')?'is-invalid':''}}" type="date" name="fechafin" value=" {{ old('fechafin') }}">
+                                    <label for="">Fecha fin <span
+                                            style="color: red; font-size: 20px">*</span></label>
+                                    <input class="form-control {{ $errors->has('fechafin') ? 'is-invalid' : '' }}"
+                                        type="date" name="fechafin" value=" {{ old('fechafin') }}">
                                     @error('fechafin')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-sm-2 my-auto d-block">
-                                    <button class="btn btn-primary-pk" >Buscar</button>
+                                    <button class="btn btn-primary-pk">Buscar</button>
                                     {{-- <button type="submit" class="btn btn-primary-pk">Registrar reporte</button> --}}
                                 </div>
                             </div>
@@ -61,18 +66,19 @@
                         @csrf
                         <div class="row mt-2 p-2" style="">
                             <div class="col col-sm-3 p-2">
-                                <select class="livesearch form-control {{ $errors->has('livesearch') ? 'is-invalid' : '' }}"
-                                    name="livesearch" ></select>
+                                <select
+                                    class="livesearch form-control {{ $errors->has('livesearch') ? 'is-invalid' : '' }}"
+                                    name="livesearch" lang="es"></select>
                                 @error('livesearch')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             @if (session()->get('sesion')->rol == 'guardia')
-                            <div class="col-sm p-2 text-end">
-                                <button type="submit" class="btn btn-primary-pk" href=""><i class="fa-solid fa-plus"
-                                        style="color: #ffffff;"></i>
-                                    Ingreso</button>
-                            </div>
+                                <div class="col-sm p-2 text-end">
+                                    <button type="submit" class="btn btn-primary-pk" href=""><i
+                                            class="fa-solid fa-plus" style="color: #ffffff;"></i>
+                                        Ingreso</button>
+                                </div>
                             @endif
                         </div>
                     </form>
@@ -89,7 +95,7 @@
                                         <th>Ingreso</th>
                                         <th>Salida</th>
                                         @if (session()->get('sesion')->rol == 'guardia')
-                                        <th>Acción</th>
+                                            <th>Acción</th>
                                         @endif
                                     </tr>
                                 </thead>
@@ -99,21 +105,21 @@
                                             <td>{{ $reg->sitio }}</td>
                                             <td>{{ $reg->zona }}</td>
                                             <td>{{ $reg->placa }}</td>
-                                            <td>{{ $reg->propietario->nombre}}</td>
+                                            <td>{{ $reg->propietario->nombre }}</td>
                                             <td>{{ $reg->ingreso }}</td>
                                             <td>{{ $reg->salida }}</td>
-                                             @if (session()->get('sesion')->rol == 'guardia')
-                                            <td>
-                                                <form action="{{ route('editarregistro', $reg->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="d-inline-block">
-                                                        <button type="submit" class="btn btn-danger-dg btn-sm"
-                                                            @if ($reg->estado == 0) disabled @endif>Salida</button>
-                                                    </div>
-                                                </form>
+                                            @if (session()->get('sesion')->rol == 'guardia')
+                                                <td>
+                                                    <form action="{{ route('editarregistro', $reg->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="d-inline-block">
+                                                            <button type="submit" class="btn btn-danger-dg btn-sm"
+                                                                @if ($reg->estado == 0) disabled @endif>Salida</button>
+                                                        </div>
+                                                    </form>
 
-                                            </td>
+                                                </td>
                                             @endif
                                         </tr>
                                     @endforeach
@@ -130,6 +136,17 @@
 
         <script type="text/javascript">
             $('.livesearch').select2({
+                language: {
+
+                    noResults: function() {
+
+                        return "No hay resultados";
+                    },
+                    searching: function() {
+
+                        return "Buscando..";
+                    }
+                },
                 placeholder: 'Buscar placa',
                 ajax: {
                     url: '/buscarplaca',
@@ -142,7 +159,6 @@
                                     text: item.placa,
                                     id: item.id,
                                 }
-
                             })
                         };
                     },

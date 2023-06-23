@@ -50,7 +50,7 @@ class VehiculoController extends Controller
             'modelo' => 'required|regex:/^[a-zA-Z0-9]+$/|min:3|max:15',
             'color' => 'required|regex:/^[a-zA-Z]+$/|min:4|max:10',
         ],[
-            'placa.regex' => 'El formato de placa es incorrecto, debe ingresar 3 o 4 digitos seguido de 3 letras',
+            'placa.regex' => 'El formato de placa es incorrecto, debe ingresar 3 o 4 numeros seguido de 3 letras',
             'marca.regex' => 'Solo se adminiten letras con un mínimo de 3 y un máximo de 15 caracteres',
             'modelo.regex' => 'Solo se adminiten letras y numeros con un mínimo de 3 y un máximo de 15 caracteres',
             'color.regex' => 'Solo se adminiten letras con un mínimo de 4 y un máximo de 15 caracteres'

@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col p-3">
                         <i class="fa-solid fa-car-side fa-2x pe-2"></i>
-                        <span class="h3 ">Gestión de Vehiculos</span>
+                        <span class="h3 ">Vehiculos</span>
                     </div>
                     @if (session()->get('sesion')->rol=="cliente")
                     <div class="col p-3 text-end">

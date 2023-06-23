@@ -32,10 +32,11 @@ class RegistroController extends Controller
     public function buscarRegistro(Request $request)
     {
         $request->validate([
-            'fechaini' => 'required',
+            'fechaini' => 'required|before_or_equal:fechafin',
             'fechafin' => 'required',
         ],[
             'fechaini.required' => 'El campo fecha inicio es obligatorio',
+            'fechaini.before_or_equal' => 'El campo fecha inicio debe ser menor o igual a fecha fin ',
             'fechafin.required' => 'El campo fecha fin es obligatorio',
         ]);
         $date1 = Carbon::parse(request('fechaini'))->format('Y-m-d 00:00:00');

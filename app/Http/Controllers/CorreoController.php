@@ -72,10 +72,16 @@ class CorreoController extends Controller
     public function actualizarCuenta($id, Request $request)
     {
         $request->validate([
-            'usuario' => 'required|max:20|alpha_num',
-            'telefono' => 'required|digits_between:1,20|numeric',
+            'usuario' => 'required|min:3|max:20|regex:/^[a-zA-Z0-9]+$/',
+            'telefono' => 'required|min:7|max:8|regex:/^[0-9]+$/',
             'correo' => 'required|email|max:70',
-            'contraseña' => 'required|max:20',
+            'contraseña' => 'required|min:6|max:20',
+        ],[
+            'usuario.regex' => 'Solo se adminiten letras y numeros con un mínimo de 3 y un máximo de 20 caracteres',
+            'telefono.min' => 'Solo se adminiten numeros con un mínimo de 7 y un máximo de 8 digitos',
+            'telefono.max' => 'Solo se adminiten numeros con un mínimo de 7 y un máximo de 8 digitos',
+            'telefono.regex' => 'Solo se adminiten numeros con un mínimo de 7 y un máximo de 8 digitos',
+            'contraseña.min' => 'La contraseña debe contener mínimo 6 caracteres',
         ]);
 
         User::where('id', $id)

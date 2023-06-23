@@ -57,7 +57,7 @@ class LoginController extends Controller
       'usuario' => 'required|min:4|max:15|regex:/^[a-zA-Z0-9]+$/',
       'password' => 'required|min:6|max:20',
     ],[
-      'usuario.min' => 'El usuario debe contener mínimo 4 caracteres',
+      'usuario.min' => 'El usuario debe contener mínimo 3 caracteres',
       'password.min' => 'La contraseña debe contener mínimo 6 caracteres',
     ]);
 

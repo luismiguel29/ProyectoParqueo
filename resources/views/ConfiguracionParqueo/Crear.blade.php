@@ -39,7 +39,7 @@
                                 <div class="col-md-6">
                                     <div class="form group">
                                         <label for="">Nro espacio
-                                            <input type="number"
+                                            <input 
                                                 class="form-control {{ $errors->has('nroespacio') ? 'is-invalid' : '' }}"
                                                 name="nroespacio">
                                             @error('nroespacio')

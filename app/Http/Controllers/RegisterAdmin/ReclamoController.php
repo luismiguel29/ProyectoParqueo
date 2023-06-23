@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\RegisterAdmin;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Solicitud;
@@ -27,6 +27,15 @@ class ReclamoController extends Controller
             'descripcion.required' => 'El campo descripción es obligatorio.',
         ]);
 
+        // Comprobar si el usuario está asignado a un sitio
+        $usuarioId = auth()->user()->id; // obtén el ID del usuario autenticado
+        $asignacionExistente = DB::table('parqueo')->where('usercustom_id', '=', $usuarioId)->first();
+
+        if (!$asignacionExistente) {
+            // Si el usuario no está asignado a ningún sitio, redirige con un mensaje de error
+            return back()->with('error', 'No tiene asignado ningún sitio');
+        }
+
         $solicitud = new Solicitud;
 
         // Si un usuario está autenticado, se usará su nombre; si no, se usará 'Guest'
@@ -42,5 +51,6 @@ class ReclamoController extends Controller
         // Redirige al usuario a la misma vista con un mensaje de éxito
         return back()->with('success', 'Reclamo registrado exitosamente');
     }
+
 
 }

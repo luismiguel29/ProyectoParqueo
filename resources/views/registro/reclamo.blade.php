@@ -21,6 +21,11 @@
                     {{ session('success') }}
                 </div>
                 @endif
+                @if (session('error')) <!-- Comprueba si hay un mensaje de error en la sesión -->
+                <div class="alert alert-danger">
+                    {{ session('error') }} <!-- Muestra el mensaje de error -->
+                </div>
+                @endif
                 <div class="form-container">
                     <form action="{{ route('reclamo.store') }}" method="post">
 

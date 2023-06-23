@@ -60,7 +60,7 @@ class VehiculoController extends Controller
         //$vehiculo->usercustom_id = $sesion->id;
         $vehiculo->usercustom_id = session()->get('sesion')->id;
         $vehiculo->tipo = $request->input('tipo');
-        $vehiculo->placa = $request->input('placa');
+        $vehiculo->placa = strtoupper($request->input('placa'));
         $vehiculo->marca = $request->input('marca');
         $vehiculo->modelo = $request->input('modelo');
         $vehiculo->color = $request->input('color');

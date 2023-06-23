@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class EnviarSolicitudController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $horarios = AtencionSolicitud::select('tarifa.id','tarifa.nombre','tarifa.precio', 'tarifa.estado')->get();
@@ -19,84 +14,55 @@ class EnviarSolicitudController extends Controller
        // return view('/AtencionSolicitud/EnviarSolicitud');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-
         $request->validate([
             'nombre_tarifa' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:5|max:30',
             'precio' => 'numeric|required|min:10|max:999',
-           
-              ], [
-                'nombreprod.regex' => 'El campo nombre solo puede tener letras',
-            ]);
+        ], [
+            'nombreprod.regex' => 'El campo nombre solo puede tener letras',
+        ]);
         
         $crear = new AtencionSolicitud();
-      
         $crear->nombre=$request->input('nombre_tarifa');
         $crear->precio=$request->input('precio');
         $crear->estado=0;
-        
         $crear->save();
         return redirect()->route('enviarSolicitud.index')->with('success', '¡Registro exitoso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        //
+        /*$request->validate([
+            'precio' =>  'numeric|required|min:10|max:999',
+        ]);*/
+        $tarifa = AtencionSolicitud::findOrFail($id);
+        $tarifa->nombre = $request->input('nombre');
+        $tarifa->precio = $request->input('precio');
+        $tarifa->save();
+        return redirect()->route('enviarSolicitud.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
-          $request->validate([
+        $request->validate([
             'nombre_tarifa' => 'required|regex:/^[\pL\s]+$/u|min:2|max:30',
             'precio' =>  'numeric|required|min:10|max:999',
-           
-              ], [
-                'nombreprod.regex' => 'El campo nombre solo puede tener letras',
-            ]);
+        ], [
+            'nombreprod.regex' => 'El campo nombre solo puede tener letras',
+        ]);
         
         $crear = new AtencionSolicitud();
-      
         $crear->nombre=$request->input('nombre_tarifa');
         $crear->precio=$request->input('precio');
         $crear->estado=0;
@@ -105,12 +71,6 @@ class EnviarSolicitudController extends Controller
         return redirect()->route('enviarSolicitud.index')->with('success', '¡Registro exitoso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $hora = AtencionSolicitud::findOrFail($id);

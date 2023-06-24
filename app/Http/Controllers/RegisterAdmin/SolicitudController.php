@@ -21,9 +21,10 @@ class SolicitudController extends Controller
 
     public function index() {
         // Unimos las tablas 'solicitud' y 'usercustom' en base al 'id' del usuario
-        $solicitudes = DB::table('solicitud')
+        return $solicitudes = DB::table('solicitud')
             ->join('usercustom', 'solicitud.usuario', '=', 'usercustom.id')
-            ->select('solicitud.*', 'usercustom.nombre', 'usercustom.apellido')
+            ->join('parqueo', 'solicitud.sitio', '=', 'parqueo.id')
+            ->select('solicitud.*', 'usercustom.nombre', 'usercustom.apellido', 'parqueo.sitio')
             ->orderBy('solicitud.fecha', 'asc')
             ->get();
 

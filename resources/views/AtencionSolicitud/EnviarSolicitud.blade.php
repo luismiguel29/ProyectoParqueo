@@ -69,7 +69,7 @@
                                     <!--<thead class="text-center">-->
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre del sitio</th>
+                                        <th>Nombre de la tarifa</th>
                                         <th>Precio</th>
                                         <th>Acción</th>
                                     </tr>

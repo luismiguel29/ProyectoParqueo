@@ -86,7 +86,7 @@ class ClienteController extends Controller
             $usercustom->ci = $request->input('ci');
             $usercustom->telefono = $request->input('telefono');
             $usercustom->correo = $request->input('correo');
-            $usercustom->password = Hash::make($request->input('contraseña'));
+            $usercustom->save ();
             return redirect ()->route('Cliente.listacliente')->with('message', '¡Edicion de datos exitoso!');
         
     }

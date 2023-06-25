@@ -102,7 +102,7 @@
                         <label for="inputContraseña3" class="col-sm-4 col-form-label text-end">Contraseña</label>
                         <div class="col-sm-7">
                         <div class="input-group">
-                            <input name="contraseña" class="form-control {{$errors->has('contraseña')?'is-invalid':''}}" id="contraseña" value="{{isset($user)? $user->contraseña: old('contraseña') }}">
+                            <input name="contraseña" type="password" class="form-control {{$errors->has('contraseña')?'is-invalid':''}}" id="contraseña" value="{{isset($user)? $user->contraseña: old('contraseña') }}">
                             <div class="input-group-text">
                                     <i class="fas fa-eye" onclick="togglePasswordVisibility('contraseña')"></i>
                             </div>
@@ -119,7 +119,7 @@
                         <label for="inputContraseña3" class="col-sm-4 col-form-label text-end">Repetir Contraseña</label>
                         <div class="col-sm-7">
                         <div class="input-group">
-                            <input name="repetircontraseña" class="form-control {{$errors->has('repetircontraseña')?'is-invalid':''}}" id="repetircontraseña" value="{{ old('repetircontraseña') }}">
+                            <input name="repetircontraseña" type="password" class="form-control {{$errors->has('repetircontraseña')?'is-invalid':''}}" id="repetircontraseña" value="{{ old('repetircontraseña') }}">
                             <div class="input-group-text">
                                     <i class="fas fa-eye" onclick="togglePasswordVisibility('repetircontraseña')"></i>
                             </div>
@@ -214,12 +214,13 @@
             const icon = event.target;
             if (input.type === "password") {
             input.type = "text";
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye");
-            } else {
-            input.type = "password";
+           
             icon.classList.remove("fa-eye");
             icon.classList.add("fa-eye-slash");
+            } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
             }
         }
   </script>

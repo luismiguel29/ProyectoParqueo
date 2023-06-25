@@ -24,14 +24,14 @@
                         @csrf
                         <div class="row p-3">
                             <div class="col-sm-2">
-                                <label for="" class="p-2">Fecha inicio: *</label>
+                                <label for="" class="p-2">Fecha inicio: <span style="color: red; font-size: 20px">*</span></label>
                                 <input class="form-control {{$errors->has('fechaini')?'is-invalid':''}}" type="date" name="fechaini" value=" {{ old('fechaini') }}">
                                 @error('fechaini')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-sm-2">
-                                <label for="" class="p-2">Fecha fin: *</label>
+                                <label for="" class="p-2">Fecha fin: <span style="color: red; font-size: 20px">*</span></label>
                                 <input class="form-control {{$errors->has('fechafin')?'is-invalid':''}}" type="date" name="fechafin" value=" {{ old('fechafin') }}">
                                 @error('fechafin')
                                     <div class="invalid-feedback">{{ $message }}</div>

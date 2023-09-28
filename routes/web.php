@@ -173,7 +173,7 @@ Route::controller(ConfiguracionController::class)->group(function(){
     Route::get('verConfiguracion','verConfiguracion')->name('verConfiguracion');
     Route::post('modificarConfiguracion','modificarConfiguracion')->name('modificarConfiguracion');
     Route::post('vistaPago/{id}','vistaPago')->name('vistaPago');
-    Route::post('realizarPago/{id}','realizarPago')->name('realizarPago');
+    Route::get('aleatorioUser','aleatorioUser')->name('aleatorioUser');
 });
 
 

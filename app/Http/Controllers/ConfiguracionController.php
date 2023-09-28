@@ -82,4 +82,9 @@ class ConfiguracionController extends Controller
             return redirect()->route('visualizarPagos.index')->with('message', 'Pago realizado correctamente!');
         }
     }
+
+    public function aleatorioUser(){
+        $listaAleatoria = User::select('nombre', 'ci')->inRandomOrder()->take(5)->get();
+        return $listaAleatoria;
+    }
 }

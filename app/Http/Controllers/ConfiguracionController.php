@@ -84,7 +84,7 @@ class ConfiguracionController extends Controller
     }
 
     public function aleatorioUser(){
-        $listaAleatoria = User::select('nombre', 'ci')->inRandomOrder()->take(5)->get();
+        $listaAleatoria = User::select('nombre', 'ci', 'apellido')->inRandomOrder()->take(5)->get();
         return $listaAleatoria;
     }
 }
